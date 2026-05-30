@@ -4,14 +4,14 @@ use std::path::{Path, PathBuf};
 use crate::embed::Embedder;
 use crate::store::VectorStore;
 
-const CHUNK_SIZE: usize = 500;    // words per chunk
-const CHUNK_OVERLAP: usize = 50;  // words shared between adjacent chunks
+const CHUNK_SIZE: usize = 200;    // words per chunk
+const CHUNK_OVERLAP: usize = 30;  // words shared between adjacent chunks
 const EMBED_BATCH: usize = 32;    // chunks per embedding request
 
 pub async fn run(docs_dir: &Path) -> Result<()> {
     let embedder = Embedder::new();
     let store = VectorStore::new().await?;
-    store.ensure_collection().await?;
+    store.reset_collection().await?;
 
     let pdfs = find_pdfs(docs_dir)?;
     if pdfs.is_empty() {

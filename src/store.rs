@@ -1,7 +1,8 @@
 use anyhow::Result;
 use qdrant_client::qdrant::{
-    CreateCollectionBuilder, Distance, PointStruct, SearchPointsBuilder, UpsertPointsBuilder,
-    VectorParamsBuilder,
+    r#match::MatchValue, Condition, CreateCollectionBuilder, CreateFieldIndexCollectionBuilder,
+    Distance, FieldType, Filter, PointStruct, ScrollPointsBuilder, SearchPointsBuilder,
+    UpsertPointsBuilder, VectorParamsBuilder,
 };
 use qdrant_client::{Payload, Qdrant};
 use std::collections::HashMap;
@@ -29,17 +30,24 @@ impl VectorStore {
         Ok(Self { client })
     }
 
-    pub async fn ensure_collection(&self) -> Result<()> {
-        if !self.client.collection_exists(COLLECTION).await? {
-            self.client
-                .create_collection(
-                    CreateCollectionBuilder::new(COLLECTION).vectors_config(
-                        VectorParamsBuilder::new(EMBEDDING_DIM, Distance::Cosine),
-                    ),
-                )
-                .await?;
-            println!("Created Qdrant collection '{COLLECTION}'");
+    pub async fn reset_collection(&self) -> Result<()> {
+        if self.client.collection_exists(COLLECTION).await? {
+            self.client.delete_collection(COLLECTION).await?;
         }
+        self.client
+            .create_collection(
+                CreateCollectionBuilder::new(COLLECTION).vectors_config(
+                    VectorParamsBuilder::new(EMBEDDING_DIM, Distance::Cosine),
+                ),
+            )
+            .await?;
+        // Full-text index on the text field enables keyword search alongside vector search
+        self.client
+            .create_field_index(
+                CreateFieldIndexCollectionBuilder::new(COLLECTION, "text", FieldType::Text),
+            )
+            .await?;
+        println!("Collection '{COLLECTION}' reset.");
         Ok(())
     }
 
@@ -85,6 +93,35 @@ impl VectorStore {
                 let text = extract_string(&r.payload, "text");
                 let source = extract_string(&r.payload, "source");
                 SearchResult { text, source, score: r.score }
+            })
+            .collect())
+    }
+
+    // Full-text search using the indexed text field — catches proper nouns that
+    // semantic search misses because DM notes don't read like encyclopaedia entries.
+    pub async fn keyword_search(&self, term: &str, limit: u32) -> Result<Vec<SearchResult>> {
+        let filter = Filter::must([Condition::matches(
+            "text",
+            MatchValue::Text(term.to_string()),
+        )]);
+
+        let response = self
+            .client
+            .scroll(
+                ScrollPointsBuilder::new(COLLECTION)
+                    .filter(filter)
+                    .limit(limit)
+                    .with_payload(true),
+            )
+            .await?;
+
+        Ok(response
+            .result
+            .into_iter()
+            .map(|p| {
+                let text = extract_string(&p.payload, "text");
+                let source = extract_string(&p.payload, "source");
+                SearchResult { text, source, score: 0.6 }
             })
             .collect())
     }

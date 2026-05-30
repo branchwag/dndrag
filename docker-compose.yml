@@ -31,7 +31,7 @@ services:
       QDRANT_URL: http://qdrant:6334
       OLLAMA_URL: http://ollama:11434
       EMBED_MODEL: nomic-embed-text
-      CHAT_MODEL: llama3.2
+      CHAT_MODEL: llama3.1
     volumes:
       - ./docs:/app/docs
     depends_on:
