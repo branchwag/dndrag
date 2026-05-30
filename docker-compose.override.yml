@@ -1,0 +1,13 @@
+# GPU passthrough for Ollama — merged automatically by Docker Compose.
+# Requires: NVIDIA GPU + Docker Desktop with WSL2 backend (Windows)
+#           or NVIDIA Container Toolkit (Linux).
+# To run without a GPU, delete or rename this file.
+services:
+  ollama:
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
