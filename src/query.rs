@@ -20,8 +20,6 @@ pub async fn run(question: &str) -> Result<String> {
 
     let names = extract_names(question);
 
-    // Keyword retrieval first — for named characters/places this is the most
-    // reliable signal. Collect all direct hits before running semantic search.
     let mut keyword_results: Vec<SearchResult> = Vec::new();
     for name in &names {
         for hit in store.keyword_search(name, KEYWORD_K).await? {
@@ -31,13 +29,10 @@ pub async fn run(question: &str) -> Result<String> {
         }
     }
 
-    // Semantic retrieval — use a smaller budget when keyword hits are plentiful
-    // so they don't get drowned out by loosely related chunks.
     let semantic_k = if keyword_results.len() >= 4 { 3 } else { TOP_K };
     let query_vec = embedder.embed(vec![question.to_string()]).await?.remove(0);
     let semantic_results = store.search(query_vec, semantic_k).await?;
 
-    // Merge: keyword hits first (most directly relevant), then any unique semantic hits
     let mut results = keyword_results;
     for hit in semantic_results {
         if !results.iter().any(|r| r.text == hit.text) {
@@ -49,7 +44,6 @@ pub async fn run(question: &str) -> Result<String> {
         return Ok("No relevant lore found for that query.".to_string());
     }
 
-    // Label keyword hits so the LLM knows which excerpts directly name the subject
     let keyword_cutoff = results.iter().filter(|r| r.score == 0.6).count();
     let context = results
         .iter()
@@ -63,7 +57,7 @@ pub async fn run(question: &str) -> Result<String> {
 
     let subject_hint = if !names.is_empty() {
         format!(
-            "The question is specifically about: {}. Only report facts that are explicitly stated about {} in the excerpts marked [DIRECT MATCH].\n\n",
+            "The question is specifically about: {}. Prioritise excerpts marked [DIRECT MATCH] — those directly contain the subject. Do not attribute details from other characters or places to {}.\n\n",
             names.join(", "),
             names.join("/")
         )
@@ -75,10 +69,10 @@ pub async fn run(question: &str) -> Result<String> {
         "You are an assistant for a specific DnD campaign. \
 Your ONLY source of truth is the lore excerpts below. \
 Rules you must follow without exception:\n\
-- State ONLY what is explicitly written in the excerpts. Do not infer, extrapolate, or fill gaps.\n\
-- Do NOT use any general DnD or fantasy knowledge. This is a custom world.\n\
-- If a fact is not in the excerpts, say \"The lore doesn't specify this\" — never guess.\n\
-- Do not attribute details from one character or location to another.\n\
+- Only report what is written in the excerpts. You may read them naturally and summarise, but do not invent facts.\n\
+- Do NOT use any general DnD or fantasy knowledge. This is a fully custom world.\n\
+- If something is not mentioned anywhere in the excerpts, say \"The lore doesn't mention this.\"\n\
+- Do not confuse separate characters or locations with each other.\n\
 \n\
 {subject_hint}\
 Lore excerpts:\n{context}\n\
@@ -90,7 +84,9 @@ Lore excerpts:\n{context}\n\
         .post(format!("{ollama_url}/v1/chat/completions"))
         .json(&json!({
             "model": chat_model,
-            "messages": [{"role": "user", "content": prompt}]
+            "messages": [{"role": "user", "content": prompt}],
+            "num_ctx": 8192,
+            "num_predict": 1024
         }))
         .send()
         .await?
@@ -105,8 +101,6 @@ Lore excerpts:\n{context}\n\
     Ok(answer)
 }
 
-// Extract capitalised words that look like character/place names — used to
-// supplement semantic search with exact keyword hits.
 fn extract_names(query: &str) -> Vec<String> {
     const SKIP: &[&str] = &[
         "Who", "What", "Where", "When", "Why", "How", "Tell", "Is", "Are", "Was",

@@ -17,11 +17,11 @@ setup: up
 
 # Index all PDFs in ./docs
 ingest: up
-	docker compose run --rm --profile cli dnd_rag ingest
+	docker compose --profile cli run --rm dnd_rag ingest
 
 # Usage: make query Q="Who is the main villain?"
 query: up
-	docker compose run --rm --profile cli dnd_rag query "$(Q)"
+	docker compose --profile cli run --rm dnd_rag query "$(Q)"
 
 down:
 	docker compose down
