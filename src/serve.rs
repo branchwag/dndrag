@@ -22,6 +22,13 @@ async fn index() -> Html<&'static str> {
     Html(include_str!("../static/index.html"))
 }
 
+async fn cedarville_font() -> impl axum::response::IntoResponse {
+    (
+        [(axum::http::header::CONTENT_TYPE, "font/truetype")],
+        include_bytes!("../static/fonts/cedarville-cursive.ttf").as_slice(),
+    )
+}
+
 async fn health() -> &'static str {
     "ok"
 }
@@ -43,7 +50,8 @@ pub async fn run(port: u16) -> Result<()> {
     let app = Router::new()
         .route("/", get(index))
         .route("/query", post(query_sse))
-        .route("/health", get(health));
+        .route("/health", get(health))
+        .route("/fonts/cedarville-cursive.ttf", get(cedarville_font));
 
     let addr = format!("0.0.0.0:{port}");
     let listener = tokio::net::TcpListener::bind(&addr).await?;
