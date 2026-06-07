@@ -6,6 +6,7 @@ mod embed;
 mod eval;
 mod ingest;
 mod query;
+mod serve;
 mod store;
 
 #[derive(Parser)]
@@ -34,6 +35,11 @@ enum Command {
         #[arg(short, long, default_value = "eval.json")]
         eval_file: PathBuf,
     },
+    /// Start the HTTP server and serve the browser front-end on the given port
+    Serve {
+        #[arg(short, long, default_value = "3000")]
+        port: u16,
+    },
 }
 
 #[tokio::main]
@@ -52,6 +58,7 @@ async fn main() -> Result<()> {
         Command::Ingest { docs_dir, fresh } => ingest::run(&docs_dir, fresh).await?,
         Command::Query { question } => query::run(&question).await?,
         Command::Eval { eval_file } => eval::run(&eval_file).await?,
+        Command::Serve { port } => serve::run(port).await?,
     }
 
     Ok(())

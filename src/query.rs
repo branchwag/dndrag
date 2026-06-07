@@ -159,6 +159,65 @@ pub async fn answer(question: &str) -> Result<String> {
     }
 }
 
+/// SSE bridge: runs the pipeline and forwards tokens through an mpsc channel.
+/// The serve subcommand spawns this in a task and bridges the channel to axum SSE.
+pub async fn stream_to_sender(
+    question: &str,
+    tx: tokio::sync::mpsc::Sender<String>,
+) -> Result<()> {
+    let ctx = match pipeline(question).await {
+        Err(e) => {
+            let _ = tx.send(format!("⚠ Error: {e}")).await;
+            return Ok(());
+        }
+        Ok(None) => {
+            let _ = tx.send("The lore does not speak of this.".to_string()).await;
+            return Ok(());
+        }
+        Ok(Some(ctx)) => ctx,
+    };
+
+    let response = ctx
+        .client
+        .post(format!("{}/v1/chat/completions", ctx.ollama_url))
+        .json(&json!({
+            "model": ctx.chat_model,
+            "messages": [{"role": "user", "content": ctx.prompt}],
+            "num_ctx": 8192,
+            "num_predict": 1024,
+            "stream": true
+        }))
+        .send()
+        .await?;
+
+    let mut stream = response.bytes_stream();
+    let mut line_buf = String::new();
+
+    while let Some(chunk) = stream.next().await {
+        line_buf.push_str(std::str::from_utf8(&chunk?).unwrap_or(""));
+
+        while let Some(pos) = line_buf.find('\n') {
+            let line = line_buf[..pos].trim_end_matches('\r').to_string();
+            line_buf.drain(..pos + 1);
+
+            if let Some(data) = line.strip_prefix("data: ") {
+                if data.trim() == "[DONE]" {
+                    return Ok(());
+                }
+                if let Ok(val) = serde_json::from_str::<serde_json::Value>(data) {
+                    if let Some(token) = val["choices"][0]["delta"]["content"].as_str() {
+                        if tx.send(token.to_string()).await.is_err() {
+                            return Ok(()); // client disconnected
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    Ok(())
+}
+
 // Streams the LLM response token-by-token to stdout via SSE.
 async fn stream_generation(ctx: &PipelineOutput) -> Result<()> {
     let response = ctx

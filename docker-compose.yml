@@ -42,6 +42,26 @@ services:
     profiles:
       - cli
 
+  dnd_rag_serve:
+    build: .
+    environment:
+      QDRANT_URL: http://qdrant:6334
+      OLLAMA_URL: http://ollama:11434
+      EMBED_MODEL: nomic-embed-text
+      CHAT_MODEL: gemma2:9b
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./docs:/app/docs
+    command: serve --port 3000
+    depends_on:
+      qdrant:
+        condition: service_healthy
+      ollama:
+        condition: service_healthy
+    profiles:
+      - serve
+
 volumes:
   qdrant_data:
   ollama_data:

@@ -12,6 +12,7 @@ RUN cargo build --release
 RUN rm -rf src target/release/deps/dnd_rag*
 
 COPY src ./src
+COPY static ./static
 RUN cargo build --release
 
 # ---- runtime stage ----

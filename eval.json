@@ -1,5 +1,10 @@
 [
   {
+    "question": "Who is Alora?",
+    "must_mention": ["vampire"],
+    "must_not_mention": ["member of the party", "party member"]
+  },
+  {
     "question": "REPLACE: Who is the main villain?",
     "must_mention": ["REPLACE: villain_name"],
     "must_not_mention": []

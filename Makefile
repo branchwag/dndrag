@@ -1,7 +1,7 @@
 CHAT_MODEL ?= llama3.2
 EMBED_MODEL ?= nomic-embed-text
 
-.PHONY: build up setup ingest query down
+.PHONY: build up setup ingest query serve down
 
 build:
 	docker compose --profile cli build
@@ -22,6 +22,10 @@ ingest: up
 # Usage: make query Q="Who is the main villain?"
 query: up
 	docker compose --profile cli run --rm dnd_rag query "$(Q)"
+
+# Start the browser front-end at http://localhost:3000
+serve: up
+	docker compose --profile serve up dnd_rag_serve
 
 down:
 	docker compose down

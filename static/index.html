@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Arcane Tome</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Tangerine:wght@700&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, #2a0000 0%, transparent 60%),
+        radial-gradient(ellipse 100% 80% at 50% 100%, #1a0000 0%, transparent 50%),
+        #0a0000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1.5rem 5rem;
+      font-family: 'Cinzel', serif;
+    }
+
+    h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.6rem, 5vw, 2.8rem);
+      color: #c0392b;
+      text-shadow:
+        0 0 30px rgba(192, 57, 43, 0.7),
+        0 0 60px rgba(180, 30, 20, 0.3),
+        0 2px 6px rgba(0, 0, 0, 0.9);
+      letter-spacing: 0.04em;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .ornament {
+      color: #8b0000;
+      font-size: 1.1rem;
+      letter-spacing: 0.5em;
+      opacity: 0.7;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      user-select: none;
+    }
+
+    .parchment {
+      position: relative;
+      background:
+        linear-gradient(160deg, #f5e8c8 0%, #ead9a8 25%, #d9c485 50%, #e6d49e 75%, #f0e2bb 100%);
+      border: 2px solid #7a3a10;
+      border-radius: 3px;
+      box-shadow:
+        inset 0 0 40px rgba(100, 50, 0, 0.12),
+        inset 0 0 80px rgba(80, 30, 0, 0.06),
+        0 0 0 1px rgba(100, 40, 0, 0.25),
+        0 12px 48px rgba(0, 0, 0, 0.7),
+        0 0 80px rgba(139, 0, 0, 0.08);
+      padding: 2.5rem 3rem 2.5rem;
+      width: 100%;
+      max-width: 800px;
+      min-height: 220px;
+    }
+
+    /* Inner border decoration */
+    .parchment::before {
+      content: '';
+      position: absolute;
+      inset: 10px;
+      border: 1px solid rgba(100, 50, 10, 0.2);
+      border-radius: 1px;
+      pointer-events: none;
+    }
+
+    /* Corner rune marks */
+    .parchment::after {
+      content: '✦';
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      color: rgba(100, 40, 10, 0.3);
+      font-size: 0.7rem;
+    }
+
+    #response {
+      font-family: 'Tangerine', cursive;
+      font-size: 2rem;
+      line-height: 1.65;
+      color: #3a1a0a;
+      min-height: 80px;
+      word-break: break-word;
+      white-space: pre-wrap;
+    }
+
+    #response.empty::before {
+      content: 'The tome awaits your question…';
+      color: rgba(100, 60, 20, 0.35);
+      font-style: normal;
+    }
+
+    @keyframes inkReveal {
+      0% {
+        color: transparent;
+        text-shadow:
+          0 0 8px rgba(200, 30, 0, 1),
+          0 0 20px rgba(180, 10, 0, 0.7);
+      }
+      35% {
+        color: rgba(100, 25, 8, 0.75);
+        text-shadow: 0 0 5px rgba(160, 20, 0, 0.45);
+      }
+      100% {
+        color: #3a1a0a;
+        text-shadow: none;
+      }
+    }
+
+    .char {
+      display: inline;
+      animation: inkReveal 1s ease-out forwards;
+    }
+
+    /* Query input row */
+    .query-area {
+      display: flex;
+      gap: 0.6rem;
+      width: 100%;
+      max-width: 800px;
+      margin-top: 1.25rem;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      background: rgba(12, 0, 0, 0.88);
+      border: 1px solid #5a0000;
+      border-radius: 2px;
+      color: #d4af7a;
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      padding: 0.7rem 1.2rem;
+      outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    input[type="text"]:focus {
+      border-color: #c0392b;
+      box-shadow: 0 0 10px rgba(192, 57, 43, 0.35);
+    }
+
+    input[type="text"]::placeholder {
+      color: rgba(212, 175, 122, 0.25);
+    }
+
+    input[type="text"]:disabled {
+      opacity: 0.55;
+    }
+
+    button {
+      background: linear-gradient(180deg, #8b0000, #6b0000);
+      border: 1px solid #c0392b;
+      border-radius: 2px;
+      color: #f4e4c1;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 0.7rem 1.4rem;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+
+    button:hover:not(:disabled) {
+      background: linear-gradient(180deg, #a50000, #8b0000);
+      box-shadow: 0 0 14px rgba(192, 57, 43, 0.5);
+    }
+
+    button:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .status {
+      height: 1.1em;
+      margin-top: 0.6rem;
+      font-size: 0.72rem;
+      color: rgba(180, 120, 60, 0.5);
+      letter-spacing: 0.12em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 0.7; }
+    }
+
+    .status.active {
+      animation: blink 1.4s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <h1>The Arcane Tome</h1>
+  <div class="ornament">⚔ &nbsp; ✦ &nbsp; ⚔</div>
+
+  <div class="parchment">
+    <div id="response" class="empty"></div>
+  </div>
+
+  <div class="query-area">
+    <input
+      type="text"
+      id="question"
+      placeholder="Ask of the lore…"
+      autocomplete="off"
+      spellcheck="false"
+    >
+    <button id="ask-btn" onclick="ask()">Consult</button>
+  </div>
+  <div class="status" id="status"></div>
+
+  <script>
+    const responseEl = document.getElementById('response');
+    const questionEl = document.getElementById('question');
+    const askBtn    = document.getElementById('ask-btn');
+    const statusEl  = document.getElementById('status');
+
+    // Character queue for the Marauder's Map ink-reveal effect
+    const charQueue = [];
+    let isRendering = false;
+
+    function enqueueToken(text) {
+      for (const ch of text) charQueue.push(ch);
+      if (!isRendering) renderNext();
+    }
+
+    function renderNext() {
+      if (charQueue.length === 0) { isRendering = false; return; }
+      isRendering = true;
+      const ch = charQueue.shift();
+      const span = document.createElement('span');
+      span.className = 'char';
+      span.textContent = ch;
+      responseEl.appendChild(span);
+      // 18–36 ms per character: fast enough to feel alive, slow enough to read
+      setTimeout(renderNext, 18 + Math.random() * 18);
+    }
+
+    questionEl.addEventListener('keydown', e => { if (e.key === 'Enter') ask(); });
+
+    async function ask() {
+      const q = questionEl.value.trim();
+      if (!q) return;
+
+      // Reset state
+      responseEl.innerHTML = '';
+      responseEl.classList.remove('empty');
+      charQueue.length = 0;
+      isRendering = false;
+
+      askBtn.disabled = true;
+      questionEl.disabled = true;
+      statusEl.textContent = 'The tome stirs…';
+      statusEl.classList.add('active');
+
+      try {
+        const res = await fetch('/query', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ question: q }),
+        });
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        statusEl.textContent = 'Words form upon the parchment…';
+
+        const reader  = res.body.getReader();
+        const decoder = new TextDecoder();
+        let buf = '';
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          buf += decoder.decode(value, { stream: true });
+
+          // SSE events are delimited by blank lines; data lines start with "data: "
+          const lines = buf.split('\n');
+          buf = lines.pop(); // hold the possibly-incomplete last line
+
+          let eventData = [];
+          for (const line of lines) {
+            if (line.startsWith('data: ')) {
+              eventData.push(line.slice(6));
+            } else if (line.trim() === '' && eventData.length > 0) {
+              const token = eventData.join('\n');
+              if (token !== '[DONE]') enqueueToken(token);
+              eventData = [];
+            }
+          }
+        }
+
+        // Flush any remaining partial event
+        if (buf.startsWith('data: ')) {
+          const token = buf.slice(6);
+          if (token && token !== '[DONE]') enqueueToken(token);
+        }
+
+        statusEl.textContent = '';
+        statusEl.classList.remove('active');
+      } catch (err) {
+        enqueueToken(' [The magic faltered: ' + err.message + ']');
+        statusEl.textContent = '';
+        statusEl.classList.remove('active');
+      } finally {
+        askBtn.disabled = false;
+        questionEl.disabled = false;
+      }
+    }
+  </script>
+</body>
+</html>
