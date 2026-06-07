@@ -1,0 +1,17 @@
+[
+  {
+    "question": "REPLACE: Who is the main villain?",
+    "must_mention": ["REPLACE: villain_name"],
+    "must_not_mention": []
+  },
+  {
+    "question": "REPLACE: What is the capital city called?",
+    "must_mention": ["REPLACE: city_name"],
+    "must_not_mention": []
+  },
+  {
+    "question": "REPLACE: Who leads the thieves guild?",
+    "must_mention": ["REPLACE: leader_name"],
+    "must_not_mention": ["REPLACE: wrong_name"]
+  }
+]

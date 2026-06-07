@@ -17,4 +17,7 @@ qdrant-client = "1"
 pdf-extract = "0.7"
 clap = { version = "4", features = ["derive"] }
 dotenvy = "0.15"
-uuid = { version = "1", features = ["v4"] }
+uuid = { version = "1", features = ["v4", "v5"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+futures-util = "0.3"

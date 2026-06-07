@@ -17,7 +17,11 @@ impl Embedder {
             .unwrap_or_else(|_| "http://localhost:11434".to_string());
         let model = std::env::var("EMBED_MODEL")
             .unwrap_or_else(|_| "nomic-embed-text".to_string());
-        Self { client: Client::new(), url, model }
+        let client = Client::builder()
+            .timeout(std::time::Duration::from_secs(60))
+            .build()
+            .expect("failed to build HTTP client");
+        Self { client, url, model }
     }
 
     // Uses Ollama's native /api/embed endpoint (supports array input)

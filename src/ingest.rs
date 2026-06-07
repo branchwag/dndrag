@@ -1,17 +1,29 @@
 use anyhow::Result;
+use std::io::Write as _;
 use std::path::{Path, PathBuf};
+use uuid::Uuid;
 
 use crate::embed::Embedder;
 use crate::store::VectorStore;
 
-const CHUNK_SIZE: usize = 200;    // words per chunk
-const CHUNK_OVERLAP: usize = 30;  // words shared between adjacent chunks
-const EMBED_BATCH: usize = 32;    // chunks per embedding request
+const TARGET_WORDS: usize = 200;
+const OVERLAP_SENTENCES: usize = 2;
+const EMBED_BATCH: usize = 32;
 
-pub async fn run(docs_dir: &Path) -> Result<()> {
+struct Chunk {
+    text: String,
+    page: u32,
+}
+
+pub async fn run(docs_dir: &Path, fresh: bool) -> Result<()> {
     let embedder = Embedder::new();
     let store = VectorStore::new().await?;
-    store.reset_collection().await?;
+
+    if fresh {
+        store.reset_collection().await?;
+    } else {
+        store.ensure_collection().await?;
+    }
 
     let pdfs = find_pdfs(docs_dir)?;
     if pdfs.is_empty() {
@@ -24,15 +36,25 @@ pub async fn run(docs_dir: &Path) -> Result<()> {
         println!("Processing {filename}...");
 
         let text = extract_pdf_text(pdf)?;
-        let chunks = chunk_text(&text, CHUNK_SIZE, CHUNK_OVERLAP);
+        let chunks = chunk_text_semantic(&text, TARGET_WORDS, OVERLAP_SENTENCES);
         let total = chunks.len();
 
         for (batch_idx, batch) in chunks.chunks(EMBED_BATCH).enumerate() {
+            let chunk_start = batch_idx * EMBED_BATCH;
+            let ids: Vec<String> = (chunk_start..chunk_start + batch.len())
+                .map(|i| chunk_id(&filename, i))
+                .collect();
+            let texts: Vec<String> = batch.iter().map(|c| c.text.clone()).collect();
+            let pages: Vec<u32> = batch.iter().map(|c| c.page).collect();
             let sources: Vec<String> = vec![filename.clone(); batch.len()];
-            let embeddings = embedder.embed(batch.to_vec()).await?;
-            store.upsert(batch, &sources, embeddings).await?;
-            print!("\r  {filename}: batch {}/{} ({} chunks)        ",
-                batch_idx + 1, (total + EMBED_BATCH - 1) / EMBED_BATCH, total);
+            let embeddings = embedder.embed(texts.clone()).await?;
+            store.upsert(&ids, &texts, &sources, &pages, embeddings).await?;
+            print!(
+                "\r  {filename}: batch {}/{} ({total} chunks)        ",
+                batch_idx + 1,
+                (total + EMBED_BATCH - 1) / EMBED_BATCH,
+            );
+            let _ = std::io::stdout().flush();
         }
         println!("\r  Indexed {total} chunks from {filename}                ");
     }
@@ -56,26 +78,128 @@ fn extract_pdf_text(path: &Path) -> Result<String> {
     Ok(text)
 }
 
-// Sliding window over words. Overlap keeps context across chunk boundaries,
-// which improves retrieval for sentences that straddle a split.
-fn chunk_text(text: &str, chunk_size: usize, overlap: usize) -> Vec<String> {
-    // Drop tokens longer than 40 chars — PDF artifacts (hex blobs, base64, etc.)
-    // that blow up the embedding model's context window.
-    let words: Vec<&str> = text
-        .split_whitespace()
-        .filter(|w| w.len() <= 40)
-        .collect();
-    let mut chunks = Vec::new();
-    let mut start = 0;
+// Stable chunk ID: same file + same chunk position always produces the same UUID,
+// so re-running ingest upserts rather than duplicating.
+fn chunk_id(source: &str, chunk_idx: usize) -> String {
+    let name = format!("{source}:{chunk_idx}");
+    Uuid::new_v5(&Uuid::NAMESPACE_DNS, name.as_bytes()).to_string()
+}
 
-    while start < words.len() {
-        let end = (start + chunk_size).min(words.len());
-        chunks.push(words[start..end].join(" "));
-        if end == words.len() {
+// Sentence-aware sliding-window chunker. Splits on paragraph and sentence
+// boundaries so chunks don't cut mid-thought. Tracks PDF page numbers via
+// the \x0c form-feed markers that pdf_extract inserts between pages.
+fn chunk_text_semantic(text: &str, target_words: usize, overlap: usize) -> Vec<Chunk> {
+    // Collect all sentences paired with their source page number.
+    let mut indexed: Vec<(String, u32)> = Vec::new();
+    let mut page = 1u32;
+
+    for page_text in text.split('\x0c') {
+        for sent in extract_sentences(page_text) {
+            let filtered: String = sent
+                .split_whitespace()
+                .filter(|w| w.len() <= 40) // drop PDF artifacts (hex blobs, base64, etc.)
+                .collect::<Vec<_>>()
+                .join(" ");
+            if filtered.split_whitespace().count() > 2 {
+                indexed.push((filtered, page));
+            }
+        }
+        page += 1;
+    }
+
+    let mut chunks: Vec<Chunk> = Vec::new();
+    let mut start = 0usize;
+
+    while start < indexed.len() {
+        let mut word_count = 0usize;
+        let mut end = start;
+
+        while end < indexed.len() && word_count < target_words {
+            word_count += indexed[end].0.split_whitespace().count();
+            end += 1;
+        }
+
+        if end == start {
             break;
         }
-        start += chunk_size - overlap;
+
+        let text = indexed[start..end]
+            .iter()
+            .map(|(s, _)| s.as_str())
+            .collect::<Vec<_>>()
+            .join(" ");
+        let chunk_page = indexed[start].1;
+        chunks.push(Chunk { text, page: chunk_page });
+
+        // Overlap: back up `overlap` sentences so adjacent chunks share context.
+        // Guard ensures we always make forward progress.
+        let next_start = end.saturating_sub(overlap);
+        start = if next_start > start { next_start } else { end };
     }
 
     chunks
+}
+
+// Splits text into sentences, respecting paragraph boundaries (\n\n) and
+// sentence-ending punctuation followed by an uppercase letter.
+fn extract_sentences(text: &str) -> Vec<String> {
+    text.split("\n\n")
+        .flat_map(|para| sentences_from_para(para.trim()))
+        .collect()
+}
+
+fn sentences_from_para(para: &str) -> Vec<String> {
+    if para.is_empty() {
+        return vec![];
+    }
+
+    // Collapse soft line-wraps (single \n) to spaces.
+    let para = para.replace('\n', " ");
+    let chars: Vec<char> = para.chars().collect();
+    let n = chars.len();
+    let mut sentences: Vec<String> = Vec::new();
+    let mut buf = String::new();
+    let mut i = 0;
+
+    while i < n {
+        let ch = chars[i];
+        buf.push(ch);
+
+        if matches!(ch, '.' | '!' | '?') {
+            // Treat short words before '.' as abbreviations (Dr., Mr., vs., etc.)
+            let last_word: String = buf
+                .trim_end_matches(|c: char| matches!(c, '.' | '!' | '?'))
+                .split_whitespace()
+                .last()
+                .unwrap_or("")
+                .chars()
+                .filter(|c| c.is_alphabetic())
+                .collect();
+            let is_abbr = last_word.len() <= 2;
+
+            let next_is_upper = chars[i + 1..]
+                .iter()
+                .skip_while(|&&c| c == ' ')
+                .next()
+                .map(|&c| c.is_uppercase())
+                .unwrap_or(true); // end of string = sentence boundary
+
+            if next_is_upper && !is_abbr {
+                let s = buf.trim().to_string();
+                if !s.is_empty() {
+                    sentences.push(s);
+                }
+                buf.clear();
+            }
+        }
+
+        i += 1;
+    }
+
+    let s = buf.trim().to_string();
+    if !s.is_empty() {
+        sentences.push(s);
+    }
+
+    sentences
 }

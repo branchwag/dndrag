@@ -6,16 +6,18 @@ use qdrant_client::qdrant::{
 };
 use qdrant_client::{Payload, Qdrant};
 use std::collections::HashMap;
-use uuid::Uuid;
 
 use crate::embed::EMBEDDING_DIM;
 
 const COLLECTION: &str = "dnd_lore";
+const SCORE_THRESHOLD: f32 = 0.45;
 
+#[derive(Clone)]
 pub struct SearchResult {
     pub text: String,
     pub source: String,
-    pub score: f32,
+    pub page: u32,
+    pub is_keyword_match: bool,
 }
 
 pub struct VectorStore {
@@ -30,10 +32,26 @@ impl VectorStore {
         Ok(Self { client })
     }
 
+    // Creates the collection only if it doesn't already exist (safe for incremental ingest).
+    pub async fn ensure_collection(&self) -> Result<()> {
+        if !self.client.collection_exists(COLLECTION).await? {
+            self.create_collection_internal().await?;
+            println!("Collection '{COLLECTION}' created.");
+        }
+        Ok(())
+    }
+
+    // Wipes and recreates the collection from scratch.
     pub async fn reset_collection(&self) -> Result<()> {
         if self.client.collection_exists(COLLECTION).await? {
             self.client.delete_collection(COLLECTION).await?;
         }
+        self.create_collection_internal().await?;
+        println!("Collection '{COLLECTION}' reset.");
+        Ok(())
+    }
+
+    async fn create_collection_internal(&self) -> Result<()> {
         self.client
             .create_collection(
                 CreateCollectionBuilder::new(COLLECTION).vectors_config(
@@ -41,34 +59,38 @@ impl VectorStore {
                 ),
             )
             .await?;
-        // Full-text index on the text field enables keyword search alongside vector search
+        // Full-text index on the text field enables keyword search alongside vector search.
         self.client
             .create_field_index(
                 CreateFieldIndexCollectionBuilder::new(COLLECTION, "text", FieldType::Text),
             )
             .await?;
-        println!("Collection '{COLLECTION}' reset.");
         Ok(())
     }
 
     pub async fn upsert(
         &self,
+        ids: &[String],
         texts: &[String],
         sources: &[String],
+        pages: &[u32],
         embeddings: Vec<Vec<f32>>,
     ) -> Result<()> {
-        let points: Vec<PointStruct> = texts
+        let points: Vec<PointStruct> = ids
             .iter()
+            .zip(texts.iter())
             .zip(sources.iter())
+            .zip(pages.iter())
             .zip(embeddings.into_iter())
-            .map(|((text, source), embedding)| {
+            .map(|((((id, text), source), page), embedding)| {
                 let payload: Payload = serde_json::json!({
                     "text": text,
                     "source": source,
+                    "page": page,
                 })
                 .try_into()
                 .expect("valid payload JSON");
-                PointStruct::new(Uuid::new_v4().to_string(), embedding, payload)
+                PointStruct::new(id.clone(), embedding, payload)
             })
             .collect();
 
@@ -78,21 +100,43 @@ impl VectorStore {
         Ok(())
     }
 
-    pub async fn search(&self, query_embedding: Vec<f32>, top_k: u64) -> Result<Vec<SearchResult>> {
+    // Returns results paired with their embedding vectors for MMR diversity selection.
+    pub async fn search_with_vectors(
+        &self,
+        query_embedding: Vec<f32>,
+        top_k: u64,
+    ) -> Result<Vec<(SearchResult, Vec<f32>)>> {
+        use qdrant_client::qdrant::vector_output::Vector;
+
         let response = self
             .client
             .search_points(
-                SearchPointsBuilder::new(COLLECTION, query_embedding, top_k).with_payload(true),
+                SearchPointsBuilder::new(COLLECTION, query_embedding, top_k)
+                    .with_payload(true)
+                    .with_vectors(true),
             )
             .await?;
 
         Ok(response
             .result
             .into_iter()
+            .filter(|r| r.score >= SCORE_THRESHOLD)
             .map(|r| {
+                let vector = r
+                    .vectors
+                    .as_ref()
+                    .and_then(|v| v.get_vector())
+                    .and_then(|v| match v {
+                        Vector::Dense(dv) => Some(dv.data),
+                        _ => None,
+                    })
+                    .unwrap_or_default();
+
                 let text = extract_string(&r.payload, "text");
                 let source = extract_string(&r.payload, "source");
-                SearchResult { text, source, score: r.score }
+                let page = extract_u32(&r.payload, "page");
+                let result = SearchResult { text, source, page, is_keyword_match: false };
+                (result, vector)
             })
             .collect())
     }
@@ -121,7 +165,8 @@ impl VectorStore {
             .map(|p| {
                 let text = extract_string(&p.payload, "text");
                 let source = extract_string(&p.payload, "source");
-                SearchResult { text, source, score: 0.6 }
+                let page = extract_u32(&p.payload, "page");
+                SearchResult { text, source, page, is_keyword_match: true }
             })
             .collect())
     }
@@ -139,4 +184,18 @@ fn extract_string(
             _ => None,
         })
         .unwrap_or_default()
+}
+
+fn extract_u32(
+    payload: &HashMap<String, qdrant_client::qdrant::Value>,
+    key: &str,
+) -> u32 {
+    use qdrant_client::qdrant::value::Kind;
+    payload
+        .get(key)
+        .and_then(|v| match v.kind.as_ref() {
+            Some(Kind::IntegerValue(n)) => Some(*n as u32),
+            _ => None,
+        })
+        .unwrap_or(0)
 }
