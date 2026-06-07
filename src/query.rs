@@ -94,15 +94,6 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
         return Ok(None);
     }
 
-    // Rerank: ask the LLM to order passages by relevance before generation.
-    let t_rerank = Instant::now();
-    let results = rerank(&client, &ollama_url, &chat_model, question, results).await;
-    info!(
-        count = results.len(),
-        elapsed_ms = t_rerank.elapsed().as_millis(),
-        "rerank"
-    );
-
     // Build the prompt.
     let context = results
         .iter()
@@ -330,80 +321,6 @@ async fn extract_entities(
     vec![]
 }
 
-// Reranks results by asking the LLM to order passages by relevance. Falls back
-// to the original order if the response can't be parsed as a JSON array.
-async fn rerank(
-    client: &Client,
-    ollama_url: &str,
-    chat_model: &str,
-    question: &str,
-    results: Vec<SearchResult>,
-) -> Vec<SearchResult> {
-    if results.len() < 3 {
-        return results;
-    }
-
-    let n = results.len();
-    let passages = results
-        .iter()
-        .enumerate()
-        .map(|(i, r)| format!("[{}] {}", i + 1, &r.text[..r.text.len().min(400)]))
-        .collect::<Vec<_>>()
-        .join("\n\n");
-
-    let prompt = format!(
-        "Question: \"{question}\"\n\n\
-        Rank these {n} passages by relevance to the question. \
-        Reply with ONLY a JSON array of passage numbers from most to least relevant. \
-        Example: [3,1,2]\n\n\
-        {passages}"
-    );
-
-    let Ok(response) = client
-        .post(format!("{ollama_url}/v1/chat/completions"))
-        .json(&json!({
-            "model": chat_model,
-            "messages": [{"role": "user", "content": prompt}],
-            "num_ctx": 4096,
-            "num_predict": 128,
-            "temperature": 0
-        }))
-        .send()
-        .await
-    else {
-        return results;
-    };
-
-    let Ok(body) = response.json::<serde_json::Value>().await else {
-        return results;
-    };
-
-    let content = body["choices"][0]["message"]["content"].as_str().unwrap_or("");
-
-    if let (Some(start), Some(end)) = (content.find('['), content.rfind(']')) {
-        if let Ok(order) = serde_json::from_str::<Vec<usize>>(&content[start..=end]) {
-            let mut slots: Vec<Option<SearchResult>> = results.into_iter().map(Some).collect();
-            let mut reranked: Vec<SearchResult> = Vec::new();
-
-            for idx in order {
-                let i = idx.saturating_sub(1); // passage numbers are 1-based
-                if i < slots.len() {
-                    if let Some(r) = slots[i].take() {
-                        reranked.push(r);
-                    }
-                }
-            }
-            for slot in slots {
-                if let Some(r) = slot {
-                    reranked.push(r);
-                }
-            }
-            return reranked;
-        }
-    }
-
-    results
-}
 
 // Maximal Marginal Relevance: selects k results that balance relevance to the
 // query with diversity from already-selected results. lambda=1 is pure relevance,
