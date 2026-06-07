@@ -75,7 +75,34 @@ fn find_pdfs(dir: &Path) -> Result<Vec<PathBuf>> {
 fn extract_pdf_text(path: &Path) -> Result<String> {
     let bytes = std::fs::read(path)?;
     let text = pdf_extract::extract_text_from_mem(&bytes)?;
-    Ok(text)
+    Ok(clean_text(&text))
+}
+
+// Strips content that should never reach the vector store: YouTube URLs and
+// the channel name "beardedboggan". Operates on the raw extracted text before
+// any chunking, so nothing leaks through even in mid-sentence references.
+// Page-break markers (\x0c) are preserved so page tracking still works.
+fn clean_text(text: &str) -> String {
+    text.split('\x0c')
+        .map(|page| {
+            page.lines()
+                .map(|line| {
+                    // Strip any token that looks like a YouTube URL.
+                    line.split_whitespace()
+                        .filter(|w| {
+                            let l = w.to_lowercase();
+                            !l.contains("youtube") && !l.contains("youtu.be")
+                        })
+                        .collect::<Vec<_>>()
+                        .join(" ")
+                })
+                // Drop entire lines that name the channel.
+                .filter(|line| !line.to_lowercase().contains("beardedboggan"))
+                .collect::<Vec<_>>()
+                .join("\n")
+        })
+        .collect::<Vec<_>>()
+        .join("\x0c")
 }
 
 // Stable chunk ID: same file + same chunk position always produces the same UUID,
