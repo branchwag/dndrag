@@ -192,6 +192,55 @@
       text-transform: uppercase;
     }
 
+    /* Parchment loading indicator */
+    #loading {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.9rem;
+      padding: 1.75rem 0;
+    }
+
+    #loading.visible { display: flex; }
+
+    .loading-runes {
+      display: flex;
+      gap: 2rem;
+      font-size: 2rem;
+      color: rgba(120, 40, 10, 0.2);
+    }
+
+    @keyframes runeFlare {
+      0%, 100% {
+        color: rgba(120, 40, 10, 0.15);
+        text-shadow: none;
+      }
+      50% {
+        color: rgba(180, 30, 10, 0.85);
+        text-shadow:
+          0 0 12px rgba(200, 20, 0, 0.9),
+          0 0 28px rgba(160, 0, 0, 0.45);
+      }
+    }
+
+    .loading-runes span {
+      display: inline-block;
+      animation: runeFlare 1.8s ease-in-out infinite;
+    }
+    .loading-runes span:nth-child(1) { animation-delay: 0.00s; }
+    .loading-runes span:nth-child(2) { animation-delay: 0.45s; }
+    .loading-runes span:nth-child(3) { animation-delay: 0.90s; }
+    .loading-runes span:nth-child(4) { animation-delay: 1.35s; }
+
+    .loading-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(100, 50, 20, 0.4);
+    }
+
     @keyframes blink {
       0%, 100% { opacity: 0.2; }
       50% { opacity: 0.7; }
@@ -207,6 +256,15 @@
   <div class="ornament">⚔ &nbsp; ✦ &nbsp; ⚔</div>
 
   <div class="parchment">
+    <div id="loading">
+      <div class="loading-runes">
+        <span>ᚠ</span>
+        <span>ᚢ</span>
+        <span>ᚦ</span>
+        <span>ᚨ</span>
+      </div>
+      <div class="loading-label">Consulting the ancient lore…</div>
+    </div>
     <div id="response" class="empty"></div>
   </div>
 
@@ -227,12 +285,18 @@
     const questionEl = document.getElementById('question');
     const askBtn    = document.getElementById('ask-btn');
     const statusEl  = document.getElementById('status');
+    const loadingEl = document.getElementById('loading');
 
     // Character queue for the Marauder's Map ink-reveal effect
     const charQueue = [];
     let isRendering = false;
+    let firstToken  = false;
 
     function enqueueToken(text) {
+      if (!firstToken) {
+        firstToken = true;
+        loadingEl.classList.remove('visible');
+      }
       for (const ch of text) charQueue.push(ch);
       if (!isRendering) renderNext();
     }
@@ -260,6 +324,8 @@
       responseEl.classList.remove('empty');
       charQueue.length = 0;
       isRendering = false;
+      firstToken  = false;
+      loadingEl.classList.add('visible');
 
       askBtn.disabled = true;
       questionEl.disabled = true;
@@ -312,6 +378,7 @@
         statusEl.textContent = '';
         statusEl.classList.remove('active');
       } catch (err) {
+        loadingEl.classList.remove('visible');
         enqueueToken(' [The magic faltered: ' + err.message + ']');
         statusEl.textContent = '';
         statusEl.classList.remove('active');
