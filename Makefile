@@ -1,7 +1,7 @@
 CHAT_MODEL ?= llama3.2
 EMBED_MODEL ?= nomic-embed-text
 
-.PHONY: build up setup ingest query serve down
+.PHONY: build up setup ingest query serve down clean-pdfs
 
 build:
 	docker compose --profile cli build
@@ -29,3 +29,8 @@ serve: up
 
 down:
 	docker compose down
+
+# Redact YouTube links from PDFs in ./docs (overwrites in place).
+# After running, re-index with: make ingest ARGS="--fresh"
+clean-pdfs:
+	docker compose --profile tools run --rm pdf_tools python scripts/clean_pdfs.py

@@ -1,0 +1,11 @@
+FROM mambaorg/micromamba:latest
+
+USER root
+
+RUN micromamba create -n tools python=3.11 -y -c conda-forge && \
+    micromamba run -n tools pip install pymupdf && \
+    micromamba clean -afy
+
+ENV PATH /opt/conda/envs/tools/bin:$PATH
+
+WORKDIR /project

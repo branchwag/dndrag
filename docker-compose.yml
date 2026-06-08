@@ -62,6 +62,16 @@ services:
     profiles:
       - serve
 
+  pdf_tools:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.python
+    volumes:
+      - .:/project
+    working_dir: /project
+    profiles:
+      - tools
+
 volumes:
   qdrant_data:
   ollama_data:
