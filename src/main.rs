@@ -29,6 +29,9 @@ enum Command {
     /// Ask a question about your DnD world (streams response to stdout)
     Query {
         question: String,
+        /// Print the retrieved context sent to the model instead of generating a response
+        #[arg(long)]
+        show_context: bool,
     },
     /// Run labeled Q&A pairs and report how many the system answers correctly
     Eval {
@@ -56,7 +59,7 @@ async fn main() -> Result<()> {
 
     match cli.command {
         Command::Ingest { docs_dir, fresh } => ingest::run(&docs_dir, fresh).await?,
-        Command::Query { question } => query::run(&question).await?,
+        Command::Query { question, show_context } => query::run(&question, show_context).await?,
         Command::Eval { eval_file } => eval::run(&eval_file).await?,
         Command::Serve { port } => serve::run(port).await?,
     }

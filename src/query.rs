@@ -16,7 +16,8 @@ const MMR_LAMBDA: f32 = 0.6;      // 0 = max diversity, 1 = max relevance
 const MODEL: &str = "llama3.1";
 
 struct PipelineOutput {
-    prompt: String,
+    system_prompt: String,
+    user_content: String,
     client: Client,
     ollama_url: String,
     chat_model: String,
@@ -90,6 +91,18 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
         }
     }
 
+    // For named-entity queries, drop semantic chunks that don't actually mention
+    // any of the extracted entity names. Topically similar city/character chunks
+    // with no name match add noise that causes the model to conflate locations.
+    if !names.is_empty() {
+        results.retain(|r| {
+            r.is_keyword_match
+                || names
+                    .iter()
+                    .any(|n| r.text.to_lowercase().contains(&n.to_lowercase()))
+        });
+    }
+
     if results.is_empty() {
         return Ok(None);
     }
@@ -116,33 +129,48 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
         String::new()
     };
 
-    let prompt = format!(
-        "You are a knowledgeable narrator of a specific DnD campaign world. \
-Someone is asking you about this world as a curious visitor — they did not write these documents and have no prior knowledge. \
-Your ONLY source of truth is the lore excerpts below. \
-Rules you must follow without exception:\n\
-- Speak as an objective narrator who simply knows this world. Never say phrases like \
-\"based on your description\", \"as you described\", \"according to the notes\", \
-\"from the information provided\", or anything that implies you are reading documents or \
-responding to the person who wrote them.\n\
-- Only report what is written in the excerpts. You may summarise, but do not invent facts.\n\
-- Do NOT use any general DnD or fantasy knowledge. This is a fully custom world.\n\
-- If something is not mentioned anywhere in the excerpts, say \"The lore doesn't speak of this.\"\n\
-- Do not confuse separate characters or locations with each other.\n\
+    let system_prompt = "\
+You are a knowledgeable narrator of a specific DnD campaign world. \
+Someone is asking you about this world as a curious visitor — they have no prior knowledge of it.\n\
 \n\
-{subject_hint}\
+RULES — follow without exception:\n\
+- Your ONLY source of truth is the numbered lore excerpts the user provides. \
+Do NOT use any general DnD or fantasy knowledge; this is a fully custom world.\n\
+- Speak as a narrator who simply knows this world. \
+Never use phrases like \"based on the excerpts\", \"according to the notes\", \
+\"from the information provided\", or anything that implies you are reading documents.\n\
+- Only state what is explicitly written in the excerpts. \
+Do not embellish, infer, or elaborate beyond what is written. \
+Do not invent atmosphere, cultural details, or backstory not present in the text.\n\
+- If a detail is not in any excerpt, say \"The lore doesn't speak of this.\" Do not fill the gap.\n\
+- Do not confuse separate characters or locations with each other.\n\
+- Every claim you make must be traceable to a specific numbered excerpt. \
+If you cannot point to the excerpt, do not say it."
+        .to_string();
+
+    let user_content = format!(
+        "{subject_hint}\
 Lore excerpts:\n{context}\n\
-\nQuestion: {question}"
+\nQuestion: {question}\n\
+\nAnswer using ONLY the information in the numbered excerpts above. \
+Do not add anything that is not explicitly stated there."
     );
 
-    Ok(Some(PipelineOutput { prompt, client, ollama_url, chat_model }))
+    Ok(Some(PipelineOutput { system_prompt, user_content, client, ollama_url, chat_model }))
 }
 
 /// Interactive query: streams tokens to stdout as they arrive.
-pub async fn run(question: &str) -> Result<()> {
+/// With show_context=true, prints the retrieved prompt and exits without generating.
+pub async fn run(question: &str, show_context: bool) -> Result<()> {
     match pipeline(question).await? {
         None => println!("No relevant lore found for that query."),
-        Some(ctx) => stream_generation(&ctx).await?,
+        Some(ctx) => {
+            if show_context {
+                println!("=== SYSTEM ===\n{}\n\n=== USER ===\n{}", ctx.system_prompt, ctx.user_content);
+            } else {
+                stream_generation(&ctx).await?;
+            }
+        }
     }
     Ok(())
 }
@@ -178,9 +206,13 @@ pub async fn stream_to_sender(
         .post(format!("{}/v1/chat/completions", ctx.ollama_url))
         .json(&json!({
             "model": ctx.chat_model,
-            "messages": [{"role": "user", "content": ctx.prompt}],
+            "messages": [
+                {"role": "system", "content": ctx.system_prompt},
+                {"role": "user",   "content": ctx.user_content}
+            ],
             "num_ctx": 8192,
             "num_predict": 1024,
+            "temperature": 0,
             "stream": true
         }))
         .send()
@@ -221,9 +253,13 @@ async fn stream_generation(ctx: &PipelineOutput) -> Result<()> {
         .post(format!("{}/v1/chat/completions", ctx.ollama_url))
         .json(&json!({
             "model": ctx.chat_model,
-            "messages": [{"role": "user", "content": ctx.prompt}],
+            "messages": [
+                {"role": "system", "content": ctx.system_prompt},
+                {"role": "user",   "content": ctx.user_content}
+            ],
             "num_ctx": 8192,
             "num_predict": 1024,
+            "temperature": 0,
             "stream": true
         }))
         .send()
@@ -265,9 +301,13 @@ async fn generate(ctx: &PipelineOutput) -> Result<String> {
         .post(format!("{}/v1/chat/completions", ctx.ollama_url))
         .json(&json!({
             "model": ctx.chat_model,
-            "messages": [{"role": "user", "content": ctx.prompt}],
+            "messages": [
+                {"role": "system", "content": ctx.system_prompt},
+                {"role": "user",   "content": ctx.user_content}
+            ],
             "num_ctx": 8192,
             "num_predict": 1024,
+            "temperature": 0,
             "stream": false
         }))
         .send()
