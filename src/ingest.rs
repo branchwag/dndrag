@@ -25,17 +25,17 @@ pub async fn run(docs_dir: &Path, fresh: bool) -> Result<()> {
         store.ensure_collection().await?;
     }
 
-    let pdfs = find_pdfs(docs_dir)?;
-    if pdfs.is_empty() {
-        println!("No PDFs found in {:?}", docs_dir);
+    let docs = find_docs(docs_dir)?;
+    if docs.is_empty() {
+        println!("No documents found in {:?}", docs_dir);
         return Ok(());
     }
 
-    for pdf in &pdfs {
+    for pdf in &docs {
         let filename = pdf.file_name().unwrap().to_string_lossy().to_string();
         println!("Processing {filename}...");
 
-        let text = extract_pdf_text(pdf)?;
+        let text = extract_text(pdf)?;
         let chunks = chunk_text_semantic(&text, TARGET_WORDS, OVERLAP_SENTENCES);
         let total = chunks.len();
 
@@ -63,19 +63,27 @@ pub async fn run(docs_dir: &Path, fresh: bool) -> Result<()> {
     Ok(())
 }
 
-fn find_pdfs(dir: &Path) -> Result<Vec<PathBuf>> {
+fn find_docs(dir: &Path) -> Result<Vec<PathBuf>> {
     let paths = std::fs::read_dir(dir)?
         .filter_map(|e| e.ok())
         .map(|e| e.path())
-        .filter(|p| p.extension().map(|e| e == "pdf").unwrap_or(false))
+        .filter(|p| matches!(
+            p.extension().and_then(|e| e.to_str()),
+            Some("pdf") | Some("txt")
+        ))
         .collect();
     Ok(paths)
 }
 
-fn extract_pdf_text(path: &Path) -> Result<String> {
-    let bytes = std::fs::read(path)?;
-    let text = pdf_extract::extract_text_from_mem(&bytes)?;
-    Ok(clean_text(&text))
+fn extract_text(path: &Path) -> Result<String> {
+    match path.extension().and_then(|e| e.to_str()) {
+        Some("txt") => Ok(std::fs::read_to_string(path)?),
+        _ => {
+            let bytes = std::fs::read(path)?;
+            let text = pdf_extract::extract_text_from_mem(&bytes)?;
+            Ok(clean_text(&text))
+        }
+    }
 }
 
 // Strips content that should never reach the vector store: YouTube URLs and

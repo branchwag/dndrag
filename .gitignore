@@ -1,6 +1,7 @@
 todo.txt
 script.txt
-docs/
+docs/*.pdf
+docs/extracted_*.txt
 target/
 .env
 

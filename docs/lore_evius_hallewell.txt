@@ -1,0 +1,41 @@
+# Evius Hallewell
+
+## Identity
+- Wizard (Divination specialist)
+- Race: Half-elf; described as "a very thin half-elven male" with "shoulder-length straight dirty blond hair that accentuates his angular face and pointed ears"
+- Wears purple robes
+- Voice described as "annoyed male British higher"
+- Personality: fussy, easily irritated, anxious, protective of his craft and its potential for misuse
+
+## Role & Affiliation
+- Head of Divination at Taelreth, Institute of the Arcane in Diondria
+- One of the eight school heads at Taelreth
+- Can perform scrying (5th level spell); requires a crystal ball and absolute silence
+
+## History & Origin
+- Has held his position at Taelreth for an undetermined period; is established enough to have seen Virion Maganti's tenure and departure
+- Was informed of Virion Maganti's identity through his colleagues: knew Virion as "the former head of Necromancy at the Institute," who was asked to leave for "taking his research a bit too far"
+
+## Abilities & Powers
+- Scrying: can use a crystal ball to see distant targets; his eyes glow white while scrying
+- Locate Object (5th level or lower): attempted to use a forked twig to locate the dragon gem; failed because the gem was too far away
+- Arcane knowledge befitting the head of a major school of Divination
+
+## Key Relationships
+- Ali Hassan: fellow school head at Taelreth (Head of Necromancy); they collaborate when the party requires services from multiple schools
+- King Titus: communicates via Sending (the dragonborn Kroc at Taelreth sent word to the King about the theft incident)
+- Ophelia: fellow academic at Taelreth; worked alongside her when the party came to investigate Virion
+- The party (Campaign 1): reluctantly scryed for Elly on Avra; also present at the King's emergency council at Taelreth; showed visible irritation at working outside normal academic channels
+
+## Key Events (campaign)
+- Campaign 1: Elly visited his office and persuaded him to scry for her on Avra; he complied reluctantly and reported seeing Avra's dead body nailed to a cavern wall in the drow city of Morvir
+- Was present when the Aviary member (the Crane) stole the red dragon gem from Taelreth; was flustered and blamed the lack of security ("We're academics, not guards!")
+- Attempted to scry on Virion but failed (Virion was too powerful; scrying defenses held)
+- Attended the King's emergency council at Taelreth; argued against giving the dragon gem to the party ("This is a dragon inside of here! You're going to send it on the road with these people?"); overruled by King Titus
+- Attempted Locate Object to find the gem after it was stolen; failed (too far away)
+
+## Important Notes
+- His scrying is a crucial plot resource; the party needed to persuade him rather than simply demand it
+- He is explicitly named as the "head of the Divination School of Magic at Taelreth, Institute of the Arcane" — NOT at the Sylvanian Academy in Handletare (which is Lady Orvir's institution)
+- He cannot scry on targets with strong enough magical defenses: Virion blocked him, and Sapphire's legendary resistance blocked him
+- He is described as prickly and fussy (the sign on his door warns visiting students not to plead about grades)
