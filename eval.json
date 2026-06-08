@@ -6,8 +6,8 @@
   },
   {
     "question": "Who is Lady Orvir?",
-    "must_mention": ["mage", "Ari"],
-    "must_not_mention": []
+    "must_mention": ["mage", "Ari", "bloodline"],
+    "must_not_mention": ["Doragon", "dwarves of Doragon"]
   },
   {
     "question": "What are the major cities in Crevalon?",
