@@ -1,7 +1,7 @@
 use anyhow::Result;
 use qdrant_client::qdrant::{
     r#match::MatchValue, Condition, CreateCollectionBuilder, CreateFieldIndexCollectionBuilder,
-    Distance, FieldType, Filter, PointStruct, ScrollPointsBuilder, SearchPointsBuilder,
+    Distance, FieldType, Filter, PointStruct, SearchPointsBuilder,
     UpsertPointsBuilder, VectorParamsBuilder,
 };
 use qdrant_client::{Payload, Qdrant};
@@ -143,9 +143,15 @@ impl VectorStore {
             .collect())
     }
 
-    // Full-text search using the indexed text field — catches proper nouns that
-    // semantic search misses because DM notes don't read like encyclopaedia entries.
-    pub async fn keyword_search(&self, term: &str, limit: u32) -> Result<Vec<SearchResult>> {
+    // Keyword-filtered semantic search: returns chunks that contain `term` ranked
+    // by cosine similarity to the query vector. Beats a plain scroll (which returns
+    // arbitrary insertion order) for common names that appear in hundreds of chunks.
+    pub async fn keyword_search(
+        &self,
+        term: &str,
+        query_vec: Vec<f32>,
+        limit: u32,
+    ) -> Result<Vec<SearchResult>> {
         let filter = Filter::must([Condition::matches(
             "text",
             MatchValue::Text(term.to_string()),
@@ -153,10 +159,9 @@ impl VectorStore {
 
         let response = self
             .client
-            .scroll(
-                ScrollPointsBuilder::new(COLLECTION)
+            .search_points(
+                SearchPointsBuilder::new(COLLECTION, query_vec, limit as u64)
                     .filter(filter)
-                    .limit(limit)
                     .with_payload(true),
             )
             .await?;
@@ -164,11 +169,12 @@ impl VectorStore {
         Ok(response
             .result
             .into_iter()
-            .map(|p| {
-                let text = extract_string(&p.payload, "text");
-                let source = extract_string(&p.payload, "source");
-                let page = extract_u32(&p.payload, "page");
-                SearchResult { text, source, page, score: 1.0, is_keyword_match: true }
+            .map(|r| {
+                let text = extract_string(&r.payload, "text");
+                let source = extract_string(&r.payload, "source");
+                let page = extract_u32(&r.payload, "page");
+                let score = r.score;
+                SearchResult { text, source, page, score, is_keyword_match: true }
             })
             .collect())
     }

@@ -1,22 +1,52 @@
 [
   {
+    "question": "Who is Florian?",
+    "must_mention": ["vampire", "paladin", "Siadiff", "red dragon", "King", "Caeda"],
+    "must_not_mention": ["necromancy", "raised his father", "raise his father", "powerful lover", "kissing"]
+  },
+  {
+    "question": "Who is Lady Orvir?",
+    "must_mention": ["mage", "Ari"],
+    "must_not_mention": []
+  },
+  {
+    "question": "What are the major cities in Crevalon?",
+    "must_mention": ["Finreld", "Siadiff", "Aberdeen", "Diondria"],
+    "must_not_mention": []
+  },
+  {
+    "question": "What is Siadiff?",
+    "must_mention": ["paladin", "holy"],
+    "must_not_mention": ["university", "magic school", "mages"]
+  },
+  {
+    "question": "Who is the main villain?",
+    "must_mention": ["Virion", "phylacteri"],
+    "must_not_mention": []
+  },
+  {
+    "question": "Who are the instructors at Taelreth?",
+    "must_mention": ["Ali Hassan", "necromancy"],
+    "must_not_mention": ["lore does not speak"]
+  },
+  {
     "question": "Who is Alora?",
-    "must_mention": ["vampire"],
+    "must_mention": [],
     "must_not_mention": ["member of the party", "party member"]
   },
   {
-    "question": "REPLACE: Who is the main villain?",
-    "must_mention": ["REPLACE: villain_name"],
-    "must_not_mention": []
+    "question": "How did Florian become a vampire?",
+    "must_mention": ["succubus"],
+    "must_not_mention": ["Silvester"]
   },
   {
-    "question": "REPLACE: What is the capital city called?",
-    "must_mention": ["REPLACE: city_name"],
-    "must_not_mention": []
+    "question": "What is Taelreth?",
+    "must_mention": ["arcane", "Diondria"],
+    "must_not_mention": ["Siadiff", "paladin"]
   },
   {
-    "question": "REPLACE: Who leads the thieves guild?",
-    "must_mention": ["REPLACE: leader_name"],
-    "must_not_mention": ["REPLACE: wrong_name"]
+    "question": "Who is Virion?",
+    "must_mention": ["phylacteri", "necromancy"],
+    "must_not_mention": ["Florian", "paladin"]
   }
 ]

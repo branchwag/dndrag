@@ -11,7 +11,7 @@ use crate::store::{SearchResult, VectorStore};
 
 const TOP_K_CANDIDATES: u64 = 30; // more candidates for MMR to choose from
 const MMR_K: usize = 8;           // diverse results to keep after MMR
-const KEYWORD_K: u32 = 12;
+const KEYWORD_K: u32 = 16;
 const MMR_LAMBDA: f32 = 0.6;      // 0 = max diversity, 1 = max relevance
 // Semantic results above this score bypass the entity-name filter.
 // Lets high-confidence topically-relevant chunks through even when they
@@ -54,13 +54,67 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
         "entity extraction + embedding"
     );
 
+    // Load scene filter markers once — avoids repeated env var lookups per chunk.
+    let scene_markers = load_scene_markers();
+
     // Keyword retrieval — catches proper nouns semantic search misses.
+    // Uses the query vector so results are ranked by relevance, not insertion order.
+    // A second biography-focused pass uses a different query vector to surface
+    // backstory/origin chunks that rank lower against the literal question phrasing.
     let t_kw = Instant::now();
     let mut keyword_results: Vec<SearchResult> = Vec::new();
+
+    let bio_vec = if !names.is_empty() {
+        let bio_query = format!(
+            "{} paladin knight origin became history background turned",
+            names.join(" ")
+        );
+        let mut vecs = embedder.embed(vec![bio_query]).await?;
+        Some(vecs.remove(0))
+    } else {
+        None
+    };
+
+    // A third pass targets major accomplishments / plot events that don't score
+    // well against origin-focused queries but are defining facts about the character.
+    let events_vec = if !names.is_empty() {
+        let events_query = format!(
+            "{} defended kingdom battle fought dragon king served protected victory threat defeated",
+            names.join(" ")
+        );
+        let mut vecs = embedder.embed(vec![events_query]).await?;
+        Some(vecs.remove(0))
+    } else {
+        None
+    };
+
     for name in &names {
-        for hit in store.keyword_search(name, KEYWORD_K).await? {
-            if !keyword_results.iter().any(|r| r.text == hit.text) {
+        for hit in store.keyword_search(name, query_vec.clone(), KEYWORD_K).await? {
+            if !keyword_results.iter().any(|r| r.text == hit.text)
+                && has_non_possessive_mention(&hit.text, name)
+                && !is_scene_filtered(&hit.text, &scene_markers)
+            {
                 keyword_results.push(hit);
+            }
+        }
+        if let Some(ref bv) = bio_vec {
+            for hit in store.keyword_search(name, bv.clone(), KEYWORD_K / 2).await? {
+                if !keyword_results.iter().any(|r| r.text == hit.text)
+                    && has_non_possessive_mention(&hit.text, name)
+                    && !is_scene_filtered(&hit.text, &scene_markers)
+                {
+                    keyword_results.push(hit);
+                }
+            }
+        }
+        if let Some(ref ev) = events_vec {
+            for hit in store.keyword_search(name, ev.clone(), KEYWORD_K / 2).await? {
+                if !keyword_results.iter().any(|r| r.text == hit.text)
+                    && has_non_possessive_mention(&hit.text, name)
+                    && !is_scene_filtered(&hit.text, &scene_markers)
+                {
+                    keyword_results.push(hit);
+                }
             }
         }
     }
@@ -95,20 +149,31 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
         }
     }
 
-    // For named-entity queries, drop low-scoring semantic chunks that don't
-    // mention any of the extracted entity names. High-scoring semantic results
-    // (>= ENTITY_FILTER_BYPASS_SCORE) are kept unconditionally — they're
-    // topically on-point even when the entity name doesn't appear verbatim
-    // (e.g. individual city chunks for a "major cities of X" question).
+    // For named-entity queries, filter results based on how the entity name appears:
+    // - Keyword results: entity must appear in non-possessive form (already enforced above).
+    // - Semantic results that contain the entity name: same non-possessive requirement.
+    //   This catches chunks like "Florian's group went missing" (Virion's story) that
+    //   score high semantically but are not primarily about the entity.
+    // - Semantic results that don't mention the entity at all: kept only if score >= bypass
+    //   threshold (topically relevant even without the name, e.g. city list chunks).
     if !names.is_empty() {
         results.retain(|r| {
-            r.is_keyword_match
-                || r.score >= ENTITY_FILTER_BYPASS_SCORE
-                || names
-                    .iter()
-                    .any(|n| r.text.to_lowercase().contains(&n.to_lowercase()))
+            if r.is_keyword_match {
+                return true; // already filtered at collection time
+            }
+            let name_in_text = names
+                .iter()
+                .any(|n| r.text.to_lowercase().contains(&n.to_lowercase()));
+            if name_in_text {
+                names.iter().any(|n| has_non_possessive_mention(&r.text, n))
+            } else {
+                r.score >= ENTITY_FILTER_BYPASS_SCORE
+            }
         });
     }
+
+    // Drop any scene-specific chunks that slipped through semantic search.
+    results.retain(|r| !is_scene_filtered(&r.text, &scene_markers));
 
     if results.is_empty() {
         return Ok(None);
@@ -162,14 +227,42 @@ Weave related details into compound and complex sentences; \
 do not list facts as a series of isolated simple clauses all beginning with the same subject.\n\
 - State only what is explicitly written in the provided passages. \
 Do not infer, embellish, invent atmosphere, or fill gaps with plausible-sounding detail.\n\
+- When a passage explains the cause or origin of something — how a character came to be in \
+their current state, why an event occurred, what brought something about — include that \
+causal detail. Do not describe only the outcome while omitting how it came to pass.\n\
+- When describing a character, prioritise facts that define who they are: their nature, \
+history, role, abilities, and relationships. Do not lead with or emphasise incidental \
+scene details — a costume element worn at one event, a single minor action — when \
+more significant defining facts are available in the passages.\n\
+- Do not narrate romantic or intimate moments (kissing, physical affection, passionate exchanges). \
+If two characters have a romantic relationship, state that the relationship exists; \
+do not describe specific intimate scenes.\n\
 - If a detail is absent from the passages, say exactly: \"The lore does not speak of this.\" \
 Do not speculate or approximate.\n\
-- Never conflate separate characters, places, or factions with one another.\n\
+- Never conflate separate characters, places, or factions with one another. \
+A passage may mention multiple characters; attribute each action or trait only to the character \
+who performed or possesses it — never to the subject of the question simply because they appear \
+in the same passage.\n\
+- When a passage uses a pronoun (he, she, they) without a clear referent, \
+do not assume that referent is the character being asked about. If you cannot confirm \
+who a pronoun refers to, omit the claim entirely.\n\
 - Every claim must be traceable to a specific numbered passage. If you cannot trace it, omit it.\n\
 - Some passages may contain out-of-game player instructions: references to D&D Beyond, \
 character creation, campaign links, dice mechanics, or directions addressed to players. \
 These are not lore. Disregard them entirely and do not include their content in your answer."
         .to_string();
+
+    // Append any extra rules from the env — lets campaign-specific guidance live in .env
+    // rather than in source. Each rule is a pipe-separated entry in PROMPT_EXTRA_RULES.
+    let extra_rules = std::env::var("PROMPT_EXTRA_RULES").unwrap_or_default();
+    let system_prompt = extra_rules
+        .split('|')
+        .map(|r| r.trim())
+        .filter(|r| !r.is_empty())
+        .fold(system_prompt, |mut s, rule| {
+            s.push_str(&format!("\n- {rule}"));
+            s
+        });
 
     let user_content = format!(
         "{subject_hint}\
@@ -389,6 +482,41 @@ async fn extract_entities(
     vec![]
 }
 
+
+// Reads SCENE_FILTER_MARKERS from the environment (pipe-separated substrings).
+// Markers live in the gitignored .env file so scene-specific content stays out of source.
+fn load_scene_markers() -> Vec<String> {
+    std::env::var("SCENE_FILTER_MARKERS")
+        .unwrap_or_default()
+        .split('|')
+        .filter(|s| !s.is_empty())
+        .map(|s| s.to_lowercase())
+        .collect()
+}
+
+fn is_scene_filtered(text: &str, markers: &[String]) -> bool {
+    let t = text.to_lowercase();
+    markers.iter().any(|m| t.contains(m.as_str()))
+}
+
+// Returns true if `name` appears at least once in `text` in non-possessive form
+// (i.e. not immediately followed by "'s"). Filters out chunks where the entity
+// is only a passing possessive reference ("Florian's group") in a passage
+// otherwise about a different character.
+fn has_non_possessive_mention(text: &str, name: &str) -> bool {
+    let text_lower = text.to_lowercase();
+    let name_lower = name.to_lowercase();
+    let mut start = 0;
+    while let Some(pos) = text_lower[start..].find(&name_lower) {
+        let abs_end = start + pos + name_lower.len();
+        let after = &text_lower[abs_end..];
+        if !after.starts_with("'s") && !after.starts_with("\u{2019}s") {
+            return true;
+        }
+        start = abs_end;
+    }
+    false
+}
 
 // Maximal Marginal Relevance: selects k results that balance relevance to the
 // query with diversity from already-selected results. lambda=1 is pure relevance,

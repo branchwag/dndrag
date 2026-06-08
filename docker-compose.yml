@@ -27,6 +27,9 @@ services:
 
   dnd_rag:
     build: .
+    env_file:
+      - path: .env
+        required: false
     environment:
       QDRANT_URL: http://qdrant:6334
       OLLAMA_URL: http://ollama:11434
@@ -44,6 +47,9 @@ services:
 
   dnd_rag_serve:
     build: .
+    env_file:
+      - path: .env
+        required: false
     environment:
       QDRANT_URL: http://qdrant:6334
       OLLAMA_URL: http://ollama:11434
