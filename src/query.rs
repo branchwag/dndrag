@@ -13,6 +13,7 @@ const TOP_K_CANDIDATES: u64 = 30; // more candidates for MMR to choose from
 const MMR_K: usize = 8;           // diverse results to keep after MMR
 const KEYWORD_K: u32 = 16;
 const MMR_LAMBDA: f32 = 0.6;      // 0 = max diversity, 1 = max relevance
+const RERANK_K: usize = 10;       // passages kept after LLM reranking
 // Semantic results above this score bypass the entity-name filter.
 // Lets high-confidence topically-relevant chunks through even when they
 // don't repeat the entity name (e.g. city chunks for "major cities of X").
@@ -178,6 +179,17 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
     if results.is_empty() {
         return Ok(None);
     }
+
+    // Rerank: score each candidate for relevance to the question with a single
+    // LLM call, then keep only the top RERANK_K. Fixes cases where a relevant
+    // chunk is retrieved but buried under lower-quality results.
+    let t_rerank = Instant::now();
+    results = rerank(&client, &ollama_url, &chat_model, question, &names, results, RERANK_K).await;
+    info!(
+        kept = results.len(),
+        elapsed_ms = t_rerank.elapsed().as_millis(),
+        "rerank"
+    );
 
     // Build the prompt.
     let context = results
@@ -516,6 +528,130 @@ fn has_non_possessive_mention(text: &str, name: &str) -> bool {
         start = abs_end;
     }
     false
+}
+
+// Scores each candidate chunk against the question with a single LLM call and
+// returns the top `keep` results in descending relevance order. Falls back to
+// returning the input truncated to `keep` on any parse failure so the pipeline
+// always continues. `entity_names` is passed so known aliases inside passages
+// (e.g. "Adrastea (Lady Orvir)") are normalised before scoring.
+async fn rerank(
+    client: &Client,
+    ollama_url: &str,
+    chat_model: &str,
+    question: &str,
+    entity_names: &[String],
+    results: Vec<SearchResult>,
+    keep: usize,
+) -> Vec<SearchResult> {
+    if results.len() <= keep {
+        return results;
+    }
+
+    // Normalise alias annotations of the form "OtherName (EntityName)" → "EntityName"
+    // so the scorer recognises the character regardless of how the PDF labels them.
+    let normalise = |text: &str| -> String {
+        let mut out = text.to_string();
+        for name in entity_names {
+            // Match "Anything (Name)" → replace the whole token with just "Name"
+            let pattern = format!("({name})");
+            while let Some(start) = out.find(&pattern) {
+                // Walk back to find the preceding alias word(s) and drop them.
+                let before = &out[..start];
+                let trim_end = before.trim_end();
+                // Drop everything from the last space before the alias up to and
+                // including the closing parenthesis of the alias annotation.
+                let word_start = trim_end.rfind(' ').map(|p| p + 1).unwrap_or(0);
+                let end = start + pattern.len();
+                out = format!("{}{}{}", &out[..word_start], name, &out[end..]);
+            }
+        }
+        out
+    };
+
+    // Build numbered passage list (400-char snippets to stay within token budget).
+    let passages = results
+        .iter()
+        .enumerate()
+        .map(|(i, r)| {
+            let normalised = normalise(&r.text);
+            let snippet: String = normalised.chars().take(400).collect();
+            format!("[{}] {}", i + 1, snippet)
+        })
+        .collect::<Vec<_>>()
+        .join("\n\n");
+
+    let prompt = format!(
+        "Question: {question}\n\n\
+         Score each passage by how much it reveals about this character's IDENTITY — \
+         their fundamental nature, history, abilities, role, or origin.\n\
+         Score HIGH (8-10) for: character's nature/type, powers, backstory, major events, role in the world.\n\
+         Score MEDIUM (4-7) for: character actions or relationships in context.\n\
+         Score LOW (0-3) for: incidental scene details, planning notes, or passages primarily about other characters.\n\n\
+         Output ONLY one line per passage in this exact format: [N]: score\n\
+         No explanation. No other text.\n\n\
+         {passages}"
+    );
+
+    let Ok(response) = client
+        .post(format!("{ollama_url}/v1/chat/completions"))
+        .json(&json!({
+            "model": chat_model,
+            "messages": [{"role": "user", "content": prompt}],
+            "num_ctx": 8192,
+            "num_predict": 256,
+            "temperature": 0,
+            "stream": false
+        }))
+        .send()
+        .await
+    else {
+        let mut fallback = results;
+        fallback.truncate(keep);
+        return fallback;
+    };
+
+    let Ok(body) = response.json::<serde_json::Value>().await else {
+        let mut fallback = results;
+        fallback.truncate(keep);
+        return fallback;
+    };
+
+    let content = body["choices"][0]["message"]["content"]
+        .as_str()
+        .unwrap_or("");
+
+    // Use original similarity score as baseline so unscored chunks aren't penalised to 0.
+    let mut scores: Vec<f32> = results.iter().map(|r| r.score).collect();
+
+    for line in content.lines() {
+        let line = line.trim();
+        // Accept "[N]: score", "[N] score", "N: score", "N. score"
+        let (idx_str, score_str) = if let Some(rest) = line.strip_prefix('[') {
+            let Some(end) = rest.find(']') else { continue };
+            let after = rest[end + 1..].trim_start_matches([' ', ':']);
+            (&rest[..end], after)
+        } else {
+            let Some(sep) = line.find(['.', ':']) else { continue };
+            (&line[..sep], line[sep + 1..].trim())
+        };
+
+        let Ok(idx) = idx_str.trim().parse::<usize>() else { continue };
+        let score_tok = score_str.split_whitespace().next().unwrap_or("0");
+        let Ok(score) = score_tok.parse::<f32>() else { continue };
+
+        if idx >= 1 && idx <= results.len() {
+            // Normalise LLM 0-10 score to 0-1 range so it's comparable to cosine scores.
+            scores[idx - 1] = score / 10.0;
+        }
+    }
+
+    // Sort indices by score descending, keep top `keep`.
+    let mut order: Vec<usize> = (0..results.len()).collect();
+    order.sort_by(|&a, &b| scores[b].partial_cmp(&scores[a]).unwrap_or(std::cmp::Ordering::Equal));
+    order.truncate(keep);
+
+    order.into_iter().map(|i| results[i].clone()).collect()
 }
 
 // Maximal Marginal Relevance: selects k results that balance relevance to the
