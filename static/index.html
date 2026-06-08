@@ -15,6 +15,13 @@
       font-display: swap;
       src: url('/fonts/cedarville-cursive.ttf') format('truetype');
     }
+    @font-face {
+      font-family: 'Homemade Apple';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/fonts/homemade-apple.ttf') format('truetype');
+    }
   </style>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -58,23 +65,13 @@
     .parchment {
       position: relative;
       background:
-        /* Heavy corner stains — each corner unique opacity + size */
-        radial-gradient(ellipse 42% 32% at  5%   5%, rgba(75, 35, 4, 0.45) 0%, transparent 100%),
-        radial-gradient(ellipse 35% 28% at 97%   4%, rgba(65, 30, 3, 0.38) 0%, transparent 100%),
-        radial-gradient(ellipse 38% 35% at  3%  97%, rgba(80, 38, 5, 0.42) 0%, transparent 100%),
-        radial-gradient(ellipse 40% 30% at 96%  95%, rgba(70, 32, 4, 0.40) 0%, transparent 100%),
-        /* Edge vignette — darkens all four sides */
-        radial-gradient(ellipse 100% 22% at 50%   0%, rgba(55, 22, 2, 0.38) 0%, transparent 100%),
-        radial-gradient(ellipse 100% 22% at 50% 100%, rgba(55, 22, 2, 0.35) 0%, transparent 100%),
-        radial-gradient(ellipse 18% 100% at  0%  50%, rgba(55, 22, 2, 0.30) 0%, transparent 100%),
-        radial-gradient(ellipse 18% 100% at 100% 50%, rgba(55, 22, 2, 0.30) 0%, transparent 100%),
-        /* Scattered mid-field age blotches */
-        radial-gradient(ellipse 30% 18% at 68%  28%, rgba(85, 44, 6, 0.14) 0%, transparent 100%),
-        radial-gradient(ellipse 22% 28% at 20%  72%, rgba(78, 40, 5, 0.12) 0%, transparent 100%),
-        radial-gradient(ellipse 18% 14% at 80%  75%, rgba(70, 35, 4, 0.10) 0%, transparent 100%),
-        radial-gradient(ellipse 15% 20% at 38%  18%, rgba(80, 42, 5, 0.09) 0%, transparent 100%),
-        /* Base parchment — amber-tan, deliberately uneven */
-        linear-gradient(168deg, #e8d9ac 0%, #d6bf87 15%, #c4a96a 32%, #cdb878 48%, #d9c98e 64%, #e3d4a2 80%, #e9dcab 100%);
+        /* Edge vignettes over the photo — subtle darkening on all four sides */
+        radial-gradient(ellipse 100% 25% at 50%   0%, rgba(40, 15, 0, 0.32) 0%, transparent 100%),
+        radial-gradient(ellipse 100% 25% at 50% 100%, rgba(40, 15, 0, 0.28) 0%, transparent 100%),
+        radial-gradient(ellipse 20% 100% at   0% 50%, rgba(40, 15, 0, 0.24) 0%, transparent 100%),
+        radial-gradient(ellipse 20% 100% at 100% 50%, rgba(40, 15, 0, 0.24) 0%, transparent 100%),
+        /* Real parchment photo */
+        url('/images/parchment.jpg') top center / 100% auto no-repeat;
       border-radius: 2px;
       box-shadow:
         /* Strong inset edge darkening */
@@ -98,20 +95,6 @@
       transform: rotate(-0.15deg);
     }
 
-    /* Grain texture overlay — SVG fractal noise via data URI, blended in multiply */
-    .parchment-grain {
-      position: absolute;
-      inset: 0;
-      border-radius: 2px;
-      pointer-events: none;
-      z-index: -1;
-      opacity: 0.5;
-      mix-blend-mode: multiply;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='500' height='500' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-repeat: repeat;
-      background-size: 500px 500px;
-    }
-
     /* Worn inner border — faint, not a clean line */
     .parchment::before {
       content: '';
@@ -133,7 +116,7 @@
     }
 
     #response {
-      font-family: 'Cedarville Cursive', cursive;
+      font-family: 'Homemade Apple', cursive;
       font-size: 1.5rem;
       line-height: 1.75;
       color: #3a1a0a;
@@ -144,7 +127,8 @@
 
     #response.empty::before {
       content: 'The tome awaits your question…';
-      color: rgba(100, 60, 20, 0.35);
+      font-family: 'Homemade Apple', cursive;
+      color: rgba(70, 35, 8, 0.62);
       font-style: normal;
     }
 
@@ -286,7 +270,7 @@
       font-size: 0.75rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(100, 50, 20, 0.4);
+      color: rgba(60, 25, 5, 0.78);
     }
 
     @keyframes blink {
@@ -304,7 +288,6 @@
   <div class="ornament">⚔ &nbsp; ✦ &nbsp; ⚔</div>
 
   <div class="parchment">
-    <div class="parchment-grain" aria-hidden="true"></div>
     <div id="loading">
       <div class="loading-runes">
         <span>ᚠ</span>

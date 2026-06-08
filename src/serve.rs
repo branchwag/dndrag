@@ -29,6 +29,20 @@ async fn cedarville_font() -> impl axum::response::IntoResponse {
     )
 }
 
+async fn homemade_apple_font() -> impl axum::response::IntoResponse {
+    (
+        [(axum::http::header::CONTENT_TYPE, "font/truetype")],
+        include_bytes!("../static/fonts/homemade-apple.ttf").as_slice(),
+    )
+}
+
+async fn parchment_image() -> impl axum::response::IntoResponse {
+    (
+        [(axum::http::header::CONTENT_TYPE, "image/jpeg")],
+        include_bytes!("../static/images/parchment.jpg").as_slice(),
+    )
+}
+
 async fn health() -> &'static str {
     "ok"
 }
@@ -51,7 +65,9 @@ pub async fn run(port: u16) -> Result<()> {
         .route("/", get(index))
         .route("/query", post(query_sse))
         .route("/health", get(health))
-        .route("/fonts/cedarville-cursive.ttf", get(cedarville_font));
+        .route("/fonts/cedarville-cursive.ttf", get(cedarville_font))
+        .route("/fonts/homemade-apple.ttf", get(homemade_apple_font))
+        .route("/images/parchment.jpg", get(parchment_image));
 
     let addr = format!("0.0.0.0:{port}");
     let listener = tokio::net::TcpListener::bind(&addr).await?;
