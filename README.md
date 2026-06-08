@@ -102,3 +102,7 @@ To run CPU-only, delete or rename `docker-compose.override.yml`.
 - Qdrant data persists in a Docker named volume — re-run `make ingest` only when you add new documents
 - First query after a cold start is slow (~10–30s) while Ollama loads the model; subsequent queries are faster
 - The eval subcommand (`make query` with `eval` instead) runs labeled Q&A pairs from `eval.json` and reports a pass rate — useful for catching regressions when you change models or prompts
+
+## Credits
+
+Parchment background photo by [Divya M](https://unsplash.com/@divya66) on [Unsplash](https://unsplash.com/photos/person-in-black-shoes-standing-on-brown-floor-1LVIgG629Do).
