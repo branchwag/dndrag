@@ -64,14 +64,7 @@
 
     .parchment {
       position: relative;
-      background:
-        /* Edge vignettes over the photo — subtle darkening on all four sides */
-        radial-gradient(ellipse 100% 25% at 50%   0%, rgba(40, 15, 0, 0.32) 0%, transparent 100%),
-        radial-gradient(ellipse 100% 25% at 50% 100%, rgba(40, 15, 0, 0.28) 0%, transparent 100%),
-        radial-gradient(ellipse 20% 100% at   0% 50%, rgba(40, 15, 0, 0.24) 0%, transparent 100%),
-        radial-gradient(ellipse 20% 100% at 100% 50%, rgba(40, 15, 0, 0.24) 0%, transparent 100%),
-        /* Real parchment photo */
-        url('/images/parchment.jpg') top center / 100% auto no-repeat;
+      background: #c8a26a;
       border-radius: 2px;
       box-shadow:
         /* Strong inset edge darkening */
@@ -95,6 +88,27 @@
       transform: rotate(-0.15deg);
     }
 
+    .parchment-photo {
+      position: absolute;
+      inset: 0;
+      background: url('/images/parchment.jpg') center / 100% 100% no-repeat;
+      border-radius: 2px;
+      z-index: 0;
+    }
+
+    .parchment-vignette {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 100% 25% at 50%   0%, rgba(40, 15, 0, 0.32) 0%, transparent 100%),
+        radial-gradient(ellipse 100% 25% at 50% 100%, rgba(40, 15, 0, 0.28) 0%, transparent 100%),
+        radial-gradient(ellipse 20% 100% at   0% 50%, rgba(40, 15, 0, 0.24) 0%, transparent 100%),
+        radial-gradient(ellipse 20% 100% at 100% 50%, rgba(40, 15, 0, 0.24) 0%, transparent 100%);
+      border-radius: 2px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
     /* Worn inner border — faint, not a clean line */
     .parchment::before {
       content: '';
@@ -116,6 +130,8 @@
     }
 
     #response {
+      position: relative;
+      z-index: 2;
       font-family: 'Homemade Apple', cursive;
       font-size: 1.5rem;
       line-height: 1.75;
@@ -226,6 +242,8 @@
 
     /* Parchment loading indicator */
     #loading {
+      position: relative;
+      z-index: 2;
       display: none;
       flex-direction: column;
       align-items: center;
@@ -288,6 +306,8 @@
   <div class="ornament">⚔ &nbsp; ✦ &nbsp; ⚔</div>
 
   <div class="parchment">
+    <div class="parchment-photo" aria-hidden="true"></div>
+    <div class="parchment-vignette" aria-hidden="true"></div>
     <div id="loading">
       <div class="loading-runes">
         <span>ᚠ</span>
