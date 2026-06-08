@@ -9,10 +9,14 @@ use tracing::info;
 use crate::embed::Embedder;
 use crate::store::{SearchResult, VectorStore};
 
-const TOP_K_CANDIDATES: u64 = 20; // more candidates for MMR to choose from
+const TOP_K_CANDIDATES: u64 = 30; // more candidates for MMR to choose from
 const MMR_K: usize = 8;           // diverse results to keep after MMR
-const KEYWORD_K: u32 = 8;
+const KEYWORD_K: u32 = 12;
 const MMR_LAMBDA: f32 = 0.6;      // 0 = max diversity, 1 = max relevance
+// Semantic results above this score bypass the entity-name filter.
+// Lets high-confidence topically-relevant chunks through even when they
+// don't repeat the entity name (e.g. city chunks for "major cities of X").
+const ENTITY_FILTER_BYPASS_SCORE: f32 = 0.60;
 const MODEL: &str = "llama3.1";
 
 struct PipelineOutput {
@@ -91,12 +95,15 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
         }
     }
 
-    // For named-entity queries, drop semantic chunks that don't actually mention
-    // any of the extracted entity names. Topically similar city/character chunks
-    // with no name match add noise that causes the model to conflate locations.
+    // For named-entity queries, drop low-scoring semantic chunks that don't
+    // mention any of the extracted entity names. High-scoring semantic results
+    // (>= ENTITY_FILTER_BYPASS_SCORE) are kept unconditionally — they're
+    // topically on-point even when the entity name doesn't appear verbatim
+    // (e.g. individual city chunks for a "major cities of X" question).
     if !names.is_empty() {
         results.retain(|r| {
             r.is_keyword_match
+                || r.score >= ENTITY_FILTER_BYPASS_SCORE
                 || names
                     .iter()
                     .any(|n| r.text.to_lowercase().contains(&n.to_lowercase()))

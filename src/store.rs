@@ -17,6 +17,7 @@ pub struct SearchResult {
     pub text: String,
     pub source: String,
     pub page: u32,
+    pub score: f32,
     pub is_keyword_match: bool,
 }
 
@@ -135,7 +136,8 @@ impl VectorStore {
                 let text = extract_string(&r.payload, "text");
                 let source = extract_string(&r.payload, "source");
                 let page = extract_u32(&r.payload, "page");
-                let result = SearchResult { text, source, page, is_keyword_match: false };
+                let score = r.score;
+                let result = SearchResult { text, source, page, score, is_keyword_match: false };
                 (result, vector)
             })
             .collect())
@@ -166,7 +168,7 @@ impl VectorStore {
                 let text = extract_string(&p.payload, "text");
                 let source = extract_string(&p.payload, "source");
                 let page = extract_u32(&p.payload, "page");
-                SearchResult { text, source, page, is_keyword_match: true }
+                SearchResult { text, source, page, score: 1.0, is_keyword_match: true }
             })
             .collect())
     }
