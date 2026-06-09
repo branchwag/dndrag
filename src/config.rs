@@ -35,6 +35,11 @@ const DEFAULT_SCENE_MARKERS: &[&str] = &[
     "if they decide to go for the vampire dungeon",
     "lead them to the dwarves of doragon",
     "bat-like wings extending from her back",
+    "earlier era",
+    "alora.pdf",
+    "campaign1.pdf",
+    "campaign2.pdf",
+    "campaign3.pdf",
 ];
 
 /// Rules appended verbatim as bullet points to the LLM system prompt.
@@ -75,6 +80,16 @@ const DEFAULT_PROMPT_RULES: &[&str] = &[
     "In this world, vampires can move around in daylight without significant difficulty as long \
      as they take basic precautions. Do not treat a vampire's ability to walk in daylight as \
      a notable fact, a special achievement, or a point of emphasis. It is not unusual.",
+
+    "Do not use the phrase 'earlier era' in your response. Refer to past events as 'previously', \
+     'in the past', 'at the time', or simply describe when they happened relative to other events.",
+
+    "Never reference source documents, file names, or PDFs by name (such as 'Alora.pdf', \
+     'Campaign1.pdf', or similar). Present all information as established lore fact, not as \
+     something sourced from a document.",
+
+    "Do not reproduce bullet-point lists or raw notes verbatim in your response. Always \
+     synthesize information into coherent prose.",
 ];
 
 pub struct RagConfig {
