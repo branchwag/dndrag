@@ -132,6 +132,25 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
             }
         }
     }
+    // For broad narrative questions with no named entities, force-include the
+    // story overview lore file so the LLM has a coherent synopsis to draw from
+    // instead of a grab-bag of unrelated semantic results.
+    if names.is_empty() {
+        let q = question.to_lowercase();
+        if q.contains("story") || q.contains("plot") || q.contains("overview")
+            || q.contains("what happened") || q.contains("history")
+            || q.contains("tell me about") || q.contains("what is going on")
+        {
+            for hit in store.search_lore_file("story overview", query_vec.clone(), KEYWORD_K).await? {
+                if !keyword_results.iter().any(|r| r.text == hit.text)
+                    && !is_scene_filtered(&hit.text, &scene_markers)
+                {
+                    keyword_results.push(hit);
+                }
+            }
+        }
+    }
+
     info!(
         hits = keyword_results.len(),
         elapsed_ms = t_kw.elapsed().as_millis(),
@@ -597,17 +616,30 @@ async fn rerank(
         .collect::<Vec<_>>()
         .join("\n\n");
 
-    let prompt = format!(
-        "Question: {question}\n\n\
-         Score each passage by how much it reveals about this character's IDENTITY — \
-         their fundamental nature, history, abilities, role, or origin.\n\
-         Score HIGH (8-10) for: character's nature/type, powers, backstory, major events, role in the world.\n\
-         Score MEDIUM (4-7) for: character actions or relationships in context.\n\
-         Score LOW (0-3) for: incidental scene details, planning notes, or passages primarily about other characters.\n\n\
-         Output ONLY one line per passage in this exact format: [N]: score\n\
-         No explanation. No other text.\n\n\
-         {passages}"
-    );
+    let prompt = if entity_names.is_empty() {
+        format!(
+            "Question: {question}\n\n\
+             Score each passage by how directly it answers this question about the world's story, history, or events.\n\
+             Score HIGH (8-10) for: passages that directly address the question — major events, narrative arcs, world overview, plot summaries.\n\
+             Score MEDIUM (4-7) for: passages with relevant supporting context or related history.\n\
+             Score LOW (0-3) for: specific scene dialogue, planning notes, or passages clearly about unrelated topics.\n\n\
+             Output ONLY one line per passage in this exact format: [N]: score\n\
+             No explanation. No other text.\n\n\
+             {passages}"
+        )
+    } else {
+        format!(
+            "Question: {question}\n\n\
+             Score each passage by how much it reveals about this character's IDENTITY — \
+             their fundamental nature, history, abilities, role, or origin.\n\
+             Score HIGH (8-10) for: character's nature/type, powers, backstory, major events, role in the world.\n\
+             Score MEDIUM (4-7) for: character actions or relationships in context.\n\
+             Score LOW (0-3) for: incidental scene details, planning notes, or passages primarily about other characters.\n\n\
+             Output ONLY one line per passage in this exact format: [N]: score\n\
+             No explanation. No other text.\n\n\
+             {passages}"
+        )
+    };
 
     let Ok(response) = client
         .post(format!("{ollama_url}/v1/chat/completions"))
