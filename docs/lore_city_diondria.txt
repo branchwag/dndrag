@@ -1,0 +1,51 @@
+# Diondria
+
+## Type
+- City
+- Part of: Crevalon (northern region)
+
+## Description
+- Diondria is a major city in the north of Crevalon, situated near a river, with the Elantir Forest to its south and the Brotor Mountains visible in the distance.
+- The city is known as the center of arcane learning in Crevalon; it has a strong academic and wizarding culture.
+- The geography places Diondria north of Aberdeen and the Grudoulan Valley, near the river that runs along the edge of the forest.
+- From the sky (as described during Florian's flight with Caeda), Diondria can be seen across the river from Handletare.
+- Known for excellent restaurants and a thriving bookshop scene.
+
+## Institutions & Landmarks
+- Taelreth (the Institute of the Arcane) — the primary magical university and wizard school of Crevalon; a prestigious institution for magic learners; multiple departments including Evocation, Necromancy, and Illusion; wizards and witches from Taelreth are a common sight in the city; head wizard is Ophelia (first name used); the current head of Necromancy is Ali Hassan (a tall tiefling in long red robes trimmed with gold)
+- The Arcanist's Repose — an inn within Diondria where the Campaign 1 party stays; a common stopping point for visiting wizards and adventurers
+- The Dancing Goat Bookshop — a bookshop in Diondria frequented by wizards and witches of Taelreth; owned by Saphirithrix (a silver dragon in disguise); also quietly sells magical items
+- For Goodness Cakes (also called Goodness Cakes) — a bakery next to Saphirithrix's house, beloved by her; smells of cinnamon
+- Genius in a Bottle — a potion shop in Diondria
+- A lavender field on a hilltop outside the city; used by Florian for a picnic with Caeda
+
+## Notable Inhabitants / Factions
+- Taelreth wizards — a council of eight wizards who advise and operate the Institute; they were called to a meeting with King Titus and Florian regarding the dragon threat
+- Ophelia — senior wizard/administrator at Taelreth; soft British voice; kind and professional
+- Ali Hassan — current Head of Necromancy at Taelreth; replaced Virion Maganti in the role; tall tiefling in red and gold robes
+- Mordan Vamaris — retired mage; formerly Head of the School of Evocation at Taelreth in Diondria; eccentric and dangerous; an intended assassination target of Ari's Aviary past (Ari was blasted out of a window during the attempt)
+- Virion Maganti — former Taelreth student who was expelled for digging up local cemeteries and reanimating bodies; went on to become the primary Campaign 1 villain
+- Saphirithrix ("Saphire") — a 500-year-old silver dragon living in Diondria in humanoid form; owner of the Dancing Goat Bookshop; a previous romantic partner of Elly (Campaign 1)
+- Kithelle Greystone — halfling woman who works at Taelreth; greets visitors at the entrance
+
+## History & Lore
+- Taelreth (the Institute of the Arcane) has existed for many years and is the academic heart of Crevalon's magical community.
+- Virion Maganti studied here before being expelled for reanimating corpses. He had been practicing necromancy to try to raise his dead father (a farmer from Sharnwick killed by bandits). He was asked to leave by the wizards, in part also due to an unrequited infatuation with Ophelia.
+- Ali Hassan was brought in as the new Head of Necromancy after Virion's expulsion.
+- The Aviary (a criminal organization) has operatives in Diondria — a message drop point in an alleyway was used to coordinate attacks.
+- A dragon attack on Diondria is foreshadowed in Campaign 1 notes ("Dragon attacking a city — have this be Diondria").
+
+## Connections
+- Located near the river north of the Grudoulan Valley, near the Elantir Forest
+- Connected to Handletare by the river (a ferry ride is described as less than an hour)
+- Connected to Finreld to the north (letter delivery route, travel by road and sea)
+- Taelreth wizards serve as advisors to King Titus and occasionally interact with the royal court
+- Saphirithrix maintains contact with Elly from here throughout Campaign 1
+- The UnderDark exit used by the party emerges closer to Diondria than other cities
+
+## Important Notes
+- Taelreth (the Institute of the Arcane) is in DIONDRIA — NOT in Handletare. This is a critical disambiguation.
+- The Sylvanian Academy of Magical Arts is in HANDLETARE — not Diondria. These are two separate institutions in two different cities.
+- Virion Maganti studied at Taelreth in DIONDRIA before being expelled; he did not study at Handletare.
+- Ali Hassan (Head of Necromancy) is at Taelreth in DIONDRIA.
+- Saphirithrix the silver dragon bookshop owner is in DIONDRIA, not Handletare or Finreld.

@@ -1,0 +1,39 @@
+# Rellond
+
+## Type
+- City
+- Part of: Crevalon (likely central or south region, based on campaign context)
+
+## Description
+- Rellond is a city in Crevalon with a strong connection to the Raven Queen — a mysterious entity associated with Death.
+- The city worships the Raven Queen due to a historical calamity that befell it during the DragonMage War.
+- Lady Adrastea Orvir describes Rellond as a place where "the aspect of Death has been interwoven into the city's foundation itself."
+- Ari Crownsilver (Campaign 1 rogue) was raised on the streets of Rellond, "in the shadows of the temples there" — suggesting the city has significant temple infrastructure.
+- Ari has some devotion to the Raven Queen from his upbringing in Rellond, though he is not a devout cleric.
+- The Bluejay — the Aviary's field leader who trained Ari — first found and recruited him in Rellond.
+
+## Institutions & Landmarks
+- The temples of Rellond — large religious structures dedicated to the Raven Queen; Ari grew up in their shadows as a street child
+- City streets — where Ari was a street child before the Bluejay found him
+
+## Notable Inhabitants / Factions
+- The Bluejay — a senior Aviary operative who took a liking to young Ari on the streets of Rellond; trained him as an assassin (the Raven); later sent him to eliminate the former head of Evocation in Diondria (this attempt failed)
+- Ari Crownsilver — originally from Rellond; street child who was recruited by the Aviary; now working toward redemption
+- Raven Queen devotees — the city's population has deep cultural and religious ties to the Raven Queen
+
+## History & Lore
+- During the DragonMage War, the red dragon (serving the Solarian King) burned the city of Rellond to the ground before it was eventually imprisoned.
+- The few survivors of the burning of Rellond swore they saw the Raven Queen herself guiding the souls of those who died to the afterlife.
+- This event cemented the Raven Queen's place as the primary divine figure of Rellond; Death has been woven into the city's identity ever since.
+- Ari's backstory: raised as a street child in Rellond, recruited by the Bluejay, trained as an Aviary assassin (the Raven), assigned to kill the head of Evocation in Diondria but was blasted out of a window; spent two years recovering at the Temple of Rao in Diondria; eventually fell in with the Campaign 1 party after they slaughtered an Aviary cell.
+
+## Connections
+- Connected to Diondria (where Ari went to carry out his assassination mission and later recovered)
+- Connected to the Aviary criminal organization through the Bluejay's recruitment of Ari
+- The Raven Queen is connected to Rellond's founding trauma (the DragonMage War burning of the city)
+- The DragonMage War connects Rellond's history to the Slaerian Desert and FrostLands (created by the same war)
+
+## Important Notes
+- Rellond worships the RAVEN QUEEN (associated with Death) — NOT Torm (Siadiff's god), NOT Chauntea (Sharnwick's goddess), NOT Gond (Anearios's god of craft).
+- The Raven Queen devotion in Rellond stems from a HISTORICAL TRAUMA (city burned by the red dragon during the DragonMage War) — it is a city of survivors who turned to Death as a divine witness.
+- Ari is from Rellond but does NOT have an Aviary connection in Rellond anymore; he has turned against the Aviary.

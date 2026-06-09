@@ -1,0 +1,53 @@
+# Sharnwick
+
+## Type
+- Village (small village)
+- Part of: Crevalon (rural, central region within the Grudoulan Valley)
+
+## Description
+- Sharnwick is a small village in Crevalon known primarily for sheep farming and fine wool production.
+- A modest, rural settlement; primarily human inhabitants in modest attire.
+- The village has a main square with a makeshift stage where public announcements are made.
+- Fine wools produced here are taken via merchant cart to Aberdeen to be sold.
+- The village worships Chauntea (goddess of agriculture), as do many surrounding areas.
+- Virion Maganti's father was a farmer from Sharnwick who was killed by bandits while going town to town to sell goods.
+
+## Institutions & Landmarks
+- The Sharnwick Pint — the local tavern; owned and run by Beth (a short, stocky woman with a cowbell who keeps order); serves mutton stew as the specialty dish; 5 silver per room per night, 3 silver per meal
+- Sam's General Store — run by Sam; sells farming tools; stocks a map of the kingdom; the party stole a map here
+- A storage shed outside the general store — where wool is stored before transport to Aberdeen
+- The fortune teller's hut — on the edge of town; a makeshift, run-down hut belonging to Ange; she has lived here since her family's tragedy decades ago
+- A blacksmith — Jackson; does basic horseshoes; directs customers to Elmshire for more complex work
+- A vegetable market — old ladies gossip and watch strangers
+- The village stable — where Geoffrey was kept prisoner briefly after his arrest
+
+## Notable Inhabitants / Factions
+- Beth — tavern owner/barkeep of The Sharnwick Pint; short, stocky; uses a cowbell to restore order; apologizes for the village idiots (John, Sam, and Todd)
+- Ange — the fortune teller; lives on the outskirts of town; a warlock with a Pact of the Fiend (made a deal with Silvester, a servant of Bel of Avernus, after losing her family in a fire); she has blue wise-looking eyes; wears a weathered purple dress; the village folk visit her out of pity while pretending to want fortunes read; she eventually disappears after her role in the story
+- Tommy Breckenridge — old raisin-faced man who drinks at the bar; suspects the fortune teller in the sheep disappearances
+- Geoffrey — a merchant's son from Sharnwick; was given a Solarian talisman in Aberdeen by monks and was compelled through dreams to make sheep disappear as an experiment; not malicious; was imprisoned briefly in the horse stable
+- Hugh — Geoffrey's father; a merchant; regrets taking Geoffrey to Aberdeen; gives the party his cart in apology
+- John, Sam, and Todd — three strapping young farmhands; the "village idiots"; initially antagonize the party; later frightened away by the supernatural sheep event
+- Jim — a trainee guard who frequently gets drunk at The Sharnwick Pint; passes out in the corner; described as "useless" by Beth
+- Martha, Barbara, Anne — old ladies at the vegetable market; gossip and stare at strangers
+- Mathy — a man who keeps a horse farm; can supply horses if the party needs them
+
+## History & Lore
+- Sharnwick is where Campaign 1 begins; the party gathers to investigate the mysterious disappearance of sheep.
+- The sheep disappearances were caused by Geoffrey, who was compelled by a Solarian sun talisman to conduct sacrifices ("to make the wolf-headed jackals appear" and "to have villages worship the sun god").
+- Ange made her pact with the fiend Silvester (a pit fiend serving Bel of Avernus) after losing her husband and son in a tragic fire. She was manipulated and has suffered social isolation as a result; the village views her with pity and fear.
+- Ange gave the Solarian sun talisman (which came into her possession 3 months earlier in Aberdeen) to the party in an infernal puzzle box to contain it.
+- Virion Maganti's father was a farmer from Sharnwick; bandits attacked and killed him on a trade route. No one was ever brought to justice; this injustice drove Virion to necromancy in an attempt to raise his father.
+
+## Connections
+- Located in the Grudoulan Valley, central Crevalon
+- On the road between the interior and Elmshire (city between Sharnwick and Aberdeen)
+- Sharnwick → Elmshire → Aberdeen is the main road route toward the coast
+- Ange can scry on the party after they leave; she later disappears (possibly dimension-doored away)
+- Virion's origin story connects Sharnwick to the main Campaign 1 villain
+
+## Important Notes
+- Sharnwick is a SMALL SHEEP-FARMING VILLAGE — NOT a city, NOT a port, NOT a military town.
+- The fortune teller Ange is NOT evil by nature; she made a desperate deal and has been manipulated; she tried to help the party by giving them the infernal puzzle box.
+- The sheep sacrifices were an EXPERIMENT by Solarian agents — testing whether local communities could be converted to Solarian worship through supernatural intimidation. Geoffrey was an unwitting instrument.
+- The infernal puzzle box Ange gave the party is a high-DC magic item (DC 30 Intelligence Investigation to open safely; failure risks 12d6 psychic damage). It was made from materials from the Nine Hells.

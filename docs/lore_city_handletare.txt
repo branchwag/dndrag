@@ -1,0 +1,47 @@
+# Handletare
+
+## Type
+- City (elven city)
+- Part of: Crevalon (northern region, across the river from Diondria)
+
+## Description
+- Handletare is an elven city in the north of Crevalon, situated across the river from Diondria; a ferry ride connects the two cities (described as less than an hour).
+- The city is home to a prestigious elven magical academy — the Sylvanian Academy of Magical Arts — which is described as an elven West Point (a military-style magical academy with a chain of command and arcanists who function like officers).
+- Felanor is described as being in a similar geographic zone ("close to your home," written to the Handletare-connected Ari, and placed roughly north of Finreld).
+- Handletare has a ballet and opera scene; Florian took Caeda to a ballet in Handletare.
+- The city has gardens and is considered a refined, cultured elven settlement.
+
+## Institutions & Landmarks
+- The Sylvanian Academy of Magical Arts — an elven military-style magical academy; cathedral-like stone ceilings painted with scenes of the sky; headed by Head Arcanist Rathilion Lorin; functions like a military academy (chain of command, arcanists as officers)
+- The Academy library — an immense room with ceilings so high they extend into darkness; walls entirely filled with books; enchanted floor constructs pathways under the visitor's feet as they walk; the books respond to concentrated thought to locate specific volumes
+- A confectionary shop (nearby the Academy; used by Lady Orvir for meetings)
+- A ballet venue in Handletare (where Florian takes Caeda)
+
+## Notable Inhabitants / Factions
+- Lady Adrastea Orvir — noble; benefactor and overseer of the Sylvanian Academy of Magical Arts; donated her family's book collection to the Academy; studies planar magic; her mother Gwentharidel Orvir went missing on another plane; intelligent, poised, British-accented; actually a noble as well as a librarian/academic. Full name: Lady Adrastea Orvir; family name Orvir. Father: Erius Orvir (reclusive, obsessed with finding his missing wife; possibly based in the FrostLands as a wizard in a tower).
+- Head Arcanist Rathilion Lorin — leader of the Sylvanian Academy of Magical Arts
+- Ari Crownsilver (Campaign 1) — invited to study at the Sylvanian Academy via a letter from Lord Florian Reiter; his father is described as a high elf academic in Handletare; Lady Vesemir's family connection to Ari suggests she could be his mother (she had a fling covered up)
+- Adrastea Orvir (magic shop assistance) — also helps in her father's magic shop in Handletare in spare time
+- Elven swordsmen at the Academy — train visiting students
+
+## History & Lore
+- Handletare is an ancient elven city; the Sylvanian Academy has been training elven and other magical students for generations.
+- Lady Adrastea's ancestor, Minerva Orvir, died during the DragonMage War while serving the Lunarian Queen. The Orvir family has deep roots in Crevalon's magical history.
+- The Academy's library contains tomes about the Lunarians, the DragonMage War, Avernus, and ancient magical knowledge — it is one of the most significant repositories of lore in Crevalon.
+- Adrastea discovered that the Lady of Felanor (Lady Vesemir) protects one of the imprisoned dragons in a necklace gem. She is a descendant of one of the Mages who originally locked away the dragons.
+- The Academy has extensive knowledge of planar magic; the party is directed to Handletare (or Diondria's north mage) for help with interplanar travel challenges.
+
+## Connections
+- Located across the river from Diondria; less than an hour's ferry ride
+- Close to Felanor (a few weeks' journey or less by the description in letters)
+- The Sylvanian Academy communicates with Finreld's noble house (elven connections)
+- Lady Orvir's father Erius Orvir is connected to the FrostLands (he became a recluse there)
+- The Academy's library is referenced as the place with locked tomes about the Lunarians (the party is directed there by Zana the monk)
+- Ari's father is a high elf academic in Handletare; Lady Vesemir is connected to Felanor and may be Ari's mother
+
+## Important Notes
+- The Sylvanian Academy of Magical Arts is in HANDLETARE — NOT in Diondria. This is a critical disambiguation.
+- Taelreth (the Institute of the Arcane) is in DIONDRIA — NOT Handletare. Two completely different institutions in two different cities.
+- Lady Adrastea Orvir is the benefactor and overseer of the Sylvanian Academy in HANDLETARE. She is NOT at Taelreth.
+- Handletare is an ELVEN city with a military-style academy; Diondria is a mixed-population city with a more conventional university-style institute.
+- An Oathbow was crafted by the finest elven marksmen in Handletare (given to Pavel/Ari).

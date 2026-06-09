@@ -1,0 +1,45 @@
+# Avernus (The Nine Hells — First Layer)
+
+## Type
+- Plane (planar location — the Nine Hells, First Layer)
+- Not part of any continent; a separate plane of existence accessible via planar travel or infernal contracts
+
+## Description
+- Avernus is the first layer of the Nine Hells — a charred wasteland of vast ashen plains covered in rubble and occasional lines of foothills and mountains heaped with broken rocks of obsidian and quartz.
+- Rocks and boulders seem to resemble tormented faces and shapes of creatures, rendering the terrain extremely treacherous.
+- A blood-red light suffuses the very air; huge fireballs fly at random through the sky, occasionally impacting and exploding wherever they hit. There is no sun or stars in the Avernus sky.
+- The River Styx runs through Avernus with a number of offshoots and falls; rivulets, lakes, and streams flow across its plains and feed the Styx. The source of this blood is unknown.
+- Extremely dangerous; traversal is difficult even at a fast walk.
+
+## Institutions & Landmarks
+- Bel's domain — Avernus is ruled by Bel, the Warlord of Avernus (also called: The Pit Fiend, The Pretender, The General of the Third Command); he can only be truly defeated on the soil of Avernus itself
+- The River Styx — runs through Avernus connecting it to other planes
+
+## Notable Inhabitants / Factions
+- Bel — the Warlord of Avernus; a powerful archdevil/pit fiend; operates through mortal agents and servants; his servant Silvester (a pit fiend taking humanoid form) is the primary infernal agent in Crevalon's storyline
+- Silvester — a trusted servant of Bel; disguises himself as a raven-haired man with eyes of the coldest ice; manipulates mortals including the fortune teller Ange (Sharnwick), the succubus who turned Florian, and eventually Sir Thomas Wright; his true infernal nature is revealed in texts at the Sylvanian Academy in Handletare
+- Succubi/Incubi — infernal beings from Avernus or adjacent planes; the succubus that turned Florian Reiter was "a creature of Avernus"; the succubus that turned Alora Venette in ancient times was also infernal in nature
+- Infernal puzzle boxes — items made from materials from the Nine Hells; given to Ange by her fiendish patron; can be incredibly dangerous to open improperly
+
+## History & Lore
+- Alora Venette was originally turned into a vampire by a succubus summoned from Avernus; she had summoned it to get information about a missing colleague. The succubus extracted blood and then overcame Alora, turning her.
+- Florian Reiter was turned into a vampire by a succubus in the Elantir Forest; this succubus was "a creature of Avernus" and had been following him for some time, planting darkened thoughts.
+- Ange (fortune teller of Sharnwick) made a pact with Silvester (identified as a servant of Bel) in the forest after losing her family in a fire. Silvester appeared as a dark-haired human with a malicious gleam and offered her power. The infernal puzzle box she later gives the party is evidence of her pact.
+- Sir Thomas Wright (head of Siadiff's Order of the Golden Lion) was possessed by a powerful infernal being — likely Silvester/Bel's agent — which explains the sinister nature of the crusade against Ikovia.
+- Alora Venette considered going to Avernus to find another vampire willing to restore her vampiric nature, but described it as "tangling herself up with contracts and the likes of Avernus" — an option she found shameful and dangerous.
+- The Staff of Retribution (assembled in Campaign 2) has infernal connections; the infernal puzzle box was described as "made from materials from the Nine Hells."
+
+## Connections
+- Connected to the material plane through infernal contracts, summoning rituals, and planar travel
+- Silvester (Bel's agent) operates extensively in Crevalon through disguise and mortal manipulation
+- The succubus that turned Florian came from Avernus
+- Ange's fiendish patron connects Sharnwick directly to Avernus through her warlock pact
+- Sir Thomas Wright's possession connects Siadiff's corruption to Avernus
+- Alora Venette's original turning connects her ancient history to Avernus
+
+## Important Notes
+- Avernus is the FIRST LAYER of the Nine Hells — it is a PLANE, not a location in Crevalon, Ikovia, or Anearios.
+- Bel can ONLY be defeated on the soil of Avernus itself — NOT on the material plane.
+- Silvester is a PIT FIEND posing as a mortal — NOT a vampire, NOT a wizard, NOT a paladin. He appears as a raven-haired man with ice-cold eyes.
+- The infernal puzzle box requires DC 30 Intelligence Investigation to safely open; failure risks 12d6 psychic damage (DC 18 Wisdom save for half).
+- Vampirism caused by an Avernus succubus carries a "mark" — Alora's former vampiric nature left a faint trace even after she was temporarily made human; when Nikolai re-turned her, he noted "the slightest hint of your previous nature" that "had not fully escaped."

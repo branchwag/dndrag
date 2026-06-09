@@ -1,0 +1,49 @@
+# Elantir Forest
+
+## Type
+- Region (forest)
+- Part of: Crevalon (northern region, between Diondria/Handletare and Finreld)
+
+## Description
+- The Elantir Forest is a large, ancient forest in the north of Crevalon; it forms the northern boundary of the Grudoulan Valley.
+- The forest is old-growth and atmospheric; rainfall, dense trees, and rich soil make it a living, active environment — not a hostile dungeon, but not entirely safe either.
+- The forest is home to centaurs, the Lunarians (moon elves), and Florian Reiter's manor (the vampiric lord's secluded home).
+- An UnderDark tunnel entrance is located somewhere within the forest, approximately an hour's journey from Finreld's edge.
+- The forest is protected by the centaur herd (led by Zerrn and others); they are wary of vampires but respect Florian Reiter's agreement with the King.
+- The Lunarians (moon elves) reside deep within the forest and do not interfere with outsiders as long as they are not provoked; their court is hidden and accessed through a magical lake within the forest.
+
+## Institutions & Landmarks
+- Florian Reiter's Manor — a large, old manor tucked deep within the Elantir Forest; surrounded by a tall iron fence; interior has traps, a giant spider guardian, a magical mirror that unlocks a spiral staircase, and elaborate furnishings; Florian and his vampire companions live here; a coffin for Alora Venette was kept in the cellar; the manor has fallen into disrepair after years and Florian goes back to his "resting place" (coffin) in the manor between adventures
+- The Lunarian Court — a hidden moonlit city accessible through a magical lake within the forest; the party is transported there within silver orbs; it is a beautiful, otherworldly elven settlement; entering uninvited requires being led by a Lunarian
+- The UnderDark entrance — a large rabbit-hole-like burrow that slopes downward into the earth, eventually reaching UnderDark tunnels approximately three miles beneath the surface; used by quaggoths and drow
+- Arcane component gathering grounds — Alora Venette regularly gathered arcane components in the Elantir Forest; it is rich in magical flora
+
+## Notable Inhabitants / Factions
+- Lord Florian Reiter — vampiric lord; lives in the manor by agreement with King Titus; former Paladin of Torm from Siadiff; turned by a succubus during a mission in the forest; runs the manor with his four vampire companions; he and his vampires survive on the blood of deer (not humans) per his royal agreement
+- The four vampire companions of Florian — former paladin party members turned by Florian in the initial bloodlust after his own turning; live in the manor; free-willed because Florian let them drink his blood (not just forced turning); their names include Sandra Wellington
+- The Lunarians — mysterious moon elves living in the forest; led by Lady Kuyomi (revealed to be a Solar/celestial being); they worship Selune; they do not bother Florian's group as long as the no-human-blood agreement holds; they keep to themselves but will retaliate if provoked by Solarians
+- Centaur herd — lives in the Elantir Forest; trades with Finreld; guards the forest and the surrounding territory; the representative Zerrn challenges visitors; they are wary of vampires but coexist with Florian's group
+- Alora Venette — gathers components in the forest; uses Florian's abandoned manor after his death/departure for her re-turning by Nikolai
+- Nikolai — Ikovian diplomat/vampire; met Alora in the Elantir Forest while hunting; used Florian's manor for Alora's re-turning ritual
+
+## History & Lore
+- Florian Reiter came to the Elantir Forest on a paladin mission with his party; they were attacked by a succubus during the night; Florian was turned and in his initial bloodlust turned his companions. He then struck a deal with King Titus to remain in the forest, surviving only on deer blood.
+- The agreement between Florian Reiter and King Titus: they could live tucked away in the forest as long as they survived on the blood of deer instead of humans.
+- The Lunarian tribe within the forest: the DragonMage War created the Slaerian Desert via the red dragon's fire and the FrostLands via the white dragon's icy breath; the Lunarians have lived in this forest since before or during those events.
+- The white dragon was awakened during Campaign 1 and the party (along with wizards from Taelreth) battled it in the Elantir Forest; several wizards nearly fell but were healed.
+- Andrei — Florian's former caretaker of the manor; no longer present by the time of Alora's return.
+
+## Connections
+- Located north of the Grudoulan Valley; south of Finreld
+- The forest is approximately one hour from Finreld's edge
+- Diondria and Handletare are both accessible from the forest's southern edge (across the river from Handletare)
+- The UnderDark tunnel in the forest connects to the Underdark cave network; drow from the Underdark sometimes surface here
+- The Toven/Touven Swamps are to the south (near Siadiff), NOT within or adjacent to the Elantir Forest; these are separate geographic features
+
+## Important Notes
+- The Elantir Forest is NOT a dungeon or hostile zone by default. It is a living, inhabited forest with residents (centaurs, Lunarians, vampires) who are generally non-hostile to respectful visitors.
+- Florian Reiter lives in the Elantir Forest — his manor is in the ELANTIR FOREST, NOT in any city.
+- The Lunarians (moon elves) live in the Elantir Forest — they are NOT the same as drow or dark elves from the Underdark.
+- The Lunarian Court is a HIDDEN MOONLIT CITY within the forest, accessible only through the magical lake — it is not a surface structure visible to ordinary travelers.
+- Florian's agreement with the King to live in the Elantir Forest is a specific royal dispensation — he is not simply hiding; he is there with the King's knowledge and blessing.
+- The Toven Swamps are NEAR SIADIFF (south Crevalon) — NOT near the Elantir Forest (north Crevalon). These are completely different geographic zones.

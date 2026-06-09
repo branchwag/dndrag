@@ -1,0 +1,49 @@
+# Siadiff
+
+## Type
+- City (holy city / paladin stronghold)
+- Part of: Crevalon (southern region, near the sea)
+
+## Description
+- Siadiff is the holy city of Crevalon, located in the southern region of the kingdom, near the sea (seabirds are audible; salt air mingles with incense at the gates).
+- The city is perched majestically upon a steep hill, with the nearby sea stretching out as a backdrop. The brilliant sun casts its rays over white stone buildings that gleam as if fashioned from pearl or ivory.
+- The architecture is uniformly white stone, quarried from sacred cliffs believed to be blessed by Torm himself.
+- Grand cathedrals with towering spires dominate the skyline; there are shrines and altars lining the streets; the air carries incense.
+- The cobblestone pathways are immaculately maintained; despite signs of life, there is a pervasive atmosphere of fear and enforced compliance.
+- Knights in gleaming armor patrol the walls; their breastplates catch the sunlight; each bears the emblem of Torm's gauntlet — closed and upright.
+- The Toven (Touven) Swamps lie just outside Siadiff to the north; werewolves have been known to inhabit the swamp area.
+- Entry requires presenting documentation; experienced paladins can detect the aura of vampires even through enchantments.
+
+## Institutions & Landmarks
+- The Grand Cathedral of Torm — central structure of the city; tall marble columns; a golden dome with carved holy figures and painted motifs; scene of Sir Thomas Wright's speeches and the burning of prisoners
+- The Order of the Golden Lion — the paladin order of Torm headquartered in Siadiff; the primary religious and military authority of the city; once a respected order, later corrupted under Sir Thomas Wright (who was possessed by an infernal being serving Bel of Avernus)
+- Holding cells / prison beneath the city — used to imprison Alora Venette and others deemed heretics; adamantine cuffs suppress magic; the cells were constructed with false wall illusions as escape routes used by informants
+
+## Notable Inhabitants / Factions
+- Sir Thomas Wright — head of the Order of the Golden Lion; becomes the de facto ruler of Crevalon after King Titus's death; launches a holy crusade; possessed by a powerful infernal being serving Bel of Avernus; his eyes occasionally show a glint of red and swirls of black smoke — signs of the infernal possession
+- Sir Richard Godwin — senior paladin of Siadiff; sits to the King's left during the war council; has a low opinion of Florian Reiter; voice described as low British
+- Lord Florian Reiter — before becoming a vampire, was a well-respected Knight within the Order of the Golden Lion in Siadiff; moved there after a childhood vision convinced him Torm had called him; rose within the Order before his ill-fated mission in the Elantir Forest
+- The Order's paladins and knights — enforce the tenets of Torm throughout Crevalon and, during Campaign 2, across the Slaerian Desert into Ikovia
+
+## History & Lore
+- Siadiff was founded on cliffs blessed by Torm; it has long been the spiritual heart of Crevalon.
+- Florian Reiter was once a paladin here; he grew up the son of farmers near Lake Bassol, had a vision as a boy that Torm was calling him, moved to Siadiff, and rose within the Order of the Golden Lion. He was turned into a vampire during a mission in the Elantir Forest.
+- During Campaign 1: Alora Venette travels to Siadiff on behalf of King Titus to investigate rumors of the Order's corruption. She encounters Sir Thomas Wright, whose infernal possession becomes apparent. She is imprisoned and tortured with radiant energy before being rescued by Nikolai (an Ikovian diplomat/vampire).
+- After King Titus's death: Sir Thomas Wright uses the King's illness and death to seize power, installing the Order as the governing body of Crevalon. He announces that the leaders of other regions have handed over control to the Order.
+- During Campaign 2: Siadiff has become a fortress; the Order launches a full holy crusade into Ikovia. Milly (Ikovian necromancer) is captured and imprisoned in Siadiff. The Campaign 2 party must infiltrate Siadiff to rescue her.
+- The Paladins of Siadiff persecute: tieflings, magic users who are not casting in Torm's name, vampires, necromancers, and creatures of the night generally.
+
+## Connections
+- Located in southern Crevalon, near the sea
+- The Toven/Touven Swamps lie just outside the city; werewolves inhabit these swamps
+- Siadiff's forces extend east across the Slaerian Desert to occupy villages in Ikovia
+- Virion Maganti was investigated by the Paladins of Siadiff before his disappearance; they sent a group (including Florian) to investigate — those paladins went missing (Florian was turned)
+- Brezbin (Ikovia) is a flashpoint of Paladin-Ikovian conflict during Campaign 2
+- A cleric from Siadiff was once consulted by the fortune teller Ange (from Sharnwick) about an infernal puzzle box; he left without helping
+
+## Important Notes
+- Siadiff is a PALADIN and HOLY city — it is NOT a magic school or wizard's city. The magic schools are in Diondria (Taelreth) and Handletare (Sylvanian Academy).
+- Siadiff worships TORM (god of duty, law, and righteous battle) — NOT a sun god, NOT Pelor. The Order is called the Order of the GOLDEN LION.
+- The Order of the Golden Lion is in SIADIFF. Taelreth is in DIONDRIA. The Sylvanian Academy is in HANDLETARE. These are three distinct institutions in three distinct cities.
+- Siadiff's holy radiance is genuinely harmful to vampires and undead — it is not merely psychological fear; Alora physically burns from the radiant energy of the city.
+- Sir Thomas Wright is POSSESSED by an infernal being; the Order's cruelty during Campaign 2 is a corruption, not the Order's original intent.

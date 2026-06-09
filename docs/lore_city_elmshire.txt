@@ -1,0 +1,43 @@
+# Elmshire
+
+## Type
+- Town (medium-sized travel town)
+- Part of: Crevalon (central region, on the road between Sharnwick and Aberdeen)
+
+## Description
+- Elmshire is a town located between Sharnwick and Aberdeen on the main road from the interior of Crevalon to the western port.
+- Known for having the best blacksmiths in the region; this is the primary trade of the town, and what it is known for regionally — travelers stop here to have metalwork and repairs done that smaller villages like Sharnwick cannot handle.
+- A prosperous travel town; the inn is notably larger and livelier than in Sharnwick, suggesting Elmshire makes its living from travelers passing through.
+- The main inn is The Wandering Stallion Inn — much more established than Sharnwick's Pint; has a full staff (Delilah, Alice, and Lily tend the bar), a stage with a fiddler (Paul), and dancing in the open space.
+- The town has a blacksmith shop (Hammer and Tongs), a general shop (Bits n Bobs run by balding Bob), and farmland surrounding it.
+- There is a haunted manor on the southern outskirts of the town — a dilapidated three-story structure with a flickering light seen from one room on the second story; every local knows not to go there.
+
+## Institutions & Landmarks
+- The Wandering Stallion Inn — the main inn; large, lively, full staff; music by Paul the fiddler; popular with travelers and locals; 5 silver per room per night, 3 silver per meal
+- Hammer and Tongs — the blacksmith shop; run by Terry (a tall man over six feet); he has apprentices; best blacksmiths in the region; specializes in cart repairs and quality metalwork
+- Bits n Bobs — a general shop run by balding Bob (missing a tooth)
+- The haunted manor — on the southern outskirts, toward the Aberdeen road; three stories; dilapidated; haunted by the ghost of a widow named Margie whose husband went to Aberdeen and was killed by bandits and never returned; contains 100 gold in a safe and a bag of gems belonging to the widow
+- Farmland — surrounds the town; workers from Sharnwick area pass through
+
+## Notable Inhabitants / Factions
+- Terry — blacksmith at Hammer and Tongs; over six feet tall; does cart repairs and quality metalwork
+- Delilah, Alice, Lily — bar staff at The Wandering Stallion; all have braided hair and matching aprons
+- Paul — the fiddler at The Wandering Stallion; short, stocky; "Paul" who stamps his foot and plays folk music
+- Margie — the ghost haunting the manor; a widow whose husband went to Aberdeen on a rainy day and was robbed and killed by bandits; she waited, died from a broken heart, and has been haunting the manor since; she asks "Where is my husband?" and cannot rest until she knows why he never returned
+- Margie's mother-in-law (Margie) — a townsperson who warns children not to go to the haunted manor; the children try to dare each other to spend the night there
+
+## History & Lore
+- The widow Margie died waiting for her husband to return from Aberdeen; her husband was killed by bandits on the road (the same bandits the party later defeats between Elmshire and Aberdeen).
+- The party stops in Elmshire for cart repairs (the Babushka's cart was damaged by the flaming nightmare horse sent by Ange). Terry the blacksmith repairs it for 2 gold.
+- The party attends Raphael's puppet show of the DragonMage War in Elmshire (Raphael distributed flyers at the inn the night before).
+- The party encounters the ghost Margie in the haunted manor, battles her, and later helps solve her story by confronting the bandits (her husband's killers) on the road to Aberdeen.
+
+## Connections
+- On the main road between Sharnwick (to the north/interior) and Aberdeen (to the south/west)
+- One day's travel from Sharnwick; approximately half the journey to Aberdeen
+- Raphael (the bard/puppeteer) passes through Elmshire performing his DragonMage War puppet show
+
+## Important Notes
+- Elmshire is known specifically for its BLACKSMITHS — if the party needs quality metalwork or cart repairs, Elmshire is the place in this region.
+- The haunted manor is on the SOUTHERN outskirts of Elmshire toward Aberdeen — NOT in Sharnwick or the forest.
+- The widow Margie's ghost is not malevolent out of evil; she is trapped by grief and need for answers. She can be appeased once her story is known.

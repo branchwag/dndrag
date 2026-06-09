@@ -1,0 +1,55 @@
+# Aberdeen
+
+## Type
+- City (port city / trade hub)
+- Part of: Crevalon (western coast)
+
+## Description
+- Aberdeen is the major port city of Crevalon, located to the west, serving as both entryway and exit from the Idrelia Sea.
+- A sprawling, low-story port city metropolis; the dirt road from the Grudoulan Valley eventually gives way to its buildings in the distance, with seagulls audible overhead.
+- The city is traversed by water canals with little arched bridges; much of the city is accessible by water as well as by cobblestone streets.
+- Has distinct districts: West Docks (entertainment/red-light area), Shepard's Crest, Wind Market, Haybridge (post and weapons shops), LightDocks.
+- A cosmopolitan city; unusual for having rare sightings of full-blooded elves (who tend to live further north at Finreld or Diondria).
+- Powerful merchants control much of the city; guards bearing the King's crest are present but rarely taken seriously.
+
+## Institutions & Landmarks
+- The Mad Manatee Pub & Tavern — popular gathering place; where the Campaign 1 party receives lodging and interrogates a Solarian monk
+- The Cuddly Nymph — brothel in the West Docks area; a 3-story building, nicely kept, with a tabaxi doorwoman
+- The Devil's Key — magic shop run by Bertille (a voodoo woman with a Creole/Jamaican accent); sells mainly potions; also sells some magic items; uses a doll to discourage theft
+- The Lucky Ace — gambling parlor (card tables in smoke-filled rooms); has a back-door underground fighting ring run by sailors
+- Treble & Clef Musical Emporium — 3-floor music shop; where Paul got his fiddle
+- Pegasus Post — letter/parcel delivery service ("Get it there faster"); run by thin balding Simon Greene
+- Red Irons Smithy — blacksmith on the eastern side; run by human Philip Buxton; makes weapons
+- Bookshop — run by slender half-elf Siveril; carries lore books, histories of the Dragon Mage War, religious guides, and fiction; Siveril is from Finreld and studied at Diondria
+- A spiced food restaurant known for West-side jambalaya (a famous local dish that splits the city into east vs west factions on how to prepare it)
+- Temple (water god Umberlee worshipped here) with clerics who can perform revival for a donation
+- Catacombs beneath the city — host a black market; Solarian monks use these tunnels for meetings and interrogations
+
+## Notable Inhabitants / Factions
+- Bertille — voodoo magic shop owner; Creole/Jamaican accent; sells Potion of Water Breathing, Elixir of Health, Love Potion, Keoghtom's Ointment; uses a sympathetic doll to deter theft
+- Hawkins — an art dealer in Aberdeen; involved in the Solarian artifact storyline (sold an Orb of Dragonkind to a mysterious elven woman named Adrelia/Zana)
+- Akir — tiefling who frequents the Mad Manatee; informs the party that halfling Hawkins is missing
+- Matteo — older gondola operator (Italian accent) who Raphael knows; provides unofficial gondola transport
+- Solarian monks — arrive by ship in glittering gold robes; recruit in Aberdeen; use the catacombs for meetings; Geoffrey, the teen from Sharnwick, first encountered them here
+- Siveril — half-elf bookshop owner; from Finreld; studied at Diondria; has a quiet attraction to Bertille
+
+## History & Lore
+- Aberdeen is the primary entry point for foreign visitors arriving by sea to Crevalon.
+- Solarian monks first appeared here approximately 3 months before Campaign 1's story begins, handing out sun talismans and recruiting followers.
+- The fortune teller Ange was given a Solarian talisman 3 months before Campaign 1 during a visit to Aberdeen; she was the first person to encounter one.
+- Geoffrey (the Sharnwick teen) followed the monks from their ship docking at Aberdeen; this was the seed event for Campaign 1's first quest.
+- A plot by the Aviary to attack Siadiff was discussed ("We have found someone to aid us with the zealots of Siadiff") and a Solarian-Aviary conspiracy note was found in Aberdeen.
+- The Campaign 1 party sails from Aberdeen to Finreld aboard The Golden Mermaid (Elly won passage in a card game of Three Dragon Ante).
+
+## Connections
+- Western coast of Crevalon on the Idrelia Sea
+- Connected to Finreld by short boat journey (a few days sail northward)
+- Connected to Elmshire and Sharnwick by road (Sharnwick → Elmshire → Aberdeen is the main inland route)
+- Connected to Anearios and Ikovia by the Idrelia Sea
+- Zaudfast is a separate city (naval base), also coastal but distinct from Aberdeen
+
+## Important Notes
+- Aberdeen is a PORT CITY on the Idrelia Sea — NOT a landlocked city, NOT a magic school city, NOT a paladin city.
+- Full-blooded elves are RARE in Aberdeen; they tend to live in Finreld or Diondria further north.
+- The closest settlement of full-blooded elves accessible by boat from Aberdeen is Finreld.
+- The catacombs beneath Aberdeen are used by the Solarians and the black market — they are not an official dungeon zone.

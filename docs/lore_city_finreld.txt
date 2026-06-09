@@ -1,0 +1,58 @@
+# Finreld
+
+## Type
+- City (elven port city)
+- Part of: Crevalon (northern coast)
+
+## Description
+- Finreld is a secluded, predominantly elven port city in the northern coastal region of Crevalon; accessible by a short boat journey from Aberdeen (a few days' sail).
+- A pristine, beautiful city; elven ships are visible in the harbor; the city strikes newcomers as refined and notably not as rough or tumble as Aberdeen.
+- The population is overwhelmingly elven; full-blooded elves are common here; non-elves (half-elves, gnomes) are rare and stand out.
+- Finreld has strict decorum: the lord and lady of the city discourage overt displays of the stranger arts or uncouth behavior; city guards enforce these standards.
+- Gnomes are rare in Finreld — the gnomish innkeeper Russell Buttonbottom of The Blue Harp is noted as unusual.
+- Finreld has a noble ruling house: House Phenthae (Lord and Lady Phenthae); described as benevolent rulers of Finreld "for ages"; at the time of Campaign 1, Lady Athadriel Phenthae recently had a son (the city celebrates this).
+- The city has an opera and a jazz bar (Cocoon) popular with the elven upper class.
+
+## Institutions & Landmarks
+- The Silver Fairy Inn — inn in Finreld where the Campaign 1 party stays; run by a female innkeeper (Elizabeth)
+- The Blue Harp Inn — another inn by the docks; run by gnome Russell Buttonbottom; where Captain Karim recovers
+- Tabanna & Tolche — high-end tailors/clothiers in Finreld; Tabanna is an elven man with dyed silvery hair; specializes in formal and masquerade attire
+- Cocoon — an underground jazz bar; elegant basement venue with a small stage; teriyaki fish dishes
+- A temple (where Captain Karim receives healing after her injuries)
+- Finreld's Fine Goods — a goods shop
+- Finreld Harbor — docking fee of 5 gold covers a stay of several days; pristine
+- The Castle / Noble Residence — where the ruling Phenthae family lives; Finreld nobles host events including parties
+- UnderDark tunnel exit — a tunnel connects Finreld to the UnderDark; approximately one hour's journey through a tunnel from Finreld into the UnderDark system; the Elantir Forest connects to this passage
+
+## Notable Inhabitants / Factions
+- Lord and Lady Phenthae — ruling noble family of Finreld; benevolent; long-established
+- Lady Athadriel Phenthae — recently had a son; the city celebrates the birth at the time of Campaign 1
+- Captain Karim (Fazia Karim) — Crevalon Navy captain; recovers at The Blue Harp after her ship The Endeavor is sunk; superior is Commodore Julius Webb; she returns to Finreld after the Campaign 1 party's adventures
+- Commodore Julius Webb — Karim's superior; decorated naval officer in blue and red uniform with tasseled shoulders; concerned about Karim's safety
+- Russell Buttonbottom — gnomish innkeeper at The Blue Harp; originally from Zanarite; wife died in a mining accident; scared of drow
+- Tabanna — elven tailor; fashionable, lower and gay voice; wears midnight blue suits with subtle glittering
+- Centaur herd (in the nearby Elantir Forest) — trades with Finreld; their representative Zerrn also guards access to the forest and the Lunarian territory
+- Fiona (elven cleric of Rao) — attached to Finreld; teaches local elven children; originally from the Manasseh tribe of the Autumngrove Woods; stays in Finreld
+
+## History & Lore
+- Finreld is an ancient elven city; House Phenthae has ruled "for ages."
+- The Aviary staged a fake Lunarian attack on Finreld during Campaign 1: Aviary members disguised themselves as Lunarian archers to provoke conflict between Finreld and the moon elves. Florian Reiter detected that the blood did not taste Lunarian. The Aviary members were identified as The Hummingbird, The Ostrich, and others.
+- The party uncovered the fake attack after battling what appeared to be Lunarian archers at a Finreld noble event.
+- A competition (recurring noble tournament or artistic contest) was announced for Finreld in Campaign 1; a second contest was later announced for Felanor.
+- Drow from the UnderDark sometimes appear near Finreld via the tunnel connection; historically this was the usual source of conflict near Finreld, though recently "too quiet."
+
+## Connections
+- Accessible by short boat journey from Aberdeen (a few days)
+- Connected to the Elantir Forest by proximity (approximately one hour from the forest)
+- Connected to the UnderDark via a tunnel
+- The centaur herd in the Elantir Forest trades with Finreld
+- Felanor is described in letters as being "not too far outside" the general northern region (a few weeks travel from Finreld)
+- Diondria is reachable by boat from Finreld (the party sails from Finreld to Diondria)
+- Lady Vesemir's manor is in Felanor — connected to Finreld's noble social circuit
+
+## Important Notes
+- Finreld is an ELVEN PORT CITY in northern Crevalon — NOT a wizard school city.
+- The Sylvanian Academy of Magical Arts is in HANDLETARE, NOT Finreld. Finreld has no magical academy.
+- Finreld's lord and lady are House PHENTHAE — not House Vesemir. Lady Vesemir is in FELANOR.
+- The drow near Finreld come from the UnderDark via a tunnel — they are not the same as the Lunarians (moon elves of the Elantir Forest).
+- Finreld's fine goods shop stocks items enchanted in Diondria; a wizard from Diondria sometimes comes to resupply them.

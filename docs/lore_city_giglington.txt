@@ -1,0 +1,53 @@
+# Giglington
+
+## Type
+- City (capital city of Anearios)
+- Part of: Anearios
+
+## Description
+- Giglington is the capital city of Anearios; an impossibly alive, steam-powered industrial-fantasy metropolis.
+- The cobblestones beneath visitors' boots are warm from the pipes that run beneath them, carrying heat from massive furnaces deep below the city.
+- The skyline is a wonder of iron filigree and mechanical motion: gears the size of wagons turning atop rooftops; clock towers rising like gilded cathedrals.
+- The air smells of oil and roasted chestnuts; steam whistles from copper vents; automatons' footsteps mix with vendors hawking freshly cranked pastries and lightning-brewed coffee.
+- Mechanical horses draw carriages; drivers tip brass-capped hats to constables in blue-lacquered coats; small courier airships drift lazily between tethering towers.
+- Banners of the Twin Queens — Georgia and Henrietta — flutter throughout, emblazoned with intertwined crowns and a gear turned sideways like a heart.
+- Named with Queen Henrietta's self-deprecating affection: "A rather silly name, isn't it? But I've always been fond of it."
+
+## Institutions & Landmarks
+- The Grand Orrery Palace — the royal seat of the Twin Queens; its domed roof turns slowly with the sky; powered by the same arcane-mechanical core that keeps the city's great clock towers in rhythm; the heart of Anearios governance
+- The Ministry of Invention — a royal institution governing magical/technological research; locked down by the Queens during Campaign 3; possesses research on the Providence Engine (suppressing the "past that never was")
+- The Aether Rail connection — rail lines connect Giglington to Tiven's Read to the southeast
+- The Tocking Tick Inn — an inn in Giglington ("Subway tango twist of pipes" nearby)
+- Impeccable Times — a shop in Giglington styled like a home befitting a cuckoo clock; the elderly blind craftsman there secretly hears through every watch and sees through every clock he creates; his owl is a mechanical contraption
+- A toy store — present in Giglington
+- An inventor gnome's house (scene of a session in Campaign 3)
+
+## Notable Inhabitants / Factions
+- Queen Georgia — one of the Twin Queens; has an affinity for cats; rules from the Grand Orrery Palace
+- Queen Henrietta — one of the Twin Queens; the Chronolume time traveler who saved Anearios may be her grandmother or herself; rules from the Grand Orrery Palace
+- Director Boon — a Ministry of Invention director; the Campaign 3 party makes a deal with him to access the Ministry
+- Vera — a rogue character associated with Giglington
+- The Brassmantle Guard — the royal peacekeeping force; stationed in Giglington; protects the Queens and enforces arcane/technological law
+- The Clockwork Hands — have operatives in Giglington; use the Aether Rail (from Tiven's Read) to move components toward the capital; Director Boon may be compromised
+- A city-wide blackout occurs in Campaign 3 caused by a rogue technomancer releasing forbidden knowledge stolen from the Ministry of Invention
+
+## History & Lore
+- Giglington has been the capital of Anearios under the reign of Queens Georgia and Henrietta; the twin queens promote peace and trade.
+- A gearwright priest in the city debates with scholars about the nature of the soul — "whether it resides in flesh or in the spark of creation." This reflects Anearios's fusion of religion and technology.
+- The Providence Engine's influence: Giglington sits above the hidden infrastructure of the Providence Engine. The Clockwork Hands' activity in the city is building toward its reactivation.
+- The Ministry of Invention holds research that is actively preventing a repeat of the "past that never was" (the Still Age); this is why it is locked down.
+- A city-wide blackout (Campaign 3 climactic Act I event) disrupts the capital and signals the Engine's growing influence.
+- Nymira (Campaign 3 party member) is believed by the Clockwork Hands to be a "missing key component" to something buried beneath Giglington — suggesting a Providence Engine substructure lies under the capital.
+
+## Connections
+- Capital of Anearios; connected to all other Anearian cities
+- The Aether Rail connects Giglington to Tiven's Read (southeast)
+- Airship routes connect Giglington to Vormark (western Windenreich) via the Vox Eterna and other Crown Line vessels
+- The Hailthorne Institute in Evlinross (north) is the arcane educational counterpart to the capital
+- The Providence Engine's core structure may be beneath or near Giglington
+
+## Important Notes
+- Giglington is the CAPITAL OF ANEARIOS — NOT of Crevalon or Ikovia.
+- Direct spellcasting is BANNED in Giglington and throughout Anearios; the Brassmantle Guard will detain magic users ("Under order code 1075, you are to be detained for the casting of magical abilities").
+- The Grand ORRERY PALACE is in Giglington; the royal seat of the TWIN QUEENS (Georgia and Henrietta) — NOT a single king or queen.
+- The Ministry of Invention in Giglington is LOCKED DOWN during Campaign 3 because it holds research suppressing the Providence Engine's return.
