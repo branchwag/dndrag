@@ -8,20 +8,31 @@
 - Full name on record: Alora Venyette (spelled "Venette" once in the text; primary spelling throughout is Venyette)
 
 ## Role & Affiliation
-- Former court mage to King Titus of Crevalon
-- Connected to the dwarves of Doragon — they were among those who helped her (specifically, it was dwarves who revived her with smelling salts and provided her with animal blood after she sealed a dragon)
+- Ancient era (~4000 years ago): one of the most powerful mages of her age; served Queen Elvira during the DragonMage War; used a purple gem as her arcane focus to seal a dragon; was subsequently betrayed by Queen Elvira, staked, and erased from the historical record
+- Earlier era (after awakening): became court mage to King Titus of Crevalon after the party woke her from her centuries-long sealed sleep; this is a recent role, not her ancient one
 - More recently: protects the Ikovian queen with an arcane shield; aligns with refugees seeking refuge in Ikovia
-- Centuries ago she was one of the powerful mages who participated in sealing the dragons during the DragonMage War; she used a purple gem as the arcane focus
+- Connected to the dwarves of Doragon — they were among those who assisted her after she sealed a dragon during the DragonMage War
 
 ## History & Origin
-- Was originally turned into a vampire by a succubus from Avernus; she had summoned the succubus to get information on the location of a missing colleague (Arcanus Loraine, a fellow scholar lost on another plane); the succubus overtook her during the exchange
+
+### Ancient era (~4000 years ago)
+- Served Queen Elvira as a powerful mage during the DragonMage War; participated in sealing dragons using arcane rituals
+- Was originally turned into a vampire by a succubus from Avernus during this period; she had summoned the succubus to get information on the location of a missing colleague (Arcanus Loraine, a fellow scholar lost on another plane); the succubus overtook her during the exchange
 - Her husband was still alive when she was first turned; he recognized the look in her eye and defended himself; over time she tried to find a cure
-- Was subsequently "staked" and her contributions to the kingdom were erased; she was awakened centuries later when the kingdom was in need
-- After being awakened, she was made human again (through the efforts of a group of arcana users in Crevalon); she regretted this deeply, describing the human form as unnatural and uncomfortable
+- Queen Elvira ultimately betrayed her — siding with a dragon and using a force field to pin Alora to the wall; Alora was staked and her contributions to history were erased
+- Lay sealed and forgotten for approximately 4000 years
+
+### Earlier era (awakening and service to King Titus)
+- Awakened by a group of arcana users in Crevalon when the kingdom was in need; this is entirely separate from her ancient role under Queen Elvira
+- Made human again through their efforts; she regretted this deeply, describing the human form as unnatural and uncomfortable
+- Became court mage to King Titus of Crevalon during this period; served him and worked alongside the party
 - Re-turned into a vampire by Nikolai (an Ikovian changeling diplomat) at the old manor in the Elantir Forest; she accepted his offer willingly after considering it carefully
-- After being re-turned she and Nikolai developed a romantic connection; Nikolai was subsequently badly injured by werewolves in the Toven Swamps (near Siadiff); she rescued him
-- Traveled to Ikovia to warn of Siadiff's corruption
-- Was captured by Sir Thomas Wright (possessed by an infernal being) in Siadiff and subjected to days of radiant torture in adamantine cuffs; Nikolai (disguised as Sir Thomas) broke her out
+- After being re-turned she and Nikolai developed a romantic connection
+
+### More recently
+- Rescued Nikolai from a werewolf attack in the Toven Swamps (near Siadiff)
+- Traveled to Siadiff at King Titus's request to investigate wrongful imprisonment; was captured by Sir Thomas Wright (possessed by an infernal being) and subjected to days of radiant torture in adamantine cuffs
+- Nikolai (disguised as Sir Thomas) broke her out; they traveled to Ikovia together to warn of Siadiff's growing corruption
 
 ## Abilities & Powers
 - Powerful arcane mage; specializes in planar knowledge and arcane research
@@ -41,9 +52,11 @@
 - Sir Thomas Wright: she sensed a darkness in him — "a dual nature, a shadow over his countenance, a glint of red within his eye" — during their first meeting; he later captured and tortured her while infernally possessed
 
 ## Key Events
-Alora participated in sealing a dragon using a purple gem at the summit of an icy peak during the DragonMage War, after which the dwarves of Doragon revived her with smelling salts and animal blood. She later gathered arcane components in the Elantir Forest, where she met Nikolai. She accepted his offer to re-turn her and was re-turned at Florian's old manor in the forest.
+Approximately 4000 years ago, Alora served Queen Elvira and participated in sealing a dragon using a purple gem at the summit of an icy peak during the DragonMage War. The dwarves of Doragon revived her with smelling salts and animal blood afterward. She was later betrayed by Queen Elvira, staked, and erased from the historical record — lying sealed for millennia.
 
-After her re-turning she rescued Nikolai from a werewolf attack in the Toven Swamps, then traveled to Siadiff at King Titus's request to investigate wrongful imprisonment. There she was captured by Sir Thomas Wright — infernally possessed at the time — and subjected to days of radiant torture in adamantine cuffs. Nikolai infiltrated Siadiff in disguise as Thomas Wright and broke her out. They traveled to Ikovia together to warn of Siadiff's growing corruption.
+She was awakened in the earlier era by a group of arcana users in Crevalon. Made human, she found the form deeply uncomfortable and eventually sought to be re-turned. She gathered arcane components in the Elantir Forest, where she met Nikolai; she accepted his offer and was re-turned at Florian's old manor in the forest, with their relationship developing from there.
+
+She rescued Nikolai from a werewolf attack in the Toven Swamps, then traveled to Siadiff at King Titus's request to investigate wrongful imprisonment. There she was captured by Sir Thomas Wright — infernally possessed at the time — and subjected to days of radiant torture in adamantine cuffs. Nikolai infiltrated Siadiff disguised as Thomas Wright and broke her out. They traveled to Ikovia together to warn of Siadiff's growing corruption.
 
 In more recent times, Alora has been seen protecting the Ikovian queen with an arcane shield, standing alongside Nikolai. She traveled through tunnels with a group of refugees and was greeted — and briefly punched — by Adelonda upon arriving in Ikovia.
 
