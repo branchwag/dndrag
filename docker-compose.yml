@@ -38,6 +38,7 @@ services:
       CHAT_MODEL: gemma2:9b
     volumes:
       - ./docs:/app/docs
+      - ./eval.json:/app/eval.json
     depends_on:
       qdrant:
         condition: service_healthy

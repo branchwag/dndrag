@@ -13,6 +13,16 @@
 - Vampires are legally tolerated in Crevalon under strict conditions (must not prey on humans), though socially controversial, particularly in Siadiff.
 - Necromancy outside of sanctioned academic contexts is forbidden in Crevalon; it is openly practiced in Ikovia.
 
+## Major Cities
+- Aberdeen — the primary port city; located to the west on the Idrelia Sea; Crevalon's main point of entry and departure by sea
+- Siadiff — holy city; headquarters of the Order of the Golden Lion (paladin order of Torm); the most devoutly religious city in Crevalon
+- Diondria — home of Taelreth, the Institute of the Arcane; Crevalon's center of magical scholarship
+- Handletare — home of the Sylvanian Academy of Magical Arts (elven military-style magic academy)
+- Zaudfast — coastal city; home of the Crevalon Navy base
+- Finreld — northern elven city within or adjacent to Crevalon
+- Felanor — northern elven city within or adjacent to Crevalon
+- Sharnwick — a town in Crevalon; contains a fortune teller named Ange
+
 ## Institutions & Landmarks
 - Taelreth (Institute of the Arcane) — wizard university/magical institute located in Diondria (NOT Handletare)
 - Sylvanian Academy of Magical Arts — elven military-style magic academy located in Handletare (NOT Diondria)
