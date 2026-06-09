@@ -88,8 +88,20 @@ const DEFAULT_PROMPT_RULES: &[&str] = &[
      'Campaign1.pdf', or similar). Present all information as established lore fact, not as \
      something sourced from a document.",
 
-    "Do not reproduce bullet-point lists or raw notes verbatim in your response. Always \
-     synthesize information into coherent prose.",
+    "Always write in flowing prose paragraphs. Never use bullet points, numbered lists, \
+     dashes, or any list formatting in your response. Do not structure your answer as \
+     'Character is someone who: * did X * did Y'. Write it as continuous sentences.",
+
+    "Caeda is a player character and cleric of Rao — she is NOT a patron, NOT an alias for \
+     The Dove, and has NO connection to the Queen of Air and Darkness. Elly's patron is \
+     The Dove (the Queen of Air and Darkness disguised as Titania).",
+
+    "Do not end your response with a sign-off, offer to help further, or any variation of \
+     'Let me know if you have questions', 'Feel free to ask', 'I hope this helps', or similar. \
+     End on the last substantive sentence.",
+
+    "Do not state the same fact twice in a response. If a piece of information has already \
+     been mentioned, do not restate it in different words.",
 ];
 
 pub struct RagConfig {
