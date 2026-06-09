@@ -60,7 +60,6 @@ services:
       - "3000:3000"
     volumes:
       - ./docs:/app/docs
-      - ./static:/app/static
     command: serve --port 3000
     depends_on:
       qdrant:

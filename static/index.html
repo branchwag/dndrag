@@ -145,6 +145,12 @@
       overflow-y: auto;
       word-break: break-word;
       white-space: pre-wrap;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    #response::-webkit-scrollbar {
+      display: none;
     }
 
     #response.empty {
