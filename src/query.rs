@@ -6,6 +6,7 @@ use std::io::Write as _;
 use std::time::Instant;
 use tracing::info;
 
+use crate::config::RagConfig;
 use crate::embed::Embedder;
 use crate::store::{SearchResult, VectorStore};
 
@@ -55,8 +56,7 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
         "entity extraction + embedding"
     );
 
-    // Load scene filter markers once — avoids repeated env var lookups per chunk.
-    let scene_markers = load_scene_markers();
+    let RagConfig { scene_markers, prompt_extra_rules } = RagConfig::load();
 
     // Keyword retrieval — catches proper nouns semantic search misses.
     // Uses the query vector so results are ranked by relevance, not insertion order.
@@ -299,13 +299,8 @@ character creation, campaign links, dice mechanics, or directions addressed to p
 These are not lore. Disregard them entirely and do not include their content in your answer."
         .to_string();
 
-    // Append any extra rules from the env — lets campaign-specific guidance live in .env
-    // rather than in source. Each rule is a pipe-separated entry in PROMPT_EXTRA_RULES.
-    let extra_rules = std::env::var("PROMPT_EXTRA_RULES").unwrap_or_default();
-    let system_prompt = extra_rules
-        .split('|')
-        .map(|r| r.trim())
-        .filter(|r| !r.is_empty())
+    let system_prompt = prompt_extra_rules
+        .iter()
         .fold(system_prompt, |mut s, rule| {
             s.push_str(&format!("\n- {rule}"));
             s
@@ -529,17 +524,6 @@ async fn extract_entities(
     vec![]
 }
 
-
-// Reads SCENE_FILTER_MARKERS from the environment (pipe-separated substrings).
-// Markers live in the gitignored .env file so scene-specific content stays out of source.
-fn load_scene_markers() -> Vec<String> {
-    std::env::var("SCENE_FILTER_MARKERS")
-        .unwrap_or_default()
-        .split('|')
-        .filter(|s| !s.is_empty())
-        .map(|s| s.to_lowercase())
-        .collect()
-}
 
 fn is_scene_filtered(text: &str, markers: &[String]) -> bool {
     let t = text.to_lowercase();
