@@ -87,9 +87,7 @@
       padding: 2.5rem 3rem;
       width: 100%;
       max-width: 800px;
-      height: clamp(520px, 65vh, 720px);
-      display: flex;
-      flex-direction: column;
+      min-height: clamp(520px, 65vh, 720px);
       transform: rotate(-0.15deg);
     }
 
@@ -141,19 +139,12 @@
       font-size: 1.5rem;
       line-height: 1.75;
       color: #3a1a0a;
-      flex: 1;
-      overflow-y: auto;
       word-break: break-word;
       white-space: pre-wrap;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-
-    #response::-webkit-scrollbar {
-      display: none;
     }
 
     #response.empty {
+      min-height: 300px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -272,7 +263,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex: 1;
+      min-height: 300px;
       gap: 0.9rem;
       padding: 1.75rem 0;
     }
