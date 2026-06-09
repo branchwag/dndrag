@@ -66,6 +66,15 @@ impl VectorStore {
                 CreateFieldIndexCollectionBuilder::new(COLLECTION, "text", FieldType::Text),
             )
             .await?;
+        // Text index on lore_entity enables fast lookup by character name token.
+        // The lore_entity field stores the space-separated entity name extracted
+        // from the filename (e.g. "lore_alora_venyette.txt" -> "alora venyette"),
+        // so a Text match for "alora" reliably finds all chunks from that file.
+        self.client
+            .create_field_index(
+                CreateFieldIndexCollectionBuilder::new(COLLECTION, "lore_entity", FieldType::Text),
+            )
+            .await?;
         Ok(())
     }
 
@@ -75,6 +84,7 @@ impl VectorStore {
         texts: &[String],
         sources: &[String],
         pages: &[u32],
+        lore_entities: &[Option<String>],
         embeddings: Vec<Vec<f32>>,
     ) -> Result<()> {
         let points: Vec<PointStruct> = ids
@@ -82,15 +92,18 @@ impl VectorStore {
             .zip(texts.iter())
             .zip(sources.iter())
             .zip(pages.iter())
+            .zip(lore_entities.iter())
             .zip(embeddings.into_iter())
-            .map(|((((id, text), source), page), embedding)| {
-                let payload: Payload = serde_json::json!({
+            .map(|(((((id, text), source), page), lore_entity), embedding)| {
+                let mut payload_json = serde_json::json!({
                     "text": text,
                     "source": source,
                     "page": page,
-                })
-                .try_into()
-                .expect("valid payload JSON");
+                });
+                if let Some(entity) = lore_entity {
+                    payload_json["lore_entity"] = serde_json::Value::String(entity.clone());
+                }
+                let payload: Payload = payload_json.try_into().expect("valid payload JSON");
                 PointStruct::new(id.clone(), embedding, payload)
             })
             .collect();
@@ -139,6 +152,43 @@ impl VectorStore {
                 let score = r.score;
                 let result = SearchResult { text, source, page, score, is_keyword_match: false };
                 (result, vector)
+            })
+            .collect())
+    }
+
+    // Lore-file search: returns chunks whose lore_entity field contains `slug` as a
+    // text token (e.g. slug "alora" matches lore_entity "alora venyette"), ranked by
+    // cosine similarity to the query vector. Guarantees the character's own lore
+    // file surfaces regardless of how narrative PDF chunks score.
+    pub async fn search_lore_file(
+        &self,
+        slug: &str,
+        query_vec: Vec<f32>,
+        limit: u32,
+    ) -> Result<Vec<SearchResult>> {
+        let filter = Filter::must([Condition::matches(
+            "lore_entity",
+            MatchValue::Text(slug.to_string()),
+        )]);
+
+        let response = self
+            .client
+            .search_points(
+                SearchPointsBuilder::new(COLLECTION, query_vec, limit as u64)
+                    .filter(filter)
+                    .with_payload(true),
+            )
+            .await?;
+
+        Ok(response
+            .result
+            .into_iter()
+            .map(|r| {
+                let text = extract_string(&r.payload, "text");
+                let source = extract_string(&r.payload, "source");
+                let page = extract_u32(&r.payload, "page");
+                let score = r.score;
+                SearchResult { text, source, page, score, is_keyword_match: true }
             })
             .collect())
     }

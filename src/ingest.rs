@@ -38,6 +38,7 @@ pub async fn run(docs_dir: &Path, fresh: bool) -> Result<()> {
         let text = extract_text(pdf)?;
         let chunks = chunk_text_semantic(&text, TARGET_WORDS, OVERLAP_SENTENCES);
         let total = chunks.len();
+        let lore_entity = lore_entity_from_filename(&filename);
 
         for (batch_idx, batch) in chunks.chunks(EMBED_BATCH).enumerate() {
             let chunk_start = batch_idx * EMBED_BATCH;
@@ -47,8 +48,9 @@ pub async fn run(docs_dir: &Path, fresh: bool) -> Result<()> {
             let texts: Vec<String> = batch.iter().map(|c| c.text.clone()).collect();
             let pages: Vec<u32> = batch.iter().map(|c| c.page).collect();
             let sources: Vec<String> = vec![filename.clone(); batch.len()];
+            let lore_entities: Vec<Option<String>> = vec![lore_entity.clone(); batch.len()];
             let embeddings = embedder.embed(texts.clone()).await?;
-            store.upsert(&ids, &texts, &sources, &pages, embeddings).await?;
+            store.upsert(&ids, &texts, &sources, &pages, &lore_entities, embeddings).await?;
             print!(
                 "\r  {filename}: batch {}/{} ({total} chunks)        ",
                 batch_idx + 1,
@@ -61,6 +63,15 @@ pub async fn run(docs_dir: &Path, fresh: bool) -> Result<()> {
 
     println!("Ingestion complete.");
     Ok(())
+}
+
+// For lore files named "lore_<slug>.txt", returns the slug with underscores
+// replaced by spaces (e.g. "lore_alora_venyette.txt" -> Some("alora venyette")).
+// Qdrant's word tokenizer splits on spaces, so storing the entity as space-separated
+// tokens lets a Text match for "alora" find "alora venyette" reliably.
+fn lore_entity_from_filename(filename: &str) -> Option<String> {
+    let stem = filename.strip_prefix("lore_")?.strip_suffix(".txt")?;
+    Some(stem.replace('_', " "))
 }
 
 fn find_docs(dir: &Path) -> Result<Vec<PathBuf>> {

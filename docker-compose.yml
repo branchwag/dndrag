@@ -27,6 +27,7 @@ services:
 
   dnd_rag:
     build: .
+    image: dndrag-app
     env_file:
       - path: .env
         required: false
@@ -46,7 +47,7 @@ services:
       - cli
 
   dnd_rag_serve:
-    build: .
+    image: dndrag-app
     env_file:
       - path: .env
         required: false
@@ -59,6 +60,7 @@ services:
       - "3000:3000"
     volumes:
       - ./docs:/app/docs
+      - ./static:/app/static
     command: serve --port 3000
     depends_on:
       qdrant:

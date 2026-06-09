@@ -118,6 +118,19 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
                 }
             }
         }
+        // Lore-file pass: always include chunks from the character's own lore file.
+        // Structured lore docs embed differently from natural questions, so they can
+        // fall outside the top-K semantic candidates despite being the best source.
+        // Use space-separated name (no underscore) so Text match finds lore_entity
+        // field values like "alora venyette" when searching for "alora".
+        let slug = name.to_lowercase();
+        for hit in store.search_lore_file(&slug, query_vec.clone(), KEYWORD_K).await? {
+            if !keyword_results.iter().any(|r| r.text == hit.text)
+                && !is_scene_filtered(&hit.text, &scene_markers)
+            {
+                keyword_results.push(hit);
+            }
+        }
     }
     info!(
         hits = keyword_results.len(),
@@ -643,6 +656,21 @@ async fn rerank(
         if idx >= 1 && idx <= results.len() {
             // Normalise LLM 0-10 score to 0-1 range so it's comparable to cosine scores.
             scores[idx - 1] = score / 10.0;
+        }
+    }
+
+    // Boost chunks that come from the character's own lore file.
+    // e.g. "lore_alora_venyette.txt" gets a bonus when asking about "Alora Venyette".
+    for (i, result) in results.iter().enumerate() {
+        let src = result.source.to_lowercase();
+        if src.starts_with("lore_") {
+            for name in entity_names {
+                let slug = name.to_lowercase().replace(' ', "_");
+                if src.contains(&slug) {
+                    scores[i] = (scores[i] + 0.25).min(1.0);
+                    break;
+                }
+            }
         }
     }
 
