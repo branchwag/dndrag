@@ -8,7 +8,7 @@
 - The Lunarian Court is a beautiful, otherworldly moonlit city hidden within the Elantir Forest; it is accessible only by being guided by a Lunarian or through the lake entrance.
 - The court is the home of the Lunarians — a mysterious tribe of moon elves who worship Selune and serve their leader, Lady Kuyomi.
 - Visitors who attempt to cross the lake uninvited may be stopped; the rule is that outsiders must be led by a Lunarian; Lady Kuyomi is actually trapped and cannot leave the court herself.
-- The party in the earlier era was transported to the Lunarian Court within silver orbs taken from the Elantir Forest.
+- The party in the campaign was transported to the Lunarian Court within silver orbs taken from the Elantir Forest.
 - The setting is a moonlit, magical city of elven design; it feels like stepping into another world.
 
 ## Institutions & Landmarks
@@ -17,14 +17,14 @@
 
 ## Notable Inhabitants / Factions
 - Lady Kuyomi — the Lunarian leader; revealed to be a Solar (a celestial being of immense power); godlike in glory and power; a Solar's sword flies into the fray on its own; arrows from a Solar can strike a target dead on contact; she serves the Lunarian Queen (celestial forces); only twenty-four solars exist between all planes; she is physically trapped in the Elantir Forest/Court
-- Haki — a Lunarian scout/warrior; a trusted member of the court and one of the first Lunarians the the earlier era party encounters in an organized capacity
+- Haki — a Lunarian scout/warrior; a trusted member of the court and one of the first Lunarians the party encounters in an organized capacity
 - Unnamed Lunarian scouts and hunters — protect the forest; use silver orbs to transport outsiders; identified by their silver hair and luminescent skin
-- The drow (the earlier era subplot) — drow who rebelled from the Underdark have aligned themselves with the Lunarians; the Lunarians enlisted their help to take out prominent Solarians
+- The drow (a previous subplot) — drow who rebelled from the Underdark have aligned themselves with the Lunarians; the Lunarians enlisted their help to take out prominent Solarians
 
 ## History & Lore
 - The Lunarians trace their origins to the DragonMage War era; the Lunarian Queen (a celestial being) commanded one faction of dragons (black, blue, green, silver, white) against the Solarian King's faction.
 - The ancient Lunarian Queen and Solarian King struck a truce after the mages sealed the dragons; they divided day and night equally. The Lunarians have kept to themselves in the Elantir Forest since.
-- During the earlier era: The Aviary staged a fake Lunarian attack on Finreld, disguising their operatives (Hummingbird, Ostrich, etc.) as Lunarian archers to provoke war between Finreld and the moon elves. This false flag was exposed when Florian Reiter detected that the attackers' blood did not taste Lunarian.
+- During previously: The Aviary staged a fake Lunarian attack on Finreld, disguising their operatives (Hummingbird, Ostrich, etc.) as Lunarian archers to provoke war between Finreld and the moon elves. This false flag was exposed when Florian Reiter detected that the attackers' blood did not taste Lunarian.
 - The Lunarians do not bother Florian's vampire group in the forest as long as Florian's no-human-blood agreement holds.
 - Kuyomi summoned the Aviary members (the drow mission referenced "she summoned them" to correspond with the Lunarians).
 - A field study of the Lunarians was conducted by a famous elven mage long ago; the field notes are preserved in the library of the Sylvanian Academy in Handletare. The notes describe Lady Kuyomi as a Solar and record her powers.

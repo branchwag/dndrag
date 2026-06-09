@@ -4,7 +4,7 @@
 - City (Underdark)
 
 ## Description
-- Zanzarite is an Underdark city, home of Elly (one of the earlier era party members).
+- Zanzarite is an Underdark city, home of Elly (one of party members).
 - Located in the Underdark not far from the drow city of Morvir.
 
 ## Connections

@@ -9,7 +9,7 @@
 
 ## Role & Affiliation
 - Ancient era (~4000 years ago): one of the most powerful mages of her age; served Queen Elvira during the DragonMage War; used a purple gem as her arcane focus to seal a dragon; was subsequently betrayed by Queen Elvira, staked, and erased from the historical record
-- Earlier era (after awakening): became court mage to King Titus of Crevalon after the party woke her from her centuries-long sealed sleep; this is a recent role, not her ancient one
+- After awakening: became court mage to King Titus of Crevalon after the party woke her from her centuries-long sealed sleep; this is a recent role, not her ancient one
 - More recently: protects the Ikovian queen with an arcane shield; aligns with refugees seeking refuge in Ikovia
 - Connected to the dwarves of Doragon — they were among those who assisted her after she sealed a dragon during the DragonMage War
 
@@ -22,12 +22,13 @@
 - Queen Elvira ultimately betrayed her — siding with a dragon and using a force field to pin Alora to the wall; Alora was staked and her contributions to history were erased
 - Lay sealed and forgotten for approximately 4000 years
 
-### Earlier era (awakening and service to King Titus)
+### After awakening (service to King Titus)
 - Awakened by a group of arcana users in Crevalon when the kingdom was in need; this is entirely separate from her ancient role under Queen Elvira
 - Made human again through their efforts; she regretted this deeply, describing the human form as unnatural and uncomfortable
 - Became court mage to King Titus of Crevalon during this period; served him and worked alongside the party
 - Re-turned into a vampire by Nikolai (an Ikovian changeling diplomat) at the old manor in the Elantir Forest; she accepted his offer willingly after considering it carefully
 - After being re-turned she and Nikolai developed a romantic connection
+- She married Altarion (the paladin who exorcised her) at the campaign's end; he reminded her of her earlier husband and she developed genuine feeling for him despite disagreeing with how paladins treat people like her; the marriage did not last
 
 ### More recently
 - Rescued Nikolai from a werewolf attack in the Toven Swamps (near Siadiff)
@@ -45,7 +46,7 @@
 - Nikolai: Ikovian changeling diplomat who re-turned her; became her romantic partner; she rescued him from the Toven Swamps after a werewolf attack
 - Florian Reiter: they share memories of the old Elantir Forest manor; she remembered their past conversation on the stairwell about his nature, and the anger she encountered from Caeda there
 - Caeda: she encountered her at the manor and remembered Caeda's anger toward her
-- Altarion: she remembered first attacking him at the manor
+- Altarion: she had complicated feelings toward him — he reminded her of her earlier husband, toward whom she has a soft spot, but she did not agree with how paladins treat people like her; the prejudice was on Altarion's side, and she proved him wrong over the course of the campaign; when possessed by the pit fiend she attacked him (96 Blight damage) and his exorcism burned her face; they married at the campaign's end; the marriage did not work out
 - Queen Elvira: previous queen who defended Alora but eventually sided with a dragon, which led to a falling out and a pivotal betrayal; the Queen used a force field to pin Alora to the wall
 - Virion Maganti: he tampered with a shard she was connected to, causing her to be possessed
 - The dwarves of Doragon: connected to her as allies who assisted her after the dragon-sealing ritual
@@ -54,7 +55,7 @@
 ## Key Events
 Approximately 4000 years ago, Alora served Queen Elvira and participated in sealing a dragon using a purple gem at the summit of an icy peak during the DragonMage War. The dwarves of Doragon revived her with smelling salts and animal blood afterward. She was later betrayed by Queen Elvira, staked, and erased from the historical record — lying sealed for millennia.
 
-She was awakened in the earlier era by a group of arcana users in Crevalon. Made human, she found the form deeply uncomfortable and eventually sought to be re-turned. She gathered arcane components in the Elantir Forest, where she met Nikolai; she accepted his offer and was re-turned at Florian's old manor in the forest, with their relationship developing from there.
+She was awakened by a group of arcana users in Crevalon. Made human, she found the form deeply uncomfortable and eventually sought to be re-turned. She gathered arcane components in the Elantir Forest, where she met Nikolai; she accepted his offer and was re-turned at Florian's old manor in the forest, with their relationship developing from there.
 
 She rescued Nikolai from a werewolf attack in the Toven Swamps, then traveled to Siadiff at King Titus's request to investigate wrongful imprisonment. There she was captured by Sir Thomas Wright — infernally possessed at the time — and subjected to days of radiant torture in adamantine cuffs. Nikolai infiltrated Siadiff disguised as Thomas Wright and broke her out. They traveled to Ikovia together to warn of Siadiff's growing corruption.
 

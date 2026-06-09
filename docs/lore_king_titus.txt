@@ -6,16 +6,16 @@
 - Voice described with a Sean Connery accent in DM notes
 
 ## Role & Affiliation
-- Ruler of the Kingdom of Crevalon during the earlier era
+- Ruler of the Kingdom of Crevalon during previously
 - The majority of the region, including his castle, rests within the Grudoulan Valley
 - His kingdom spans from the port city of Aberdeen in the west, to the Brotor mountains and the Slaerian Desert in the east, with the Elantir Forest to the north and the Touven Swamps to the south
 - Has an arrangement with Lord Florian Reiter allowing the vampires to live in the Elantir Forest as long as they do not harm the general populace
 - Uses Florian as a discreet operative; does not want Crevalon's crest formally involved in conflicts with the Solarians, Lunarians, or The Aviary
 
 ## History & Origin
-- King Titus is described as an "elder" king at the start of the earlier era
-- His health declined over the course of the earlier era (mentioned by Alora to Nikolai: "His health has waned")
-- Died between the earlier era and more recently; because he left no heir to the throne, Sir Thomas Wright (a paladin of Siadiff) was appointed new king, leading to the holy crusade that forms the backdrop of more recently
+- King Titus is described as an "elder" king at the start of the campaign
+- His health declined over the course of the campaign (mentioned by Alora to Nikolai: "His health has waned")
+- Died between previously and more recently; because he left no heir to the throne, Sir Thomas Wright (a paladin of Siadiff) was appointed new king, leading to the holy crusade that forms the backdrop of more recently
 - Beloved of the Lunarian queen (DM notes suggest King Titus was in love with Kuyomi; he used the vampires' manor as a conduit to visit her)
 - His family: his parents were served by a chef named Anton's parents; his paladins included Sir Richard Godwin and he was formerly served by Florian's paladin group
 
@@ -27,13 +27,13 @@
 ## Key Relationships
 - Florian Reiter: working alliance; King Titus formally negotiated the vampires' presence in the forest; uses Florian as a discreet operative
 - Sir Richard Godwin: formal paladin of his court; Godwin and the King sometimes disagreed; Godwin's view that Crevalon forces should not be dispatched was overruled by the King
-- The party (the earlier era): formally employed them as agents, gave them royal medallions with the Crevalon crest, eventually awarded them royal titles and a castle
+- The party (previously): formally employed them as agents, gave them royal medallions with the Crevalon crest, eventually awarded them royal titles and a castle
 - Lady Kuyomi: implied romantic feelings (DM note: "King Titus is in love with the Lunarian queen as he can just visit the vampires to get to her")
 - Alora Venyette: trusted her as his court mage; sent her to Siadiff to investigate wrongful imprisonment; told her "Alora, something is wrong here. Find out, please"
 - Sir Thomas Wright: succeeded him as ruler after his death (appointed, not by hereditary succession)
 
 ## Key Events (campaign)
-- the earlier era: Appeared at Florian's manor late at night via teleportation when Florian summoned him regarding the Solarian talisman situation; charged the party with investigating the cause of conflict between Solarians and Lunarians; directed them to recover all imprisoned dragon artifacts
+- previously: Appeared at Florian's manor late at night via teleportation when Florian summoned him regarding the Solarian talisman situation; charged the party with investigating the cause of conflict between Solarians and Lunarians; directed them to recover all imprisoned dragon artifacts
 - Attended an emergency meeting at Taelreth alongside Sir Godwin, Florian, and the eight wizards after the red dragon attack; expressed concern about dragon threats; asked the party for their counsel
 - Awarded the party royal titles, a large pile of gold, and a castle after their service in the white dragon fight
 - His declining health was a plot point leading into more recently

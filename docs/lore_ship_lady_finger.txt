@@ -1,10 +1,10 @@
 # The Lady Finger
 
 ## Type
-- Sailing ship (party vessel, earlier era)
+- Sailing ship (party vessel, previously)
 
 ## Description
-- The Lady Finger is the sailing ship acquired and used by the earlier era party.
+- The Lady Finger is the sailing ship acquired and used by the party.
 - Named The Lady Finger; flies a pink flag bearing cupcake skulls and crossbones with a chef's hat.
 - Equipped with cannons; the figurehead at the bow is a mermaid holding a cannon in her mouth.
 - Crewed by 20 sailors.
@@ -17,5 +17,5 @@
 - Oscar Hoggarde — master of arms; deaf in one ear from an explosion he set off while in the Crevalon Navy; was discharged for it
 
 ## Connections
-- Used by the earlier era party for sea travel between Crevalon's coastal cities
+- Used by the party for sea travel between Crevalon's coastal cities
 - At one point carried 2.5 tons of Afuku trade goods (later sold in Finreld)

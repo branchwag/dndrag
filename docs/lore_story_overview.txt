@@ -6,7 +6,7 @@ This story spans three continents: Crevalon (a kingdom on the continent of Creva
 ## The DragonMage War (Ancient History)
 Centuries before the present era, a war broke out between the great mages and the dragons of the world. The most powerful mages of that age — including Alora Venyette — participated in sealing the dragons away using arcane rituals and gemstone foci. The sealing was successful, but it left behind a world of celestial factions (the Solarians and Lunarians) bound to guard the sealed dragons, and a lingering tension between the mortal kingdoms and these celestial orders.
 
-## The Earlier Era — Crevalon Under King Titus
+## previously — Crevalon Under King Titus
 The story begins in the kingdom of Crevalon, where King Titus rules from his castle in the Grudoulan Valley. His kingdom spans from the port city of Aberdeen in the west to the Brotor Mountains and Slaerian Desert in the east, with the Elantir Forest to the north and the Toven Swamps to the south.
 
 A party of adventurers — among them Ari Crownsilver (a Bladesinger), Florian Reiter (a vampire lord and former paladin), Elly, Scirocco, Caeda, and others — serve as informal agents of the king. Their enemies converge on two threats:
@@ -22,12 +22,12 @@ By the end of this era, the party has faced devils, descended into Avernus, and 
 ## Alora Venyette's Story
 Alora Venyette is one of the oldest living figures in the world. Approximately 4000 years ago she served Queen Elvira as a powerful mage during the DragonMage War, helping to seal the dragons. During that era she was turned into a vampire by a succubus of Avernus. Queen Elvira ultimately betrayed her — siding with a dragon — and had her staked and erased from the historical record. She lay sealed and forgotten for millennia.
 
-She was awakened in the earlier era when a group of arcana users in Crevalon had need of her. Made human again, she found the form deeply unnatural and eventually chose to be re-turned by Nikolai, an Ikovian changeling diplomat. In the years she was awake, she served as court mage to King Titus — a recent role, not her ancient one. Together she and Nikolai traveled to Ikovia to warn of growing corruption within Crevalon's paladin order.
+She was awakened when a group of arcana users in Crevalon had need of her. Made human again, she found the form deeply unnatural and eventually chose to be re-turned by Nikolai, an Ikovian changeling diplomat. In the years she was awake, she served as court mage to King Titus — a recent role, not her ancient one. Together she and Nikolai traveled to Ikovia to warn of growing corruption within Crevalon's paladin order.
 
 ## Thirty Years Later — The Ikovian Conflict
 King Titus died without an heir. With no royal succession, Sir Thomas Wright — head of the paladins of Siadiff — was appointed ruler of Crevalon. Unknown to those around him, Wright is possessed by Fraz-Urb'luu, a powerful demon who has manipulated him into believing he carries out the will of Torm. In reality, Wright is being used to gather the five pieces of the Staff of Fraz-Urb'luu — a weapon of immense demonic power — by invading Ikovia under the banner of a holy crusade.
 
-This is where the world stands now. The Ikovian and Paladin conflict is the dominant crisis of the present era. Wright's forces have swept into Ikovia, imprisoning those who resist, occupying villages, and hunting undesirables. Caeda — cleric and veteran of the earlier era — has been captured by Siadiff paladins. Alora Venyette is in Ikovia, shielding the Ikovian queen with arcane power.
+This is where the world stands now. The Ikovian and Paladin conflict is the dominant crisis of the present era. Wright's forces have swept into Ikovia, imprisoning those who resist, occupying villages, and hunting undesirables. Caeda — cleric and veteran of previously — has been captured by Siadiff paladins. Alora Venyette is in Ikovia, shielding the Ikovian queen with arcane power.
 
 A new party has taken up the cause. Among them: **Rose Reiter**, the daughter of Florian and Caeda, and **Milly Varna**, who is secretly the lost princess of Ikovia — the rightful heir to its throne. The party works against Wright's forces, gathering the Staff pieces before his army can assemble the weapon. Madame Yugova, a noble vampire from Grinostrov, has used the chaos to attempt a coup against the Ikovian queen. Through the party's efforts, Milly ultimately reclaims her rightful place on the throne.
 

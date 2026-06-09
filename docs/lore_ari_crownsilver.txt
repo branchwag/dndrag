@@ -1,16 +1,16 @@
 ﻿# Ari Crownsilver
 
 ## Identity
-- Wizard / Rogue multiclass; subclass: Bladesinger (took Bladesinger as his subclass during the earlier era)
+- Wizard / Rogue multiclass; subclass: Bladesinger (took Bladesinger as his subclass during previously)
 - Race: High Elf
 - Full name: Andresti "Ari" Crownsilver
 - Codename during Aviary years: The Raven
-- Player character in the earlier era
+- Player character in the campaign
 
 ## Role & Affiliation
-- Student and associated member of the Sylvanian Academy of Magical Arts in Handletare; admitted by letter of recommendation from Florian Reiter during the earlier era
-- Former member of The Aviary (an underground organization; resigned two years before the earlier era begins)
-- Informal agent of King Titus alongside the rest of the the earlier era party
+- Student and associated member of the Sylvanian Academy of Magical Arts in Handletare; admitted by letter of recommendation from Florian Reiter during previously
+- Former member of The Aviary (an underground organization; resigned two years before previously begins)
+- Informal agent of King Titus alongside the rest of the party
 - Originally from Rellond
 - Lived in Finreld for two years after leaving The Aviary, renting the attic of a townhouse hosting The Blue Harp Inn; gnome innkeeper Russell Buttonbottom calls him "Mr. Crownsilver"
 
@@ -24,18 +24,18 @@
 ## Abilities & Powers
 - Bladesinger: combines arcane magic with martial combat; can use Bladesong feature; fights with blades alongside spellcasting
 - Rogue abilities: stealth, Dust of Disappearance (starting magic item), thieving skills; was trained by The Bluejay (a changeling Aviary member) in combat and rogue arts
-- Arcane abilities: growing magical repertoire over the earlier era; admitted to the Sylvanian Academy's curriculum to formally study wizardry
+- Arcane abilities: growing magical repertoire over previously; admitted to the Sylvanian Academy's curriculum to formally study wizardry
 - Owns an owl familiar named Rao (after the god)
 
 ## Key Relationships
-- Lady Adrastea Orvir: deeply in love with her; their relationship developed over the earlier era — meetings at the Academy, a confectionary "date," dancing at Lady Vesemir's masquerade; she shows genuine warmth toward him; she stopped time to protect him at the masquerade; Florian asked Ari to "check in on Lady Orvir" for him
+- Lady Adrastea Orvir: their relationship developed over previously — meetings at the Academy, a confectionary "date," dancing at Lady Vesemir's masquerade; she stopped time to protect him at the masquerade; however, Ari was pulled back into the Aviary's clutches and pursued a relationship with the Bluejay at the same time; Lady Orvir discovered this and ended the relationship; they have since separated
 - Florian Reiter: mentor and benefactor; Florian recommended him to the Sylvanian Academy, sparred with him, gave him combat advice, provided him with an Oathbow (via a letter to Pavel), and offered him guidance on mixing with aristocracy
 - The Bluejay: former trainer in The Aviary; Ari still has feelings for her and tried to reach her; she gave him information about The Dove being an immortal Fey being and about where Virion "hid the keys"
-- The party (Elly, Scirocco, Babushka, Caeda, Pavel): the earlier era companions
-- King Titus: received royal title and a castle from the King as reward for the earlier era service
+- The party (Elly, Scirocco, Babushka, Caeda, Pavel): previously companions
+- King Titus: received royal title and a castle from the King as reward for previously service
 
 ## Key Events (campaign)
-- the earlier era: Joined the party in Finreld; disclosed to Florian that he had been a member of The Aviary and wanted to take them down; Florian stressed going after the head of the organization, The Dove
+- previously: Joined the party in Finreld; disclosed to Florian that he had been a member of The Aviary and wanted to take them down; Florian stressed going after the head of the organization, The Dove
 - Attempted to pry open the puzzle box at the bookshop; suffered greatly — horrible whispered voices and nearly lost consciousness; the curse was later removed by Elly
 - Purchased magical items in Adelanto (a raven, a bluejay, and a blue camel in glasswork)
 - Trained with Florian in the Elantir Forest; took Bladesinger as his subclass
@@ -45,7 +45,7 @@
 
 ## Important Notes
 - He was a former member of The Aviary under the codename The Raven — NOT currently affiliated with them
-- He is IN LOVE with Lady Orvir; this is established clearly across multiple sessions
+- He was deeply in love with Lady Orvir, but their relationship ended after he was pulled back into the Aviary and simultaneously pursued the Bluejay; Lady Orvir left him
 - His family's Anearios connection (parents were immigrants fleeing the magic ban) is a potential plot hook for recent times
-- "He was a Crevalon viscount and a defender of the Crown. He was a Bladesinger" — this is how he identifies himself later in the earlier era
+- "He was a Crevalon viscount and a defender of the Crown. He was a Bladesinger" — this is how he identifies himself later in the campaign
 - He kept his Aviary past hidden initially and disclosed it only to Florian in private

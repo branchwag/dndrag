@@ -7,13 +7,13 @@
 
 ## Role & Affiliation
 - Player character controlled by "Are" (player)
-- Daughter of Florian Reiter (vampire paladin, the earlier era protagonist) and Caeda
+- Daughter of Florian Reiter (vampire paladin, previously protagonist) and Caeda
 - Member of the more recently adventuring party recruited by Milly Varna
 - more recently
 
 ## History & Origin
-- Born to Florian Reiter and Caeda; she is the next generation of the Reiter family introduced in the earlier era
-- more recently takes place 30 years after the earlier era; Rose represents the Reiter lineage in the new era
+- Born to Florian Reiter and Caeda; she is the next generation of the Reiter family introduced in the campaign
+- more recently takes place 30 years later; Rose represents the Reiter lineage in the new era
 - When the campaign opens, Caeda was captured by the Paladins of Siadiff while helping refugees escape through a route connecting Crevalon to Ikovia
 - Florian was not with Caeda at the time of her capture and subsequently contacted Milly to retrieve Rose
 
@@ -22,7 +22,7 @@
 - Received a Rope of Climbing from Milly as her starting magic item
 
 ## Key Relationships
-- Florian Reiter: her father (the earlier era major character); worked alongside Rose to search for Caeda; eventually decided the search was too dangerous for Rose and brought her back to Milly's manor
+- Florian Reiter: her father (a major character); worked alongside Rose to search for Caeda; eventually decided the search was too dangerous for Rose and brought her back to Milly's manor
 - Caeda: her mother; captured by Paladins of Siadiff during more recently
 - Milly Varna: sheltered Rose at her manor; was the one to inform Rose of Caeda's capture and urge her not to attempt an immediate rescue
 - The more recently party (Valentin Mirakov, Wren of the Standing Stars, Lezlie Mackerel, Adelona Arvind): fellow party members
@@ -39,6 +39,6 @@
 
 ## Important Notes
 - Rose is listed as a player character on D&D Beyond under the more recently campaign link
-- Her last name Reiter connects her directly to Florian Reiter of the earlier era
+- Her last name Reiter connects her directly to Florian Reiter of previously
 - Do not confuse Rose Reiter (Florian and Caeda's daughter, more recently PC) with any general use of the word "rose" in the text
-- more recently takes place 30 years after the earlier era; Rose is a new-generation character, not a returning PC
+- more recently takes place 30 years later; Rose is a new-generation character, not a returning PC

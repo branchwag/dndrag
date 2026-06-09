@@ -8,7 +8,7 @@
 - Rellond is a city in Crevalon with a strong connection to the Raven Queen — a mysterious entity associated with Death.
 - The city worships the Raven Queen due to a historical calamity that befell it during the DragonMage War.
 - Lady Adrastea Orvir describes Rellond as a place where "the aspect of Death has been interwoven into the city's foundation itself."
-- Ari Crownsilver (the earlier era rogue) was raised on the streets of Rellond, "in the shadows of the temples there" — suggesting the city has significant temple infrastructure.
+- Ari Crownsilver (the rogue) was raised on the streets of Rellond, "in the shadows of the temples there" — suggesting the city has significant temple infrastructure.
 - Ari has some devotion to the Raven Queen from his upbringing in Rellond, though he is not a devout cleric.
 - The Bluejay — the Aviary's field leader who trained Ari — first found and recruited him in Rellond.
 
@@ -25,7 +25,7 @@
 - During the DragonMage War, the red dragon (serving the Solarian King) burned the city of Rellond to the ground before it was eventually imprisoned.
 - The few survivors of the burning of Rellond swore they saw the Raven Queen herself guiding the souls of those who died to the afterlife.
 - This event cemented the Raven Queen's place as the primary divine figure of Rellond; Death has been woven into the city's identity ever since.
-- Ari's backstory: raised as a street child in Rellond, recruited by the Bluejay, trained as an Aviary assassin (the Raven), assigned to kill the head of Evocation in Diondria but was blasted out of a window; spent two years recovering at the Temple of Rao in Diondria; eventually fell in with the the earlier era party after they slaughtered an Aviary cell.
+- Ari's backstory: raised as a street child in Rellond, recruited by the Bluejay, trained as an Aviary assassin (the Raven), assigned to kill the head of Evocation in Diondria but was blasted out of a window; spent two years recovering at the Temple of Rao in Diondria; eventually fell in with the party after they slaughtered an Aviary cell.
 
 ## Connections
 - Connected to Diondria (where Ari went to carry out his assassination mission and later recovered)

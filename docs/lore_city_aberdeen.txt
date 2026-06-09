@@ -13,7 +13,7 @@
 - Powerful merchants control much of the city; guards bearing the King's crest are present but rarely taken seriously.
 
 ## Institutions & Landmarks
-- The Mad Manatee Pub & Tavern — popular gathering place; where the the earlier era party receives lodging and interrogates a Solarian monk
+- The Mad Manatee Pub & Tavern — popular gathering place; where the party receives lodging and interrogates a Solarian monk
 - The Cuddly Nymph — brothel in the West Docks area; a 3-story building, nicely kept, with a tabaxi doorwoman
 - The Devil's Key — magic shop run by Bertille (a voodoo woman with a Creole/Jamaican accent); sells mainly potions; also sells some magic items; uses a doll to discourage theft
 - The Lucky Ace — gambling parlor (card tables in smoke-filled rooms); has a back-door underground fighting ring run by sailors
@@ -35,11 +35,11 @@
 
 ## History & Lore
 - Aberdeen is the primary entry point for foreign visitors arriving by sea to Crevalon.
-- Solarian monks first appeared here approximately 3 months before the earlier era's story begins, handing out sun talismans and recruiting followers.
-- The fortune teller Ange was given a Solarian talisman 3 months before the earlier era during a visit to Aberdeen; she was the first person to encounter one.
-- Geoffrey (the Sharnwick teen) followed the monks from their ship docking at Aberdeen; this was the seed event for the earlier era's first quest.
+- Solarian monks first appeared here approximately 3 months before previously's story begins, handing out sun talismans and recruiting followers.
+- The fortune teller Ange was given a Solarian talisman 3 months before previously during a visit to Aberdeen; she was the first person to encounter one.
+- Geoffrey (the Sharnwick teen) followed the monks from their ship docking at Aberdeen; this was the seed event for previously's first quest.
 - A plot by the Aviary to attack Siadiff was discussed ("We have found someone to aid us with the zealots of Siadiff") and a Solarian-Aviary conspiracy note was found in Aberdeen.
-- The the earlier era party sails from Aberdeen to Finreld aboard The Golden Mermaid (Elly won passage in a card game of Three Dragon Ante).
+- the party sails from Aberdeen to Finreld aboard The Golden Mermaid (Elly won passage in a card game of Three Dragon Ante).
 
 ## Connections
 - Western coast of Crevalon on the Idrelia Sea

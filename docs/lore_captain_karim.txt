@@ -9,7 +9,7 @@
 ## Role & Affiliation
 - Captain in the Crevalon Royal Navy, commanding the naval ship The Endeavor
 - Gunner aboard The Endeavor: Rodger Smith (also referenced as "Mr. Smith")
-- the earlier era
+- previously
 
 ## History & Origin
 - Grew up in an orphanage in Aberdeen
@@ -25,9 +25,9 @@
 ## Key Relationships
 - Commodore Julius Webb: her superior officer; deeply concerned for her wellbeing after her injury; said of her: "She is our very best. Make sure she doesn't get herself killed"
 - Sister Fiona: the elven healer of the Temple of Rao who saved Karim's life; Fiona moved Karim to her own room during recovery
-- The the earlier era party (Scirocco, Elly, Babushka, Wulfgar, and others): encountered during the pirate attack on The Golden Mermaid; became allied
+- the party (Scirocco, Elly, Babushka, Wulfgar, and others): encountered during the pirate attack on The Golden Mermaid; became allied
 
-## Key Events (the earlier era)
+## Key Events (previously)
 - First appeared when The Endeavor pulled alongside The Golden Mermaid during a pirate mutiny; boarded the ship during the fight to assist the party
 - Ordered Mr. Smith to fire the ship's cannons at an attacking giant squid, killing it and saving the party; declared The Golden Mermaid theirs afterward, with Babushka named Captain Babu
 - Was captured by seafolk alongside the party; held in a magical bubble and dragged to an underwater arena city; looked "thoroughly furious" in her bubble
@@ -35,7 +35,7 @@
 - Was gravely wounded fighting undead pirate Captain William McGee; a necrotic curse negated all healing attempts, leaving her near death
 - Carried to the Temple of Rao in Finreld, where Sister Fiona lifted the curse using Remove Curse and then healed her
 - Her ship The Endeavor was sunk in the battle with McGee; most of her crew died; Commodore Webb arranged for a replacement ship (to be called The Odyssey)
-- Present at the triple wedding at the end of the earlier era alongside the Commodore
+- Present at the triple wedding at the campaign's end alongside the Commodore
 
 ## Important Notes
 - Full name: Captain Fazia Karim (surname appears in a DM note: "forebears.io/surnames/karim")

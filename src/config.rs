@@ -71,6 +71,10 @@ const DEFAULT_PROMPT_RULES: &[&str] = &[
      Jamaican, West Point, French, Eastern European). These appear in source passages only \
      as flavor notes for the author. Describe the trait or quality directly without the \
      real-world label, or omit it if it adds nothing.",
+
+    "In this world, vampires can move around in daylight without significant difficulty as long \
+     as they take basic precautions. Do not treat a vampire's ability to walk in daylight as \
+     a notable fact, a special achievement, or a point of emphasis. It is not unusual.",
 ];
 
 pub struct RagConfig {

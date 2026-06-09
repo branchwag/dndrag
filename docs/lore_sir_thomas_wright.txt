@@ -8,15 +8,15 @@
 
 ## Role & Affiliation
 - Leader of the Paladins of Siadiff (the holy city in Crevalon's southern region)
-- Appointed King of the Crevalon Kingdom after King Titus died with no heir (30 years after the earlier era)
+- Appointed King of the Crevalon Kingdom after King Titus died with no heir (30 years later)
 - Head of the paladin forces invading Ikovia in more recently
 - Connected to Siadiff (the Order of the Golden Lion's holy city)
-- the earlier era (minor appearance) and more recently (major villain)
+- previously (minor appearance) and more recently (major villain)
 
 ## History & Origin
-- During the earlier era, was a ranking paladin within the Order of the Golden Lion at Siadiff; had an audience with Alora at the King's request but was dismissive and hostile toward her
+- During previously, was a ranking paladin within the Order of the Golden Lion at Siadiff; had an audience with Alora at the King's request but was dismissive and hostile toward her
 - Alora detected a "dual nature, a darker nature — a shadow over his countenance, a glint of red within his eye" during that meeting, suggesting possession was already underway or beginning
-- The possession by Fraz-Urb'luu was triggered by the Demonomicon of Iggwilv — the book that Scirocco lost during the earlier era — which allowed the demon to possess Sir Thomas Wright
+- The possession by Fraz-Urb'luu was triggered by the Demonomicon of Iggwilv — the book that Scirocco lost during previously — which allowed the demon to possess Sir Thomas Wright
 - Sir Thomas genuinely believes he has received a vision from Torm; he does not know the true nature of the Staff of Retribution and believes it is a holy relic that will help him "cleanse the world"
 - When King Titus died (no heir), Sir Thomas — as head of the paladins — was appointed ruler of Crevalon, then used that authority to expand paladin control and launch war against Ikovia
 
@@ -28,13 +28,13 @@
 ## Key Relationships
 - Fraz-Urb'luu: the demon possessing him; manipulating him to gather the five pieces of the Staff of Fraz-Urb'luu (also called the Staff of Retribution in paladin propaganda)
 - Sir Godwin: his "right hand" within the paladin order (as referenced by Alora in more recently)
-- Alora Venyette: had a hostile audience with her during the earlier era; she sensed the demonic shadow over him
+- Alora Venyette: had a hostile audience with her during previously; she sensed the demonic shadow over him
 - King Titus: the previous king whose death left the throne vacant, leading to Thomas's appointment
 - The Ikovian Empire: his forces are at war with Ikovia, ostensibly on a crusade but actually serving Fraz-Urb'luu's agenda
 
 ## Key Events
-- the earlier era: Met with Alora in the throne room on the King's behalf; showed contempt toward her as a vampire; Alora detected something wrong with him
-- more recently: Appointed King of Crevalon 30 years after the earlier era; immediately began consolidating paladin power and imprisoning undesirables
+- previously: Met with Alora in the throne room on the King's behalf; showed contempt toward her as a vampire; Alora detected something wrong with him
+- more recently: Appointed King of Crevalon 30 years later; immediately began consolidating paladin power and imprisoning undesirables
 - His troops began collecting the five pieces of the Staff of Retribution across Ikovia, framing the quest as recovering "a holy relic"
 - The Ikovian Queen commissioned the more recently party (via Milly) to gather the staff pieces before Wright's forces could assemble it
 - His occupation of Brezbin (more recently starting village) and the surrounding region is the inciting conflict of more recently
@@ -42,6 +42,6 @@
 ## Important Notes
 - Sir Thomas is a victim of demonic possession as much as he is a villain; he sincerely believes in his divine mission
 - Fraz-Urb'luu is the actual intelligence directing him: Prince of Deception, ruler of the 176th layer of the Abyss called Hollow Heart
-- The Demonomicon of Iggwilv (lost by Scirocco in the earlier era) is the direct cause of the possession
-- Do not conflate Sir Thomas Wright with Sir Godwin — Sir Godwin was a the earlier era paladin antagonist; Sir Thomas is the more recently villain; Thomas is described as "Sir Godwin's right hand" in Alora's account (meaning Thomas served under Godwin's order in the earlier era)
+- The Demonomicon of Iggwilv (lost by Scirocco in the campaign) is the direct cause of the possession
+- Do not conflate Sir Thomas Wright with Sir Godwin — Sir Godwin was a a paladin antagonist; Sir Thomas is the more recently villain; Thomas is described as "Sir Godwin's right hand" in Alora's account (meaning Thomas served under Godwin's order in the campaign)
 - The Staff of Retribution is the same as the Staff of Fraz-Urb'luu: a weapon combining a staff of command, rod of beguiling, and rod of rulership, broken into 5 pieces

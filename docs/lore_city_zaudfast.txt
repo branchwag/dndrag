@@ -6,9 +6,9 @@
 
 ## Description
 - Zaudfast is a coastal city in Crevalon that primarily operates as a naval base for the Crevalon Kingdom.
-- The city has the feel of a military installation; most civilians avoided it during the earlier era due to rumors of vampires in the nearby Elantir Forest (though the forest is actually north, the rumors reached here).
+- The city has the feel of a military installation; most civilians avoided it during previously due to rumors of vampires in the nearby Elantir Forest (though the forest is actually north, the rumors reached here).
 - Garlic is strung in strings tied to the city walls — reflecting the vampire rumors and fear.
-- The city's main tavern during the earlier era is The King's Chalice, essentially empty except for the owner Lilia due to the vampire rumors.
+- The city's main tavern during previously is The King's Chalice, essentially empty except for the owner Lilia due to the vampire rumors.
 - Zaudfast is where Captain Karim (Fazia Karim) is based; she introduces the party to Commodore Julius Webb here.
 - The Toven (Touven) Swamps lie south of Siadiff and near Zaudfast — the swamp area is close to the city.
 
@@ -16,19 +16,19 @@
 - The King's Chalice — tavern in Zaudfast; nearly empty during the vampire scare; run by Lilia
 - Zaudfast Armory — a weapons/armory supplier in the city; the Babushka outfitted The Wench with 12 cannons purchased from the armory for 600 gold
 - Crevalon Navy docks — the principal naval facility; where Crevalon warships including Captain Karim's vessel The Endeavor are based
-- A travelling illusionist (wizard school dropout) lives/operates in Zaudfast during the earlier era
+- A travelling illusionist (wizard school dropout) lives/operates in Zaudfast during previously
 
 ## Notable Inhabitants / Factions
-- Captain Fazia Karim — Crevalon Navy officer; commands The Endeavor (later sunk); receives a replacement ship The Odyssey; a key NPC ally in the earlier era; tieflings receive strange treatment in Zaudfast (social prejudice noted)
+- Captain Fazia Karim — Crevalon Navy officer; commands The Endeavor (later sunk); receives a replacement ship The Odyssey; a key NPC ally in the campaign; tieflings receive strange treatment in Zaudfast (social prejudice noted)
 - Commodore Julius Webb — Karim's superior; full decorated uniform of blue and red with tasseled shoulders; he worries about Karim and clearly has some personal feeling toward her beyond professional concern
 - Lilia — owner of The King's Chalice tavern
 - Local soldiers and naval personnel
 
 ## History & Lore
-- The party arrives at Zaudfast via ship (sailing The Wench alongside The Endeavor after a sea battle) in the earlier era.
+- The party arrives at Zaudfast via ship (sailing The Wench alongside The Endeavor after a sea battle) in the campaign.
 - Rumors of vampires in the region had emptied much of the civilian population; soldiers were stuck there by duty.
 - Tales circulated in Zaudfast of a paladin who was "turned" in the nearby woods — referring to Florian Reiter; the age of stories lined up with when Florian was turned in the Elantir Forest.
-- Zaudfast is a staging ground for adventures into the Elantir Forest during the earlier era.
+- Zaudfast is a staging ground for adventures into the Elantir Forest during previously.
 - During the orange and purple parade: the party enters Zaudfast in a parade with Lunarian escort, to the shock of the soldiers stationed there.
 
 ## Connections
