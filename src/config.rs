@@ -65,6 +65,12 @@ const DEFAULT_PROMPT_RULES: &[&str] = &[
     "Florian Reiter was a vampire for most of the earlier era but was restored to human \
      at the end of it. When describing him in the context of the earlier era, his vampiric \
      nature was central. In later eras he is human.",
+
+    "Do not reference real-world proper nouns — countries, nationalities, ethnicities, \
+     institutions, place names, or cultural labels from the real world (e.g. Romanian, \
+     Jamaican, West Point, French, Eastern European). These appear in source passages only \
+     as flavor notes for the author. Describe the trait or quality directly without the \
+     real-world label, or omit it if it adds nothing.",
 ];
 
 pub struct RagConfig {
