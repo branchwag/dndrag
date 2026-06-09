@@ -12,13 +12,20 @@ use crate::embed::EMBEDDING_DIM;
 const COLLECTION: &str = "dnd_lore";
 const SCORE_THRESHOLD: f32 = 0.45;
 
+#[derive(Clone, PartialEq)]
+pub enum RetrievalType {
+    Semantic,
+    Keyword,
+    LoreFile,
+}
+
 #[derive(Clone)]
 pub struct SearchResult {
     pub text: String,
     pub source: String,
     pub page: u32,
     pub score: f32,
-    pub is_keyword_match: bool,
+    pub retrieval_type: RetrievalType,
 }
 
 pub struct VectorStore {
@@ -159,7 +166,7 @@ impl VectorStore {
                 let source = extract_string(&r.payload, "source");
                 let page = extract_u32(&r.payload, "page");
                 let score = r.score;
-                let result = SearchResult { text, source, page, score, is_keyword_match: false };
+                let result = SearchResult { text, source, page, score, retrieval_type: RetrievalType::Semantic };
                 (result, vector)
             })
             .collect())
@@ -197,7 +204,7 @@ impl VectorStore {
                 let source = extract_string(&r.payload, "source");
                 let page = extract_u32(&r.payload, "page");
                 let score = r.score;
-                SearchResult { text, source, page, score, is_keyword_match: true }
+                SearchResult { text, source, page, score, retrieval_type: RetrievalType::LoreFile }
             })
             .collect())
     }
@@ -233,7 +240,7 @@ impl VectorStore {
                 let source = extract_string(&r.payload, "source");
                 let page = extract_u32(&r.payload, "page");
                 let score = r.score;
-                SearchResult { text, source, page, score, is_keyword_match: true }
+                SearchResult { text, source, page, score, retrieval_type: RetrievalType::Keyword }
             })
             .collect())
     }

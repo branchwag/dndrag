@@ -191,7 +191,7 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
     //   threshold (topically relevant even without the name, e.g. city list chunks).
     if !names.is_empty() {
         results.retain(|r| {
-            if r.is_keyword_match {
+            if r.retrieval_type != crate::store::RetrievalType::Semantic {
                 return true; // already filtered at collection time
             }
             let name_in_text = names
@@ -228,7 +228,7 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
         .iter()
         .enumerate()
         .map(|(i, r)| {
-            let label = if r.is_keyword_match { "DIRECT MATCH" } else { "related" };
+            let label = if r.retrieval_type != crate::store::RetrievalType::Semantic { "DIRECT MATCH" } else { "related" };
             let page_str = if r.page > 0 { format!(" p.{}", r.page) } else { String::new() };
             format!("[{}] [{label}] from {}{}\n{}", i + 1, r.source, page_str, r.text)
         })

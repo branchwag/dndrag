@@ -37,6 +37,7 @@ enum Command {
     },
     /// Run labeled Q&A pairs and report how many the system answers correctly
     Eval {
+        /// Path to eval file; resolves relative to CWD, not the project root
         #[arg(short, long, default_value = "eval.json")]
         eval_file: PathBuf,
     },
