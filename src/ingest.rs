@@ -97,16 +97,14 @@ fn extract_text(path: &Path) -> Result<String> {
     }
 }
 
-// Strips content that should never reach the vector store: YouTube URLs and
-// the channel name "beardedboggan". Operates on the raw extracted text before
-// any chunking, so nothing leaks through even in mid-sentence references.
-// Page-break markers (\x0c) are preserved so page tracking still works.
+// Strips YouTube URLs from raw extracted PDF text as a safety net — the Python
+// clean_pdfs.py script handles this at the PDF level, but this catches anything
+// that slips through. Page-break markers (\x0c) are preserved for page tracking.
 fn clean_text(text: &str) -> String {
     text.split('\x0c')
         .map(|page| {
             page.lines()
                 .map(|line| {
-                    // Strip any token that looks like a YouTube URL.
                     line.split_whitespace()
                         .filter(|w| {
                             let l = w.to_lowercase();
@@ -115,8 +113,6 @@ fn clean_text(text: &str) -> String {
                         .collect::<Vec<_>>()
                         .join(" ")
                 })
-                // Drop entire lines that name the channel.
-                .filter(|line| !line.to_lowercase().contains("beardedboggan"))
                 .collect::<Vec<_>>()
                 .join("\n")
         })

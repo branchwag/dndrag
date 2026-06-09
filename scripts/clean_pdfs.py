@@ -1,7 +1,13 @@
 """
-Removes YouTube references from every PDF in ./docs:
-  - Link annotations pointing to YouTube URLs (deleted)
-  - Visible text tokens containing "youtube" / "youtu.be" (redacted to white)
+Removes out-of-game references from every PDF in ./docs:
+  - Link annotations pointing to filtered URLs (deleted)
+  - Visible text tokens containing any FILTER_KEYWORDS (redacted to white)
+
+Covered keywords:
+  - YouTube URLs and channel references
+  - beardedboggan (channel name)
+  - branchwag (username/handle)
+  - discord (platform links and server references)
 Overwrites each file in place after changes.
 """
 
@@ -11,12 +17,17 @@ import glob
 import fitz  # PyMuPDF
 
 DOCS_DIR = "docs"
-YOUTUBE_KEYWORDS = ("youtube.com", "youtu.be", "youtube")
+FILTER_KEYWORDS = (
+    "youtube.com", "youtu.be", "youtube",
+    "beardedboggan",
+    "branchwag",
+    "discord.gg", "discord.com", "discord",
+)
 
 
-def is_youtube(s: str) -> bool:
+def should_filter(s: str) -> bool:
     low = s.lower()
-    return any(k in low for k in YOUTUBE_KEYWORDS)
+    return any(k in low for k in FILTER_KEYWORDS)
 
 
 def clean_pdf(path: str) -> bool:
@@ -24,19 +35,19 @@ def clean_pdf(path: str) -> bool:
     changed = False
 
     for page in doc:
-        # --- 1. Remove link annotations pointing to YouTube ---
+        # --- 1. Remove link annotations pointing to filtered URLs ---
         links = page.get_links()
         for link in links:
             uri = link.get("uri", "")
-            if is_youtube(uri):
+            if should_filter(uri):
                 page.delete_link(link)
                 changed = True
                 print(f"  removed link annotation: {uri[:80]}")
 
-        # --- 2. Redact any visible text tokens containing YouTube ---
+        # --- 2. Redact any visible text tokens matching filter keywords ---
         words = page.get_text("words")
         for x0, y0, x1, y1, word, *_ in words:
-            if is_youtube(word):
+            if should_filter(word):
                 page.add_redact_annot(fitz.Rect(x0, y0, x1, y1), fill=(1, 1, 1))
                 changed = True
                 print(f"  redacted text token: {word!r}")
