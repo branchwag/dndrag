@@ -1,4 +1,4 @@
-# Ali Hassan
+﻿# Ali Hassan
 
 ## Identity
 - Wizard (Necromancy specialist)
@@ -7,7 +7,7 @@
 
 ## Role & Affiliation
 - Head of Necromancy at Taelreth, Institute of the Arcane in Diondria
-- He is the replacement for the previous head of necromancy — Virion Maganti — who was asked to leave approximately one year before Campaign 1 begins
+- He is the replacement for the previous head of necromancy — Virion Maganti — who was asked to leave approximately one year before the earlier era begins
 - Philosophy: "Not everyone can teach necromancy in a way that is helpful rather than detrimental"; emphasizes "respect for the dead"
 - Can command shadows that are capable of fighting (including potentially fighting a dragon)
 
@@ -24,10 +24,10 @@
 - Ophelia: fellow academic at Taelreth; she calls on him when the party needs necromantic expertise ("Waves her hand in an arcane gesture to message Hassan — 'Hassan, do you have a moment?'")
 - Virion Maganti: predecessor whose departure made room for Ali Hassan; Virion was asked to leave prior to Ali Hassan's arrival
 - Evius Hallewell: fellow school head at Taelreth; they are colleagues
-- The party (Campaign 1): met them when the party came to Taelreth; assisted with the speaking-with-dead diagrams
+- The party (the earlier era): met them when the party came to Taelreth; assisted with the speaking-with-dead diagrams
 
 ## Key Events (campaign)
-- Campaign 1: Present at Taelreth when the party consulted the school heads; assisted with interpreting diagrams related to summoning devils (Speaking with Dead diagrams); appeared in the room at Ophelia's summons
+- the earlier era: Present at Taelreth when the party consulted the school heads; assisted with interpreting diagrams related to summoning devils (Speaking with Dead diagrams); appeared in the room at Ophelia's summons
 
 ## Important Notes
 - Ali Hassan is explicitly the replacement for Virion Maganti as Head of Necromancy at Taelreth

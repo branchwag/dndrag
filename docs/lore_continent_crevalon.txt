@@ -1,8 +1,8 @@
-# Crevalon
+﻿# Crevalon
 
 ## Type
 - Continent / Kingdom
-- Primary setting of Campaign 1 and primary homeland of Campaign 2 antagonists (the Paladins of Siadiff originate here)
+- Primary setting of the earlier era and primary homeland of more recently antagonists (the Paladins of Siadiff originate here)
 
 ## Description
 - The Kingdom of Crevalon is a relatively peaceful, prosperous medieval-fantasy realm ruled for many years by the elder King Titus.
@@ -27,13 +27,13 @@
 - Sir Thomas Wright — paladin of Siadiff; becomes the de facto ruler of Crevalon after King Titus's death; enacts an oppressive holy crusade in the name of Torm; is revealed to be possessed by a powerful infernal being
 - Alora Venette — court mage of Crevalon; ancient vampire; centuries-old arcane figure
 - The Aviary — a shadowy criminal/assassin organization operating within Crevalon; their leader, the Dove, is revealed to be the Queen of Air and Darkness (a Fey entity) posing as Titania
-- The Solarian Order — sun-worshipping monks who arrived via ship in Aberdeen; antagonists in Campaign 1; seek to awaken imprisoned dragons and expand their influence
+- The Solarian Order — sun-worshipping monks who arrived via ship in Aberdeen; antagonists in the earlier era; seek to awaken imprisoned dragons and expand their influence
 - The Lunarians — mysterious moon-elf forest tribe living in the Elantir Forest; worship Selune; led by Lady Kuyomi (revealed to be a Solar/celestial being); keep to themselves but will respond to provocation
 
 ## History & Lore
 - The DragonMage War (thousands of years before the campaign): The world was wracked by war between dragon factions — those serving the Lunarian Queen (black, blue, green, silver, white dragons) and those serving the Solarian King (brass, bronze, copper, gold, red dragons). The war created the FrostLands (white dragon's icy breath in the north) and the Slaerian Desert (red dragon's fire). A union of the most powerful mages sealed the dragons away. The Lunarian and Solarian leaders declared a truce, and day/night were divided equally.
 - Ancient female mage sealed the dragons individually; each dragon was imprisoned within a magical orb or gem artifact. These artifacts have been passed down or hidden across the world. The Solarians seek to recover them and awaken the dragons to resume the war.
-- During Campaign 1: King Titus passes away without an heir. Sir Thomas Wright (possessed by an infernal being serving Bel of Avernus) seizes control of Crevalon through the Order of the Golden Lion and launches a crusade that expands east across the Slaerian Desert into Ikovia.
+- During the earlier era: King Titus passes away without an heir. Sir Thomas Wright (possessed by an infernal being serving Bel of Avernus) seizes control of Crevalon through the Order of the Golden Lion and launches a crusade that expands east across the Slaerian Desert into Ikovia.
 
 ## Connections
 - Borders the Slaerian Desert (east) and the Idrelia Sea (west)
@@ -43,7 +43,7 @@
 - Anearios is a separate continent across the Idrelia Sea to the west
 
 ## Important Notes
-- Crevalon is the primary setting for Campaign 1; Campaign 2 takes place largely in Ikovia but the paladins of Siadiff (Crevalon) are the antagonists
-- King Titus's death and Thomas Wright's rise mark the transition point between Campaign 1 and Campaign 2
-- The Solarian monks who provoke conflicts in Campaign 1 are later revealed to be manipulated by a third power (Bel/Avernus-connected infernal beings)
+- Crevalon is the primary setting for the earlier era; more recently takes place largely in Ikovia but the paladins of Siadiff (Crevalon) are the antagonists
+- King Titus's death and Thomas Wright's rise mark the transition point between the earlier era and more recently
+- The Solarian monks who provoke conflicts in the earlier era are later revealed to be manipulated by a third power (Bel/Avernus-connected infernal beings)
 - The Elantir Forest is where Florian Reiter's manor is located — it is NOT a dungeon or hostile zone by default; it is guarded by centaurs and inhabited by the Lunarians

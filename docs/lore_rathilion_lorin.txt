@@ -1,4 +1,4 @@
-# Rathilion Lorin
+﻿# Rathilion Lorin
 
 ## Identity
 - Arcanist / Wizard
@@ -19,10 +19,10 @@
 
 ## Key Relationships
 - Lady Adrastea Orvir: his superior; the Academy's Benefactor and Overseer; she spoke of his beautiful techniques admiringly
-- The party (Campaign 1): met him at Lady Vesemir's masquerade ball; he was wearing a lion mask at the masquerade
+- The party (the earlier era): met him at Lady Vesemir's masquerade ball; he was wearing a lion mask at the masquerade
 
 ## Key Events (campaign)
-- Campaign 1: Was present at Lady Vesemir's masquerade ball, where he was speaking with Lady Adrastea Orvir when the party arrived
+- the earlier era: Was present at Lady Vesemir's masquerade ball, where he was speaking with Lady Adrastea Orvir when the party arrived
 
 ## Important Notes
 - Rathilion Lorin is at the Sylvanian Academy of Magical Arts in Handletare, NOT at Taelreth in Diondria

@@ -1,4 +1,4 @@
-# Elantir Forest
+﻿# Elantir Forest
 
 ## Type
 - Region (forest)
@@ -30,7 +30,7 @@
 - Florian Reiter came to the Elantir Forest on a paladin mission with his party; they were attacked by a succubus during the night; Florian was turned and in his initial bloodlust turned his companions. He then struck a deal with King Titus to remain in the forest, surviving only on deer blood.
 - The agreement between Florian Reiter and King Titus: they could live tucked away in the forest as long as they survived on the blood of deer instead of humans.
 - The Lunarian tribe within the forest: the DragonMage War created the Slaerian Desert via the red dragon's fire and the FrostLands via the white dragon's icy breath; the Lunarians have lived in this forest since before or during those events.
-- The white dragon was awakened during Campaign 1 and the party (along with wizards from Taelreth) battled it in the Elantir Forest; several wizards nearly fell but were healed.
+- The white dragon was awakened during the earlier era and the party (along with wizards from Taelreth) battled it in the Elantir Forest; several wizards nearly fell but were healed.
 - Andrei — Florian's former caretaker of the manor; no longer present by the time of Alora's return.
 
 ## Connections

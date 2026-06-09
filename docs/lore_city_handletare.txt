@@ -1,4 +1,4 @@
-# Handletare
+﻿# Handletare
 
 ## Type
 - City (elven city)
@@ -20,7 +20,7 @@
 ## Notable Inhabitants / Factions
 - Lady Adrastea Orvir — noble; benefactor and overseer of the Sylvanian Academy of Magical Arts; donated her family's book collection to the Academy; studies planar magic; her mother Gwentharidel Orvir went missing on another plane; intelligent, poised, British-accented; actually a noble as well as a librarian/academic. Full name: Lady Adrastea Orvir; family name Orvir. Father: Erius Orvir (reclusive, obsessed with finding his missing wife; possibly based in the FrostLands as a wizard in a tower).
 - Head Arcanist Rathilion Lorin — leader of the Sylvanian Academy of Magical Arts
-- Ari Crownsilver (Campaign 1) — invited to study at the Sylvanian Academy via a letter from Lord Florian Reiter; his father is described as a high elf academic in Handletare; Lady Vesemir's family connection to Ari suggests she could be his mother (she had a fling covered up)
+- Ari Crownsilver (the earlier era) — invited to study at the Sylvanian Academy via a letter from Lord Florian Reiter; his father is described as a high elf academic in Handletare; Lady Vesemir's family connection to Ari suggests she could be his mother (she had a fling covered up)
 - Adrastea Orvir (magic shop assistance) — also helps in her father's magic shop in Handletare in spare time
 - Elven swordsmen at the Academy — train visiting students
 

@@ -1,4 +1,4 @@
-# Siadiff
+﻿# Siadiff
 
 ## Type
 - City (holy city / paladin stronghold)
@@ -23,14 +23,14 @@
 - Sir Thomas Wright — head of the Order of the Golden Lion; becomes the de facto ruler of Crevalon after King Titus's death; launches a holy crusade; possessed by a powerful infernal being serving Bel of Avernus; his eyes occasionally show a glint of red and swirls of black smoke — signs of the infernal possession
 - Sir Richard Godwin — senior paladin of Siadiff; sits to the King's left during the war council; has a low opinion of Florian Reiter; voice described as low British
 - Lord Florian Reiter — before becoming a vampire, was a well-respected Knight within the Order of the Golden Lion in Siadiff; moved there after a childhood vision convinced him Torm had called him; rose within the Order before his ill-fated mission in the Elantir Forest
-- The Order's paladins and knights — enforce the tenets of Torm throughout Crevalon and, during Campaign 2, across the Slaerian Desert into Ikovia
+- The Order's paladins and knights — enforce the tenets of Torm throughout Crevalon and, during more recently, across the Slaerian Desert into Ikovia
 
 ## History & Lore
 - Siadiff was founded on cliffs blessed by Torm; it has long been the spiritual heart of Crevalon.
 - Florian Reiter was once a paladin here; he grew up the son of farmers near Lake Bassol, had a vision as a boy that Torm was calling him, moved to Siadiff, and rose within the Order of the Golden Lion. He was turned into a vampire during a mission in the Elantir Forest.
-- During Campaign 1: Alora Venette travels to Siadiff on behalf of King Titus to investigate rumors of the Order's corruption. She encounters Sir Thomas Wright, whose infernal possession becomes apparent. She is imprisoned and tortured with radiant energy before being rescued by Nikolai (an Ikovian diplomat/vampire).
+- During the earlier era: Alora Venette travels to Siadiff on behalf of King Titus to investigate rumors of the Order's corruption. She encounters Sir Thomas Wright, whose infernal possession becomes apparent. She is imprisoned and tortured with radiant energy before being rescued by Nikolai (an Ikovian diplomat/vampire).
 - After King Titus's death: Sir Thomas Wright uses the King's illness and death to seize power, installing the Order as the governing body of Crevalon. He announces that the leaders of other regions have handed over control to the Order.
-- During Campaign 2: Siadiff has become a fortress; the Order launches a full holy crusade into Ikovia. Milly (Ikovian necromancer) is captured and imprisoned in Siadiff. The Campaign 2 party must infiltrate Siadiff to rescue her.
+- During more recently: Siadiff has become a fortress; the Order launches a full holy crusade into Ikovia. Milly (Ikovian necromancer) is captured and imprisoned in Siadiff. The more recently party must infiltrate Siadiff to rescue her.
 - The Paladins of Siadiff persecute: tieflings, magic users who are not casting in Torm's name, vampires, necromancers, and creatures of the night generally.
 
 ## Connections
@@ -38,7 +38,7 @@
 - The Toven/Touven Swamps lie just outside the city; werewolves inhabit these swamps
 - Siadiff's forces extend east across the Slaerian Desert to occupy villages in Ikovia
 - Virion Maganti was investigated by the Paladins of Siadiff before his disappearance; they sent a group (including Florian) to investigate — those paladins went missing (Florian was turned)
-- Brezbin (Ikovia) is a flashpoint of Paladin-Ikovian conflict during Campaign 2
+- Brezbin (Ikovia) is a flashpoint of Paladin-Ikovian conflict during more recently
 - A cleric from Siadiff was once consulted by the fortune teller Ange (from Sharnwick) about an infernal puzzle box; he left without helping
 
 ## Important Notes
@@ -46,4 +46,4 @@
 - Siadiff worships TORM (god of duty, law, and righteous battle) — NOT a sun god, NOT Pelor. The Order is called the Order of the GOLDEN LION.
 - The Order of the Golden Lion is in SIADIFF. Taelreth is in DIONDRIA. The Sylvanian Academy is in HANDLETARE. These are three distinct institutions in three distinct cities.
 - Siadiff's holy radiance is genuinely harmful to vampires and undead — it is not merely psychological fear; Alora physically burns from the radiant energy of the city.
-- Sir Thomas Wright is POSSESSED by an infernal being; the Order's cruelty during Campaign 2 is a corruption, not the Order's original intent.
+- Sir Thomas Wright is POSSESSED by an infernal being; the Order's cruelty during more recently is a corruption, not the Order's original intent.

@@ -1,23 +1,23 @@
-# Altarion (Sir Altarion)
+﻿# Altarion (Sir Altarion)
 
 ## Identity
 - Paladin (Order of Torm / Order of the Golden Lion)
 - Race: Elf (described as "an elven man, clad in the armor of The Order of the Golden Lion" when he first arrives at Florian's manor)
 - Title: Sir Altarion
-- Player character (joined the party mid-Campaign 1, played by Joe)
+- Player character (joined the party mid-the earlier era, played by Joe)
 
 ## Role & Affiliation
 - Member of the Order of the Golden Lion (the Order of Torm, based in the Holy City of Siadiff)
 - Described as Sir Godwin's "right hand" within the Order
-- Dispatched by Sir Godwin to assist the Campaign 1 party ("I dispatch you to join those within the King's service")
-- Entered the party late in Campaign 1 as an additional paladin operative
+- Dispatched by Sir Godwin to assist the the earlier era party ("I dispatch you to join those within the King's service")
+- Entered the party late in the earlier era as an additional paladin operative
 
 ## History & Origin
 - Has performed exorcisms in Siadiff — the DM notes describe him as recognizing the look of possession from "the exorcisms you performed back in Siadiff"
 - His family (mother and sister) was kidnapped by the Kyokhans: a people native to the Greylands who believe they can purify the scorched land via human sacrifice
 - His mother and sister were burned alive on wooden stakes by the Kyokhans while Altarion was forced to watch, hidden from sight and unable to intervene
 - Crevalon forces arrived and saved Altarion but were too late to save his family
-- This backstory was revisited in a vision/nightmare sequence during the final Campaign 1 arc (pit fiend illusion)
+- This backstory was revisited in a vision/nightmare sequence during the final the earlier era arc (pit fiend illusion)
 
 ## Abilities & Powers
 - Paladin abilities: radiant energy, healing, Lay on Hands equivalent; used to heal party wounds in the Tomb of Jaiyana Saihan while the others fought Virion
@@ -30,7 +30,7 @@
 - Sir Godwin: his superior and the person who dispatched him; Sir Godwin considers him his right hand; Altarion has been in Godwin's study "many times before"
 - Florian Reiter: complex relationship — Altarion arrived wary of vampires but Florian gifted him a sword and provided tactical training; Florian's butler Andrei told Altarion the story of how Florian was turned; Altarion reflected on this and moderated his view
 - Madame Alora (Alora Venyette): extremely tense relationship; Alora detests him because he reminds her of her husband but she hates that he is a paladin; she made jabs at him constantly; when possessed, she woke him by clutching his throat and cast Blight on him (96 damage); after the exorcism, her face was severely burned by his radiant energy; there is a DM note about "Alora/Altarion date?" suggesting a possible arc; Alora later commented "You don't think I'm a bit old for you?" — playful antagonism
-- The party: joined mid-Campaign 1; participated in the Tomb of Jaiyana Saihan, the Greylands arc, the Adelanto hippogriff races, the Avernus arc, and the Underdark endgame
+- The party: joined mid-the earlier era; participated in the Tomb of Jaiyana Saihan, the Greylands arc, the Adelanto hippogriff races, the Avernus arc, and the Underdark endgame
 - Malek (Scirocco's brother): tied with Scirocco in the hippogriff races in Adelanto, leaving Malek in last place
 
 ## Key Events (campaign)
@@ -45,7 +45,7 @@
 - Was a bit late to one meeting having taken a moment to speak with Alora
 
 ## Important Notes
-- Altarion joined the party LATE in Campaign 1 — he is not present from the beginning; he arrives partway through, dispatched by Sir Godwin
+- Altarion joined the party LATE in the earlier era — he is not present from the beginning; he arrives partway through, dispatched by Sir Godwin
 - Sir Godwin is his superior, NOT his equal; Altarion's rank is below Godwin's
 - Madame Alora remembers Altarion specifically (from the Alora.pdf story: "She remembered Altarion, though she wished otherwise… She remembered first attacking him") — she attacked him when possessed and the memory is present in the Alora.pdf timeline
 - His family's deaths (burned by the Kyokhans in the Greylands) are a core part of his backstory and were used against him in a vision sequence in Avernus

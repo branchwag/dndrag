@@ -1,9 +1,9 @@
-# Ikovia
+﻿# Ikovia
 
 ## Type
 - Continent / Empire
 - Separate continent east of Crevalon, across or beyond the Slaerian Desert
-- Primary setting of Campaign 2
+- Primary setting of more recently
 
 ## Description
 - The Ikovian Empire is a large, powerful nation known for its acceptance and even celebration of necromancy — it is considered an honor to have one's corpse put to use in battle; necromancers are in high demand.
@@ -21,7 +21,7 @@
 
 ## Cities / Regions within Ikovia
 - Grinostrov — capital city; seat of the royal palace and the magical academy
-- Brezbin — village in the south/southwest; where Campaign 2 begins; site of a makeshift Paladin of Siadiff prison
+- Brezbin — village in the south/southwest; where more recently begins; site of a makeshift Paladin of Siadiff prison
 - Vatmir — dragonborn village
 - Ostroski — coastal city; ships styled like Viking ships
 - Chetna — landlocked city
@@ -29,30 +29,30 @@
 - Zehove (Zehové) — city by a river
 
 ## Notable Inhabitants / Factions
-- The Ikovian Queen (during Campaign 2) — leads the defense against the Paladin crusade; delivers a speech to rally her people against the invasion
-- Millecent "Milly" Varna — Commander of the Western Division of Ikovian Forces; powerful necromancer; secretly of royal blood (backstory echoes Anastasia); hires the Campaign 2 party to recover pieces of the Staff of Retribution
+- The Ikovian Queen (during more recently) — leads the defense against the Paladin crusade; delivers a speech to rally her people against the invasion
+- Millecent "Milly" Varna — Commander of the Western Division of Ikovian Forces; powerful necromancer; secretly of royal blood (backstory echoes Anastasia); hires the more recently party to recover pieces of the Staff of Retribution
 - Madame Yugova Astronovich — powerful, well-known Ikovian noble/vampire; possesses one piece of the Staff; too powerful for Ikovia to simply imprison; ultimately attempts to seize the Ikovian throne
 - Yuri — vampire who works alongside Milly; later has ambitions to make Milly his bride and seize power
 - Adelonda — Ikovian general (poses as one); actually a ballet enthusiast; informs the Paladins of Ikovian activity; complex loyalties; her father was killed by Florian Reiter, which she eventually discovers
 - The Ikovian Forces / Necromancer Army — primary defenders of Ikovia against the Paladin crusade; composed of necromancers, undead forces, and conventional troops
-- Yasmine (Campaign 3 character) — her family is from Ikovia
+- Yasmine (recent times character) — her family is from Ikovia
 
 ## History & Lore
 - Tradition of female rulers stretches back to Pavlova, daughter of the first Ikovian King, who became ruler in her own right and is the namesake of Pavlova Cave.
 - The Ikovian Empire practices necromancy as a culturally sanctioned tradition; the dead are put to use defending the empire.
-- During Campaign 2: King Titus of Crevalon has died; Sir Thomas Wright (possessed by an infernal being) seizes control of Crevalon and launches a holy crusade in the name of Torm against Ikovia, branding necromancy as an abomination. Siadiff's forces push east across the Slaerian Desert into Ikovian territory. The Paladins capture Milly and imprison her in Siadiff.
+- During more recently: King Titus of Crevalon has died; Sir Thomas Wright (possessed by an infernal being) seizes control of Crevalon and launches a holy crusade in the name of Torm against Ikovia, branding necromancy as an abomination. Siadiff's forces push east across the Slaerian Desert into Ikovian territory. The Paladins capture Milly and imprison her in Siadiff.
 
 ## Connections
 - Separated from Crevalon by the Slaerian Desert to the west
 - Borders the Idrelia Sea (mentioned as connecting Aberdeen/Crevalon to Anearios)
 - The Staff of Retribution — five pieces hidden across Ikovia; when assembled, a weapon of the gods; sought by both Siadiff and Ikovia
-- Brezbin is where Campaign 2 party first appears, captured by the Knights of Torm
-- Crevalon refugees have been fleeing Siadiff's rule through Ikovian territory during Campaign 2
+- Brezbin is where more recently party first appears, captured by the Knights of Torm
+- Crevalon refugees have been fleeing Siadiff's rule through Ikovian territory during more recently
 
 ## Important Notes
 - Necromancy is LEGAL and honored in Ikovia; it is ILLEGAL in Crevalon. This is a key distinction for RAG accuracy.
 - Vampires are ACCEPTED in Ikovia; they are merely TOLERATED (under restrictions) in Crevalon and PERSECUTED in Siadiff.
 - Ikovia is magically warded against external teleportation, making travel there difficult by magical means.
-- The Campaign 2 party eventually helps place the rightful Ikovian queen on the throne.
+- The more recently party eventually helps place the rightful Ikovian queen on the throne.
 - Milly is secretly the lost princess of Ikovia (Anastasia-style plot).
 - Madame Yugova's attempt to seize the throne is ultimately defeated.

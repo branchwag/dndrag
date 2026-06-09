@@ -1,8 +1,8 @@
-# Anearios
+﻿# Anearios
 
 ## Type
 - Continent
-- Separate continent situated across the Idrelia Sea; primary setting of Campaign 3
+- Separate continent situated across the Idrelia Sea; primary setting of recent times
 - A land of tinkerers and artificers; steampunk/industrial-fantasy setting
 
 ## Description
@@ -18,11 +18,11 @@
 
 ## Institutions & Landmarks
 - The Grand Orrery Palace — the royal seat of the Twin Queens in Giglington; its domed roof turns slowly with the sky; powered by the same arcane-mechanical core as the city's clock towers
-- Ministry of Invention — royal institution governing magical research; locked down by the Queens during Campaign 3
+- Ministry of Invention — royal institution governing magical research; locked down by the Queens during recent times
 - The Hailthorne Institute — prestigious arcane academy in the northern city of Evlinross; the finest observatory in Anearios; known for producing arcane talent, chronomancy, and strict expectations around magical discipline
 - Guild of Unified Artificers (Founders Guild / Founders Guildhall) — semi-legal artificer organization controlling trade in magical tech; half school, half cartel; located in Tiven's Read
 - Brassmantle Guard — elite peacekeeping/investigative force sworn equally to Queen Georgia and Queen Henrietta; handles arcane anomalies, border disputes, and sabotage cases
-- The Providence Engine — an ancient, self-aware artifice buried deep in the industrial heartland; created by the earliest artificers as a utopia-building tool; sealed away after a great rebellion; begins reactivating in Campaign 3
+- The Providence Engine — an ancient, self-aware artifice buried deep in the industrial heartland; created by the earliest artificers as a utopia-building tool; sealed away after a great rebellion; begins reactivating in recent times
 - Skyfarers' Guild — airship pilots, pirates, couriers, and rogue inventors; also called the Skyfarer's Guild
 
 ## Factions
@@ -35,31 +35,31 @@
 ## Cities / Regions within Anearios
 - Giglington — capital city; described as impossibly alive; cobblestones warmed by underground pipes; giant gears turning atop rooftops; clock towers like gilded cathedrals; the air smells of oil and roasted chestnuts; ruled by the Twin Queens from the Grand Orrery Palace
 - Windenreich ("Realm of Winds") — western region of Anearios; a frontier-industrial territory
-- Vormark (the Skyforge City) — hangar city in the western region of Windenreich; built atop cliffs overlooking the west; the air smells of ozone, salt, and hot metal; major airship departure/arrival hub; convergence point for Campaign 3 party
-- Tiven's Read — southeastern basin city just outside Giglington; industrial, gritty, filled with factories and tinkers' workshops; origin city of Kira (Campaign 3); home of the Founders Guild; smell of oil, ozone, burnt copper; the Aether Rail connects it to Giglington
-- Evlinross — northern city; dark stone and ice; known for arcane talent and spellcraft; home of the Hailthorne Institute; population mostly Haringtons; source of Campaign 3 character Yutei
+- Vormark (the Skyforge City) — hangar city in the western region of Windenreich; built atop cliffs overlooking the west; the air smells of ozone, salt, and hot metal; major airship departure/arrival hub; convergence point for recent times party
+- Tiven's Read — southeastern basin city just outside Giglington; industrial, gritty, filled with factories and tinkers' workshops; origin city of Kira (recent times); home of the Founders Guild; smell of oil, ozone, burnt copper; the Aether Rail connects it to Giglington
+- Evlinross — northern city; dark stone and ice; known for arcane talent and spellcraft; home of the Hailthorne Institute; population mostly Haringtons; source of recent times character Yutei
 - Stahlhafen ("Steel Harbor") — industrial city-region built around a highland airship dock or lakeport; frontier-industrial flavor
 - Ausmere Basin — remote dried valley in Windenreich's western expanse; site of a buried Providence Engine node
 - Thalren's Spine — ancient icy mountain range above which the Vox Eterna airship travels; has buried Providence Engine conduit nodes
 - Rivett — a city; home of Gilda and Norren Marlowe (honeymooning mechanics)
-- Millborough — a city; home of a Campaign 3 character (Tess's brother is there)
+- Millborough — a city; home of a recent times character (Tess's brother is there)
 
 ## Notable Inhabitants
 - Queen Georgia — one of the Twin Queens; has an affinity for cats; rules from Giglington
 - Queen Henrietta — one of the Twin Queens; rules from Giglington
 - Herr Albrecht Vohrn — field agent of the Clockwork Hands; clockphilosopher; elegant duelist; uses a cane called "Temporis Fang" that houses a resonance generator
-- Director Boon — a Ministry of Invention director the party makes a deal with in Campaign 3
-- Kiralyn "Kira" Cavrick — human artificer from Tiven's Read; Campaign 3 player character; former war artificer who sabotaged her family's weapon-making
-- Yutei — ice sorcerer from Evlinross; Campaign 3 player character; fled Hailthorne Institute's oppressive expectations
-- Yasmine — Shadar-kai rogue/necromancer; Campaign 3 player character; her family is from Ikovia
-- Nymira — changeling druid; Campaign 3 player character; may be living Providence tech
+- Director Boon — a Ministry of Invention director the party makes a deal with in recent times
+- Kiralyn "Kira" Cavrick — human artificer from Tiven's Read; recent times player character; former war artificer who sabotaged her family's weapon-making
+- Yutei — ice sorcerer from Evlinross; recent times player character; fled Hailthorne Institute's oppressive expectations
+- Yasmine — Shadar-kai rogue/necromancer; recent times player character; her family is from Ikovia
+- Nymira — changeling druid; recent times player character; may be living Providence tech
 - Ren Dovair — human artificer from Tiven's Read; Kira's closest friend; killed in a workshop explosion by the Clockwork Hands; their soul fused with a prototype construct core
 
 ## History & Lore
 - The Still Age: Centuries ago the Providence Engine activated and for a generation Anearios existed in eerie, perfect order — crime vanished, emotions dulled, people were safe but without free will. A time traveler using a Chronolume traveled back to delay the Engine's activation, fracturing the timeline. Evidence of the Still Age remains as temporal scars: automatons that glitch and whisper things that "never happened," ghost architecture in old paintings, and dream-fragments inherited by some NPCs.
 - The time traveler was likely a member of the royal line (possibly Queen Henrietta's grandmother or a queen herself); she sacrificed her place in history to save the continent and was erased from official records. The Providence Engine calls her "The Unmaker."
 - Anearios has a past history of conflict (gnome-hobgoblin wars, labor revolts tied to enforcer automatons).
-- Ari's (Campaign 1) parents were immigrants from Anearios; they left because practicing magic in Anearios was illegal.
+- Ari's (the earlier era) parents were immigrants from Anearios; they left because practicing magic in Anearios was illegal.
 
 ## Connections
 - Separated from Crevalon and Ikovia by the Idrelia Sea to the east

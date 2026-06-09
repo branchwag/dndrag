@@ -1,4 +1,4 @@
-# Millecent (Milly) Varna
+﻿# Millecent (Milly) Varna
 
 ## Identity
 - Nature/type: Human necromancer
@@ -8,7 +8,7 @@
 ## Role & Affiliation
 - Commander of the Western Division of Ikovian Forces
 - Operates from a hidden manor disguised as ruins, serving as a secret base for Ikovian resistance forces
-- Campaign 2
+- more recently
 
 ## History & Origin
 - A powerful necromancer who allied with the Ikovian military against Sir Thomas Wright's paladin forces
@@ -25,12 +25,12 @@
 
 ## Key Relationships
 - Yuri Laskin: long-time mentor and friend; later revealed to be betraying the group by corresponding with Madame Yugova Astronovich; Milly developed romantic feelings for him and was deeply hurt by his betrayal
-- Thelma: her goblin housekeeper, for whom she stormed a paladin prison at the start of Campaign 2
+- Thelma: her goblin housekeeper, for whom she stormed a paladin prison at the start of more recently
 - Rose Reiter: Milly sheltered Rose at her manor and was the one to inform Rose that her mother Caeda had been captured
 - Florian Reiter: coordinated with Milly on rescuing Caeda; Florian contacted her when Caeda was taken
-- The Campaign 2 party (Valentin, Rose, Wren, Lezlie, Adelona): recruited by Milly to gather the five pieces of the Staff of Retribution before Sir Thomas Wright's forces could assemble it
+- The more recently party (Valentin, Rose, Wren, Lezlie, Adelona): recruited by Milly to gather the five pieces of the Staff of Retribution before Sir Thomas Wright's forces could assemble it
 
-## Key Events (Campaign 2)
+## Key Events (more recently)
 - Broke into a makeshift paladin prison, destroyed a wall with arcane force, and retrieved Thelma; simultaneously rescued the party
 - Transported the party to her hidden manor and briefed them on the Staff of Retribution and its five hidden locations across Ikovia
 - Provided each party member a magic item: Bag of Holding (Val), Alchemy Jug (Lezlie), Cap of Water Breathing (Adelona), Rope of Climbing (Rose), Ring of Swimming (Wren)

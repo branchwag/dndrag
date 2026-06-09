@@ -1,4 +1,4 @@
-# Avernus (The Nine Hells — First Layer)
+﻿# Avernus (The Nine Hells — First Layer)
 
 ## Type
 - Plane (planar location — the Nine Hells, First Layer)
@@ -27,7 +27,7 @@
 - Ange (fortune teller of Sharnwick) made a pact with Silvester (identified as a servant of Bel) in the forest after losing her family in a fire. Silvester appeared as a dark-haired human with a malicious gleam and offered her power. The infernal puzzle box she later gives the party is evidence of her pact.
 - Sir Thomas Wright (head of Siadiff's Order of the Golden Lion) was possessed by a powerful infernal being — likely Silvester/Bel's agent — which explains the sinister nature of the crusade against Ikovia.
 - Alora Venette considered going to Avernus to find another vampire willing to restore her vampiric nature, but described it as "tangling herself up with contracts and the likes of Avernus" — an option she found shameful and dangerous.
-- The Staff of Retribution (assembled in Campaign 2) has infernal connections; the infernal puzzle box was described as "made from materials from the Nine Hells."
+- The Staff of Retribution (assembled in more recently) has infernal connections; the infernal puzzle box was described as "made from materials from the Nine Hells."
 
 ## Connections
 - Connected to the material plane through infernal contracts, summoning rituals, and planar travel

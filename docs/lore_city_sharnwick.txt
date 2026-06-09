@@ -1,4 +1,4 @@
-# Sharnwick
+﻿# Sharnwick
 
 ## Type
 - Village (small village)
@@ -33,7 +33,7 @@
 - Mathy — a man who keeps a horse farm; can supply horses if the party needs them
 
 ## History & Lore
-- Sharnwick is where Campaign 1 begins; the party gathers to investigate the mysterious disappearance of sheep.
+- Sharnwick is where the earlier era begins; the party gathers to investigate the mysterious disappearance of sheep.
 - The sheep disappearances were caused by Geoffrey, who was compelled by a Solarian sun talisman to conduct sacrifices ("to make the wolf-headed jackals appear" and "to have villages worship the sun god").
 - Ange made her pact with the fiend Silvester (a pit fiend serving Bel of Avernus) after losing her husband and son in a tragic fire. She was manipulated and has suffered social isolation as a result; the village views her with pity and fear.
 - Ange gave the Solarian sun talisman (which came into her possession 3 months earlier in Aberdeen) to the party in an infernal puzzle box to contain it.
@@ -44,7 +44,7 @@
 - On the road between the interior and Elmshire (city between Sharnwick and Aberdeen)
 - Sharnwick → Elmshire → Aberdeen is the main road route toward the coast
 - Ange can scry on the party after they leave; she later disappears (possibly dimension-doored away)
-- Virion's origin story connects Sharnwick to the main Campaign 1 villain
+- Virion's origin story connects Sharnwick to the main the earlier era villain
 
 ## Important Notes
 - Sharnwick is a SMALL SHEEP-FARMING VILLAGE — NOT a city, NOT a port, NOT a military town.

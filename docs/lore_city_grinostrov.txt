@@ -1,4 +1,4 @@
-# Grinostrov
+﻿# Grinostrov
 
 ## Type
 - City (capital city of the Ikovian Empire)
@@ -7,34 +7,34 @@
 ## Description
 - Grinostrov is the capital city of the Ikovian Empire; it is the seat of the Ikovian royal palace and the magical academy of Ikovia.
 - The city is large enough that the Ikovian Queen's speech can be magically projected to boom throughout all of Grinostrov simultaneously.
-- It contains the residences of Ikovia's highest nobility; it hosts premier dining establishments and theaters (including a ballet venue where the Campaign 2 party attends a performance among Ikovia's elite).
+- It contains the residences of Ikovia's highest nobility; it hosts premier dining establishments and theaters (including a ballet venue where the more recently party attends a performance among Ikovia's elite).
 - The city has walls; the party is teleported to just outside the walls of Grinostrov on multiple occasions.
-- During Campaign 2, the city is eventually invaded and occupied by Githyanki forces (allied with Madame Yugova Astronovich), requiring the party to retake it.
+- During more recently, the city is eventually invaded and occupied by Githyanki forces (allied with Madame Yugova Astronovich), requiring the party to retake it.
 
 ## Institutions & Landmarks
 - The Royal Palace of Grinostrov — seat of Ikovian power; where the Ikovian monarch rules; located within the capital city
 - The Magical Academy of Grinostrov — an arcane institution within the capital; serves the empire's magical practitioners
-- A premier dining establishment in Grinostrov — the finest restaurant in the city; the Campaign 2 party meets characters and gathers intelligence here
-- A theater/ballet venue — where the Campaign 2 party attends a performance among Ikovia's high society; used as a cover for intelligence gathering
-- Madame Yugova Astronovich's residence — within Grinostrov; the Campaign 2 party is tasked with infiltrating it to steal a piece of the Staff of Retribution; Madame Yugova is too powerful for Ikovia to simply imprison
+- A premier dining establishment in Grinostrov — the finest restaurant in the city; the more recently party meets characters and gathers intelligence here
+- A theater/ballet venue — where the more recently party attends a performance among Ikovia's high society; used as a cover for intelligence gathering
+- Madame Yugova Astronovich's residence — within Grinostrov; the more recently party is tasked with infiltrating it to steal a piece of the Staff of Retribution; Madame Yugova is too powerful for Ikovia to simply imprison
 
 ## Notable Inhabitants / Factions
-- The Ikovian Queen (at the start of Campaign 2) — leads the empire from the palace; makes a speech rallying Ikovia against the paladin invasion; she is assassinated or loses the throne during the course of Campaign 2
+- The Ikovian Queen (at the start of more recently) — leads the empire from the palace; makes a speech rallying Ikovia against the paladin invasion; she is assassinated or loses the throne during the course of more recently
 - Madame Yugova Astronovich — powerful vampire/noble in Grinostrov; possesses one piece of the Staff of Retribution; will not release it to the Ikovian forces; too well-known and powerful for Ikovia to imprison; ultimately attempts to seize the Ikovian throne; spreads word that Ikovia's long-lost heir has returned; is ultimately defeated (Madame Yugova "took" something from the battle — implying she gained power — then was eventually overcome)
 - Yuri — a vampire who assists Milly; planned to make Milly his bride and seize control of Ikovia; also worked to destabilize the throne
-- Adelonda — a character who poses as an Ikovian general; visits Milly at one point; sets off from Grinostrov for supplies during Campaign 2 events
-- Githyanki invaders — occupy Grinostrov during a late Campaign 2 event, allied with Madame Yugova
+- Adelonda — a character who poses as an Ikovian general; visits Milly at one point; sets off from Grinostrov for supplies during more recently events
+- Githyanki invaders — occupy Grinostrov during a late more recently event, allied with Madame Yugova
 
 ## History & Lore
 - Grinostrov is the ancient capital of Ikovia and has been the seat of the matriarchal Ikovian royal line since the time of Queen Pavlova.
-- During Campaign 2: The Ikovian Queen is killed or displaced; the kingdom falls into crisis. Madame Yugova attempts to claim the throne. The Camp 2 party ultimately places the rightful queen (Milly, the lost princess) on the throne after defeating Yugova's usurpation.
-- The GitYanki invasion of Grinostrov occurs as a late-Campaign 2 event; the city is eventually reclaimed.
+- During more recently: The Ikovian Queen is killed or displaced; the kingdom falls into crisis. Madame Yugova attempts to claim the throne. The Camp 2 party ultimately places the rightful queen (Milly, the lost princess) on the throne after defeating Yugova's usurpation.
+- The GitYanki invasion of Grinostrov occurs as a late-more recently event; the city is eventually reclaimed.
 - The Ikovian Queen's death: the Camp 2 party made the connection that Florian Reiter had killed Adelonda's father, which triggered some conflict; Florian weighed in on the Ikovian mage vs. Paladin conflict and then departed to another location.
 
 ## Connections
 - Capital city of Ikovia; connected to all other Ikovian cities
 - Brezbin is in the southern/southwestern region of Ikovia; the party traveled from Brezbin toward Grinostrov
-- Milly teleports the party to/from Grinostrov multiple times during Campaign 2
+- Milly teleports the party to/from Grinostrov multiple times during more recently
 - The Staff of Retribution pieces are scattered across Ikovia; Grinostrov holds one (in Madame Yugova's residence)
 - The theater in Grinostrov is used as a cover for intelligence-gathering operations
 
@@ -42,4 +42,4 @@
 - Grinostrov is in IKOVIA — NOT in Crevalon. This is an entirely separate continent.
 - The MAGICAL ACADEMY in Grinostrov is an Ikovian institution — NOT the same as Taelreth (Diondria) or the Sylvanian Academy (Handletare), which are Crevalonese.
 - Madame Yugova is a NOBLE/VAMPIRE from Grinostrov — NOT a paladin, NOT a government official. She is a powerful private citizen who eventually attempts a coup.
-- The Ikovian Queen (at the start of Campaign 2) is a DIFFERENT character from the eventual Queen Milly (the lost princess who takes the throne).
+- The Ikovian Queen (at the start of more recently) is a DIFFERENT character from the eventual Queen Milly (the lost princess who takes the throne).

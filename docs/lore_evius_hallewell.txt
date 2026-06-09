@@ -1,4 +1,4 @@
-# Evius Hallewell
+﻿# Evius Hallewell
 
 ## Identity
 - Wizard (Divination specialist)
@@ -25,10 +25,10 @@
 - Ali Hassan: fellow school head at Taelreth (Head of Necromancy); they collaborate when the party requires services from multiple schools
 - King Titus: communicates via Sending (the dragonborn Kroc at Taelreth sent word to the King about the theft incident)
 - Ophelia: fellow academic at Taelreth; worked alongside her when the party came to investigate Virion
-- The party (Campaign 1): reluctantly scryed for Elly on Avra; also present at the King's emergency council at Taelreth; showed visible irritation at working outside normal academic channels
+- The party (the earlier era): reluctantly scryed for Elly on Avra; also present at the King's emergency council at Taelreth; showed visible irritation at working outside normal academic channels
 
 ## Key Events (campaign)
-- Campaign 1: Elly visited his office and persuaded him to scry for her on Avra; he complied reluctantly and reported seeing Avra's dead body nailed to a cavern wall in the drow city of Morvir
+- the earlier era: Elly visited his office and persuaded him to scry for her on Avra; he complied reluctantly and reported seeing Avra's dead body nailed to a cavern wall in the drow city of Morvir
 - Was present when the Aviary member (the Crane) stole the red dragon gem from Taelreth; was flustered and blamed the lack of security ("We're academics, not guards!")
 - Attempted to scry on Virion but failed (Virion was too powerful; scrying defenses held)
 - Attended the King's emergency council at Taelreth; argued against giving the dragon gem to the party ("This is a dragon inside of here! You're going to send it on the road with these people?"); overruled by King Titus

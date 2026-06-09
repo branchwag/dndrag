@@ -1,44 +1,44 @@
-# Caeda
+﻿# Caeda
 
 ## Identity
 - Cleric of Rao (god of reason, discourse, and peace)
 - Race: Elf (noted as looking "strikingly similar to the Vesemirs"; Florian commented on this resemblance)
 - Possible connection to the Vesemir family of Felanor (Florian asked her directly: "Have you any relation to the Vesimir family in Felanor?"; they spoke of her origins; there is a DM note that "Lady Vesemir could be her mom — she had a fling that was covered up")
-- Player character in Campaign 1
+- Player character in the earlier era
 
 ## Role & Affiliation
-- Elven cleric of Rao; joined the Campaign 1 group at the King's request
+- Elven cleric of Rao; joined the the earlier era group at the King's request
 - Rao is described as the god of reason, discourse, and peace; his clerics pursue knowledge, logic, and peaceful means but are not above force
-- Based primarily in Crevalon during Campaign 1; later in Campaign 2 she is captured by Siadiff paladins (30 years after Campaign 1)
+- Based primarily in Crevalon during the earlier era; later in more recently she is captured by Siadiff paladins (30 years after the earlier era)
 
 ## History & Origin
 - Background details are partially intentionally withheld (DM notes reference her origins being discussed with Florian over a picnic); the Vesemir connection is implied but not confirmed in-text
-- Was eventually captured by paladins (Knights of Torm / Siadiff forces) in Campaign 2; her daughter Rose Reiter and Florian went to find her together; they fought through an underground cave network near the mountain ridge that borders Ikovia from the desert; discovered she had been moved; her whereabouts remained a mystery beyond that cave location
+- Was eventually captured by paladins (Knights of Torm / Siadiff forces) in more recently; her daughter Rose Reiter and Florian went to find her together; they fought through an underground cave network near the mountain ridge that borders Ikovia from the desert; discovered she had been moved; her whereabouts remained a mystery beyond that cave location
 
 ## Abilities & Powers
 - Cleric of Rao: healing, resurrection, and holy spells
 - Led Elly in peaceful meditation and reflection; presided over Elly's vows at the Temple of Rao in Finreld
 - Persuaded the priestesses at the Temple of Rao to open their eyes to lessening certain restrictions
-- Performed a resurrection ritual (with Florian's assistance) during Campaign 1
+- Performed a resurrection ritual (with Florian's assistance) during the earlier era
 
 ## Key Relationships
-- Florian Reiter: fell in love with him over the course of Campaign 1; Florian confessed his love on a castle balcony and she confirmed she felt the same; they went on a lunar picnic, waltzed under the moonlit sky, and flew together (he carried her on his wings)
+- Florian Reiter: fell in love with him over the course of the earlier era; Florian confessed his love on a castle balcony and she confirmed she felt the same; they went on a lunar picnic, waltzed under the moonlit sky, and flew together (he carried her on his wings)
 - Elly: fellow party member; close enough that Florian worried about Caeda's safety
-- The party (Elly, Scirocco, Ari, Babushka, Pavel): core Campaign 1 companions
+- The party (Elly, Scirocco, Ari, Babushka, Pavel): core the earlier era companions
 - Lady Vesemir: possible family connection (unconfirmed); Florian commented on the resemblance
-- Rose Reiter: Caeda is Rose's mother (confirmed in Campaign 2 — "those captured was your mother, Caeda"; "her father, Florian, was waiting for her")
+- Rose Reiter: Caeda is Rose's mother (confirmed in more recently — "those captured was your mother, Caeda"; "her father, Florian, was waiting for her")
 
 ## Key Events (campaign)
-- Campaign 1: Joined the party at the King's request; traveled with them through Crevalon, Finreld, the desert, and the Elantir Forest
+- the earlier era: Joined the party at the King's request; traveled with them through Crevalon, Finreld, the desert, and the Elantir Forest
 - Was present for and participated in a resurrection ritual with Florian
 - Received a confession of love from Florian on a castle balcony; accepted and reciprocated
 - Went on a moonlit picnic with Florian in the lavender fields outside Diondria; he read poetry and they waltzed
 - Flew with Florian over the city on his wings
 - Attended Lady Vesemir's masquerade ball
-- Campaign 2 (30 years later): Was captured by Siadiff paladins; Rose and Florian went to find her, discovered she was moved from the initial cave location; her fate beyond that point was still being investigated as the campaign unfolded
+- more recently (30 years later): Was captured by Siadiff paladins; Rose and Florian went to find her, discovered she was moved from the initial cave location; her fate beyond that point was still being investigated as the campaign unfolded
 
 ## Important Notes
 - Caeda is a player character, not an NPC, but she has significant lore ties through her relationship with Florian and her possible Vesemir heritage
 - The Vesemir connection is DM-notes level — it is "Lady Vesemir could be her mom — she had a fling that was covered up" — it has NOT been confirmed in-game at this point
-- She is the mother of Rose Reiter (a Campaign 2 player character), making Rose also the daughter of Florian Reiter
+- She is the mother of Rose Reiter (a more recently player character), making Rose also the daughter of Florian Reiter
 - Rose is described as having "Father, Florian, was not with her at the time and subsequently not captured"

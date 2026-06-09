@@ -1,4 +1,4 @@
-# Vormark (The Skyforge City)
+﻿# Vormark (The Skyforge City)
 
 ## Type
 - City (hangar city / airship hub)
@@ -13,7 +13,7 @@
 - Tagline: "Where the wind is never still and every coin rides the clouds."
 
 ## Institutions & Landmarks
-- The Aether Docks — giant elevated hangars and shipyards where airships are constructed, refueled, and repaired; dock workers swarm the decks; smugglers operate from the lower gantries away from customs patrols; Dock 17 is specifically referenced in Campaign 3 (Kira is tracking a shipment manifest)
+- The Aether Docks — giant elevated hangars and shipyards where airships are constructed, refueled, and repaired; dock workers swarm the decks; smugglers operate from the lower gantries away from customs patrols; Dock 17 is specifically referenced in recent times (Kira is tracking a shipment manifest)
 - Windspire Row — a vertical district of stacked housing and taverns built into the cliffs; a favorite stop for skyfarers and adventurers; raucous and alive with stories of storms, monsters, and lost aether-veins in the west
 - The Skyforge — the original foundry where Vormark began; still active; manufactures propulsion cores and stabilizing rings for airships; apprentices and artificers work side-by-side amid sparks and roaring furnaces
 - Guild Hall of the Wayfarers' Concord — governs airship travel, trade tariffs, and flight rights; bureaucratic and self-important; their seal is needed for any major expedition westward
@@ -21,16 +21,16 @@
 
 ## Notable Inhabitants / Factions
 - The Clockwork Hands — use Vormark's Docks (specifically the Iron Assembly front organization) to move experimental propulsion cores to Giglington; Vormark is their staging ground for new machine development
-- Yutei (Campaign 3) — ice sorcerer; arrived in Vormark after fleeing Evlinross; took temporary work at the Aether Docks helping regulate core temperatures; possibly used ice magic as a street performer
-- Kira Cavrick (Campaign 3) — came to Vormark following a shipment manifest trail linked to Ren Dovair's murder; investigating Dock 17
-- Yasmine (Campaign 3) — arrived in Vormark to find/protect Kira; has her own reasons related to forbidden relics trafficking
-- Nymira (Campaign 3) — woke up in Vormark; was found drifting in on a battered cargo skiff from the western mists; the dockworkers assumed she was a crash victim from the Western Front
+- Yutei (recent times) — ice sorcerer; arrived in Vormark after fleeing Evlinross; took temporary work at the Aether Docks helping regulate core temperatures; possibly used ice magic as a street performer
+- Kira Cavrick (recent times) — came to Vormark following a shipment manifest trail linked to Ren Dovair's murder; investigating Dock 17
+- Yasmine (recent times) — arrived in Vormark to find/protect Kira; has her own reasons related to forbidden relics trafficking
+- Nymira (recent times) — woke up in Vormark; was found drifting in on a battered cargo skiff from the western mists; the dockworkers assumed she was a crash victim from the Western Front
 
 ## History & Lore
 - Vormark grew around the Aether Docks; the city serves as both a trade nexus and an industrial frontier.
-- The Campaign 3 party all converges in Vormark before boarding the Vox Eterna to Giglington: an explosion at the Aether Docks (involving Kira's investigation of Dock 17) brings the party together; they discover the Clockwork Hands' emblem stamped on a shattered propulsion core.
+- The recent times party all converges in Vormark before boarding the Vox Eterna to Giglington: an explosion at the Aether Docks (involving Kira's investigation of Dock 17) brings the party together; they discover the Clockwork Hands' emblem stamped on a shattered propulsion core.
 - Strange storms have closed western routes from Vormark; the Stormfront Contracts hire brave crews to chart new paths.
-- A mysterious explosion destroyed one of the Aether Cradles before Campaign 3 begins; witnesses saw a cloaked figure with a mechanical arm flee the scene.
+- A mysterious explosion destroyed one of the Aether Cradles before recent times begins; witnesses saw a cloaked figure with a mechanical arm flee the scene.
 - The Missing Vessel Hollow Reign: vanished on its maiden voyage; hull fragments drift back humming with strange energy.
 
 ## Connections
@@ -42,5 +42,5 @@
 ## Important Notes
 - Vormark is in the WESTERN region of ANEARIOS — NOT in Crevalon or Ikovia.
 - Vormark is an AIRSHIP HUB and INDUSTRIAL FRONTIER city — NOT the capital of Anearios (Giglington is the capital).
-- The Aether Docks in Vormark are a CLOCKWORK HANDS staging ground during Campaign 3 — the docks are dangerous for the party once their investigation is known.
+- The Aether Docks in Vormark are a CLOCKWORK HANDS staging ground during recent times — the docks are dangerous for the party once their investigation is known.
 - Direct spellcasting is BANNED in Anearios including Vormark; magical use must be imbued within machines or objects.
