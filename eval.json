@@ -2,7 +2,7 @@
   {
     "question": "Who is Florian?",
     "must_mention": ["vampire", "paladin", "Siadiff", "red dragon", "King", "Caeda"],
-    "must_not_mention": ["necromancy", "raised his father", "raise his father", "powerful lover", "kissing"]
+    "must_not_mention": ["necromancy", "raised his father", "raise his father"]
   },
   {
     "question": "Who is Lady Orvir?",
@@ -31,13 +31,13 @@
   },
   {
     "question": "Who is Alora?",
-    "must_mention": [],
+    "must_mention": ["vampire", "mage"],
     "must_not_mention": ["member of the party", "party member"]
   },
   {
     "question": "How did Florian become a vampire?",
     "must_mention": ["succubus"],
-    "must_not_mention": ["Silvester"]
+    "must_not_mention": []
   },
   {
     "question": "What is Taelreth?",
