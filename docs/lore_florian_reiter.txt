@@ -1,16 +1,16 @@
 ﻿# Lord Florian Reiter
 
 ## Identity
-- Vampire (greater vampire, created by the life-draining kiss of a succubus)
+- For most of the earlier era: a vampire (greater vampire, created by the life-draining kiss of a succubus)
+- Restored to human at the end of the earlier era
 - Race: Elf (high elf; retains elven appearance)
-- Can assume a disguised elven form using a ring; drops the ring to reveal his true vampiric features, fangs, pale skin, and bat-like wings
-- Due to the nature of his conversion by a succubus rather than a standard vampire bite, he can move about during daylight hours if needed, though he prefers not to
+- While a vampire: could assume a disguised elven form using a ring; dropped the ring to reveal his true vampiric features, fangs, pale skin, and bat-like wings; could move about during daylight hours due to the nature of his succubus-conversion
 - Titles: Lord Florian Reiter of Elantir
 
 ## Role & Affiliation
+- For most of the earlier era: vampire lord — his defining nature during that period
 - Unofficial liaison and ally to King Titus of Crevalon; acts on the King's behalf without formal crest involvement
-- Former Paladin of Torm in Siadiff; former member of the Order of the Golden Lion (also called The Knights of Torm)
-- Reached the rank of well-respected Knight within the Order of the Golden Lion before his ill-fated mission
+- Former Paladin of Torm in Siadiff; former member of the Order of the Golden Lion — he had not been an active paladin since being turned
 - Based in a manor in the Elantir Forest; came to an agreement with King Titus allowing him to live there undisturbed as long as his group only feeds on animal blood
 
 ## History & Origin
@@ -36,7 +36,7 @@
 - Ari Crownsilver: mentored Ari; put in a word at the Sylvanian Academy of Magical Arts that resulted in Ari's admission; close trust-based relationship
 - King Titus: formal agreement and working alliance; the King uses Florian as a discreet operative
 - Sir Richard Godwin: hostile adversary; Godwin was livid that the King allowed Florian in his presence; they openly antagonize each other
-- Alora Venyette: shared memories in the old manor in Elantir Forest (she gathered arcane components there and remembered their past conversations on her way to be re-turned)
+- Alora Venyette: shared memories tied to the old manor in Elantir Forest; Alora gathered arcane components there and carried memories of her past conversations with Florian when she traveled to be re-turned
 - The other vampires in the manor (Sandra, Dorian, Isabella, Beatrice, etc.): they conspired against him later in the campaign, badly injuring him because a hag offered to grant their wish to become human again in exchange for Florian's death
 - Andrei Dumitrescu: his butler; the only person Florian ever willingly converted into a vampire
 
@@ -52,6 +52,7 @@
 - more recently (30 years later): Confirmed still active; Rose Reiter is his daughter (or connection to him via the Reiter name); Florian waited for Rose after Caeda was captured, and the two investigated Caeda's whereabouts together
 
 ## Important Notes
+- For most of the earlier era Florian was a vampire; he was restored to human at the campaign's end. When describing him during the earlier era, his vampiric nature was central to who he was. By the time of more recent events, he is human.
 - NOT the character connected to Madame Alora Venyette's dwarven patrons; those dwarves are connected to Alora Venyette, NOT to Florian
 - His party went missing after hunting a spellcaster attempting to summon a being from the Nine Hells; the official story was that they all perished, cause unknown; Sir Godwin knew of him as his predecessor in Siadiff
 - His resting place is not at the manor but at an unmarked patch of earth not far away; he never disclosed it to anyone
