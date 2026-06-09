@@ -87,6 +87,15 @@ impl VectorStore {
         lore_entities: &[Option<String>],
         embeddings: Vec<Vec<f32>>,
     ) -> Result<()> {
+        anyhow::ensure!(
+            ids.len() == texts.len()
+                && ids.len() == sources.len()
+                && ids.len() == pages.len()
+                && ids.len() == lore_entities.len()
+                && ids.len() == embeddings.len(),
+            "upsert: slice length mismatch (ids={}, texts={}, sources={}, pages={}, entities={}, embeddings={})",
+            ids.len(), texts.len(), sources.len(), pages.len(), lore_entities.len(), embeddings.len()
+        );
         let points: Vec<PointStruct> = ids
             .iter()
             .zip(texts.iter())
@@ -252,7 +261,7 @@ fn extract_u32(
     payload
         .get(key)
         .and_then(|v| match v.kind.as_ref() {
-            Some(Kind::IntegerValue(n)) => Some(*n as u32),
+            Some(Kind::IntegerValue(n)) if *n >= 0 => Some(*n as u32),
             _ => None,
         })
         .unwrap_or(0)

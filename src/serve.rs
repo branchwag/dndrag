@@ -72,6 +72,11 @@ pub async fn run(port: u16) -> Result<()> {
     let addr = format!("0.0.0.0:{port}");
     let listener = tokio::net::TcpListener::bind(&addr).await?;
     tracing::info!("Arcane Tome listening on http://{addr}");
-    axum::serve(listener, app).await?;
+    axum::serve(listener, app)
+        .with_graceful_shutdown(async {
+            tokio::signal::ctrl_c().await.ok();
+            tracing::info!("Shutting down gracefully");
+        })
+        .await?;
     Ok(())
 }

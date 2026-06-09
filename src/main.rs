@@ -29,6 +29,7 @@ enum Command {
     },
     /// Ask a question about your DnD world (streams response to stdout)
     Query {
+        /// Wrap multi-word questions in quotes: dnd_rag query "Who is Alora?"
         question: String,
         /// Print the retrieved context sent to the model instead of generating a response
         #[arg(long)]
@@ -41,25 +42,31 @@ enum Command {
     },
     /// Start the HTTP server and serve the browser front-end on the given port
     Serve {
-        #[arg(short, long, default_value = "3000")]
+        #[arg(short, long, default_value_t = 3000u16)]
         port: u16,
     },
 }
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    // Traces go to stderr; control verbosity with RUST_LOG=info (or =debug, =warn).
+    // Load .env before tracing so RUST_LOG from .env takes effect.
+    dotenvy::dotenv().ok();
+
     tracing_subscriber::fmt()
         .with_target(false)
         .with_writer(std::io::stderr)
         .with_env_filter(tracing_subscriber::EnvFilter::from_default_env())
         .init();
 
-    dotenvy::dotenv().ok();
     let cli = Cli::parse();
 
     match cli.command {
-        Command::Ingest { docs_dir, fresh } => ingest::run(&docs_dir, fresh).await?,
+        Command::Ingest { docs_dir, fresh } => {
+            if !docs_dir.exists() {
+                anyhow::bail!("docs directory not found: {}", docs_dir.display());
+            }
+            ingest::run(&docs_dir, fresh).await?
+        }
         Command::Query { question, show_context } => query::run(&question, show_context).await?,
         Command::Eval { eval_file } => eval::run(&eval_file).await?,
         Command::Serve { port } => serve::run(port).await?,
