@@ -5,3 +5,8 @@ docs/extracted_*.txt
 target/
 .env
 
+# Discord export — raw data and generated outputs; only the extraction script is tracked
+docs/Discord_extract/package.zip
+docs/Discord_extract/lore_writing.md
+docs/Discord_extract/lore_writing.json
+

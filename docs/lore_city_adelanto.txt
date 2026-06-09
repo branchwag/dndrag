@@ -1,0 +1,24 @@
+# Adelanto
+
+## Type
+- Settlement (oasis town)
+- Part of: the Slaerian Desert (between Crevalon and Ikovia)
+
+## Description
+- Adelanto is an oasis settlement in the desert, primarily a human population.
+- From a distance it appears almost like a mirage — a large expanse of water surrounded by tall palm trees, with rounded stone buildings nestled between them like sturdy tortoise shells standing firm against strong desert winds.
+- Its market vendors dress in light, elegantly draped fabrics, notably different from Crevalon proper.
+- The city is known for excellent baklava and is situated near a floating Solarian temple.
+- A popular inn called The Golden Sphinx caters to merchants traveling between Crevalon and Ikovia; frequented by traders making the cross-desert journey.
+- Hippogriff racing is a local attraction; races are held in the canyons near the city.
+- There is a temple of Pelor here — followers of standard Pelor worship, not affiliated with the Solarian monks.
+- A signature cocktail served in the city: the Scorpion's Tail — a spicy liquor topped with creamy foam and saffron sprinkles.
+
+## Notable Inhabitants
+- Scirocco is originally from Adelanto; she grew up here.
+- Malek — Scirocco's adopted brother; still lives in Adelanto.
+
+## Connections
+- Located in the Slaerian Desert, roughly between Scirocco's origins and various Crevalon ruins
+- A waypoint on the trade route between Crevalon and Ikovia
+- Near a floating Solarian temple (the Solarian faction's desert outpost)

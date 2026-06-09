@@ -1,0 +1,23 @@
+# Morvir
+
+## Type
+- City (drow city / Underdark-adjacent)
+- Part of: the Underdark beneath Crevalon
+
+## Description
+- Morvir is a drow city, home to followers of Lolth.
+- The city contains a main square used for public executions.
+- The earlier era party traveled here to rescue Sister Fiona and Javen, who were imprisoned in the city's prison.
+
+## Key Events
+- The party witnessed a public execution in the main square: a high priestess of Lolth (Avra's mother) executed a Solarian monk as an act of war, delivering a declaration that the Solarians had struck their only ally and would pay with blood.
+- The priestess's name was Minva; the party fought her during their escape from the city's prison and managed to behead her.
+- Sister Fiona and Javen were rescued from the prison here.
+
+## Notable Inhabitants
+- Minva — high priestess of Lolth; Avra's mother; killed by the earlier era party during the prison escape.
+- Avra — a drow whose mother was Minva.
+
+## Connections
+- Underdark city; accessible via Underdark routes
+- Zanzarite (Elly's home city) is nearby, described as not too far from Morvir
