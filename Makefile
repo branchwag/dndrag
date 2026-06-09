@@ -1,4 +1,4 @@
-CHAT_MODEL ?= llama3.2
+CHAT_MODEL ?= gemma2:9b
 EMBED_MODEL ?= nomic-embed-text
 
 .PHONY: build up setup ingest query serve down clean-pdfs
@@ -15,9 +15,9 @@ setup: up
 	docker compose exec ollama ollama pull $(EMBED_MODEL)
 	docker compose exec ollama ollama pull $(CHAT_MODEL)
 
-# Index all PDFs in ./docs
+# Index all PDFs in ./docs. Pass ARGS="--fresh" to wipe and rebuild from scratch.
 ingest: up
-	docker compose --profile cli run --rm dnd_rag ingest
+	docker compose --profile cli run --rm dnd_rag ingest $(ARGS)
 
 # Usage: make query Q="Who is the main villain?"
 query: up

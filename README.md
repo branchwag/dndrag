@@ -2,6 +2,10 @@
 
 A fully local RAG pipeline for querying DnD campaign lore, written in Rust. Point it at your DM documents, ask questions, get answers grounded in your world — no API keys, no data leaving your machine.
 
+## Screenshot
+
+![dndrag browser front-end](docs/screenshot.gif)
+
 ## How it works
 
 1. **Ingest** — PDFs in `docs/` are extracted, split into sentence-aware overlapping chunks, and embedded using `nomic-embed-text` via Ollama. Embeddings and page numbers are stored in Qdrant.
