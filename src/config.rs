@@ -67,9 +67,9 @@ const DEFAULT_PROMPT_RULES: &[&str] = &[
      \"you\". Convert any second-person language into third-person factual narration about \
      the character.",
 
-    "Florian Reiter was a vampire for most of the earlier era but was restored to human \
-     at the end of it. When describing him in the context of the earlier era, his vampiric \
-     nature was central. In later eras he is human.",
+    "Florian Reiter was a vampire for most of the campaign but was restored to human \
+     at the end of it. When describing him in the context of the campaign, his vampiric \
+     nature was central. In more recent times he is human.",
 
     "Do not reference real-world proper nouns — countries, nationalities, ethnicities, \
      institutions, place names, or cultural labels from the real world (e.g. Romanian, \
@@ -102,6 +102,9 @@ const DEFAULT_PROMPT_RULES: &[&str] = &[
 
     "Do not state the same fact twice in a response. If a piece of information has already \
      been mentioned, do not restate it in different words.",
+
+    "Nikolai is a changeling — always refer to his nature using the word 'changeling', \
+     not merely 'shapeshifter'. He is both a changeling and a vampire.",
 ];
 
 pub struct RagConfig {

@@ -132,9 +132,8 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
             }
         }
     }
-    // For broad narrative questions with no named entities, force-include the
-    // story overview lore file so the LLM has a coherent synopsis to draw from
-    // instead of a grab-bag of unrelated semantic results.
+    // For broad narrative questions with no named entities, force-include relevant
+    // lore files so the LLM has coherent context rather than unrelated semantic results.
     if names.is_empty() {
         let q = question.to_lowercase();
         if q.contains("story") || q.contains("plot") || q.contains("overview")
@@ -142,6 +141,17 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
             || q.contains("tell me about") || q.contains("what is going on")
         {
             for hit in store.search_lore_file("story overview", query_vec.clone(), KEYWORD_K).await? {
+                if !keyword_results.iter().any(|r| r.text == hit.text)
+                    && !is_scene_filtered(&hit.text, &scene_markers)
+                {
+                    keyword_results.push(hit);
+                }
+            }
+        }
+        // Villain/antagonist questions: surface Virion's lore file directly, since
+        // semantic search alone tends to find whichever villain appears most in PDF chunks.
+        if q.contains("villain") || q.contains("antagonist") || q.contains("main enemy") {
+            for hit in store.search_lore_file("virion", query_vec.clone(), KEYWORD_K).await? {
                 if !keyword_results.iter().any(|r| r.text == hit.text)
                     && !is_scene_filtered(&hit.text, &scene_markers)
                 {
@@ -680,12 +690,17 @@ async fn rerank(
 
     // Boost chunks that come from the character's own lore file.
     // e.g. "lore_alora_venyette.txt" gets a bonus when asking about "Alora Venyette".
+    // Also handles multi-word names where a middle name breaks an exact slug match,
+    // e.g. "Lady Orvir" → "lore_lady_adrastea_orvir.txt" (all words present individually).
     for (i, result) in results.iter().enumerate() {
         let src = result.source.to_lowercase();
         if src.starts_with("lore_") {
             for name in entity_names {
                 let slug = name.to_lowercase().replace(' ', "_");
-                if src.contains(&slug) {
+                let words: Vec<&str> = name.split_whitespace().collect();
+                let all_words_match = words.len() > 1
+                    && words.iter().all(|w| src.contains(&w.to_lowercase()));
+                if src.contains(&slug) || all_words_match {
                     scores[i] = (scores[i] + 0.25).min(1.0);
                     break;
                 }

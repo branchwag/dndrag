@@ -6,6 +6,9 @@ use std::path::Path;
 struct EvalCase {
     question: String,
     must_mention: Vec<String>,
+    /// Each inner list is a synonym group: at least one term from the group must appear.
+    #[serde(default)]
+    must_mention_any: Vec<Vec<String>>,
     #[serde(default)]
     must_not_mention: Vec<String>,
 }
@@ -45,6 +48,16 @@ pub async fn run(eval_file: &Path) -> Result<()> {
             .map(String::as_str)
             .collect();
 
+        // Each group passes if any synonym appears; report as "word1|word2" on failure.
+        let missing_any: Vec<String> = case
+            .must_mention_any
+            .iter()
+            .filter(|group| {
+                !group.iter().any(|m| answer_lower.contains(m.to_lowercase().as_str()))
+            })
+            .map(|group| group.join("|"))
+            .collect();
+
         let hallucinated: Vec<&str> = case
             .must_not_mention
             .iter()
@@ -52,7 +65,7 @@ pub async fn run(eval_file: &Path) -> Result<()> {
             .map(String::as_str)
             .collect();
 
-        let ok = missing.is_empty() && hallucinated.is_empty();
+        let ok = missing.is_empty() && missing_any.is_empty() && hallucinated.is_empty();
         if ok {
             passed += 1;
         }
@@ -61,6 +74,9 @@ pub async fn run(eval_file: &Path) -> Result<()> {
         println!("[{status}] {}", case.question);
         if !missing.is_empty() {
             println!("       missing:      {}", missing.join(", "));
+        }
+        if !missing_any.is_empty() {
+            println!("       missing any:  {}", missing_any.join(", "));
         }
         if !hallucinated.is_empty() {
             println!("       hallucinated: {}", hallucinated.join(", "));
