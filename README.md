@@ -4,7 +4,7 @@ A fully local RAG pipeline for querying DnD campaign lore, written in Rust. Poin
 
 ## Screenshot
 
-![dndrag browser front-end](docs/screenshot.gif)
+![dndrag browser front-end](screenshot.gif)
 
 ## How it works
 
