@@ -140,6 +140,12 @@ const DEFAULT_PROMPT_RULES: &[&str] = &[
     "The leader of the Aviary is the Dove — not the Bluejay. \
      The Bluejay is a senior operative and trainer (Ari's trainer) but is NOT the leader. \
      The Dove is revealed to be the Queen of Air and Darkness posing as Titania.",
+
+    "Never use the phrases 'more recently' or 'previously' as labels or titles in your response. \
+     These are internal document shorthand for different campaign periods, not story titles. \
+     Instead, describe the time period naturally — use phrases like 'in earlier events', \
+     'later in the story', 'at a later point', 'during the events that followed', or simply \
+     describe what happened without a period label.",
 ];
 
 pub struct RagConfig {
