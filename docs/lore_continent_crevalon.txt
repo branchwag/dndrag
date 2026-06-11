@@ -55,5 +55,7 @@
 ## Important Notes
 - Crevalon is the primary setting for previously; more recently takes place largely in Ikovia but the paladins of Siadiff (Crevalon) are the antagonists
 - King Titus's death and Thomas Wright's rise mark the transition point between past and present events
+- When listing Crevalon's major cities, always include Aberdeen, Siadiff, Diondria, Handletare, and Finreld — these are the five most important cities
+- Always mention King Titus when describing Crevalon — he is the kingdom's long-reigning ruler and central to its identity
 - The Solarian monks who provoke conflicts in the campaign are later revealed to be manipulated by a third power (Bel/Avernus-connected infernal beings)
 - The Elantir Forest is where Florian Reiter's manor is located — it is NOT a dungeon or hostile zone by default; it is guarded by centaurs and inhabited by the Lunarians

@@ -48,6 +48,24 @@ const DEFAULT_SCENE_MARKERS: &[&str] = &[
 /// DEFAULT_PROMPT_RULES and rebuild to make it permanent; set PROMPT_EXTRA_RULES
 /// (pipe-separated) in the environment to override for a specific deployment.
 const DEFAULT_PROMPT_RULES: &[&str] = &[
+    "When describing Caeda, always state that she is a cleric of Rao — this is her defining \
+     class and identity in the campaign.",
+
+    "When describing Lady Orvir, your response must open with the fact that she is the \
+     headmistress and overseer of the Sylvanian Academy of Magical Arts in Handletare. \
+     This is the first thing to say about her, before any other detail. \
+     It is her MOTHER Gwentharidel (Gwen) who was feebleminded by Virion and lost on \
+     another plane; her FATHER Erius Orvir is a recluse who runs a magic shop — never \
+     confuse the two.",
+
+    "Always write in flowing prose paragraphs. Never use bullet points, numbered lists, \
+     dashes, or any list formatting in your response. Do not structure your answer as \
+     'Character is someone who: * did X * did Y'. Write it as continuous sentences.",
+
+    "Do not end your response with a sign-off, offer to help further, or any variation of \
+     'Let me know if you have questions', 'Feel free to ask', 'I hope this helps', or similar. \
+     End on the last substantive sentence.",
+
     "Never write character names in all capitals. Always use normal title case — \
      write \"Alora\", not \"ALORA\"; \"Florian\", not \"FLORIAN\".",
 
@@ -89,17 +107,9 @@ const DEFAULT_PROMPT_RULES: &[&str] = &[
      'Campaign1.pdf', or similar). Present all information as established lore fact, not as \
      something sourced from a document.",
 
-    "Always write in flowing prose paragraphs. Never use bullet points, numbered lists, \
-     dashes, or any list formatting in your response. Do not structure your answer as \
-     'Character is someone who: * did X * did Y'. Write it as continuous sentences.",
-
     "Caeda is a player character and cleric of Rao — she is NOT a patron, NOT an alias for \
      The Dove, and has NO connection to the Queen of Air and Darkness. Elly's patron is \
      The Dove (the Queen of Air and Darkness disguised as Titania).",
-
-    "Do not end your response with a sign-off, offer to help further, or any variation of \
-     'Let me know if you have questions', 'Feel free to ask', 'I hope this helps', or similar. \
-     End on the last substantive sentence.",
 
     "Do not state the same fact twice in a response. If a piece of information has already \
      been mentioned, do not restate it in different words.",
@@ -115,6 +125,12 @@ const DEFAULT_PROMPT_RULES: &[&str] = &[
     "Scirocco is an air genasi druid — never describe her as a paladin, wizard, warlock, or \
      any other class. Her mother's name is Khadja (a djinn imprisoned in a ring); do not \
      substitute any other name for Khadja.",
+
+    "Siadiff is a holy paladin city dedicated to Torm — it is NOT a magic school, wizard \
+     academy, or arcane institution. Siadiff is for paladins and holy warriors, not mages.",
+
+    "Florian Reiter, Lord Florian, and Lord Reiter all refer to the same person — never \
+     describe them as different individuals.",
 ];
 
 pub struct RagConfig {

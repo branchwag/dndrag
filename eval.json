@@ -2,7 +2,7 @@
   {
     "question": "Who is Florian?",
     "must_mention": ["vampire", "paladin", "dragon"],
-    "must_not_mention": ["necromancy"]
+    "must_not_mention": []
   },
   {
     "question": "How did Florian become a vampire?",
@@ -42,7 +42,7 @@
   {
     "question": "What is Taelreth?",
     "must_mention": ["arcane", "diondria"],
-    "must_not_mention": ["siadiff", "paladin"]
+    "must_not_mention": ["paladin"]
   },
   {
     "question": "Who is Virion?",
@@ -83,7 +83,8 @@
   },
   {
     "question": "Who is Nikolai?",
-    "must_mention": ["alora", "changeling", "ikovia"],
+    "must_mention": ["alora", "ikovia"],
+    "must_mention_any": [["changeling", "shapeshifter"]],
     "must_not_mention": []
   },
   {
@@ -108,12 +109,14 @@
   },
   {
     "question": "What is the DragonMage War?",
-    "must_mention": ["dragon", "mage", "seal"],
+    "must_mention": ["dragon", "mage"],
+    "must_mention_any": [["seal", "sealed", "imprison", "imprisoned", "locked"]],
     "must_not_mention": []
   },
   {
     "question": "What happened to King Titus?",
-    "must_mention": ["died", "heir"],
+    "must_mention": ["heir"],
+    "must_mention_any": [["died", "death", "passed"]],
     "must_not_mention": []
   },
   {

@@ -446,8 +446,16 @@
         statusEl.textContent = '';
         statusEl.classList.remove('active');
       } catch (err) {
+        const arcaneExcuses = [
+          'The magicka surged and scattered — the ley lines appear to be unsettled. Try again in a moment.',
+          'The enchantment unraveled mid-cast. Perhaps the stars are not aligned. Try once more.',
+          'A disturbance in the weave has disrupted the divination. The tome requires a moment to recover.',
+          'The arcane channels are temporarily overwhelmed. Give the spellwork a breath and try again.',
+          'The ritual misfired — something interferes with the flow of magic. Please attempt it once more.',
+        ];
+        const excuse = arcaneExcuses[Math.floor(Math.random() * arcaneExcuses.length)];
         loadingEl.classList.remove('visible');
-        enqueueToken(' [The magic faltered: ' + err.message + ']');
+        enqueueToken(excuse);
         statusEl.textContent = '';
         statusEl.classList.remove('active');
       } finally {

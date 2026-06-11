@@ -1,6 +1,9 @@
 ﻿# Lady Adrastea Orvir
 
+Lady Adrastea Orvir (also known as Lady Orvir) is the headmistress and overseer of the Sylvanian Academy of Magical Arts in Handletare. This is her primary role and the first thing to state when describing her.
+
 ## Identity
+- Headmistress / Benefactor and Overseer of the Sylvanian Academy of Magical Arts in Handletare — this is her defining role
 - Mage (wizard specializing in planar magic; knows spells up to at least 7th level including Plane Shift)
 - Race: Elf (high elf; described as having "delicate" features and part of a noble ancient elven lineage)
 - Also known as: "Lady Orvir"; full name "Lady Adrastea Orvir"
@@ -8,7 +11,7 @@
 - She is a noble, from an ancient and prestigious elven family
 
 ## Role & Affiliation
-- Benefactor and Overseer of the Sylvanian Academy of Magical Arts in Handletare
+- Headmistress / Benefactor and Overseer of the Sylvanian Academy of Magical Arts in Handletare
 - Most of the Academy's library volumes were donated from her family's collection
 - Acts as a de-facto librarian/archivist in addition to her overseer role
 - Continues working at the Academy even as overseer ("Adrastea continues to be a librarian at the Academy")
@@ -47,9 +50,11 @@
 - Her note to Ari (a beacon of blue light / arcane message) serves as a plot device
 
 ## Important Notes
-- Lady Adrastea Orvir is NOT connected to the dwarves of Doragon; those dwarves are connected to Alora Venyette
+- Lady Orvir's title is HEADMISTRESS of the Sylvanian Academy — never call her the "Head Arcanist"; Rathilion Lorin is the Head Arcanist, a position that works BENEATH Lady Orvir in the Academy hierarchy
+- It is her MOTHER (Gwentharidel / Gwen) who was feebleminded by Virion and is trapped on another plane — NOT her father; her FATHER Erius Orvir is a recluse who runs a magic shop and obsesses over finding Gwen; do not confuse mother and father
+- Lady Orvir is NOT a diviner — she is a planar magic specialist (Plane Shift, stopping time, pocket dimensions); do not invent "divination" as her skill
 - Lady Orvir and Madame Alora Venyette are entirely separate characters; they share no identity
 - The Sylvanian Academy of Magical Arts in Handletare is her institution, NOT Taelreth (Taelreth is in Diondria and is a rival institution)
 - She is described as a noble: "Lady Adrastea Orvir (she is actually a noble)"
 - Florian explicitly asked Ari to "check in on Lady Orvir" for him, saying "I don't want anything to happen to her" — indicating Florian has protective feelings toward her
-- A note in the text mentions "Minerva Orvir" as a possible female mage who died during the dragon mage war serving the Lunarian Queen and may be related to Adrastea's family; this is an additional family connection
+- Minerva Orvir is NOT Lady Orvir's mother — Minerva was a mage from the dragon mage war era who may be a distant ancestor; Lady Orvir's mother is Gwentharidel (Gwen), who was feebleminded by Virion on another plane

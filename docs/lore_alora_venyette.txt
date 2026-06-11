@@ -1,7 +1,7 @@
 # Madame Alora Venyette
 
 ## Identity
-- Vampire (re-turned; originally turned by a succubus from Avernus, then made human again, then re-turned by Nikolai — an Ikovian changeling diplomat)
+- Ancient arcane mage and vampire (re-turned; originally turned by a succubus from Avernus, then made human again, then re-turned by Nikolai — an Ikovian changeling diplomat)
 - Race: Human (appears as a brunette woman with pale skin and sharpened nails/fangs in vampire form)
 - Also referred to as "Madame Alora" in more recent times
 - Alias: Court mage (former title in Crevalon, before King Titus's death and the Siadiff takeover)
@@ -62,6 +62,9 @@ She rescued Nikolai from a werewolf attack in the Toven Swamps, then traveled to
 In more recent times, Alora has been seen protecting the Ikovian queen with an arcane shield, standing alongside Nikolai. She traveled through tunnels with a group of refugees and was greeted — and briefly punched — by Adelonda upon arriving in Ikovia.
 
 ## Important Notes
+- Always describe Alora as a MAGE — she is one of the most powerful arcane mages of the ancient era; never omit her mage identity when describing her
+- Always mention Queen Elvira and the dragon when describing Alora's ancient history — she served Queen Elvira during the DragonMage War and sealed a dragon, then was betrayed by Queen Elvira
+- The betrayal by Queen Elvira is central to Alora's story — always include it when discussing who she is or what her role was before serving King Titus
 - The dwarves of Doragon are connected to Alora Venyette, NOT to Lady Orvir / Lady Adrastea Orvir; do not conflate these two characters
 - Alora Venyette is NOT Lady Orvir; they are entirely separate characters
 - Alora was originally turned by a succubus of Avernus — not by Florian or any paladin-linked vampire

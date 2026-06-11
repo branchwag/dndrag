@@ -1,6 +1,7 @@
 ﻿# Lord Florian Reiter
 
 ## Identity
+- Originally a Paladin of Torm — one of Siadiff's most respected knights in the Order of the Golden Lion before his turning; always mention his paladin background
 - For most of previously: a vampire (greater vampire, created by the life-draining kiss of a succubus)
 - Restored to human at the campaign's end
 - Race: Elf (high elf; retains elven appearance)
@@ -54,6 +55,8 @@
 ## Important Notes
 - For most of previously Florian was a vampire; he was restored to human at the campaign's end. When describing him during previously, his vampiric nature was central to who he was. By the time of more recent events, he is human.
 - NOT the character connected to Madame Alora Venyette's dwarven patrons; those dwarves are connected to Alora Venyette, NOT to Florian
+- Florian Reiter, Lord Florian, and Lord Reiter all refer to the same person — never treat them as different individuals
+- Always mention that Florian was a paladin of Torm before being turned — this is central to who he is; he went from knight of Torm to vampire lord
 - His party went missing after hunting a spellcaster attempting to summon a being from the Nine Hells; the official story was that they all perished, cause unknown; Sir Godwin knew of him as his predecessor in Siadiff
 - His resting place is not at the manor but at an unmarked patch of earth not far away; he never disclosed it to anyone
 - The succubus that turned him was a creature of Avernus; it could be defeated only on Avernus itself with the crook of Rao

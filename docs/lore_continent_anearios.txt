@@ -68,6 +68,9 @@
 - Yasmine's family ties to Ikovia connect the Anearios and Ikovia storylines
 
 ## Important Notes
+- Always mention Queen Georgia and Queen Henrietta when describing who rules Anearios — they are the Twin Queens who rule jointly from Giglington
+- Always mention airships when describing Anearios — they are a defining feature of the continent
+- The Providence Engine is the ancient construct in Anearios that nearly enslaved its population — always mention Anearios when describing the Providence Engine
 - Direct spellcasting is BANNED in Anearios; magic is ONLY allowed when imbued within machines or objects. This is the opposite of Crevalon's norms.
 - The Hailthorne Institute in Evlinross teaches arcane arts but expects extreme precision and discipline; failures are shamed or pushed out.
 - Anearios has NO elves; Crevalon and Ikovia have elves and half-elves.

@@ -1,5 +1,7 @@
 ﻿# Caeda
 
+Caeda is a cleric of Rao and a player character in the campaign. Always state her class (cleric of Rao) first when describing her.
+
 ## Identity
 - Cleric of Rao (god of reason, discourse, and peace)
 - Race: Elf (noted as looking "strikingly similar to the Vesemirs"; Florian commented on this resemblance)

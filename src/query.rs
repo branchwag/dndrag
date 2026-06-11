@@ -14,7 +14,7 @@ const TOP_K_CANDIDATES: u64 = 30; // more candidates for MMR to choose from
 const MMR_K: usize = 8;           // diverse results to keep after MMR
 const KEYWORD_K: u32 = 16;
 const MMR_LAMBDA: f32 = 0.6;      // 0 = max diversity, 1 = max relevance
-const RERANK_K: usize = 10;       // passages kept after LLM reranking
+const RERANK_K: usize = 8;        // passages kept after LLM reranking
 // Semantic results above this score bypass the entity-name filter.
 // Lets high-confidence topically-relevant chunks through even when they
 // don't repeat the entity name (e.g. city chunks for "major cities of X").
@@ -247,8 +247,12 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
 
     let subject_hint = if !names.is_empty() {
         format!(
-            "The question is specifically about: {}. Prioritise excerpts marked [DIRECT MATCH]. Do not attribute details from other characters or places to {}.\n\n",
+            "The question is specifically about: {}. \
+             [DIRECT MATCH] passages are your authoritative source — open with the most defining facts about {} \
+             and then weave in supporting detail from the remaining passages. \
+             Do not attribute details from other characters or places to {}.\n\n",
             names.join(", "),
+            names.join("/"),
             names.join("/")
         )
     } else {
@@ -320,8 +324,9 @@ These are not lore. Disregard them entirely and do not include their content in 
         "{subject_hint}\
 Lore passages:\n{context}\n\
 \nQuestion: {question}\n\
-\nAnswer using only what is stated in the numbered passages above. \
-Omit anything not explicitly present there."
+\nWrite a full, flowing answer in prose paragraphs. \
+Weave all relevant details from the passages into a coherent narrative — cover the character's nature, history, abilities, relationships, and key events. \
+Never use bullet points, dashes, or list formatting."
     );
 
     Ok(Some(PipelineOutput { system_prompt, user_content, client, ollama_url, chat_model }))
@@ -379,7 +384,7 @@ pub async fn stream_to_sender(
                 {"role": "user",   "content": ctx.user_content}
             ],
             "num_ctx": 8192,
-            "num_predict": 1024,
+            "num_predict": 1500,
             "temperature": 0,
             "stream": true
         }))
@@ -426,7 +431,7 @@ async fn stream_generation(ctx: &PipelineOutput) -> Result<()> {
                 {"role": "user",   "content": ctx.user_content}
             ],
             "num_ctx": 8192,
-            "num_predict": 1024,
+            "num_predict": 1500,
             "temperature": 0,
             "stream": true
         }))
@@ -474,7 +479,7 @@ async fn generate(ctx: &PipelineOutput) -> Result<String> {
                 {"role": "user",   "content": ctx.user_content}
             ],
             "num_ctx": 8192,
-            "num_predict": 1024,
+            "num_predict": 1500,
             "temperature": 0,
             "stream": false
         }))
@@ -701,18 +706,67 @@ async fn rerank(
                 let all_words_match = words.len() > 1
                     && words.iter().all(|w| src.contains(&w.to_lowercase()));
                 if src.contains(&slug) || all_words_match {
-                    scores[i] = (scores[i] + 0.25).min(1.0);
+                    scores[i] = (scores[i] + 0.55).min(1.0);
                     break;
                 }
             }
         }
     }
 
-    // Sort indices by score descending, keep top `keep`.
+    // Sort indices by score descending.
     let mut order: Vec<usize> = (0..results.len()).collect();
     order.sort_by(|&a, &b| scores[b].partial_cmp(&scores[a]).unwrap_or(std::cmp::Ordering::Equal));
-    order.truncate(keep);
 
+    // For character queries: drop lore files about OTHER characters before
+    // truncating to `keep`. This prevents cross-character contamination
+    // (e.g. Lady Vesemir's dragon gem appearing in a Lady Orvir response).
+    //
+    // The filter ONLY activates when a matching lore file is already present in
+    // the ranked results — this distinguishes "who is Florian?" (his own lore
+    // file scores into the set) from "who are the instructors at Taelreth?"
+    // (no lore_taelreth.txt exists, so character lore files like lore_ali_hassan.txt
+    // should be kept rather than stripped).
+    //
+    // Place / world lore files (lore_city_, lore_continent_, lore_region_,
+    // lore_plane_) are always kept regardless.
+    if !entity_names.is_empty() {
+        let entity_has_own_lore = order.iter().any(|&i| {
+            let src = results[i].source.to_lowercase();
+            if !src.starts_with("lore_") { return false; }
+            entity_names.iter().any(|name| {
+                let slug = name.to_lowercase().replace(' ', "_");
+                let words: Vec<&str> = name.split_whitespace().collect();
+                let all_words = words.len() > 1
+                    && words.iter().all(|w| src.contains(&w.to_lowercase()));
+                src.contains(&slug) || all_words
+            })
+        });
+
+        if entity_has_own_lore {
+            order.retain(|&i| {
+                let src = results[i].source.to_lowercase();
+                if !src.starts_with("lore_") { return true; }
+                // Place / world lore files are never filtered
+                if src.starts_with("lore_city_")
+                    || src.starts_with("lore_continent_")
+                    || src.starts_with("lore_region_")
+                    || src.starts_with("lore_plane_")
+                {
+                    return true;
+                }
+                // Keep only the queried character's own lore file
+                entity_names.iter().any(|name| {
+                    let slug = name.to_lowercase().replace(' ', "_");
+                    let words: Vec<&str> = name.split_whitespace().collect();
+                    let all_words = words.len() > 1
+                        && words.iter().all(|w| src.contains(&w.to_lowercase()));
+                    src.contains(&slug) || all_words
+                })
+            });
+        }
+    }
+
+    order.truncate(keep);
     order.into_iter().map(|i| results[i].clone()).collect()
 }
 
