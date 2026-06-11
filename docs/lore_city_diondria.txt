@@ -49,7 +49,15 @@
 - Saphirithrix maintains contact with Elly from here throughout the campaign
 - The UnderDark exit used by the party emerges closer to Diondria than other cities
 
+## Taelreth Instructors / School Heads
+- Ophelia — senior wizard and administrator; leads the institute day-to-day
+- Ali Hassan — Head of Necromancy; tall tiefling in long red robes trimmed with gold; specialises in necromancy and commands shadows; replaced Virion Maganti
+- Evius Hallewell — school head; colleague of Ophelia and Ali Hassan
+- Mordan Vamaris — former Head of Evocation; now retired; eccentric; was an assassination target of Ari during his Aviary years
+- Kithelle Greystone — halfling staff member; greets visitors at the entrance
+
 ## Important Notes
+- Taelreth is formally called the Institute of the Arcane — always use this full name when describing it
 - Taelreth (the Institute of the Arcane) is in DIONDRIA — NOT in Handletare. This is a critical disambiguation.
 - The Sylvanian Academy of Magical Arts is in HANDLETARE — not Diondria. These are two separate institutions in two different cities.
 - Virion Maganti studied at Taelreth in DIONDRIA before being expelled; he did not study at Handletare.

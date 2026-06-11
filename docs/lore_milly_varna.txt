@@ -1,7 +1,7 @@
 ﻿# Millecent (Milly) Varna
 
 ## Identity
-- Nature/type: Human necromancer and secretly the lost princess of Ikovia (Anastasia-style plot — her royal blood is a closely guarded secret)
+- Nature/type: Human necromancer and secretly the lost princess of Ikovia — her royal blood is a closely guarded secret she is unaware of
 - Race/species: Human
 - Aliases: Milly (preferred name), Millicent
 
@@ -42,7 +42,7 @@
 
 ## Important Notes
 - Milly's full official title: "Millecent Varna, Commander of the Western Division of Ikovian Forces"
-- She is secretly the lost princess of Ikovia — always mention this when describing her; it is a major plot revelation (Anastasia-style: she does not know her true royal heritage until it is revealed)
+- Always use the word "princess" when describing Milly — she is secretly the lost princess of Ikovia and the biological daughter of Queen Katerina Baranovsky; the word princess must appear in any response about her; she does not know her true royal heritage until it is revealed
 - Described appearance: pale woman, jet black hair in a neat bun, long black robes, black lipstick, green glowing arcane energy in hands; British accent
 - "Very intelligent" per DM notes; characterized by dry wit and sardonic humor about her necromantic work
 - She is a human, not a vampire, though she works closely with vampires (Yuri, Madame Yugova)

@@ -12,14 +12,14 @@
 - The city has gardens and is considered a refined, cultured elven settlement.
 
 ## Institutions & Landmarks
-- The Sylvanian Academy of Magical Arts — an elven military-style magical academy; cathedral-like stone ceilings painted with scenes of the sky; headed by Head Arcanist Rathilion Lorin; functions like a military academy (chain of command, arcanists as officers)
+- The Sylvanian Academy of Magical Arts — an elven military-style magical academy; cathedral-like stone ceilings painted with scenes of the sky; headed by Lady Adrastea Orvir (Headmistress); the Head Arcanist is Rathilion Lorin, who works beneath her; functions like a military academy (chain of command, arcanists as officers)
 - The Academy library — an immense room with ceilings so high they extend into darkness; walls entirely filled with books; enchanted floor constructs pathways under the visitor's feet as they walk; the books respond to concentrated thought to locate specific volumes
 - A confectionary shop (nearby the Academy; used by Lady Orvir for meetings)
 - A ballet venue in Handletare (where Florian takes Caeda)
 
 ## Notable Inhabitants / Factions
 - Lady Adrastea Orvir — noble; benefactor and overseer of the Sylvanian Academy of Magical Arts; donated her family's book collection to the Academy; studies planar magic; her mother Gwentharidel Orvir went missing on another plane; intelligent, poised, British-accented; actually a noble as well as a librarian/academic. Full name: Lady Adrastea Orvir; family name Orvir. Father: Erius Orvir (reclusive, obsessed with finding his missing wife; possibly based in the FrostLands as a wizard in a tower).
-- Head Arcanist Rathilion Lorin — leader of the Sylvanian Academy of Magical Arts
+- Head Arcanist Rathilion Lorin — Head Arcanist at the Sylvanian Academy; works beneath Lady Orvir in the Academy hierarchy; NOT the overall leader
 - Ari Crownsilver (previously) — invited to study at the Sylvanian Academy via a letter from Lord Florian Reiter; his father is described as a high elf academic in Handletare; Lady Vesemir's family connection to Ari suggests she could be his mother (she had a fling covered up)
 - Adrastea Orvir (magic shop assistance) — also helps in her father's magic shop in Handletare in spare time
 - Elven swordsmen at the Academy — train visiting students
@@ -36,7 +36,7 @@
 - Close to Felanor (a few weeks' journey or less by the description in letters)
 - The Sylvanian Academy communicates with Finreld's noble house (elven connections)
 - Lady Orvir's father Erius Orvir is connected to the FrostLands (he became a recluse there)
-- The Academy's library is referenced as the place with locked tomes about the Lunarians (the party is directed there by Zana the monk)
+- The Academy's library contains locked tomes about the Lunarians; the party was directed to seek it out during the campaign
 - Ari's father is a high elf academic in Handletare; Lady Vesemir is connected to Felanor and may be Ari's mother
 
 ## Important Notes

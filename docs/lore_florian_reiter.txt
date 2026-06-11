@@ -57,7 +57,8 @@
 - NOT the character connected to Madame Alora Venyette's dwarven patrons; those dwarves are connected to Alora Venyette, NOT to Florian
 - Florian Reiter, Lord Florian, and Lord Reiter all refer to the same person — never treat them as different individuals
 - Always mention that Florian was a paladin of Torm before being turned — this is central to who he is; he went from knight of Torm to vampire lord
+- Florian killed a red dragon single-handedly — always mention this as one of his defining accomplishments
 - His party went missing after hunting a spellcaster attempting to summon a being from the Nine Hells; the official story was that they all perished, cause unknown; Sir Godwin knew of him as his predecessor in Siadiff
 - His resting place is not at the manor but at an unmarked patch of earth not far away; he never disclosed it to anyone
-- The succubus that turned him was a creature of Avernus; it could be defeated only on Avernus itself with the crook of Rao
+- The succubus that turned him was a creature of Avernus; it could be defeated only on Avernus itself with the crook of Rao; the succubus has no recorded name — do NOT call her Silvester (Silvester is a pit fiend connected to Virion Maganti, an entirely separate character)
 - He is listed in more recently as having a daughter named Rose Reiter (Rose is a player character in more recently)

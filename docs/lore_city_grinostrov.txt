@@ -27,7 +27,7 @@
 
 ## History & Lore
 - Grinostrov is the ancient capital of Ikovia and has been the seat of the matriarchal Ikovian royal line since the time of Queen Pavlova.
-- During more recently: The Ikovian Queen is killed or displaced; the kingdom falls into crisis. Madame Yugova attempts to claim the throne. The Camp 2 party ultimately places the rightful queen (Milly, the lost princess) on the throne after defeating Yugova's usurpation.
+- During more recently: Queen Katerina Baranovsky is killed; the kingdom falls into crisis. Madame Yugova attempts to claim the throne. The party resurrects Queen Katerina via death clerics in Ostroski and restores her to power; Milly (the lost princess and Katerina's daughter) is revealed as the heir during this arc but Katerina reclaims the throne.
 - The GitYanki invasion of Grinostrov occurs as a late-more recently event; the city is eventually reclaimed.
 - The Ikovian Queen's death: the Camp 2 party made the connection that Florian Reiter had killed Adelonda's father, which triggered some conflict; Florian weighed in on the Ikovian mage vs. Paladin conflict and then departed to another location.
 
@@ -42,4 +42,4 @@
 - Grinostrov is in IKOVIA — NOT in Crevalon. This is an entirely separate continent.
 - The MAGICAL ACADEMY in Grinostrov is an Ikovian institution — NOT the same as Taelreth (Diondria) or the Sylvanian Academy (Handletare), which are Crevalonese.
 - Madame Yugova is a NOBLE/VAMPIRE from Grinostrov — NOT a paladin, NOT a government official. She is a powerful private citizen who eventually attempts a coup.
-- The Ikovian Queen (at the start of more recently) is a DIFFERENT character from the eventual Queen Milly (the lost princess who takes the throne).
+- The Ikovian Queen is Queen Katerina Baranovsky — Milly (the lost princess) is her daughter and the heir, but Katerina is the ruler.

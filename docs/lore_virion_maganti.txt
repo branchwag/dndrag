@@ -4,7 +4,7 @@
 - Wizard; in the process of becoming a lich (lich ritual partially complete as of previously end; described as a "lich/mummy lord mix" for combat purposes)
 - Race: Human (exact race not specified beyond being a mortal mage)
 - Full name: Virion Maganti
-- The main villain of previously
+- The primary antagonist; the central villain of the story's first major conflict
 
 ## Role & Affiliation
 - Former head of Necromancy at Taelreth, Institute of the Arcane in Diondria (before Ali Hassan's arrival; left approximately one year before Ali Hassan took the position)
@@ -13,7 +13,7 @@
 - Aligned with Bel, the Warlord of Avernus, via a deal: Bel promised to turn Virion into a lich with a normal (non-rotting) body in exchange for Virion helping facilitate the fallen celestials (the Solarian King and Lunarian Queen) becoming irredeemable and being taken to hell, which would give Bel two celestials to tip the Blood War against the demons
 - Commands legions of undead
 - Has an imp as a familiar
-- Summoned Silvester (a pit fiend servant of Bel) through his experiments
+- Summoned Silvester (a pit fiend servant of Bel) through his experiments — Silvester is a pit fiend, NOT a succubus; do not confuse Silvester with the unnamed succubus who turned Florian Reiter
 
 ## History & Origin
 - Father was a farmer from Sharnwick who traveled town to town selling goods; bandits attacked and killed him on his route; no one was ever brought to justice for the crime
@@ -53,8 +53,10 @@
 - Bel secretly plans to have the lich ritual fail and take Virion's soul to the afterlife once the deal is done
 
 ## Important Notes
+- Always describe Virion as a lich or a wizard pursuing lichdom — his necromantic nature is central; never omit that he is becoming a lich
+- Always mention that he commands undead and practiced necromancy — this is the core of who he is
 - His age is unclear given his current (partially lich) state
-- He is described as NOT yet a full lich at the start of the campaign; he is "in the process of becoming a lich"
+- He is not yet a full lich; he is "in the process of becoming a lich" and his transformation is partially complete
 - He is the son of Charles Maganti (a Sharnwick farmer killed by bandits); Virion's motivation stems from his father's murder and the world's indifference to it
 - "Virion is the same [as The Bluejay]. No one cared about his plight." — The Bluejay's words suggest he and she share a parallel wound
 - The Bluejay has information about "where Virion keeps the keys"

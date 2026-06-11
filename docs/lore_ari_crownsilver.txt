@@ -1,6 +1,7 @@
 ﻿# Ari Crownsilver
 
 ## Identity
+- Bladesinger — his defining subclass; always describe Ari as a Bladesinger; this is how he identifies himself
 - Wizard / Rogue multiclass; subclass: Bladesinger (took Bladesinger as his subclass during previously)
 - Race: High Elf
 - Full name: Andresti "Ari" Crownsilver

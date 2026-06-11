@@ -133,6 +133,24 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
             }
         }
     }
+    // When NER returns nothing, try a lore-file search on each word in the question
+    // that is long enough to be a proper noun (>=5 chars). Catches cases where the
+    // entity extractor misses place names like "FrostLands" or "Ikovia".
+    if names.is_empty() {
+        let q_lower = question.to_lowercase();
+        for word in q_lower.split(|c: char| !c.is_alphanumeric()) {
+            if word.len() >= 5 {
+                for hit in store.search_lore_file(word, query_vec.clone(), 5).await? {
+                    if !keyword_results.iter().any(|r| r.text == hit.text)
+                        && !is_scene_filtered(&hit.text, &scene_markers)
+                    {
+                        keyword_results.push(hit);
+                    }
+                }
+            }
+        }
+    }
+
     // For broad narrative questions with no named entities, force-include relevant
     // lore files so the LLM has coherent context rather than unrelated semantic results.
     if names.is_empty() {
