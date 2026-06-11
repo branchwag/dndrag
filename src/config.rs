@@ -136,6 +136,10 @@ const DEFAULT_PROMPT_RULES: &[&str] = &[
      who use bird codenames (the Dove, the Bluejay, the Robin, etc.). \
      They are NOT bird-like creatures, bird humanoids, or anything non-human. \
      Never describe Aviary members as having bird features or being bird-people.",
+
+    "The leader of the Aviary is the Dove — not the Bluejay. \
+     The Bluejay is a senior operative and trainer (Ari's trainer) but is NOT the leader. \
+     The Dove is revealed to be the Queen of Air and Darkness posing as Titania.",
 ];
 
 pub struct RagConfig {
