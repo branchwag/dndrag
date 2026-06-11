@@ -36,6 +36,10 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
         .unwrap_or_else(|_| "http://localhost:11434".to_string());
     let chat_model = std::env::var("CHAT_MODEL")
         .unwrap_or_else(|_| MODEL.to_string());
+    // Smaller/faster model for utility steps (entity extraction, reranking).
+    // Defaults to chat_model if RERANK_MODEL is not set.
+    let rerank_model = std::env::var("RERANK_MODEL")
+        .unwrap_or_else(|_| chat_model.clone());
 
     let client = Client::builder()
         .timeout(std::time::Duration::from_secs(120))
@@ -46,7 +50,7 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
     // NER and query embedding run concurrently — they're independent.
     let t_start = Instant::now();
     let (names, query_vec_result) = tokio::join!(
-        extract_entities(&client, &ollama_url, &chat_model, question),
+        extract_entities(&client, &ollama_url, &rerank_model, question),
         embedder.embed(vec![question.to_string()])
     );
     let query_vec = query_vec_result?.remove(0);
@@ -65,28 +69,25 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
     let t_kw = Instant::now();
     let mut keyword_results: Vec<SearchResult> = Vec::new();
 
-    let bio_vec = if !names.is_empty() {
+    // Bio and events vectors don't depend on each other — embed them concurrently.
+    let (bio_vec, events_vec) = if !names.is_empty() {
         let bio_query = format!(
             "{} paladin knight origin became history background turned",
             names.join(" ")
         );
-        let mut vecs = embedder.embed(vec![bio_query]).await?;
-        Some(vecs.remove(0))
-    } else {
-        None
-    };
-
-    // A third pass targets major accomplishments / plot events that don't score
-    // well against origin-focused queries but are defining facts about the character.
-    let events_vec = if !names.is_empty() {
         let events_query = format!(
             "{} defended kingdom battle fought dragon king served protected victory threat defeated",
             names.join(" ")
         );
-        let mut vecs = embedder.embed(vec![events_query]).await?;
-        Some(vecs.remove(0))
+        let (bio_result, events_result) = tokio::join!(
+            embedder.embed(vec![bio_query]),
+            embedder.embed(vec![events_query])
+        );
+        let bio = bio_result.ok().and_then(|mut v| if v.is_empty() { None } else { Some(v.remove(0)) });
+        let events = events_result.ok().and_then(|mut v| if v.is_empty() { None } else { Some(v.remove(0)) });
+        (bio, events)
     } else {
-        None
+        (None, None)
     };
 
     for name in &names {
@@ -226,7 +227,7 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
     // LLM call, then keep only the top RERANK_K. Fixes cases where a relevant
     // chunk is retrieved but buried under lower-quality results.
     let t_rerank = Instant::now();
-    results = rerank(&client, &ollama_url, &chat_model, question, &names, results, RERANK_K).await;
+    results = rerank(&client, &ollama_url, &rerank_model, question, &names, results, RERANK_K).await;
     info!(
         kept = results.len(),
         elapsed_ms = t_rerank.elapsed().as_millis(),
