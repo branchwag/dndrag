@@ -1,0 +1,203 @@
+Hey everyone. Today I want to talk to you about building a RAG pipeline from scratch in Rust.
+
+My use case is a little niche. I am really into DnD. If you're not familiar with it — it's a roleplaying game where players create their own fantasy characters and go face whatever horrible things live in the world. And then there's the Dungeon Master, who invents everything the players interact with. The setting, the plot, the monsters, the lore.
+
+That's me. I'm the DM.
+
+My document for the first campaign — the one where we played from level 1 to level 20 — is over one thousand pages long. And that's just campaign one. I ran two more campaigns set in the same world, each with their own separate document.
+
+This is a problem for two reasons. The first: I can't hold a thousand pages of lore in my head at once. A player asks about some ancient mage from four thousand years ago and I'm supposed to have a coherent answer ready. The second: across three campaigns of notes I had inconsistencies I didn't even know about. Wrong dates. Characters who aged wrong. Relationships that didn't add up.
+
+So I decided to build a system I could query in natural language. Ask it "who is Alora?" and get an accurate, in-world answer drawn from my actual campaign documents. No hallucinated DnD tropes. No generic fantasy lore. My world, my rules.
+
+That's the RAG pipeline — Retrieval-Augmented Generation. You pull relevant context from your own documents and give it to a language model so it answers from that context instead of making things up.
+
+
+WHY RUST
+--------
+
+I could have done this in Python in an afternoon. LangChain, a pip install, done. But I'd been wanting a reason to build something substantial in Rust, and this felt right. The performance characteristics of Rust make it a genuinely good fit for a data pipeline — the ingest step processes hundreds of PDF pages, and you want that to be fast. The type system forces you to think carefully about every transformation in the pipeline, which turns out to be valuable when your data has weird edge cases everywhere.
+
+The other reason: I wanted to understand what's actually happening. LangChain abstracts all the interesting decisions away. Building from scratch means you have to choose your own chunking strategy, write your own search logic, decide how to structure your retrieval. You learn a lot more.
+
+
+THE STACK
+---------
+
+Three services, all running in Docker:
+
+Qdrant is the vector database. It stores every chunk of text from my documents alongside a 768-dimensional embedding vector — a mathematical fingerprint of what that text means semantically. When you ask a question, Qdrant finds chunks whose meaning is close to the question's meaning.
+
+Ollama runs two models locally. nomic-embed-text generates the embeddings — both for ingestion and for query time. gemma2:9b is the language model that reads the retrieved context and writes the answer. Everything stays on my machine. No API calls, no data leaving the house.
+
+The Rust binary is the pipeline itself — a CLI with three subcommands: ingest, query, and serve.
+
+
+INGESTION
+---------
+
+Ingestion is the step where you read your documents and load them into Qdrant. A few decisions worth explaining.
+
+First, text extraction. I used pdf-extract, a pure-Rust library with no native dependencies. That matters in Docker — if your library depends on native binaries like poppler or pdfium, you're adding installation complexity and potential CI headaches. Pure Rust keeps the build simple.
+
+Second, chunking. You can't embed an entire PDF page as one unit — the vector would average out too much meaning. You need to split the text into chunks small enough that each one is about one topic. I aimed for around 200 words per chunk with a two-sentence overlap between adjacent chunks. The overlap helps when an answer spans a chunk boundary.
+
+The important detail is that I split on sentence boundaries, not word counts. A naive word-count chunker will cut a sentence in half. That half-sentence then embeds poorly and retrieves poorly. Splitting on punctuation and paragraph breaks means every chunk is semantically complete.
+
+There was also a nasty problem with PDF artifacts. Campaign documents are a mess — a thousand pages of DM notes mixed with embedded maps, token art, music cover images, and screenshots. pdf-extract would pull all of that out as garbage: hex blobs, base64 fragments, long binary strings that blew up the embedding model because they exceeded its context window.
+
+One fix was at the chunking level: filter out any token longer than 40 characters. Real words don't get that long.
+
+But the better fix was stripping images from the PDFs themselves before ingest, using PyMuPDF. Campaign1.pdf went from 291 MB down to 9.6 MB. Campaign2.pdf from 104 MB to 2.8 MB. Campaign3.pdf from 13 MB to under a megabyte. The text content is unchanged — only the embedded image data is gone. Cleaner source files, faster extraction, less noise reaching the chunker. And as a side effect, the chunk count went up: Campaign1 went from 556 chunks to 1,509, because image-adjacent garbage was previously eating into what the chunker counted as a "word".
+
+Each chunk gets a deterministic UUID generated from its filename and position in the file. This means if you re-run ingest, you upsert rather than duplicate. The collection stays clean.
+
+
+THE QUERY PIPELINE
+------------------
+
+This is where it gets interesting. A naive RAG pipeline embeds the user's question, finds the top-K nearest chunks, and hands them to the LLM. That works for simple cases but breaks down for lore queries. The problem: a question like "Who is Alora?" semantically matches lots of chunks that mention Alora in passing. You end up with context full of tangential references instead of the key facts about her.
+
+I ended up with a five-stage pipeline.
+
+Stage one: entity extraction and embedding run concurrently. The LLM reads the question and extracts named entities — character names, place names, items. At the same time, the embedding model turns the question into a query vector. These two steps are independent so they run in parallel with tokio::join. Then, if named entities were found, I embed two additional query variants — one biography-focused ("origin background history") and one events-focused ("battle fought defended"). These also run concurrently with each other in a second tokio::join.
+
+Stage two: three-pass keyword search. For each extracted entity, I run a Qdrant full-text search — not vector similarity, but actual text matching. This surfaces chunks that literally contain the character's name. I run three passes per entity: one with the original query vector, one with the biography vector, and one with the events vector. Different query vectors surface different chunks because the embedding space rewards different neighborhoods. There's also a lore-file pass — structured character documents I wrote specifically as a source of truth, tagged by entity name in Qdrant. These always surface regardless of how the PDFs chunk.
+
+Stage three: semantic search with MMR. I fetch the top 30 candidates by cosine similarity, drop anything below a 0.45 score threshold — those are usually noise — and then apply Maximal Marginal Relevance to select 8 diverse results. MMR is the key insight here: instead of just taking the 8 most relevant chunks, you iteratively pick the chunk that maximises relevance to the question while minimising redundancy with what you've already selected. The lambda parameter controls the tradeoff. Without this, your context window fills up with six slightly different chunks about the same thing.
+
+Stage four: merge and rerank. Keyword results and semantic results are merged and deduplicated on exact text. Then I send all the passages to a smaller LLM — llama3.2, a 3-billion-parameter model — and ask it to score each one on how directly it reveals the character's identity, history, or abilities. Using a smaller model here matters for performance: entity extraction and reranking are utility tasks that don't need the full 9-billion-parameter model. The scores reorder the context window so the best passages are at the top. There's also a source boost: chunks from the structured lore files get a +0.55 score bonus, because I trust those documents more than a raw PDF excerpt.
+
+After reranking, there's a cross-character filter. When you ask "who is Lady Orvir?", the retriever sometimes surfaces lore files about other characters — Florian, Alora — because they're mentioned in connection with her. Left unchecked, the model would pick up details from those files and attribute them to the wrong character. The filter detects whether the queried character has their own lore file in the results; if they do, it drops every other character's lore file from the context window. Place and world lore files are always kept regardless. The guard condition matters: for a question like "who are the instructors at Taelreth?", no Taelreth lore file exists, so the filter doesn't activate and character lore files for the instructors stay in context where they belong.
+
+Stage five: generation. The reranked context goes into the prompt alongside strict instructions. The system prompt tells the model it is a keeper of lore, not an AI assistant. It lists specific rules — never use bullet points, never end with a sign-off, never reference real-world proper nouns, speak only from what is in the passages. There's also a set of character-specific rules compiled from things the model got wrong during testing — which character holds which title, which names are aliases for the same person, which organizations are human and not creature-types. Then gemma2:9b generates the final answer, and tokens stream back via SSE.
+
+
+PROBLEMS I HIT
+--------------
+
+A few things bit me that are worth knowing about.
+
+The Ollama embedding endpoint changed. The standard OpenAI-compatible /v1/embeddings endpoint refused batch input for nomic-embed-text. The fix was switching to /api/embed, Ollama's native endpoint, which handles arrays correctly.
+
+The qdrant-client API didn't match the documentation I was reading. Payload construction needed serde_json::json!({...}).try_into() instead of the shorthand I'd seen in examples. The VectorsConfigBuilder had been replaced. These things happen with fast-moving libraries — read the source when the docs are wrong.
+
+In the healthcheck for Qdrant I tried using /dev/tcp to test the port. That's a bash feature, not a sh feature. The Alpine-based Qdrant image uses dash, not bash. The fix was switching to the bash binary with an explicit CMD.
+
+The Docker profile flag for the CLI had to precede the subcommand. docker compose --profile cli run, not docker compose run --profile cli. One of those things you only learn by reading the error message carefully.
+
+And the document quality problem. My campaign PDFs are a thousand pages of DM notes — roleplay scripting, music links, Discord messages pasted in, images, tables, whatever. That raw content was causing weird retrieval results. I ended up writing structured lore files for each major character and location, then building a system of scene filters that drop any chunk containing specific strings before it reaches the model. Chunks about intimate scenes, out-of-game notes, player instructions — they get filtered out. The model only sees what I want it to see.
+
+Cross-character contamination was a subtler problem. A character like Lady Orvir appears in scenes with other characters, and those other characters' lore files would sometimes rank highly in her results. The model would read the other file and confidently attribute the wrong details to her — giving her a magical gem that belonged to someone else, or calling her by the wrong title. That's what led to the cross-character filter described above.
+
+The lore files themselves needed careful writing. Early versions had warning notes like "Lady Orvir is NOT connected to the dwarves of Doragon" — intended to stop hallucinations. Instead, those notes surfaced verbatim in the model's responses. The fix was reframing: instead of stating what she isn't connected to, move that fact to a different character's lore file where it belongs. What goes in the context window gets reflected in the output, even the parts you wrote to prevent hallucinations.
+
+
+THE EVAL SYSTEM
+---------------
+
+One thing I added that I think is underrated: an eval subcommand. You give it a JSON file of questions with expected keyword lists — words the answer must mention, words it must not mention — and it runs the full pipeline for each question and reports pass/fail with a score.
+
+This matters because RAG quality is slippery. You make a change, test a couple of queries by hand, feel good about it, and then later discover it broke something else. Having a labeled test set means you can measure objectively. My eval file has 30 campaign-specific questions. When I make a change to the retrieval logic or prompt rules, I run the eval and check the score. That's how I know whether a change actually helped.
+
+It's also where synonym matching becomes relevant. "Necromancy" and "undead" mean the same thing for my purposes — either word in the response should count as a pass. The eval supports synonym groups so you don't fail a question just because the model used a different word for the same concept.
+
+
+THE FRONTEND
+------------
+
+The query subcommand streams to stdout. For sharing with players, I added a serve subcommand that starts an axum web server and renders the answers in a browser.
+
+The visual design is a parchment — warm gradient, inner border, layered shadows, dark background. The answer text uses Tangerine, a cursive font that looks handwritten. As tokens arrive from the SSE stream, each character gets added to the DOM one at a time with a randomised delay of 18 to 36 milliseconds. A CSS animation — inkReveal — fades each character in from transparent with a brief red glow, giving the impression the words are being written with ink. While the pipeline runs, Norse runes pulse in sequence as a loading indicator.
+
+When the pipeline fails — a model timeout, a Qdrant connection blip — the frontend doesn't show a raw error message. Instead it picks from a pool of arcane excuses: "the ley lines appear to be unsettled", "a disturbance in the weave has disrupted the divination". Fits the aesthetic better than "error sending request for url http://ollama:11434".
+
+The SSE parsing uses fetch and a ReadableStream rather than EventSource. EventSource only supports GET requests. Since I'm sending a question in the request body, I needed POST, so fetch it is. The stream is parsed manually — split on newlines, accumulate data: lines, flush on blank line.
+
+
+TO SUMMARISE
+------------
+
+This is what the full pipeline looks like, from question to answer.
+
+[FLOWCHART — show on screen]
+
+  ┌─────────────────────────────────────────┐
+  │  User asks question in browser          │
+  └────────────────────┬────────────────────┘
+                       │ POST /query
+                       ▼
+          ┌────────────────────────┐
+          │  axum server :3000     │
+          │  spawns pipeline task  │
+          └────────────┬───────────┘
+                       │
+          ┌────────────┴────────────┐
+          │  tokio::join! (concurrent)
+          ▼                         ▼
+  ┌───────────────┐      ┌──────────────────┐
+  │  LLM NER      │      │  Embed question  │
+  │  extract      │      │  nomic-embed-text│
+  │  names/places │      │  768-dim vector  │
+  └───────┬───────┘      └────────┬─────────┘
+          │                       │
+          └──────────┬────────────┘
+                     │
+          ┌──────────▼────────────┐
+          │  3-pass keyword search│
+          │  + lore-file search   │
+          │  per extracted entity │
+          └──────────┬────────────┘
+                     │
+          ┌──────────▼────────────┐
+          │  Semantic search      │
+          │  top-30 candidates    │
+          │  score threshold 0.45 │
+          │  MMR diversity → 8    │
+          └──────────┬────────────┘
+                     │
+          ┌──────────▼────────────┐
+          │  Merge + deduplicate  │
+          └──────────┬────────────┘
+                     │
+          ┌──────────▼────────────┐
+          │  Entity filter        │
+          │  Scene filter         │
+          └──────────┬────────────┘
+                     │
+          ┌──────────▼────────────┐
+          │  LLM reranker         │
+          │  llama3.2 (fast)      │
+          │  score passages 0-10  │
+          │  lore-file boost +0.55│
+          │  cross-char filter    │
+          │  keep top 8           │
+          └──────────┬────────────┘
+                     │
+          ┌──────────▼────────────┐
+          │  Build prompt         │
+          │  system rules +       │
+          │  subject hint +       │
+          │  labelled passages    │
+          └──────────┬────────────┘
+                     │
+          ┌──────────▼────────────┐
+          │  Generate (streaming) │
+          │  gemma2:9b via Ollama │
+          └──────────┬────────────┘
+                     │
+          ┌──────────▼────────────┐
+          │  SSE token stream     │
+          │  → mpsc channel       │
+          │  → axum SSE response  │
+          └──────────┬────────────┘
+                     │
+          ┌──────────▼────────────┐
+          │  Browser              │
+          │  fetch ReadableStream │
+          │  character queue      │
+          │  inkReveal animation  │
+          │  → answer on parchment│
+          └───────────────────────┘
+
+If you want to follow along, the full project is on GitHub. The README covers how to get it running. Thanks for watching.
