@@ -23,6 +23,7 @@ const DEFAULT_SCENE_MARKERS: &[&str] = &[
     "whip wet with blood",
     "iron gauntlet",
     "scirocco he won't look",
+    "morphing into a semblance of a dragon",
     "branchwag",
     "today at",
     "if florian is brought up",
@@ -105,6 +106,15 @@ const DEFAULT_PROMPT_RULES: &[&str] = &[
 
     "Nikolai is a changeling — always refer to his nature using the word 'changeling', \
      not merely 'shapeshifter'. He is both a changeling and a vampire.",
+
+    "Never invent names, quotes, dialogue, or descriptive details that are not present in \
+     the provided passages. If the passages do not contain a specific fact (such as a \
+     character's mother's name, a quote, or a personal description), do not fabricate it. \
+     If information is absent, omit that detail rather than guessing.",
+
+    "Scirocco is an air genasi druid — never describe her as a paladin, wizard, warlock, or \
+     any other class. Her mother's name is Khadja (a djinn imprisoned in a ring); do not \
+     substitute any other name for Khadja.",
 ];
 
 pub struct RagConfig {

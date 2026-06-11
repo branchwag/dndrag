@@ -13,7 +13,7 @@
 
 ## History & Origin
 - Her mother is Khadja, a djinn from the Plane of Air (specifically from the City of Avis on the Plane of Air)
-- Her father is Virion Maganti: he used a Censer of Controlling Air Elementals to summon Khadja, forced her to give up the child, and then imprisoned Khadja within a ring of djinni summoning
+- Her father is Virion Maganti: he used a Censer of Controlling Air Elementals to summon Khadja, forced her to give up the child, and then imprisoned Khadja within a ring of djinni summoning; Khadja has since been freed
 - After being handed over, Scirocco was given to a desert shaman who blessed her with Druidic powers
 - Was raised in Adelanto; has a non-biological brother named Malek (sarcastic and charming; loves hippogriff racing)
 - The community leader of Adelanto is Samir; Scirocco grew up knowing her
@@ -26,13 +26,13 @@
 - Khadja noted she could theoretically help free her from the ring if a portal or great mage could be found (Khadja cannot transport herself from the ring)
 
 ## Key Relationships
-- Ellyjobell (Elly): her romantic partner during previously; Florian was attracted to Scirocco but accepted she was taken
-- Khadja: her mother; imprisoned in a ring of djinni summoning by Virion; Scirocco discovered her existence when the party found the ring in Virion's tomb
+- Ellyjobell (Elly): her WIFE — Scirocco proposed to Elly and they married at the campaign's end; they live together in Finreld; this is her primary relationship
+- Khadja: her mother (a djinn); was imprisoned in a ring of djinni summoning by Virion; Scirocco discovered her existence when the party found the ring in Virion's tomb; Khadja has since been freed from the ring
 - Virion Maganti: her biological father; he does not acknowledge the relationship; he imprisoned Khadja to prevent her from being a weakness to him
 - Malek: her non-biological brother in Adelanto; they have the standard sibling banter; he loves hippogriff racing
 - Samir: the community leader of Adelanto who raised her alongside the community
-- Florian Reiter: he was attracted to her; expressed this via a sending stone ("Scirocco — I know what I am but why must you injure me so?"); Scirocco gave him the stone back or used it; he accepted gracefully
-- "Grandmother": referred to as Duchess Jamila; the party visited her on the Plane of Air
+- Florian Reiter: he was attracted to her; expressed this via a sending stone ("Scirocco — I know what I am but why must you injure me so?"); Scirocco returned the stone; he accepted gracefully; Florian did NOT give Scirocco a sword — he gave a sword to Altarion (a different party member)
+- "Grandmother" Duchess Jamila: Khadja's mother (a djinn); the party visited her on the Plane of Air
 
 ## Key Events (campaign)
 - previously: Present from the start in Sharnwick; touched the Solarian talisman and resisted its mental pull; traveled throughout Crevalon and the desert with the party
@@ -41,10 +41,14 @@
 - Received a sending stone from Florian after a moonlit flight together (Florian had asked her on the flight after confirming she was with Elly; he was crestfallen but still gave her the stone)
 - Traveled to the Plane of Air to visit her grandmother Duchess Jamila
 - Won the hippogriff race in Adelanto (earning Ari and Babushka significant gold from their bets)
+- Married Ellyjobell (Elly) at the campaign's end; they now live together in Finreld
+- Khadja was eventually freed from the ring
 
 ## Important Notes
+- Scirocco IS an air genasi DRUID — always state her as an air genasi druid; never call her a paladin, warlock, wizard, or any other class; never say her race is "not specified"
+- Her mother's name is KHADJA (a djinn from the Plane of Air) — not Kiana, not any other name; Khadja was imprisoned in a ring of djinni summoning by Virion but has since been freed
+- She does NOT have a dragon form or dragon transformation ability; her Wild Shape forms include shark (for underwater); do not describe her as having the ability to transform into a dragon
 - Scirocco's connection to the Plane of Air comes from her mother Khadja (a djinn), not from any independent training
 - Her father Virion Maganti is the main villain of previously; she did not know this at the start
 - Her grandmother is Khadja's mother, a djinn — referred to as "Duchess Jamila" in the text
-- The DM notes reference "Scirocco's theme song — I'm blue" as flavor
 - She is bisexual / queer — in a relationship with Elly (a female gnome)
