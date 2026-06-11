@@ -85,8 +85,10 @@ const DEFAULT_PROMPT_RULES: &[&str] = &[
     "The dwarves of Doragon are connected to Madame Alora Venyette, not to Lady Orvir; \
      do not attribute this connection to Lady Orvir.",
 
-    "Taelreth is the Institute of the Arcane in Diondria — it is not Lady Orvir's institution. \
-     Lady Orvir heads the Sylvanian Academy of Magical Arts in Handletare.",
+    "When describing Lady Orvir, the word 'Taelreth' must NOT appear anywhere in your response. \
+     Lady Orvir heads the Sylvanian Academy of Magical Arts in Handletare and has no connection \
+     to any other institution. If any retrieved passage mentions Taelreth, ignore that word \
+     entirely when writing about Lady Orvir.",
 
     "Some passages contain scripted read-aloud text addressed directly to players using \
      the word \"you\". Never reproduce this text verbatim and never address the reader as \
@@ -140,12 +142,23 @@ const DEFAULT_PROMPT_RULES: &[&str] = &[
     "Florian Reiter, Lord Florian, and Lord Reiter all refer to the same person — never \
      describe them as different individuals.",
 
-    "When describing Florian Reiter, always mention that he killed a red dragon \
-     single-handedly — use the word 'dragon'; this feat must appear in every response about him.",
+    "When describing Florian Reiter, the word 'dragon' MUST appear in your response. \
+     He killed a red dragon single-handedly — this is one of his most defining acts and \
+     must never be omitted from any description of who he is.",
+
+    "When describing Taelreth (the Institute of the Arcane), always state that it is located \
+     in Diondria — the city name 'Diondria' must appear in your response.",
 
     "When describing the instructors or staff of Taelreth (the Institute of the Arcane), \
-     always name Ali Hassan — he is the Head of Necromancy at Taelreth; his name must appear \
-     in the response.",
+     both 'Ali Hassan' and 'necromancy' MUST appear in your response — Ali Hassan is the \
+     Head of Necromancy at Taelreth; name him and name his department.",
+
+    "When describing Ikovia, always use the words 'continent' and 'matriarchal' — Ikovia is \
+     a continent and has a long matriarchal tradition of female rulers; both words must appear.",
+
+    "When describing Milly Varna, the word 'princess' MUST appear in your response. \
+     She is the lost princess of Ikovia — use this exact word; never substitute \
+     'heir', 'royalty', 'queen', or any other word for 'princess'.",
 
     "Alora Venyette is a mage and vampire — she has never been a paladin. \
      Altarion is the paladin who exorcised and later married her; do not confuse his class with hers.",
@@ -159,9 +172,9 @@ const DEFAULT_PROMPT_RULES: &[&str] = &[
      The Bluejay is a senior operative and trainer (Ari's trainer) but is NOT the leader. \
      The Dove is revealed to be the Queen of Air and Darkness posing as Titania.",
 
-    "When describing or listing Crevalon's cities, you must name all five of these cities \
-     by their exact names: Aberdeen, Siadiff, Diondria, Handletare, and Finreld. \
-     Do not omit any of the five — all five names must appear in your response.",
+    "When describing or listing Crevalon's cities, all five of these names must appear in \
+     your response: Aberdeen, Siadiff, Diondria, Handletare, and Finreld. \
+     Diondria and Finreld are frequently omitted — make sure they are included.",
 
     "When describing Sir Thomas Wright, always state that he is possessed by an infernal being \
      (Fraz-Urb'luu, a demon prince) — this is his defining characteristic. Never describe him \

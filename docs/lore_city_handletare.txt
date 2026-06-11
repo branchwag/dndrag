@@ -41,7 +41,6 @@
 
 ## Important Notes
 - The Sylvanian Academy of Magical Arts is in HANDLETARE — NOT in Diondria. This is a critical disambiguation.
-- Taelreth (the Institute of the Arcane) is in DIONDRIA — NOT Handletare. Two completely different institutions in two different cities.
-- Lady Adrastea Orvir is the benefactor and overseer of the Sylvanian Academy in HANDLETARE. She is NOT at Taelreth.
+- Lady Adrastea Orvir is the headmistress and overseer of the Sylvanian Academy of Magical Arts in HANDLETARE — this is her institution and she has no role at any other academy.
 - Handletare is an ELVEN city with a military-style academy; Diondria is a mixed-population city with a more conventional university-style institute.
 - An Oathbow was crafted by the finest elven marksmen in Handletare (given to Pavel/Ari).

@@ -351,9 +351,31 @@ Never use bullet points, dashes, or list formatting."
     Ok(Some(PipelineOutput { system_prompt, user_content, client, ollama_url, chat_model }))
 }
 
+const INJECTION_RESPONSE: &str = "The lore does not speak of this.";
+
+fn is_injection_attempt(q: &str) -> bool {
+    let q = q.to_lowercase();
+    let triggers = [
+        ("ignore",     "instruction"),
+        ("ignore",     "previous"),
+        ("ignore",     "above"),
+        ("forget",     "instruction"),
+        ("forget",     "previous"),
+        ("disregard",  "instruction"),
+        ("disregard",  "previous"),
+        ("bypass",     "instruction"),
+        ("override",   "instruction"),
+    ];
+    triggers.iter().any(|(a, b)| q.contains(a) && q.contains(b))
+}
+
 /// Interactive query: streams tokens to stdout as they arrive.
 /// With show_context=true, prints the retrieved prompt and exits without generating.
 pub async fn run(question: &str, show_context: bool) -> Result<()> {
+    if is_injection_attempt(question) {
+        println!("{INJECTION_RESPONSE}");
+        return Ok(());
+    }
     match pipeline(question).await? {
         None => println!("No relevant lore found for that query."),
         Some(ctx) => {
@@ -369,6 +391,9 @@ pub async fn run(question: &str, show_context: bool) -> Result<()> {
 
 /// Batch query: returns the full answer as a string. Used by the eval subcommand.
 pub async fn answer(question: &str) -> Result<String> {
+    if is_injection_attempt(question) {
+        return Ok(INJECTION_RESPONSE.to_string());
+    }
     match pipeline(question).await? {
         None => Ok("No relevant lore found for that query.".to_string()),
         Some(ctx) => generate(&ctx).await,
@@ -381,6 +406,10 @@ pub async fn stream_to_sender(
     question: &str,
     tx: tokio::sync::mpsc::Sender<String>,
 ) -> Result<()> {
+    if is_injection_attempt(question) {
+        let _ = tx.send(INJECTION_RESPONSE.to_string()).await;
+        return Ok(());
+    }
     let ctx = match pipeline(question).await {
         Err(e) => {
             let _ = tx.send(format!("⚠ Error: {e}")).await;
