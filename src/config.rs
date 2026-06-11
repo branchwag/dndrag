@@ -131,6 +131,11 @@ const DEFAULT_PROMPT_RULES: &[&str] = &[
 
     "Florian Reiter, Lord Florian, and Lord Reiter all refer to the same person — never \
      describe them as different individuals.",
+
+    "The Aviary is a human assassin/criminal organization — its members are ordinary people \
+     who use bird codenames (the Dove, the Bluejay, the Robin, etc.). \
+     They are NOT bird-like creatures, bird humanoids, or anything non-human. \
+     Never describe Aviary members as having bird features or being bird-people.",
 ];
 
 pub struct RagConfig {
