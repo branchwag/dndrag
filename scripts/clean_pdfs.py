@@ -17,11 +17,26 @@ import argparse
 import fitz  # PyMuPDF
 
 DOCS_DIR = "docs"
+
+# Single-token URL/word filter — any visible word token containing one of these is blanked
 FILTER_KEYWORDS = (
     "youtube.com", "youtu.be", "youtube",
     "beardedboggan",
     "branchwag",
     "discord.gg", "discord.com", "discord",
+    "themiddleages.net",
+    "google.com",
+    "thecrevaloncampaign",
+)
+
+# Block-level redaction — any text block whose content contains one of these
+# substrings (case-insensitive) is fully blanked. Used for multi-line out-of-game
+# notes where phrase-level search is unreliable (Unicode apostrophes, line breaks).
+REDACT_BLOCK_CONTAINS = (
+    # Streaming intro written before going live
+    "LeAnne and we are dnd",
+    "am ever Dming",
+    "If streaming:",
 )
 
 
@@ -54,7 +69,18 @@ def clean_pdf(path: str, strip_images: bool) -> bool:
                 page_changed = True
                 print(f"  redacted text: {word!r}")
 
-        # --- 3. Strip all embedded images ---
+        # --- 3. Block-level redaction for multi-line out-of-game notes ---
+        for block in page.get_text("blocks"):
+            x0, y0, x1, y1, text, *_ = block
+            text_lower = text.lower()
+            for marker in REDACT_BLOCK_CONTAINS:
+                if marker.lower() in text_lower:
+                    page.add_redact_annot(fitz.Rect(x0, y0, x1, y1), fill=(1, 1, 1))
+                    page_changed = True
+                    print(f"  redacted block containing: {marker!r}")
+                    break
+
+        # --- 4. Strip all embedded images ---
         if strip_images:
             for img in page.get_images(full=True):
                 xref = img[0]
