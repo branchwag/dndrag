@@ -882,12 +882,9 @@ fn mmr_select(
     while output.len() < k && !candidates.is_empty() {
         let best_idx = candidates
             .iter()
+            .map(|(_, v)| mmr_score(query_vec, v, &selected_vecs, lambda))
             .enumerate()
-            .max_by(|(_, (_, va)), (_, (_, vb))| {
-                mmr_score(query_vec, va, &selected_vecs, lambda)
-                    .partial_cmp(&mmr_score(query_vec, vb, &selected_vecs, lambda))
-                    .unwrap_or(std::cmp::Ordering::Equal)
-            })
+            .max_by(|(_, a), (_, b)| a.partial_cmp(b).unwrap_or(std::cmp::Ordering::Equal))
             .map(|(i, _)| i)
             .unwrap_or(0);
 
