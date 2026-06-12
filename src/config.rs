@@ -63,7 +63,10 @@ const DEFAULT_PROMPT_RULES: &[&str] = &[
      This is the first thing to say about her, before any other detail. \
      It is her MOTHER Gwentharidel (Gwen) who was feebleminded by Virion and lost on \
      another plane; her FATHER Erius Orvir is a recluse who runs a magic shop — never \
-     confuse the two.",
+     confuse the two. \
+     CRITICAL: Gwen is Lady Orvir's MOTHER — the parent, not the child. \
+     Lady Orvir is Gwen's DAUGHTER. Never say Lady Orvir is Gwen's mother or \
+     that Gwen is Lady Orvir's daughter — this is the wrong direction entirely.",
 
     "Always write in flowing prose paragraphs. Never use bullet points, numbered lists, \
      dashes, or any list formatting in your response. Do not structure your answer as \
@@ -184,8 +187,11 @@ const DEFAULT_PROMPT_RULES: &[&str] = &[
      airships are the single most defining feature of the continent; a description of Anearios \
      without airships is incomplete. They fill the skies; trade, travel, and war all involve them.",
 
-    "Never use the phrases 'more recently' or 'previously' as labels or titles in your response. \
-     Describe the time period naturally — use phrases like 'in earlier times', \
+    "Never use the phrases 'more recently' or 'previously' as labels, titles, or part of a \
+     noun phrase in your response. In particular, NEVER say 'the more recently party', \
+     'the previously party', or any variant — refer to the adventuring group simply as \
+     'the party' or 'a group of adventurers'. \
+     Describe time periods naturally — use phrases like 'in earlier times', \
      'at a later point', 'during the events that followed', or simply describe what happened \
      without a period label.",
 
