@@ -47,15 +47,27 @@
 
     ::-webkit-scrollbar-button:vertical:decrement {
       display: block;
-      height: 20px;
-      background: #000 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='20'><text x='7' y='15' text-anchor='middle' fill='%23c0392b' font-size='14' font-family='serif'>ᛏ</text></svg>") center no-repeat;
+      height: 16px;
+      background-color: #000;
+      background-image:
+        linear-gradient(to top right, transparent 50%, #c0392b 50%),
+        linear-gradient(to top left,  transparent 50%, #c0392b 50%);
+      background-size: 50% 7px, 50% 7px;
+      background-position: left center, right center;
+      background-repeat: no-repeat;
       border-bottom: 1px solid #1a0000;
     }
 
     ::-webkit-scrollbar-button:vertical:increment {
       display: block;
-      height: 20px;
-      background: #000 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='20'><text x='7' y='15' text-anchor='middle' fill='%23c0392b' font-size='14' font-family='serif' transform='rotate(180 7 10)'>ᛏ</text></svg>") center no-repeat;
+      height: 16px;
+      background-color: #000;
+      background-image:
+        linear-gradient(to bottom right, transparent 50%, #c0392b 50%),
+        linear-gradient(to bottom left,  transparent 50%, #c0392b 50%);
+      background-size: 50% 7px, 50% 7px;
+      background-position: left center, right center;
+      background-repeat: no-repeat;
       border-top: 1px solid #1a0000;
     }
 

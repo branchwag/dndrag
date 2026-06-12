@@ -402,6 +402,14 @@ pub async fn answer(question: &str) -> Result<String> {
 
 /// SSE bridge: runs the pipeline and forwards tokens through an mpsc channel.
 /// The serve subcommand spawns this in a task and bridges the channel to axum SSE.
+fn is_connection_error(e: &anyhow::Error) -> bool {
+    let msg = format!("{e:#}");
+    msg.contains("error sending request")
+        || msg.contains("connection refused")
+        || msg.contains("tcp connect error")
+        || msg.contains("os error 111")
+}
+
 pub async fn stream_to_sender(
     question: &str,
     tx: tokio::sync::mpsc::Sender<String>,
@@ -412,7 +420,12 @@ pub async fn stream_to_sender(
     }
     let ctx = match pipeline(question).await {
         Err(e) => {
-            let _ = tx.send(format!("⚠ Error: {e}")).await;
+            let msg = if is_connection_error(&e) {
+                "The arcane conduit is dark. The Oracle does not stir — the wellspring cannot be reached.".to_string()
+            } else {
+                format!("⚠ Error: {e}")
+            };
+            let _ = tx.send(msg).await;
             return Ok(());
         }
         Ok(None) => {
@@ -422,7 +435,7 @@ pub async fn stream_to_sender(
         Ok(Some(ctx)) => ctx,
     };
 
-    let response = ctx
+    let response = match ctx
         .client
         .post(format!("{}/v1/chat/completions", ctx.ollama_url))
         .json(&json!({
@@ -437,7 +450,19 @@ pub async fn stream_to_sender(
             "stream": true
         }))
         .send()
-        .await?;
+        .await
+    {
+        Ok(r) => r,
+        Err(e) => {
+            let msg = if is_connection_error(&anyhow::Error::new(e)) {
+                "The arcane conduit is dark. The Oracle does not stir — the wellspring cannot be reached.".to_string()
+            } else {
+                "The Oracle fell silent mid-breath. Something went wrong with the telling.".to_string()
+            };
+            let _ = tx.send(msg).await;
+            return Ok(());
+        }
+    };
 
     let mut stream = response.bytes_stream();
     let mut line_buf = String::new();
