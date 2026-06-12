@@ -2,6 +2,7 @@ use anyhow::{anyhow, Result};
 use futures_util::StreamExt;
 use reqwest::Client;
 use serde_json::json;
+use std::collections::HashSet;
 use std::io::Write as _;
 use std::sync::Arc;
 use std::time::Instant;
@@ -81,6 +82,7 @@ async fn pipeline(question: &str, res: &QueryResources) -> Result<Option<Pipelin
     // A second biography-focused pass uses a different query vector to surface
     // backstory/origin chunks that rank lower against the literal question phrasing.
     let t_kw = Instant::now();
+    let mut seen: HashSet<String> = HashSet::new();
     let mut keyword_results: Vec<SearchResult> = Vec::new();
 
     // Bio and events vectors don't depend on each other — embed them concurrently.
@@ -106,10 +108,11 @@ async fn pipeline(question: &str, res: &QueryResources) -> Result<Option<Pipelin
 
     for name in &names {
         for hit in res.store.keyword_search(name, query_vec.clone(), KEYWORD_K).await? {
-            if !keyword_results.iter().any(|r| r.text == hit.text)
+            if !seen.contains(&hit.text)
                 && has_non_possessive_mention(&hit.text, name)
                 && !is_scene_filtered(&hit.text, &scene_markers)
             {
+                seen.insert(hit.text.clone());
                 keyword_results.push(hit);
             }
         }
@@ -140,9 +143,10 @@ async fn pipeline(question: &str, res: &QueryResources) -> Result<Option<Pipelin
         // field values like "alora venyette" when searching for "alora".
         let slug = name.to_lowercase();
         for hit in res.store.search_lore_file(&slug, query_vec.clone(), KEYWORD_K).await? {
-            if !keyword_results.iter().any(|r| r.text == hit.text)
+            if !seen.contains(&hit.text)
                 && !is_scene_filtered(&hit.text, &scene_markers)
             {
+                seen.insert(hit.text.clone());
                 keyword_results.push(hit);
             }
         }
@@ -220,7 +224,8 @@ async fn pipeline(question: &str, res: &QueryResources) -> Result<Option<Pipelin
     // Merge, deduplicating on exact text.
     let mut results = keyword_results;
     for hit in semantic_results {
-        if !results.iter().any(|r| r.text == hit.text) {
+        if !seen.contains(&hit.text) {
+            seen.insert(hit.text.clone());
             results.push(hit);
         }
     }
