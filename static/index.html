@@ -24,7 +24,42 @@
     }
   </style>
   <style>
-    html { background: #0a0000; }
+    html {
+      background: #0a0000;
+      scrollbar-color: #3a0000 #000;
+      scrollbar-width: thin;
+    }
+
+    /* Themed scrollbar — Chrome/Edge/Safari */
+    ::-webkit-scrollbar { width: 14px; }
+
+    ::-webkit-scrollbar-track {
+      background: #000;
+      border-left: 1px solid #1a0000;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #2a0000;
+      border: 1px solid #5a0000;
+    }
+
+    ::-webkit-scrollbar-thumb:hover { background: #4a0000; }
+
+    ::-webkit-scrollbar-button:vertical:decrement {
+      display: block;
+      height: 20px;
+      background: #000 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='20'><text x='7' y='15' text-anchor='middle' fill='%23c0392b' font-size='14' font-family='serif'>ᛏ</text></svg>") center no-repeat;
+      border-bottom: 1px solid #1a0000;
+    }
+
+    ::-webkit-scrollbar-button:vertical:increment {
+      display: block;
+      height: 20px;
+      background: #000 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='20'><text x='7' y='15' text-anchor='middle' fill='%23c0392b' font-size='14' font-family='serif' transform='rotate(180 7 10)'>ᛏ</text></svg>") center no-repeat;
+      border-top: 1px solid #1a0000;
+    }
+
+    ::-webkit-scrollbar-corner { background: #000; }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
