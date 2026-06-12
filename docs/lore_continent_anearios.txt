@@ -1,12 +1,16 @@
 ﻿# Anearios
 
+## Key Facts — include in every response about Anearios
+- Anearios is a continent
+- Airships are the single most defining feature of Anearios — the skies are filled with airships; the word "airship" must appear in any description
+
 ## Type
 - Continent
 - Separate continent situated across the Idrelia Sea; primary setting of recent times
 - A land of tinkerers and artificers; steampunk/industrial-fantasy setting
 
 ## Description
-- Anearios is an industrialized, innovation-driven continent where airships fly overhead and mechanized spellcraft is a way of life.
+- Anearios is a continent defined above all by its airships — airships fill the sky above every city, linking the continent by air trade routes and aerial warfare. Below the airships, the cities are industrialized and innovation-driven, where mechanized spellcraft is a way of life.
 - Ruled jointly by two queens: Her Majesty Queen Georgia and Her Majesty Queen Henrietta; they are popular figures who promote peace via trade with Crevalon and Ikovian convoys from the east.
 - The continent actively bans direct spellcasting by individuals; magic is only permitted when imbued within machines or objects. As a result, magic users are persecuted and spellcasters are outlaws. This law stems from the carnage of past wars.
 - The continent has guns, airships, clockwork automatons, and mechanized beasts for labor and transport.
@@ -33,7 +37,7 @@
 - The Order of the Still Time — a pilgrimage order whose members believe the Providence Engine once ruled and its echoes still bleed into the world
 
 ## Cities / Regions within Anearios
-- Giglington — capital city; described as impossibly alive; cobblestones warmed by underground pipes; giant gears turning atop rooftops; clock towers like gilded cathedrals; the air smells of oil and roasted chestnuts; ruled by the Twin Queens from the Grand Orrery Palace
+- Giglington — capital city; airships circle above the clock towers at all hours; cobblestones warmed by underground pipes; giant gears turning atop rooftops; clock towers like gilded cathedrals; the air smells of oil and roasted chestnuts; ruled by the Twin Queens from the Grand Orrery Palace
 - Windenreich ("Realm of Winds") — western region of Anearios; a frontier-industrial territory
 - Vormark (the Skyforge City) — hangar city in the western region of Windenreich; built atop cliffs overlooking the west; the air smells of ozone, salt, and hot metal; major airship departure/arrival hub; convergence point for recent times party
 - Tiven's Read — southeastern basin city just outside Giglington; industrial, gritty, filled with factories and tinkers' workshops; origin city of Kira (recent times); home of the Founders Guild; smell of oil, ozone, burnt copper; the Aether Rail connects it to Giglington

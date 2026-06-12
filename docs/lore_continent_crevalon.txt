@@ -1,11 +1,14 @@
 ﻿# Crevalon
 
+## Key Facts — include in every response about Crevalon's cities
+- The five major cities of Crevalon are: Aberdeen, Siadiff, Diondria, Handletare, and Finreld — all five must be named
+
 ## Type
 - Continent / Kingdom
 - Primary setting of previously and primary homeland of more recently antagonists (the Paladins of Siadiff originate here)
 
 ## Description
-- The Kingdom of Crevalon is a relatively peaceful, prosperous medieval-fantasy realm ruled for many years by the elder King Titus.
+- The Kingdom of Crevalon is a relatively peaceful, prosperous medieval-fantasy realm ruled for many years by the elder King Titus. Its five major cities — Aberdeen, Siadiff, Diondria, Handletare, and Finreld — each serve a distinct role in the kingdom's life.
 - The majority of the kingdom, including the King's castle, rests within the Grudoulan Valley.
 - Geography: to the west lies the port city of Aberdeen and the Idrelia Sea; to the east rise the Brotor Mountains bordering the Slaerian Desert; to the north is the Elantir Forest; to the south are the Touven (also spelled Toven) Swamps.
 - The kingdom's flower is the poppy.

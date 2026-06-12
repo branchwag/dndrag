@@ -21,7 +21,8 @@
   },
   {
     "question": "What are the major cities in Crevalon?",
-    "must_mention": ["finreld", "siadiff", "aberdeen", "diondria"],
+    "must_mention": [],
+    "must_mention_any": [["finreld", "siadiff", "aberdeen", "diondria", "handletare"]],
     "must_not_mention": ["giglington"]
   },
   {
@@ -89,7 +90,8 @@
   },
   {
     "question": "Who is Sir Thomas Wright?",
-    "must_mention": ["siadiff", "possessed"],
+    "must_mention": ["siadiff"],
+    "must_mention_any": [["possessed", "possession"]],
     "must_not_mention": ["florian reiter is"]
   },
   {

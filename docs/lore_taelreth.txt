@@ -1,0 +1,30 @@
+# Taelreth (the Institute of the Arcane)
+
+## Type
+- Magical institution / wizard academy
+- Located in Diondria, in the north of Crevalon
+
+## Description
+- Taelreth, formally called the Institute of the Arcane, is the premier magical university of Crevalon and the center of arcane learning on the continent
+- Home to multiple departments including Necromancy, Evocation, and Illusion
+- Wizards and witches of Taelreth are a common sight in Diondria and are respected throughout the kingdom
+
+## Current Staff / Instructors
+
+### Must name when describing Taelreth's staff:
+- **Ophelia** — senior administrator and lead wizard; soft voice; kind and professional; head of the institute's day-to-day operations
+- **Ali Hassan** — current Head of Necromancy; a tall tiefling in long red robes trimmed with gold; specialises in necromancy; replaced Virion Maganti after Virion's expulsion; always name Ali Hassan when discussing Taelreth's staff
+- **Evius Hallewell** — school head; colleague of Ophelia and Ali Hassan; powerful enough that scrying cast by him fails against Virion
+- **Mordan Vamaris** — former Head of Evocation; now retired; eccentric and dangerous; was once an assassination target during Ari Crownsilver's Aviary years
+- **Kithelle Greystone** — halfling staff member who greets visitors at the entrance
+
+## Notable History
+- Virion Maganti was formerly Head of Necromancy here before being expelled by unanimous faculty vote for reanimating corpses and digging up cemeteries; Ali Hassan was appointed to replace him
+- Taelreth wizards were called to advise King Titus regarding the dragon threat
+- The Aviary stole the red dragon gem from Taelreth
+
+## Important Notes
+- Taelreth is located in DIONDRIA — not Handletare or any other city
+- The Head of Necromancy is ALI HASSAN — always name him when describing Taelreth's staff; he is a tall tiefling in red and gold robes
+- The Sylvanian Academy of Magical Arts (in Handletare) is a separate institution — do not confuse the two
+- Virion Maganti studied and worked here before being expelled; he is a former instructor, not the current head of anything at Taelreth

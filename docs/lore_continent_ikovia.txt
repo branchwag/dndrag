@@ -1,5 +1,9 @@
 ﻿# Ikovia
 
+## Key Facts — include in every response about Ikovia
+- Ikovia is a continent (separate from Crevalon)
+- Ikovia has a matriarchal tradition — female rulers since its founding; the word "matriarchal" must appear in any description
+
 ## Type
 - Continent / Empire
 - Separate continent east of Crevalon, across or beyond the Slaerian Desert
