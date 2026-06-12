@@ -88,7 +88,8 @@
       width: 100%;
       max-width: 800px;
       min-height: clamp(520px, 65vh, 720px);
-      transform: rotate(-0.15deg);
+      transform: translateZ(0);
+      filter: contrast(1);
     }
 
     .parchment-photo {
@@ -194,30 +195,37 @@
       margin-top: 1.25rem;
     }
 
-    input[type="text"] {
+    .question-input {
       flex: 1;
       background: rgba(12, 0, 0, 0.88);
       border: 1px solid #5a0000;
       border-radius: 2px;
       color: #d4af7a;
       font-family: 'Cinzel', serif;
-      font-size: 0.95rem;
+      font-size: 1rem;
       padding: 0.7rem 1.2rem;
       outline: none;
       transition: border-color 0.25s, box-shadow 0.25s;
+      cursor: text;
+      white-space: nowrap;
+      overflow: hidden;
+      min-width: 0;
     }
 
-    input[type="text"]:focus {
+    .question-input:focus {
       border-color: #c0392b;
       box-shadow: 0 0 10px rgba(192, 57, 43, 0.35);
     }
 
-    input[type="text"]::placeholder {
+    .question-input:empty::before {
+      content: attr(data-placeholder);
       color: rgba(212, 175, 122, 0.72);
+      pointer-events: none;
     }
 
-    input[type="text"]:disabled {
+    .question-input.disabled {
       opacity: 0.55;
+      cursor: not-allowed;
     }
 
     button {
@@ -337,13 +345,15 @@
   </div>
 
   <div class="query-area">
-    <input
-      type="text"
+    <div
       id="question"
-      placeholder="Ask of the lore…"
-      autocomplete="off"
+      class="question-input"
+      contenteditable="true"
+      role="textbox"
+      aria-label="Ask of the lore"
       spellcheck="false"
-    >
+      data-placeholder="Ask of the lore…"
+    ></div>
     <button id="ask-btn" onclick="ask()">Consult</button>
   </div>
   <div class="status" id="status"></div>
@@ -381,10 +391,18 @@
       setTimeout(renderNext, 18 + Math.random() * 18);
     }
 
-    questionEl.addEventListener('keydown', e => { if (e.key === 'Enter') ask(); });
+    questionEl.addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); ask(); }
+    });
+
+    questionEl.addEventListener('paste', e => {
+      e.preventDefault();
+      const text = e.clipboardData.getData('text/plain').replace(/\n/g, ' ');
+      document.execCommand('insertText', false, text);
+    });
 
     async function ask() {
-      const q = questionEl.value.trim();
+      const q = questionEl.textContent.trim();
       if (!q) return;
 
       // Reset state
@@ -396,7 +414,8 @@
       loadingEl.classList.add('visible');
 
       askBtn.disabled = true;
-      questionEl.disabled = true;
+      questionEl.setAttribute('contenteditable', 'false');
+      questionEl.classList.add('disabled');
       statusEl.textContent = 'The tome stirs…';
       statusEl.classList.add('active');
 
@@ -460,7 +479,8 @@
         statusEl.classList.remove('active');
       } finally {
         askBtn.disabled = false;
-        questionEl.disabled = false;
+        questionEl.setAttribute('contenteditable', 'true');
+        questionEl.classList.remove('disabled');
       }
     }
   </script>
