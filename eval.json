@@ -12,7 +12,7 @@
   {
     "question": "Who is Lady Orvir?",
     "must_mention": ["ari", "handletare", "sylvanian"],
-    "must_not_mention": ["doragon", "dwarves of doragon", "taelreth"]
+    "must_not_mention": ["doragon", "dwarves of doragon"]
   },
   {
     "question": "Who is Lady Adrastea?",

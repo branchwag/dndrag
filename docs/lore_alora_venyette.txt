@@ -1,7 +1,7 @@
 # Madame Alora Venyette
 
 ## Identity
-- Ancient arcane mage and vampire (re-turned; originally turned by a succubus from Avernus, then made human again, then re-turned by Nikolai — an Ikovian changeling diplomat)
+- Ancient arcane mage and vampire (originally turned by a succubus from Avernus; was still a vampire when awakened; later allowed the party to make her human during the campaign after falling for Altarion; re-turned by Nikolai — an Ikovian changeling diplomat — after she and Altarion separated and she found being human unbearable)
 - Race: Human (appears as a brunette woman with pale skin and sharpened nails/fangs in vampire form)
 - Also referred to as "Madame Alora" in more recent times
 - Alias: Court mage (former title in Crevalon, before King Titus's death and the Siadiff takeover)
@@ -24,12 +24,15 @@
 - Lay sealed and forgotten for approximately 4000 years
 
 ### After awakening (service to King Titus)
-- Awakened by a group of arcana users in Crevalon when the kingdom was in need; this is entirely separate from her ancient role under Queen Elvira
-- Made human again through their efforts; she regretted this deeply, describing the human form as unnatural and uncomfortable
-- Became court mage to King Titus of Crevalon during this period; served him and worked alongside the party
-- Re-turned into a vampire by Nikolai (an Ikovian changeling diplomat) at the old manor in the Elantir Forest; she accepted his offer willingly after considering it carefully
+- Awakened by a group of arcana users in Crevalon when the kingdom was in need; she was STILL A VAMPIRE when she awakened — she did not immediately become human
+- Became court mage to King Titus of Crevalon during this period; served him and worked alongside the party as a vampire
+- Fell for Altarion (the paladin who exorcised the pit fiend from her) during this period; he reminded her of her earlier husband and she developed genuine feeling for him despite disagreeing with how paladins treat people like her
+- After developing feelings for Altarion, she allowed the party to change her back into a human — this was a choice she made during the campaign, influenced by her relationship with Altarion
+- Found the human form deeply uncomfortable and unnatural; she described it as feeling fundamentally wrong
+- After she and Altarion separated, her discomfort with being human intensified and became a central focus — she felt off, diminished, out of place in her own body
+- Eventually sought to be re-turned; gathered arcane components in the Elantir Forest and met Nikolai there; was re-turned into a vampire by Nikolai (an Ikovian changeling diplomat) at the old manor in the Elantir Forest; she accepted his offer willingly after considering it carefully
 - After being re-turned she and Nikolai developed a romantic connection
-- She married Altarion (the paladin who exorcised her) at the campaign's end; he reminded her of her earlier husband and she developed genuine feeling for him despite disagreeing with how paladins treat people like her; the marriage did not last
+- She married Altarion at the campaign's end — though the marriage did not last
 
 ### More recently
 - Rescued Nikolai from a werewolf attack in the Toven Swamps (near Siadiff)
@@ -56,7 +59,7 @@
 ## Key Events
 Approximately 4000 years ago, Alora was already a vampire when the DragonMage War began — she had been turned by a succubus of Avernus before the war. She served Queen Elvira, who led an independent mage coalition separate from both the Lunarian and Solarian factions. Alora participated in sealing a dragon using a purple gem at the summit of an icy peak. The dwarves of Doragon revived her with smelling salts and animal blood afterward. She was later betrayed by Queen Elvira, staked, and erased from the historical record — lying sealed for millennia.
 
-She was awakened by a group of arcana users in Crevalon. Made human, she found the form deeply uncomfortable and eventually sought to be re-turned. She gathered arcane components in the Elantir Forest, where she met Nikolai; she accepted his offer and was re-turned at Florian's old manor in the forest, with their relationship developing from there.
+She was awakened by a group of arcana users in Crevalon — still a vampire when she awoke. She served King Titus as court mage during this period. She fell for Altarion, the paladin who had exorcised a pit fiend from her, and chose to allow the party to change her back into a human. She found the human form deeply uncomfortable and unnatural. After she and Altarion separated, her discomfort with being human became a central preoccupation — she felt fundamentally off, out of place in her own body. She eventually sought to be re-turned. She gathered arcane components in the Elantir Forest, where she met Nikolai; she accepted his offer and was re-turned at Florian's old manor in the forest, with their relationship developing from there.
 
 She rescued Nikolai from a werewolf attack in the Toven Swamps, then traveled to Siadiff at King Titus's request to investigate wrongful imprisonment. There she was captured by Sir Thomas Wright — infernally possessed at the time — and subjected to days of radiant torture in adamantine cuffs. Nikolai infiltrated Siadiff disguised as Thomas Wright and broke her out. They traveled to Ikovia together to warn of Siadiff's growing corruption.
 
