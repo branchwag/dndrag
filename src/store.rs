@@ -41,10 +41,17 @@ impl VectorStore {
     }
 
     // Creates the collection only if it doesn't already exist (safe for incremental ingest).
+    // The exists-check and create are not atomic, so a second concurrent process can
+    // slip through the gap. Treat "already exists" from Qdrant as success rather than
+    // propagating the error.
     pub async fn ensure_collection(&self) -> Result<()> {
-        if !self.client.collection_exists(COLLECTION).await? {
-            self.create_collection_internal().await?;
-            println!("Collection '{COLLECTION}' created.");
+        if self.client.collection_exists(COLLECTION).await? {
+            return Ok(());
+        }
+        match self.create_collection_internal().await {
+            Ok(()) => println!("Collection '{COLLECTION}' created."),
+            Err(e) if e.to_string().to_lowercase().contains("already exists") => {}
+            Err(e) => return Err(e),
         }
         Ok(())
     }
