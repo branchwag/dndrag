@@ -140,7 +140,7 @@ impl VectorStore {
     // Returns results paired with their embedding vectors for MMR diversity selection.
     pub async fn search_with_vectors(
         &self,
-        query_embedding: Vec<f32>,
+        query_embedding: &[f32],
         top_k: u64,
     ) -> Result<Vec<(SearchResult, Vec<f32>)>> {
         use qdrant_client::qdrant::vector_output::Vector;
@@ -148,7 +148,7 @@ impl VectorStore {
         let response = self
             .client
             .search_points(
-                SearchPointsBuilder::new(COLLECTION, query_embedding, top_k)
+                SearchPointsBuilder::new(COLLECTION, query_embedding.to_vec(), top_k)
                     .with_payload(true)
                     .with_vectors(true),
             )
@@ -186,7 +186,7 @@ impl VectorStore {
     pub async fn search_lore_file(
         &self,
         slug: &str,
-        query_vec: Vec<f32>,
+        query_vec: &[f32],
         limit: u32,
     ) -> Result<Vec<SearchResult>> {
         let filter = Filter::must([Condition::matches(
@@ -197,7 +197,7 @@ impl VectorStore {
         let response = self
             .client
             .search_points(
-                SearchPointsBuilder::new(COLLECTION, query_vec, limit as u64)
+                SearchPointsBuilder::new(COLLECTION, query_vec.to_vec(), limit as u64)
                     .filter(filter)
                     .with_payload(true),
             )
@@ -222,7 +222,7 @@ impl VectorStore {
     pub async fn keyword_search(
         &self,
         term: &str,
-        query_vec: Vec<f32>,
+        query_vec: &[f32],
         limit: u32,
     ) -> Result<Vec<SearchResult>> {
         let filter = Filter::must([Condition::matches(
@@ -233,7 +233,7 @@ impl VectorStore {
         let response = self
             .client
             .search_points(
-                SearchPointsBuilder::new(COLLECTION, query_vec, limit as u64)
+                SearchPointsBuilder::new(COLLECTION, query_vec.to_vec(), limit as u64)
                     .filter(filter)
                     .with_payload(true),
             )

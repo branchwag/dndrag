@@ -107,7 +107,31 @@ async fn pipeline(question: &str, res: &QueryResources) -> Result<Option<Pipelin
     };
 
     for name in &names {
-        for hit in res.store.keyword_search(name, query_vec.clone(), KEYWORD_K).await? {
+        let slug = name.to_lowercase();
+        // All 4 searches per entity are independent Qdrant calls — run them concurrently.
+        let (kw_hits, bio_hits, ev_hits, lore_hits) = tokio::join!(
+            res.store.keyword_search(name, &query_vec, KEYWORD_K),
+            async {
+                if let Some(bv) = bio_vec.as_ref() {
+                    res.store.keyword_search(name, bv, KEYWORD_K / 2).await
+                } else {
+                    Ok(vec![])
+                }
+            },
+            async {
+                if let Some(ev) = events_vec.as_ref() {
+                    res.store.keyword_search(name, ev, KEYWORD_K / 2).await
+                } else {
+                    Ok(vec![])
+                }
+            },
+            // Lore-file pass: always include chunks from the character's own lore file.
+            // Structured lore docs embed differently from natural questions, so they can
+            // fall outside the top-K semantic candidates despite being the best source.
+            // Use space-separated name so Text match finds lore_entity values like "alora venyette".
+            res.store.search_lore_file(&slug, &query_vec, KEYWORD_K),
+        );
+        for hit in kw_hits?.into_iter().chain(bio_hits?).chain(ev_hits?) {
             if !seen.contains(&hit.text)
                 && has_non_possessive_mention(&hit.text, name)
                 && !is_scene_filtered(&hit.text, &scene_markers)
@@ -116,33 +140,7 @@ async fn pipeline(question: &str, res: &QueryResources) -> Result<Option<Pipelin
                 keyword_results.push(hit);
             }
         }
-        if let Some(ref bv) = bio_vec {
-            for hit in res.store.keyword_search(name, bv.clone(), KEYWORD_K / 2).await? {
-                if !keyword_results.iter().any(|r| r.text == hit.text)
-                    && has_non_possessive_mention(&hit.text, name)
-                    && !is_scene_filtered(&hit.text, &scene_markers)
-                {
-                    keyword_results.push(hit);
-                }
-            }
-        }
-        if let Some(ref ev) = events_vec {
-            for hit in res.store.keyword_search(name, ev.clone(), KEYWORD_K / 2).await? {
-                if !keyword_results.iter().any(|r| r.text == hit.text)
-                    && has_non_possessive_mention(&hit.text, name)
-                    && !is_scene_filtered(&hit.text, &scene_markers)
-                {
-                    keyword_results.push(hit);
-                }
-            }
-        }
-        // Lore-file pass: always include chunks from the character's own lore file.
-        // Structured lore docs embed differently from natural questions, so they can
-        // fall outside the top-K semantic candidates despite being the best source.
-        // Use space-separated name (no underscore) so Text match finds lore_entity
-        // field values like "alora venyette" when searching for "alora".
-        let slug = name.to_lowercase();
-        for hit in res.store.search_lore_file(&slug, query_vec.clone(), KEYWORD_K).await? {
+        for hit in lore_hits? {
             if !seen.contains(&hit.text)
                 && !is_scene_filtered(&hit.text, &scene_markers)
             {
@@ -158,10 +156,11 @@ async fn pipeline(question: &str, res: &QueryResources) -> Result<Option<Pipelin
         let q_lower = question.to_lowercase();
         for word in q_lower.split(|c: char| !c.is_alphanumeric()) {
             if word.len() >= 5 {
-                for hit in res.store.search_lore_file(word, query_vec.clone(), 5).await? {
-                    if !keyword_results.iter().any(|r| r.text == hit.text)
+                for hit in res.store.search_lore_file(word, &query_vec, 5).await? {
+                    if !seen.contains(&hit.text)
                         && !is_scene_filtered(&hit.text, &scene_markers)
                     {
+                        seen.insert(hit.text.clone());
                         keyword_results.push(hit);
                     }
                 }
@@ -177,10 +176,11 @@ async fn pipeline(question: &str, res: &QueryResources) -> Result<Option<Pipelin
             || q.contains("what happened") || q.contains("history")
             || q.contains("tell me about") || q.contains("what is going on")
         {
-            for hit in res.store.search_lore_file("story overview", query_vec.clone(), KEYWORD_K).await? {
-                if !keyword_results.iter().any(|r| r.text == hit.text)
+            for hit in res.store.search_lore_file("story overview", &query_vec, KEYWORD_K).await? {
+                if !seen.contains(&hit.text)
                     && !is_scene_filtered(&hit.text, &scene_markers)
                 {
+                    seen.insert(hit.text.clone());
                     keyword_results.push(hit);
                 }
             }
@@ -188,10 +188,11 @@ async fn pipeline(question: &str, res: &QueryResources) -> Result<Option<Pipelin
         // Villain/antagonist questions: surface Virion's lore file directly, since
         // semantic search alone tends to find whichever villain appears most in PDF chunks.
         if q.contains("villain") || q.contains("antagonist") || q.contains("main enemy") {
-            for hit in res.store.search_lore_file("virion", query_vec.clone(), KEYWORD_K).await? {
-                if !keyword_results.iter().any(|r| r.text == hit.text)
+            for hit in res.store.search_lore_file("virion", &query_vec, KEYWORD_K).await? {
+                if !seen.contains(&hit.text)
                     && !is_scene_filtered(&hit.text, &scene_markers)
                 {
+                    seen.insert(hit.text.clone());
                     keyword_results.push(hit);
                 }
             }
@@ -206,7 +207,7 @@ async fn pipeline(question: &str, res: &QueryResources) -> Result<Option<Pipelin
 
     // Semantic retrieval with MMR diversity selection.
     let t_sem = Instant::now();
-    let candidates = res.store.search_with_vectors(query_vec.clone(), TOP_K_CANDIDATES).await?;
+    let candidates = res.store.search_with_vectors(&query_vec, TOP_K_CANDIDATES).await?;
     info!(
         candidates = candidates.len(),
         elapsed_ms = t_sem.elapsed().as_millis(),
