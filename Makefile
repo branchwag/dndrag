@@ -23,6 +23,10 @@ ingest: up
 query: up
 	docker compose --profile cli run --rm dnd_rag query "$(Q)"
 
+# Run labeled Q&A pairs from eval.json and report pass rate
+eval: up
+	docker compose --profile cli run --rm dnd_rag eval $(ARGS)
+
 # Start the browser front-end at http://localhost:3000
 serve: up
 	docker compose --profile serve up dnd_rag_serve

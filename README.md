@@ -9,7 +9,7 @@ A fully local RAG pipeline for querying DnD campaign lore, written in Rust. Poin
 ## How it works
 
 1. **Ingest** — PDFs in `docs/` are extracted, split into sentence-aware overlapping chunks, and embedded using `nomic-embed-text` via Ollama. Embeddings and page numbers are stored in Qdrant.
-2. **Query** — Your question is embedded and named entities are extracted (concurrently). Qdrant returns the top candidates via both keyword and semantic search. MMR diversity selection picks the best non-redundant passages, which are assembled into a grounded prompt.
+2. **Query** — Your question is embedded and named entities are extracted (concurrently). Qdrant returns the top candidates via both keyword and semantic search. MMR diversity selection picks the best non-redundant passages. A smaller LLM reranks them by relevance before they are assembled into a grounded prompt.
 3. **Generate** — The LLM streams a response token-by-token, grounded strictly in the retrieved lore.
 4. **Browse** — A DnD-themed browser front-end at `http://localhost:3000` lets anyone query the lore with an ink-reveal animation on a weathered parchment panel.
 
@@ -68,8 +68,10 @@ make query Q="Who is the main villain?"
 | `make ingest` | Index all PDFs in `docs/` (incremental — safe to re-run) |
 | `make ingest ARGS="--fresh"` | Wipe the collection and re-index from scratch |
 | `make query Q="..."` | Query from the CLI, streams response to stdout |
+| `make eval` | Run eval.json Q&A pairs and report pass rate |
 | `make serve` | Start the browser front-end at http://localhost:3000 |
 | `make down` | Stop all services |
+| `make clean-pdfs` | Strip images from PDFs in `docs/` to reduce noise (then re-ingest) |
 
 ## Configuration
 
@@ -81,6 +83,7 @@ All settings have defaults and can be overridden via environment variables:
 | `QDRANT_URL` | `http://qdrant:6334` | Qdrant gRPC address |
 | `EMBED_MODEL` | `nomic-embed-text` | Embedding model |
 | `CHAT_MODEL` | `gemma2:9b` | Generation model |
+| `RERANK_MODEL` | same as `CHAT_MODEL` | Model used for entity extraction and reranking (set to a smaller/faster model to save time) |
 
 To switch models:
 ```yaml
@@ -105,7 +108,7 @@ To run CPU-only, delete or rename `docker-compose.override.yml`.
 - `docs/` is gitignored — your source documents are never committed
 - Qdrant data persists in a Docker named volume — re-run `make ingest` only when you add new documents
 - First query after a cold start is slow (~10–30s) while Ollama loads the model; subsequent queries are faster
-- The eval subcommand (`make query` with `eval` instead) runs labeled Q&A pairs from `eval.json` and reports a pass rate — useful for catching regressions when you change models or prompts
+- `make eval` runs labeled Q&A pairs from `eval.json` and reports a pass rate — useful for catching regressions when you change models or prompts
 
 ## Credits
 
