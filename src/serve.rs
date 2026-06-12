@@ -1,6 +1,6 @@
 use anyhow::Result;
 use axum::{
-    extract::Json,
+    extract::{Json, State},
     response::{
         sse::{Event, KeepAlive, Sse},
         Html,
@@ -10,8 +10,16 @@ use axum::{
 };
 use futures_util::StreamExt as _;
 use serde::Deserialize;
+use std::sync::Arc;
 use tokio::sync::mpsc;
 use tokio_stream::wrappers::ReceiverStream;
+
+use crate::query::QueryResources;
+
+#[derive(Clone)]
+struct AppState {
+    resources: Arc<QueryResources>,
+}
 
 #[derive(Deserialize)]
 struct QueryRequest {
@@ -48,12 +56,14 @@ async fn health() -> &'static str {
 }
 
 async fn query_sse(
+    State(state): State<AppState>,
     Json(req): Json<QueryRequest>,
 ) -> Sse<impl futures_util::Stream<Item = Result<Event, std::convert::Infallible>>> {
     let (tx, rx) = mpsc::channel::<String>(64);
+    let res = state.resources.clone();
 
     tokio::spawn(async move {
-        let _ = crate::query::stream_to_sender(&req.question, tx).await;
+        let _ = crate::query::stream_to_sender(&req.question, tx, res).await;
     });
 
     let stream = ReceiverStream::new(rx).map(|token| Ok(Event::default().data(token)));
@@ -61,13 +71,17 @@ async fn query_sse(
 }
 
 pub async fn run(port: u16) -> Result<()> {
+    let resources = Arc::new(QueryResources::new().await?);
+    let state = AppState { resources };
+
     let app = Router::new()
         .route("/", get(index))
         .route("/query", post(query_sse))
         .route("/health", get(health))
         .route("/fonts/cedarville-cursive.ttf", get(cedarville_font))
         .route("/fonts/homemade-apple.ttf", get(homemade_apple_font))
-        .route("/images/parchment.jpg", get(parchment_image));
+        .route("/images/parchment.jpg", get(parchment_image))
+        .with_state(state);
 
     let addr = format!("0.0.0.0:{port}");
     let listener = tokio::net::TcpListener::bind(&addr).await?;

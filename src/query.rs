@@ -3,6 +3,7 @@ use futures_util::StreamExt;
 use reqwest::Client;
 use serde_json::json;
 use std::io::Write as _;
+use std::sync::Arc;
 use std::time::Instant;
 use tracing::info;
 
@@ -29,29 +30,42 @@ struct PipelineOutput {
     chat_model: String,
 }
 
+/// Shared resources created once and reused across queries.
+pub struct QueryResources {
+    pub client: Client,
+    pub embedder: Embedder,
+    pub store: VectorStore,
+    pub ollama_url: String,
+    pub chat_model: String,
+    pub rerank_model: String,
+}
+
+impl QueryResources {
+    pub async fn new() -> Result<Self> {
+        let ollama_url = std::env::var("OLLAMA_URL")
+            .unwrap_or_else(|_| "http://localhost:11434".to_string());
+        let chat_model = std::env::var("CHAT_MODEL")
+            .unwrap_or_else(|_| MODEL.to_string());
+        let rerank_model = std::env::var("RERANK_MODEL")
+            .unwrap_or_else(|_| chat_model.clone());
+        let client = Client::builder()
+            .timeout(std::time::Duration::from_secs(120))
+            .build()?;
+        let embedder = Embedder::new();
+        let store = VectorStore::new().await?;
+        Ok(Self { client, embedder, store, ollama_url, chat_model, rerank_model })
+    }
+}
+
 // Shared retrieval pipeline: NER, keyword search, semantic search + MMR, rerank.
 // Returns None if no relevant lore was found.
-async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
-    let ollama_url = std::env::var("OLLAMA_URL")
-        .unwrap_or_else(|_| "http://localhost:11434".to_string());
-    let chat_model = std::env::var("CHAT_MODEL")
-        .unwrap_or_else(|_| MODEL.to_string());
-    // Smaller/faster model for utility steps (entity extraction, reranking).
-    // Defaults to chat_model if RERANK_MODEL is not set.
-    let rerank_model = std::env::var("RERANK_MODEL")
-        .unwrap_or_else(|_| chat_model.clone());
-
-    let client = Client::builder()
-        .timeout(std::time::Duration::from_secs(120))
-        .build()?;
-    let embedder = Embedder::new();
-    let store = VectorStore::new().await?;
+async fn pipeline(question: &str, res: &QueryResources) -> Result<Option<PipelineOutput>> {
 
     // NER and query embedding run concurrently — they're independent.
     let t_start = Instant::now();
     let (names, query_vec_result) = tokio::join!(
-        extract_entities(&client, &ollama_url, &rerank_model, question),
-        embedder.embed(vec![question.to_string()])
+        extract_entities(&res.client, &res.ollama_url, &res.rerank_model, question),
+        res.embedder.embed(vec![question.to_string()])
     );
     let query_vec = query_vec_result?.remove(0);
     info!(
@@ -80,8 +94,8 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
             names.join(" ")
         );
         let (bio_result, events_result) = tokio::join!(
-            embedder.embed(vec![bio_query]),
-            embedder.embed(vec![events_query])
+            res.embedder.embed(vec![bio_query]),
+            res.embedder.embed(vec![events_query])
         );
         let bio = bio_result.ok().and_then(|mut v| if v.is_empty() { None } else { Some(v.remove(0)) });
         let events = events_result.ok().and_then(|mut v| if v.is_empty() { None } else { Some(v.remove(0)) });
@@ -91,7 +105,7 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
     };
 
     for name in &names {
-        for hit in store.keyword_search(name, query_vec.clone(), KEYWORD_K).await? {
+        for hit in res.store.keyword_search(name, query_vec.clone(), KEYWORD_K).await? {
             if !keyword_results.iter().any(|r| r.text == hit.text)
                 && has_non_possessive_mention(&hit.text, name)
                 && !is_scene_filtered(&hit.text, &scene_markers)
@@ -100,7 +114,7 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
             }
         }
         if let Some(ref bv) = bio_vec {
-            for hit in store.keyword_search(name, bv.clone(), KEYWORD_K / 2).await? {
+            for hit in res.store.keyword_search(name, bv.clone(), KEYWORD_K / 2).await? {
                 if !keyword_results.iter().any(|r| r.text == hit.text)
                     && has_non_possessive_mention(&hit.text, name)
                     && !is_scene_filtered(&hit.text, &scene_markers)
@@ -110,7 +124,7 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
             }
         }
         if let Some(ref ev) = events_vec {
-            for hit in store.keyword_search(name, ev.clone(), KEYWORD_K / 2).await? {
+            for hit in res.store.keyword_search(name, ev.clone(), KEYWORD_K / 2).await? {
                 if !keyword_results.iter().any(|r| r.text == hit.text)
                     && has_non_possessive_mention(&hit.text, name)
                     && !is_scene_filtered(&hit.text, &scene_markers)
@@ -125,7 +139,7 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
         // Use space-separated name (no underscore) so Text match finds lore_entity
         // field values like "alora venyette" when searching for "alora".
         let slug = name.to_lowercase();
-        for hit in store.search_lore_file(&slug, query_vec.clone(), KEYWORD_K).await? {
+        for hit in res.store.search_lore_file(&slug, query_vec.clone(), KEYWORD_K).await? {
             if !keyword_results.iter().any(|r| r.text == hit.text)
                 && !is_scene_filtered(&hit.text, &scene_markers)
             {
@@ -140,7 +154,7 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
         let q_lower = question.to_lowercase();
         for word in q_lower.split(|c: char| !c.is_alphanumeric()) {
             if word.len() >= 5 {
-                for hit in store.search_lore_file(word, query_vec.clone(), 5).await? {
+                for hit in res.store.search_lore_file(word, query_vec.clone(), 5).await? {
                     if !keyword_results.iter().any(|r| r.text == hit.text)
                         && !is_scene_filtered(&hit.text, &scene_markers)
                     {
@@ -159,7 +173,7 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
             || q.contains("what happened") || q.contains("history")
             || q.contains("tell me about") || q.contains("what is going on")
         {
-            for hit in store.search_lore_file("story overview", query_vec.clone(), KEYWORD_K).await? {
+            for hit in res.store.search_lore_file("story overview", query_vec.clone(), KEYWORD_K).await? {
                 if !keyword_results.iter().any(|r| r.text == hit.text)
                     && !is_scene_filtered(&hit.text, &scene_markers)
                 {
@@ -170,7 +184,7 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
         // Villain/antagonist questions: surface Virion's lore file directly, since
         // semantic search alone tends to find whichever villain appears most in PDF chunks.
         if q.contains("villain") || q.contains("antagonist") || q.contains("main enemy") {
-            for hit in store.search_lore_file("virion", query_vec.clone(), KEYWORD_K).await? {
+            for hit in res.store.search_lore_file("virion", query_vec.clone(), KEYWORD_K).await? {
                 if !keyword_results.iter().any(|r| r.text == hit.text)
                     && !is_scene_filtered(&hit.text, &scene_markers)
                 {
@@ -188,7 +202,7 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
 
     // Semantic retrieval with MMR diversity selection.
     let t_sem = Instant::now();
-    let candidates = store.search_with_vectors(query_vec.clone(), TOP_K_CANDIDATES).await?;
+    let candidates = res.store.search_with_vectors(query_vec.clone(), TOP_K_CANDIDATES).await?;
     info!(
         candidates = candidates.len(),
         elapsed_ms = t_sem.elapsed().as_millis(),
@@ -245,7 +259,7 @@ async fn pipeline(question: &str) -> Result<Option<PipelineOutput>> {
     // LLM call, then keep only the top RERANK_K. Fixes cases where a relevant
     // chunk is retrieved but buried under lower-quality results.
     let t_rerank = Instant::now();
-    results = rerank(&client, &ollama_url, &rerank_model, question, &names, results, RERANK_K).await;
+    results = rerank(&res.client, &res.ollama_url, &res.rerank_model, question, &names, results, RERANK_K).await;
     info!(
         kept = results.len(),
         elapsed_ms = t_rerank.elapsed().as_millis(),
@@ -348,7 +362,13 @@ Weave all relevant details from the passages into a coherent narrative — cover
 Never use bullet points, dashes, or list formatting."
     );
 
-    Ok(Some(PipelineOutput { system_prompt, user_content, client, ollama_url, chat_model }))
+    Ok(Some(PipelineOutput {
+        system_prompt,
+        user_content,
+        client: res.client.clone(),
+        ollama_url: res.ollama_url.clone(),
+        chat_model: res.chat_model.clone(),
+    }))
 }
 
 const INJECTION_RESPONSE: &str = "The lore does not speak of this.";
@@ -376,7 +396,8 @@ pub async fn run(question: &str, show_context: bool) -> Result<()> {
         println!("{INJECTION_RESPONSE}");
         return Ok(());
     }
-    match pipeline(question).await? {
+    let res = QueryResources::new().await?;
+    match pipeline(question, &res).await? {
         None => println!("No relevant lore found for that query."),
         Some(ctx) => {
             if show_context {
@@ -394,7 +415,8 @@ pub async fn answer(question: &str) -> Result<String> {
     if is_injection_attempt(question) {
         return Ok(INJECTION_RESPONSE.to_string());
     }
-    match pipeline(question).await? {
+    let res = QueryResources::new().await?;
+    match pipeline(question, &res).await? {
         None => Ok("No relevant lore found for that query.".to_string()),
         Some(ctx) => generate(&ctx).await,
     }
@@ -413,12 +435,13 @@ fn is_connection_error(e: &anyhow::Error) -> bool {
 pub async fn stream_to_sender(
     question: &str,
     tx: tokio::sync::mpsc::Sender<String>,
+    res: Arc<QueryResources>,
 ) -> Result<()> {
     if is_injection_attempt(question) {
         let _ = tx.send(INJECTION_RESPONSE.to_string()).await;
         return Ok(());
     }
-    let ctx = match pipeline(question).await {
+    let ctx = match pipeline(question, &res).await {
         Err(e) => {
             let msg = if is_connection_error(&e) {
                 "The arcane conduit is dark. The Oracle does not stir — the wellspring cannot be reached.".to_string()

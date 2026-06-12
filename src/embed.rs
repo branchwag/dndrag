@@ -5,6 +5,7 @@ use serde_json::json;
 // nomic-embed-text produces 768-dim vectors; must match the Qdrant collection config
 pub const EMBEDDING_DIM: u64 = 768;
 
+#[derive(Clone)]
 pub struct Embedder {
     client: Client,
     url: String,
