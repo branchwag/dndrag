@@ -85,26 +85,52 @@ async fn pipeline(question: &str, res: &QueryResources) -> Result<Option<Pipelin
     let mut seen: HashSet<String> = HashSet::new();
     let mut keyword_results: Vec<SearchResult> = Vec::new();
 
-    // Bio and events vectors don't depend on each other — embed them concurrently.
-    let (bio_vec, events_vec) = if !names.is_empty() {
-        let bio_query = format!(
+    // Compute bio/events query strings (depend on entity names, not query_vec).
+    let bio_query = if !names.is_empty() {
+        Some(format!(
             "{} paladin knight origin became history background turned",
             names.join(" ")
-        );
-        let events_query = format!(
+        ))
+    } else {
+        None
+    };
+    let events_query = if !names.is_empty() {
+        Some(format!(
             "{} defended kingdom battle fought dragon king served protected victory threat defeated",
             names.join(" ")
-        );
-        let (bio_result, events_result) = tokio::join!(
-            res.embedder.embed(vec![bio_query]),
-            res.embedder.embed(vec![events_query])
-        );
-        let bio = bio_result.ok().and_then(|mut v| if v.is_empty() { None } else { Some(v.remove(0)) });
-        let events = events_result.ok().and_then(|mut v| if v.is_empty() { None } else { Some(v.remove(0)) });
-        (bio, events)
+        ))
     } else {
-        (None, None)
+        None
     };
+
+    // Semantic search, bio embedding, and events embedding are all independent —
+    // run them concurrently with each other and with the keyword loop below.
+    let t_sem = Instant::now();
+    let (candidates, bio_vec, events_vec) = tokio::join!(
+        res.store.search_with_vectors(&query_vec, TOP_K_CANDIDATES),
+        async {
+            if let Some(q) = bio_query {
+                res.embedder.embed(vec![q]).await.ok()
+                    .and_then(|mut v| if v.is_empty() { None } else { Some(v.remove(0)) })
+            } else {
+                None
+            }
+        },
+        async {
+            if let Some(q) = events_query {
+                res.embedder.embed(vec![q]).await.ok()
+                    .and_then(|mut v| if v.is_empty() { None } else { Some(v.remove(0)) })
+            } else {
+                None
+            }
+        },
+    );
+    let candidates = candidates?;
+    info!(
+        candidates = candidates.len(),
+        elapsed_ms = t_sem.elapsed().as_millis(),
+        "semantic search (concurrent with bio/events embedding)"
+    );
 
     for name in &names {
         let slug = name.to_lowercase();
@@ -203,15 +229,6 @@ async fn pipeline(question: &str, res: &QueryResources) -> Result<Option<Pipelin
         hits = keyword_results.len(),
         elapsed_ms = t_kw.elapsed().as_millis(),
         "keyword search"
-    );
-
-    // Semantic retrieval with MMR diversity selection.
-    let t_sem = Instant::now();
-    let candidates = res.store.search_with_vectors(&query_vec, TOP_K_CANDIDATES).await?;
-    info!(
-        candidates = candidates.len(),
-        elapsed_ms = t_sem.elapsed().as_millis(),
-        "semantic search"
     );
 
     let t_mmr = Instant::now();

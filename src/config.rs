@@ -166,6 +166,18 @@ const DEFAULT_PROMPT_RULES: &[&str] = &[
     "Alora Venyette is a mage and vampire — she has never been a paladin. \
      Altarion is the paladin who exorcised and later married her; do not confuse his class with hers.",
 
+    "Alora Venyette has NEVER been a member of the Order of the Golden Lion. \
+     That is Altarion's order (and formerly Florian Reiter's). \
+     Alora is a mage, not a paladin, and holds no paladin order affiliation of any kind. \
+     Her only ancient affiliation was with Queen Elvira's independent mage coalition — \
+     a group entirely separate from the Order of the Golden Lion.",
+
+    "Alora's service to Queen Elvira occurred approximately 4000 years ago during the \
+     DragonMage War — it is deep ancient history, not her current role or affiliation. \
+     Queen Elvira ultimately betrayed her: she was staked and lay entombed for millennia. \
+     Her current role is protecting the Ikovian queen with an arcane shield alongside Nikolai. \
+     Never describe Alora as currently serving Queen Elvira.",
+
     "The Aviary is a human assassin/criminal organization — its members are ordinary people \
      who use bird codenames (the Dove, the Bluejay, the Robin, etc.). \
      They are NOT bird-like creatures, bird humanoids, or anything non-human. \
