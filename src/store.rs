@@ -116,7 +116,7 @@ impl VectorStore {
             .zip(sources.iter())
             .zip(pages.iter())
             .zip(lore_entities.iter())
-            .zip(embeddings.into_iter())
+            .zip(embeddings)
             .map(|(((((id, text), source), page), lore_entity), embedding)| {
                 let mut payload_json = serde_json::json!({
                     "text": text,

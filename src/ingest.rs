@@ -54,7 +54,7 @@ pub async fn run(docs_dir: &Path, fresh: bool) -> Result<()> {
             print!(
                 "\r  {filename}: batch {}/{} ({total} chunks)        ",
                 batch_idx + 1,
-                (total + EMBED_BATCH - 1) / EMBED_BATCH,
+                total.div_ceil(EMBED_BATCH),
             );
             let _ = std::io::stdout().flush();
         }
@@ -133,9 +133,8 @@ fn chunk_id(source: &str, chunk_idx: usize) -> String {
 fn chunk_text_semantic(text: &str, target_words: usize, overlap: usize) -> Vec<Chunk> {
     // Collect all sentences paired with their source page number.
     let mut indexed: Vec<(String, u32)> = Vec::new();
-    let mut page = 1u32;
 
-    for page_text in text.split('\x0c') {
+    for (page, page_text) in (1u32..).zip(text.split('\x0c')) {
         for sent in extract_sentences(page_text) {
             let filtered: String = sent
                 .split_whitespace()
@@ -146,7 +145,6 @@ fn chunk_text_semantic(text: &str, target_words: usize, overlap: usize) -> Vec<C
                 indexed.push((filtered, page));
             }
         }
-        page += 1;
     }
 
     let mut chunks: Vec<Chunk> = Vec::new();
@@ -210,7 +208,7 @@ fn sentences_from_para(para: &str) -> Vec<String> {
         if matches!(ch, '.' | '!' | '?') {
             // Treat short words before '.' as abbreviations (Dr., Mr., vs., etc.)
             let last_word: String = buf
-                .trim_end_matches(|c: char| matches!(c, '.' | '!' | '?'))
+                .trim_end_matches(['.', '!', '?'])
                 .split_whitespace()
                 .last()
                 .unwrap_or("")
@@ -221,8 +219,7 @@ fn sentences_from_para(para: &str) -> Vec<String> {
 
             let next_is_upper = chars[i + 1..]
                 .iter()
-                .skip_while(|&&c| c == ' ')
-                .next()
+                .find(|&&c| c != ' ')
                 .map(|&c| c.is_uppercase())
                 .unwrap_or(true); // end of string = sentence boundary
 
