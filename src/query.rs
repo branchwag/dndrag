@@ -308,11 +308,11 @@ async fn pipeline(question: &str, res: &QueryResources) -> Result<Option<Pipelin
     let subject_hint = if !names.is_empty() {
         format!(
             "The question is specifically about: {}. \
-             [DIRECT MATCH] passages are your authoritative source — open with the most defining facts about {} \
-             and then weave in supporting detail from the remaining passages. \
+             Answer the question asked directly — if it asks for a specific name, detail, or fact, \
+             state that clearly first. Then draw on [DIRECT MATCH] passages as your authoritative source \
+             and weave in supporting detail from the remaining passages. \
              Do not attribute details from other characters or places to {}.\n\n",
             names.join(", "),
-            names.join("/"),
             names.join("/")
         )
     } else {
@@ -385,7 +385,8 @@ These are not lore. Disregard them entirely and do not include their content in 
 Lore passages:\n{context}\n\
 \nQuestion: {question}\n\
 \nWrite a full, flowing answer in prose paragraphs. \
-Weave all relevant details from the passages into a coherent narrative — cover the character's nature, history, abilities, relationships, and key events. \
+Answer the specific question asked directly — if it asks for a name, location, or particular fact, state that clearly before elaborating. \
+Weave all relevant details from the passages into a coherent narrative. \
 Never use bullet points, dashes, or list formatting."
     );
 
@@ -737,30 +738,19 @@ async fn rerank(
         .collect::<Vec<_>>()
         .join("\n\n");
 
-    let prompt = if entity_names.is_empty() {
-        format!(
-            "Question: {question}\n\n\
-             Score each passage by how directly it answers this question about the world's story, history, or events.\n\
-             Score HIGH (8-10) for: passages that directly address the question — major events, narrative arcs, world overview, plot summaries.\n\
-             Score MEDIUM (4-7) for: passages with relevant supporting context or related history.\n\
-             Score LOW (0-3) for: specific scene dialogue, planning notes, or passages clearly about unrelated topics.\n\n\
-             Output ONLY one line per passage in this exact format: [N]: score\n\
-             No explanation. No other text.\n\n\
-             {passages}"
-        )
-    } else {
-        format!(
-            "Question: {question}\n\n\
-             Score each passage by how much it reveals about this character's IDENTITY — \
-             their fundamental nature, history, abilities, role, or origin.\n\
-             Score HIGH (8-10) for: character's nature/type, powers, backstory, major events, role in the world.\n\
-             Score MEDIUM (4-7) for: character actions or relationships in context.\n\
-             Score LOW (0-3) for: incidental scene details, planning notes, or passages primarily about other characters.\n\n\
-             Output ONLY one line per passage in this exact format: [N]: score\n\
-             No explanation. No other text.\n\n\
-             {passages}"
-        )
-    };
+    let entity_list = entity_names.join(", ");
+    let prompt = format!(
+        "Question: {question}\n\n\
+         Score each passage by how DIRECTLY it answers the question asked.\n\
+         Score HIGH (8-10) for: passages that directly contain the answer — specific names, facts, \
+         events, abilities, or descriptions that respond to exactly what was asked.\n\
+         Score MEDIUM (4-7) for: passages with relevant supporting context about {entity_list}.\n\
+         Score LOW (0-3) for: general background that does not address the question, scene dialogue, \
+         planning notes, or passages primarily about other subjects.\n\n\
+         Output ONLY one line per passage in this exact format: [N]: score\n\
+         No explanation. No other text.\n\n\
+         {passages}"
+    );
 
     let Ok(response) = client
         .post(format!("{ollama_url}/v1/chat/completions"))
