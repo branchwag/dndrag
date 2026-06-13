@@ -52,7 +52,8 @@ impl QueryResources {
         let client = Client::builder()
             .timeout(std::time::Duration::from_secs(120))
             .build()?;
-        let embedder = Embedder::new();
+        // Share the same client so embed calls use the same connection pool and timeout.
+        let embedder = Embedder::new(client.clone());
         let store = VectorStore::new().await?;
         Ok(Self { client, embedder, store, ollama_url, chat_model, rerank_model })
     }
@@ -68,7 +69,10 @@ async fn pipeline(question: &str, res: &QueryResources) -> Result<Option<Pipelin
         extract_entities(&res.client, &res.ollama_url, &res.rerank_model, question),
         res.embedder.embed(vec![question.to_string()])
     );
-    let query_vec = query_vec_result?.remove(0);
+    let query_vec = query_vec_result?
+        .into_iter()
+        .next()
+        .ok_or_else(|| anyhow!("embedder returned empty result for query"))?;
     info!(
         entities = ?names,
         elapsed_ms = t_start.elapsed().as_millis(),
@@ -434,12 +438,11 @@ pub async fn run(question: &str, show_context: bool) -> Result<()> {
 }
 
 /// Batch query: returns the full answer as a string. Used by the eval subcommand.
-pub async fn answer(question: &str) -> Result<String> {
+pub async fn answer(question: &str, res: &QueryResources) -> Result<String> {
     if is_injection_attempt(question) {
         return Ok(INJECTION_RESPONSE.to_string());
     }
-    let res = QueryResources::new().await?;
-    match pipeline(question, &res).await? {
+    match pipeline(question, res).await? {
         None => Ok("No relevant lore found for that query.".to_string()),
         Some(ctx) => generate(&ctx).await,
     }

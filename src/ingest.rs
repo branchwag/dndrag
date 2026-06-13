@@ -16,7 +16,10 @@ struct Chunk {
 }
 
 pub async fn run(docs_dir: &Path, fresh: bool) -> Result<()> {
-    let embedder = Embedder::new();
+    let client = reqwest::Client::builder()
+        .timeout(std::time::Duration::from_secs(120))
+        .build()?;
+    let embedder = Embedder::new(client);
     let store = VectorStore::new().await?;
 
     if fresh {

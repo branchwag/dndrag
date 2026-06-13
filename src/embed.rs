@@ -13,15 +13,12 @@ pub struct Embedder {
 }
 
 impl Embedder {
-    pub fn new() -> Self {
+    // Accepts a shared Client so the caller controls the connection pool and timeout.
+    pub fn new(client: Client) -> Self {
         let url = std::env::var("OLLAMA_URL")
             .unwrap_or_else(|_| "http://localhost:11434".to_string());
         let model = std::env::var("EMBED_MODEL")
             .unwrap_or_else(|_| "nomic-embed-text".to_string());
-        let client = Client::builder()
-            .timeout(std::time::Duration::from_secs(60))
-            .build()
-            .expect("failed to build HTTP client");
         Self { client, url, model }
     }
 
@@ -36,19 +33,21 @@ impl Embedder {
             .json::<serde_json::Value>()
             .await?;
 
-        let embeddings = response["embeddings"]
+        response["embeddings"]
             .as_array()
             .ok_or_else(|| anyhow!("Unexpected Ollama response: {response}"))?
             .iter()
             .map(|row| {
                 row.as_array()
-                    .unwrap_or(&vec![])
+                    .ok_or_else(|| anyhow!("embedding row is not an array"))?
                     .iter()
-                    .map(|v| v.as_f64().unwrap_or(0.0) as f32)
-                    .collect()
+                    .map(|v| {
+                        v.as_f64()
+                            .ok_or_else(|| anyhow!("non-numeric value in embedding"))
+                            .map(|f| f as f32)
+                    })
+                    .collect::<Result<Vec<f32>>>()
             })
-            .collect();
-
-        Ok(embeddings)
+            .collect()
     }
 }

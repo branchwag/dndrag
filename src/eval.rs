@@ -28,11 +28,12 @@ pub async fn run(eval_file: &Path) -> Result<()> {
 
     println!("Running eval: {} questions\n", cases.len());
 
+    let res = crate::query::QueryResources::new().await?;
     let mut passed = 0usize;
     let total = cases.len();
 
     for case in &cases {
-        let answer = match crate::query::answer(&case.question).await {
+        let answer = match crate::query::answer(&case.question, &res).await {
             Ok(a) => a,
             Err(e) => {
                 println!("[ERROR] {}\n        {e}\n", case.question);
