@@ -49,8 +49,15 @@ impl QueryResources {
             .unwrap_or_else(|_| MODEL.to_string());
         let rerank_model = std::env::var("RERANK_MODEL")
             .unwrap_or_else(|_| chat_model.clone());
+        // Per-request timeout. The rerank step sends a large multi-passage prompt;
+        // on a slow CPU that single call can exceed the default, so allow tuning
+        // via OLLAMA_TIMEOUT_SECS (raise it on CPU-only / low-RAM machines).
+        let timeout_secs = std::env::var("OLLAMA_TIMEOUT_SECS")
+            .ok()
+            .and_then(|s| s.parse().ok())
+            .unwrap_or(120);
         let client = Client::builder()
-            .timeout(std::time::Duration::from_secs(120))
+            .timeout(std::time::Duration::from_secs(timeout_secs))
             .build()?;
         // Share the same client so embed calls use the same connection pool and timeout.
         let embedder = Embedder::new(client.clone());

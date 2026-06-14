@@ -37,9 +37,9 @@ services:
     environment:
       QDRANT_URL: http://qdrant:6334
       OLLAMA_URL: http://ollama:11434
-      EMBED_MODEL: nomic-embed-text
-      CHAT_MODEL: gemma2:9b
-      RERANK_MODEL: llama3.2
+      EMBED_MODEL: ${EMBED_MODEL:-nomic-embed-text}
+      CHAT_MODEL: ${CHAT_MODEL:-gemma2:9b}
+      RERANK_MODEL: ${RERANK_MODEL:-llama3.2}
     volumes:
       - ./docs:/app/docs
       - ./eval.json:/app/eval.json
@@ -59,9 +59,9 @@ services:
     environment:
       QDRANT_URL: http://qdrant:6334
       OLLAMA_URL: http://ollama:11434
-      EMBED_MODEL: nomic-embed-text
-      CHAT_MODEL: gemma2:9b
-      RERANK_MODEL: llama3.2
+      EMBED_MODEL: ${EMBED_MODEL:-nomic-embed-text}
+      CHAT_MODEL: ${CHAT_MODEL:-gemma2:9b}
+      RERANK_MODEL: ${RERANK_MODEL:-llama3.2}
     ports:
       - "3000:3000"
     volumes:

@@ -1,10 +1,13 @@
 CHAT_MODEL ?= gemma2:9b
 EMBED_MODEL ?= nomic-embed-text
+# Model used for entity extraction + reranking. Must match RERANK_MODEL in
+# docker-compose.yml, otherwise queries call a model that was never pulled.
+RERANK_MODEL ?= llama3.2
 
-# GPU autodetect. When an NVIDIA GPU is usable (driver responds *and* the
-# container toolkit is installed), layer in docker-compose.gpu.yml so Ollama
-# runs on the GPU. Otherwise everything runs on CPU with zero setup — no file
-# renaming needed. Force it either way with `make up GPU=1` or `GPU=0`.
+# GPU autodetect. When an NVIDIA GPU is detected (nvidia-smi responds), layer in
+# docker-compose.gpu.yml so Ollama runs on the GPU. Otherwise everything runs on
+# CPU with zero setup — no file renaming needed. Force it either way with
+# `make up GPU=1` or `GPU=0`.
 GPU ?= auto
 ifeq ($(GPU),auto)
 GPU_ON := $(shell nvidia-smi -L >/dev/null 2>&1 && echo 1 || echo 0)
@@ -32,6 +35,7 @@ up:
 setup: up
 	$(COMPOSE) exec ollama ollama pull $(EMBED_MODEL)
 	$(COMPOSE) exec ollama ollama pull $(CHAT_MODEL)
+	@[ "$(RERANK_MODEL)" = "$(CHAT_MODEL)" ] || $(COMPOSE) exec ollama ollama pull $(RERANK_MODEL)
 
 # Index all PDFs in ./docs. Pass ARGS="--fresh" to wipe and rebuild from scratch.
 ingest: up
