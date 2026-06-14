@@ -142,6 +142,7 @@ docker compose -f docker-compose.yml -f docker-compose.gpu.yml up -d ollama
 - Qdrant data persists in a Docker named volume — re-run `make ingest` only when you add new documents
 - First query after a cold start is slow (~10–30s) while Ollama loads the model; subsequent queries are faster
 - `make eval` runs labeled Q&A pairs from `eval.json` and reports a pass rate — useful for catching regressions when you change models or prompts
+- `make serve` runs in the foreground — logs stream to your terminal and Ctrl+C stops the server. Add `-d` to the compose call in the Makefile if you want it to stay up after closing the terminal
 
 ## Credits
 
