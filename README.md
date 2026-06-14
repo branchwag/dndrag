@@ -83,16 +83,32 @@ All settings have defaults and can be overridden via environment variables:
 | `OLLAMA_HOST_PORT` | `11434` | Host port the Ollama container publishes. Set this (e.g. `11435`) if a native Ollama already uses `11434`. |
 | `QDRANT_URL` | `http://qdrant:6334` | Qdrant gRPC address |
 | `EMBED_MODEL` | `nomic-embed-text` | Embedding model |
-| `CHAT_MODEL` | `gemma2:9b` | Generation model |
-| `RERANK_MODEL` | same as `CHAT_MODEL` | Model used for entity extraction and reranking (set to a smaller/faster model to save time) |
+| `CHAT_MODEL` | autodetected | Generation model. `gemma2:9b` on a GPU or a CPU box with enough RAM; `llama3.2` on smaller CPU-only machines (see below). |
+| `RERANK_MODEL` | `llama3.2` | Model used for entity extraction and reranking |
+| `OLLAMA_TIMEOUT_SECS` | autodetected | Per-request timeout for Ollama calls. `120` normally; `600` on the low-RAM CPU tier, where the rerank step is slow. |
 
-To switch models:
-```yaml
-# docker-compose.yml
-environment:
-  CHAT_MODEL: llama3.2
+### Model autodetect
+
+When you run `make` targets, the model tier is chosen to fit the machine, so a
+fresh clone runs well without hand-tuning:
+
+- **GPU present**, or **CPU with ≥ `LITE_RAM_GB` (default 12) GB RAM** → the full
+  `gemma2:9b` for generation ("full" tier).
+- **CPU-only with less RAM** → the lightweight `llama3.2` everywhere, plus a
+  longer Ollama timeout ("lite" tier). `gemma2:9b` (~5.4 GB) plus the rerank
+  model won't fit in memory otherwise, causing swap thrashing and timeouts.
+
+`make up` prints the resolved tier, e.g.
+`Ollama: CPU | tier=lite (RAM=7GB) | chat=llama3.2 rerank=llama3.2 timeout=600s`.
+
+Override anything on the command line (it's also exported to the containers):
+```bash
+make serve CHAT_MODEL=gemma2:9b   # force the full chat model
+make serve LITE_RAM_GB=16         # change the lite/full RAM threshold
+make serve OLLAMA_TIMEOUT_SECS=300
 ```
-Then re-run `make setup` to pull the new model.
+`make setup` pulls whichever models the tier resolves to. (Autodetect runs
+through `make`; a raw `docker compose up` uses the compose defaults.)
 
 ## GPU passthrough
 

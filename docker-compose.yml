@@ -40,6 +40,7 @@ services:
       EMBED_MODEL: ${EMBED_MODEL:-nomic-embed-text}
       CHAT_MODEL: ${CHAT_MODEL:-gemma2:9b}
       RERANK_MODEL: ${RERANK_MODEL:-llama3.2}
+      OLLAMA_TIMEOUT_SECS: ${OLLAMA_TIMEOUT_SECS:-120}
     volumes:
       - ./docs:/app/docs
       - ./eval.json:/app/eval.json
@@ -62,6 +63,7 @@ services:
       EMBED_MODEL: ${EMBED_MODEL:-nomic-embed-text}
       CHAT_MODEL: ${CHAT_MODEL:-gemma2:9b}
       RERANK_MODEL: ${RERANK_MODEL:-llama3.2}
+      OLLAMA_TIMEOUT_SECS: ${OLLAMA_TIMEOUT_SECS:-120}
     ports:
       - "3000:3000"
     volumes:
