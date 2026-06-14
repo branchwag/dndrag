@@ -7,7 +7,7 @@ EMBED_MODEL ?= nomic-embed-text
 # renaming needed. Force it either way with `make up GPU=1` or `GPU=0`.
 GPU ?= auto
 ifeq ($(GPU),auto)
-GPU_ON := $(shell nvidia-smi -L >/dev/null 2>&1 && { command -v nvidia-container-runtime >/dev/null 2>&1 || command -v nvidia-ctk >/dev/null 2>&1; } && echo 1 || echo 0)
+GPU_ON := $(shell nvidia-smi -L >/dev/null 2>&1 && echo 1 || echo 0)
 else
 GPU_ON := $(GPU)
 endif
