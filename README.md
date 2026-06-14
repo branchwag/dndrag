@@ -13,7 +13,7 @@ A fully local RAG pipeline for querying DnD campaign lore, written in Rust. Poin
 3. **Generate** — The LLM streams a response token-by-token, grounded strictly in the retrieved lore.
 4. **Browse** — A DnD-themed browser front-end at `http://localhost:3000` lets anyone query the lore with an ink-reveal animation on a weathered parchment panel.
 
-Everything runs in Docker. No GPU required, but one is supported.
+Everything runs in Docker. No GPU required; if an NVIDIA GPU is available it's detected and used automatically.
 
 ## Stack
 
@@ -29,7 +29,7 @@ Everything runs in Docker. No GPU required, but one is supported.
 ## Prerequisites
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) with the WSL2 backend enabled
-- An NVIDIA GPU is optional — delete `docker-compose.override.yml` to run CPU-only
+- An NVIDIA GPU is optional — it's auto-detected and used when present; otherwise everything runs on CPU, no changes needed
 
 ## Quick start
 
@@ -80,6 +80,7 @@ All settings have defaults and can be overridden via environment variables:
 | Variable | Default | Description |
 |---|---|---|
 | `OLLAMA_URL` | `http://ollama:11434` | Ollama server address |
+| `OLLAMA_HOST_PORT` | `11434` | Host port the Ollama container publishes. Set this (e.g. `11435`) if a native Ollama already uses `11434`. |
 | `QDRANT_URL` | `http://qdrant:6334` | Qdrant gRPC address |
 | `EMBED_MODEL` | `nomic-embed-text` | Embedding model |
 | `CHAT_MODEL` | `gemma2:9b` | Generation model |
@@ -95,13 +96,29 @@ Then re-run `make setup` to pull the new model.
 
 ## GPU passthrough
 
-GPU support is enabled by default via `docker-compose.override.yml` (NVIDIA only). To verify:
+When you run `make` targets, an NVIDIA GPU is auto-detected: if the driver
+responds and the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
+is installed, `docker-compose.gpu.yml` is layered in automatically so Ollama
+uses the GPU. If not, everything runs on CPU — no changes required.
+
+Override the autodetect explicitly:
 
 ```bash
-docker compose exec ollama nvidia-smi
+make up GPU=1   # force GPU (fails if no usable GPU)
+make up GPU=0   # force CPU even if a GPU is present
 ```
 
-To run CPU-only, delete or rename `docker-compose.override.yml`.
+To verify the GPU is in use:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.gpu.yml exec ollama nvidia-smi
+```
+
+Not using `make`? The GPU overlay is opt-in via `-f`:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.gpu.yml up -d ollama
+```
 
 ## Notes
 

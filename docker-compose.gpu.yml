@@ -1,0 +1,20 @@
+# GPU acceleration overlay for Ollama (NVIDIA only).
+#
+# This file is NOT applied automatically. The Makefile detects a usable NVIDIA
+# GPU (driver responding + container toolkit installed) and layers it in with
+# `-f` only when present, so a plain CPU machine works with zero changes.
+# Force on/off with `make up GPU=1` / `GPU=0`. To use it without make:
+#
+#   docker compose -f docker-compose.yml -f docker-compose.gpu.yml up -d ollama
+#
+# Requires: NVIDIA GPU + NVIDIA Container Toolkit (Linux), or Docker Desktop
+#           with the WSL2 backend (Windows).
+services:
+  ollama:
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
