@@ -15,7 +15,10 @@ services:
   ollama:
     image: ollama/ollama:latest
     ports:
-      - "11434:11434"
+      # Host-published port only; app containers reach Ollama over the Docker
+      # network at http://ollama:11434 regardless of this mapping. Override
+      # OLLAMA_HOST_PORT (e.g. in .env) if 11434 is taken by a native Ollama.
+      - "${OLLAMA_HOST_PORT:-11434}:11434"
     volumes:
       - ollama_data:/root/.ollama
     healthcheck:
