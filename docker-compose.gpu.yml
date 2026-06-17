@@ -1,9 +1,7 @@
 # GPU acceleration overlay for Ollama (NVIDIA only).
 #
-# This file is NOT applied automatically. The Makefile detects a usable NVIDIA
-# GPU (driver responding + container toolkit installed) and layers it in with
-# `-f` only when present, so a plain CPU machine works with zero changes.
-# Force on/off with `make up GPU=1` / `GPU=0`. To use it without make:
+# Applied automatically by the Makefile when nvidia-smi responds (GPU=auto,
+# the default). Force on/off with `make up GPU=1` / `GPU=0`. To use it without make:
 #
 #   docker compose -f docker-compose.yml -f docker-compose.gpu.yml up -d ollama
 #
