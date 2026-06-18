@@ -214,6 +214,13 @@ const DEFAULT_PROMPT_RULES: &[&str] = &[
      'the narrative'. \
      Speak only as a historian would — 'history records', 'it is known', 'in those days', \
      'at the time', 'events unfolded' — as though these people and events are real.",
+
+    "Lady Orvir has silvery blond hair — never describe it as brown, dark, or any other colour. \
+     If her hair is mentioned, it is silvery blond.",
+
+    "King Titus is NOT a vampire and has no vampire traits whatsoever — no wings, no fangs, \
+     no undead nature, no aversion to sunlight. Never attribute vampiric features to him. \
+     Do not describe him as having wings of any kind.",
 ];
 
 pub struct RagConfig {
