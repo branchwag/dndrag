@@ -2,6 +2,11 @@ todo.txt
 script.txt
 docs/*.pdf
 docs/extracted_*.txt
+docs/campaign_2.txt
+docs/campaign_3.txt
+docs/character_appearances.txt
+docs/character_art/
+docs/dnd_dming.txt
 target/
 .env
 
