@@ -8,8 +8,8 @@ A fully local RAG pipeline for querying DnD campaign lore, written in Rust. Poin
 
 ## How it works
 
-1. **Ingest** — PDFs in `docs/` are extracted, split into sentence-aware overlapping chunks, and embedded using `nomic-embed-text` via Ollama. Embeddings and page numbers are stored in Qdrant.
-2. **Query** — Your question is embedded and named entities are extracted (concurrently). Qdrant returns the top candidates via both keyword and semantic search. MMR diversity selection picks the best non-redundant passages. A smaller LLM reranks them by relevance before they are assembled into a grounded prompt.
+1. **Ingest** — PDFs in `docs/` are extracted, split into sentence-aware overlapping chunks, and embedded using `nomic-embed-text` via Ollama. Embeddings, page numbers and lore-entity tags are written to a single index file in `index/`.
+2. **Query** — Your question is embedded and named entities are extracted (concurrently). A purpose-built, in-process vector index returns top candidates via both keyword and semantic search. MMR diversity selection picks the best non-redundant passages. A smaller LLM reranks them by relevance before they are assembled into a grounded prompt.
 3. **Generate** — The LLM streams a response token-by-token, grounded strictly in the retrieved lore.
 4. **Browse** — A DnD-themed browser front-end at `http://localhost:3000` lets anyone query the lore with an ink-reveal animation on a weathered parchment panel.
 
@@ -22,7 +22,7 @@ Everything runs in Docker. No GPU required; if an NVIDIA GPU is available it's d
 | Language | Rust (tokio, reqwest, clap, axum) |
 | PDF extraction | pdf-extract |
 | Embeddings | Ollama + nomic-embed-text (768-dim) |
-| Vector store | Qdrant (cosine similarity + full-text index) |
+| Vector index | Purpose-built, in-process — exact cosine search + inverted index (no server, no ANN) |
 | Generation | Ollama + gemma2:9b (configurable) |
 | Infrastructure | Docker Compose |
 
@@ -44,7 +44,7 @@ cp your-campaign.pdf docs/
 # 3. Build the images
 make build
 
-# 4. Start Qdrant + Ollama and pull models (one-time, ~5 GB download)
+# 4. Start Ollama and pull models (one-time, ~5 GB download)
 make setup
 
 # 5. Index your documents
@@ -63,10 +63,10 @@ make query Q="Who is the main villain?"
 | Command | What it does |
 |---|---|
 | `make build` | Build the Docker image |
-| `make up` | Start Qdrant and Ollama in the background |
+| `make up` | Start Ollama in the background |
 | `make setup` | `up` + pull Ollama models (run once) |
 | `make ingest` | Index all PDFs in `docs/` (incremental — safe to re-run) |
-| `make ingest ARGS="--fresh"` | Wipe the collection and re-index from scratch |
+| `make ingest ARGS="--fresh"` | Wipe the index and re-index from scratch |
 | `make query Q="..."` | Query from the CLI, streams response to stdout |
 | `make eval` | Run eval.json Q&A pairs and report pass rate |
 | `make serve` | Start the browser front-end at http://localhost:3000 |
@@ -81,7 +81,7 @@ All settings have defaults and can be overridden via environment variables:
 |---|---|---|
 | `OLLAMA_URL` | `http://ollama:11434` | Ollama server address |
 | `OLLAMA_HOST_PORT` | `11434` | Host port the Ollama container publishes. Set this (e.g. `11435`) if a native Ollama already uses `11434`. |
-| `QDRANT_URL` | `http://qdrant:6334` | Qdrant gRPC address |
+| `INDEX_PATH` | `index/dnd_lore.idx` | Where the vector index file lives |
 | `EMBED_MODEL` | `nomic-embed-text` | Embedding model |
 | `CHAT_MODEL` | autodetected | Generation model. `gemma2:9b` on a GPU or a CPU box with enough RAM; `llama3.2` on smaller CPU-only machines (see below). |
 | `RERANK_MODEL` | `llama3.2` | Model used for entity extraction and reranking |
@@ -139,7 +139,8 @@ docker compose -f docker-compose.yml -f docker-compose.gpu.yml up -d ollama
 ## Notes
 
 - `docs/` is gitignored — your source documents are never committed
-- Qdrant data persists in a Docker named volume — re-run `make ingest` only when you add new documents
+- The index is a single file in `index/` (also gitignored), written by `make ingest` and read by `make query`/`make serve`. Re-run `make ingest` only when you add or change documents — `serve` notices the new index on its next question, no restart needed
+- There is no database to run. The whole corpus (~2.3k chunks, ~10 MB) is held in memory and searched exactly, so every query scans all of it rather than approximating. At this scale a full scan is well under a millisecond, so an approximate index (HNSW/IVF) would add complexity and cost recall for no speed benefit — it's the right tradeoff below roughly 10⁵ vectors, not the lazy one
 - First query after a cold start is slow (~10–30s) while Ollama loads the model; subsequent queries are faster
 - `make eval` runs labeled Q&A pairs from `eval.json` and reports a pass rate — useful for catching regressions when you change models or prompts
 - `make serve` runs in the foreground — logs stream to your terminal and Ctrl+C stops the server. Add `-d` to the compose call in the Makefile if you want it to stay up after closing the terminal

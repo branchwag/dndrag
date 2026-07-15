@@ -1,17 +1,4 @@
 services:
-  qdrant:
-    image: qdrant/qdrant:latest
-    ports:
-      - "6333:6333"
-      - "6334:6334"
-    volumes:
-      - qdrant_data:/qdrant/storage
-    healthcheck:
-      test: ["CMD", "bash", "-c", "exec 3<>/dev/tcp/localhost/6334"]
-      interval: 5s
-      timeout: 3s
-      retries: 10
-
   ollama:
     image: ollama/ollama:latest
     ports:
@@ -35,7 +22,7 @@ services:
       - path: .env
         required: false
     environment:
-      QDRANT_URL: http://qdrant:6334
+      INDEX_PATH: /app/index/dnd_lore.idx
       OLLAMA_URL: http://ollama:11434
       EMBED_MODEL: ${EMBED_MODEL:-nomic-embed-text}
       CHAT_MODEL: ${CHAT_MODEL:-gemma2:9b}
@@ -44,9 +31,10 @@ services:
     volumes:
       - ./docs:/app/docs
       - ./eval.json:/app/eval.json
+      # The index is a plain file on the host. `ingest` writes it here and
+      # `serve` reads the same path, which is how the two containers share it.
+      - ./index:/app/index
     depends_on:
-      qdrant:
-        condition: service_healthy
       ollama:
         condition: service_healthy
     profiles:
@@ -58,7 +46,7 @@ services:
       - path: .env
         required: false
     environment:
-      QDRANT_URL: http://qdrant:6334
+      INDEX_PATH: /app/index/dnd_lore.idx
       OLLAMA_URL: http://ollama:11434
       EMBED_MODEL: ${EMBED_MODEL:-nomic-embed-text}
       CHAT_MODEL: ${CHAT_MODEL:-gemma2:9b}
@@ -68,10 +56,10 @@ services:
       - "3000:3000"
     volumes:
       - ./docs:/app/docs
+      # Read-only: serve never writes the index, it only picks up re-ingests.
+      - ./index:/app/index:ro
     command: serve --port 3000
     depends_on:
-      qdrant:
-        condition: service_healthy
       ollama:
         condition: service_healthy
     profiles:
@@ -88,5 +76,4 @@ services:
       - tools
 
 volumes:
-  qdrant_data:
   ollama_data:

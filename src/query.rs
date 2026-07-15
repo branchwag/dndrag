@@ -61,7 +61,7 @@ impl QueryResources {
             .build()?;
         // Share the same client so embed calls use the same connection pool and timeout.
         let embedder = Embedder::new(client.clone());
-        let store = VectorStore::new().await?;
+        let store = VectorStore::open()?;
         Ok(Self { client, embedder, store, ollama_url, chat_model, rerank_model })
     }
 }

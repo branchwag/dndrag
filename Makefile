@@ -54,10 +54,10 @@ export CHAT_MODEL EMBED_MODEL RERANK_MODEL OLLAMA_TIMEOUT_SECS
 build:
 	$(COMPOSE) --profile cli build
 
-# Start Qdrant and Ollama in the background
+# Start Ollama in the background. The vector store is in-process — no DB to run.
 up:
 	@echo "Ollama: $(if $(filter 1,$(GPU_ON)),GPU,CPU) | tier=$(MODEL_TIER) (RAM=$(RAM_GB)GB) | chat=$(CHAT_MODEL) rerank=$(RERANK_MODEL) timeout=$(OLLAMA_TIMEOUT_SECS)s"
-	$(COMPOSE) up -d qdrant ollama
+	$(COMPOSE) up -d ollama
 
 # Pull the two models into Ollama (only needed once; models persist in the ollama_data volume)
 setup: up

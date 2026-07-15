@@ -20,12 +20,12 @@ pub async fn run(docs_dir: &Path, fresh: bool) -> Result<()> {
         .timeout(std::time::Duration::from_secs(120))
         .build()?;
     let embedder = Embedder::new(client);
-    let store = VectorStore::new().await?;
+    // Loads any existing index, so a plain `ingest` adds to it and re-ingesting a
+    // document overwrites its chunks in place (chunk ids are stable, see chunk_id).
+    let store = VectorStore::open()?;
 
     if fresh {
-        store.reset_collection().await?;
-    } else {
-        store.ensure_collection().await?;
+        store.reset();
     }
 
     let docs = find_docs(docs_dir)?;
@@ -53,7 +53,7 @@ pub async fn run(docs_dir: &Path, fresh: bool) -> Result<()> {
             let sources: Vec<String> = vec![filename.clone(); batch.len()];
             let lore_entities: Vec<Option<String>> = vec![lore_entity.clone(); batch.len()];
             let embeddings = embedder.embed(texts.clone()).await?;
-            store.upsert(&ids, &texts, &sources, &pages, &lore_entities, embeddings).await?;
+            store.upsert(&ids, &texts, &sources, &pages, &lore_entities, embeddings)?;
             print!(
                 "\r  {filename}: batch {}/{} ({total} chunks)        ",
                 batch_idx + 1,
@@ -63,6 +63,10 @@ pub async fn run(docs_dir: &Path, fresh: bool) -> Result<()> {
         }
         println!("\r  Indexed {total} chunks from {filename}                ");
     }
+
+    // Everything above was in-memory; this is the only write to disk. A crash
+    // mid-ingest therefore leaves the previous index untouched rather than partial.
+    store.save()?;
 
     println!("Ingestion complete.");
     Ok(())

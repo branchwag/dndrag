@@ -10,6 +10,9 @@ docs/dnd_dming.txt
 target/
 .env
 
+# Built by `make ingest` from docs/ — derived data, not source
+index/
+
 # Discord export — raw data and generated outputs; only the extraction script is tracked
 docs/Discord_extract/package.zip
 docs/Discord_extract/lore_writing.md
